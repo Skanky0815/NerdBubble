@@ -1,0 +1,7 @@
+.DS_Store
+# Project exclude paths
+.idea
+/backend/lib/crawler/.gradle/
+/backend/lib/crawler/build/
+/backend/lib/news-domain/.gradle/
+/backend/lib/news-domain/build/

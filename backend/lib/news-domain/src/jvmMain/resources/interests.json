@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Das Schwarze Auge",
+    "keywords": ["das schwarze auge", "dsa5"]
+  },
+  {
+    "name": "Aventuria",
+    "keywords": ["aventuria"]
+  },
+  {
+    "name": "Star Wars",
+    "keywords": ["star wars"]
+  },
+  {
+    "name": "Der Herr der Ringe",
+    "keywords": ["lord of the rings", "Der Herr der Ringe"]
+  },
+  {
+    "name": "Star Trek",
+    "keywords": ["star trek"]
+  },
+  {
+    "name": "Eisenbahn",
+    "keywords": ["wagen", "eisenbahn", "lok", "(8w)", "bahn", "gleis", "schien", "intercity", "wagon", "train"]
+  }
+]
