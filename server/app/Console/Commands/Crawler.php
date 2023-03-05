@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Crawler\AsmodeeCrawler;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class Crawler extends Command
 {
@@ -20,11 +23,21 @@ class Crawler extends Command
      */
     protected $description = 'Command description';
 
+    public function __construct(
+        private readonly AsmodeeCrawler $asmodee,
+    ) {
+        parent::__construct();
+    }
+
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        //
+        try {
+            $this->asmodee->crawl();
+        } catch (Throwable $exception) {
+            Log::alert($exception->getMessage(), $exception->getTrace());
+        }
     }
 }
