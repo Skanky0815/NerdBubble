@@ -13,7 +13,7 @@ class ArticleControllerTest extends TestCase
 
     public function test_when_controller_is_called_then_response_success(): void
     {
-        Carbon::setTestNow(Carbon::create(2023, 0o2, 13));
+        Carbon::setTestNow(Carbon::create(2023, 0, 13));
 
         Article::factory(10)->create(['date' => '2023-02-01']);
         Article::factory(2)->create(['date' => '2023-01-01']);
