@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Train Sim World - Rail-Sim.de - Die deutsche Train Simulator Community</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="noindex">
+    <meta property="og:site_name" content="Rail-Sim.de - Die deutsche Train Simulator Community">
+    <meta property="og:title" content="Train Sim World - Rail-Sim.de - Die deutsche Train Simulator Community">
+    <meta property="og:url" content="https://rail-sim.de/forum/wcf/train-sim-world-neuigkeiten/">
+    <meta property="og:type" content="website">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://rail-sim.de/forum/wcf/style/style-12.css?m=1673715134">
+    <link rel="preload"
+          href="https://rail-sim.de/forum/wcf/font/families/Open%20Sans/OpenSans%5Bwdth%2Cwght%5D.woff2?v=1658925257"
+          as="font" crossorigin>
+    <link rel="preload" href="https://rail-sim.de/forum/wcf/font/fontawesome-webfont.woff2?v=4.7.0" as="font"
+          crossorigin type="font/woff2">
+    <style>
+        /
+        /
+        Time Color Anfang \\
+        time.now {
+            color: #650101 !important;
+        }
+
+        time.minutes {
+            color: #650101 !important;
+        }
+
+        time.hours {
+            color: #2939CC !important;
+        }
+
+        time.week {
+            color: #3E3D3F !important;
+        }
+
+        time.pastDay {
+            color: #3E3D3F;
+        }
+
+        /
+        /
+        Time Color Ende \\
+    </style>
+
+
+    <script>
+        var SID_ARG_2ND = '';
+        var WCF_PATH = 'https://rail-sim.de/forum/wcf/';
+        var WSC_API_URL = 'https://rail-sim.de/forum/wcf/';
+
+        var LANGUAGE_ID = 1;
+        var LANGUAGE_USE_INFORMAL_VARIANT = false;
+        var TIME_NOW = 1678041007;
+        var LAST_UPDATE_TIME = 1658933298;
+        var URL_LEGACY_MODE = false;
+        var ENABLE_DEBUG_MODE = false;
+        var ENABLE_PRODUCTION_DEBUG_MODE = false;
+        var ENABLE_DEVELOPER_TOOLS = false;
+        var WSC_API_VERSION = 2019;
+        var PAGE_TITLE = 'Rail-Sim.de - Die deutsche Train Simulator Community';
+
+        var REACTION_TYPES = {
+            "2": {
+                "title": "Gef\u00e4llt mir",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/2-thumbsUp.svg\"\n\talt=\"Gef\u00e4llt mir\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"2\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/2-thumbsUp.svg",
+                "showOrder": 1,
+                "reactionTypeID": 2,
+                "isAssignable": 1
+            },
+            "8": {
+                "title": "Ich liebe es",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/8-loveit.svg\"\n\talt=\"Ich liebe es\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"8\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/8-loveit.svg",
+                "showOrder": 2,
+                "reactionTypeID": 8,
+                "isAssignable": 1
+            },
+            "1": {
+                "title": "Danke",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/1-danke.png\"\n\talt=\"Danke\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"1\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/1-danke.png",
+                "showOrder": 3,
+                "reactionTypeID": 1,
+                "isAssignable": 1
+            },
+            "7": {
+                "title": "Ausgezeichnet",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/7-ausgezeichnet.svg\"\n\talt=\"Ausgezeichnet\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"7\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/7-ausgezeichnet.svg",
+                "showOrder": 4,
+                "reactionTypeID": 7,
+                "isAssignable": 1
+            },
+            "6": {
+                "title": "Wow",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/6-wow.png\"\n\talt=\"Wow\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"6\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/6-wow.png",
+                "showOrder": 5,
+                "reactionTypeID": 6,
+                "isAssignable": 1
+            },
+            "3": {
+                "title": "Haha",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/haha.svg\"\n\talt=\"Haha\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"3\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/haha.svg",
+                "showOrder": 6,
+                "reactionTypeID": 3,
+                "isAssignable": 1
+            },
+            "5": {
+                "title": "Schade",
+                "renderedIcon": "<img\n\tsrc=\"https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/sad.svg\"\n\talt=\"Schade\"\n\tclass=\"reactionType\"\n\tdata-reaction-type-id=\"5\"\n>",
+                "iconPath": "https:\/\/rail-sim.de\/forum\/wcf\/images\/reaction\/sad.svg",
+                "showOrder": 7,
+                "reactionTypeID": 5,
+                "isAssignable": 1
+            }
+        };
+
+    </script>
+
+    <script src="https://rail-sim.de/forum/wcf/js/WoltLabSuite.Core.min.js?v=1658933298"></script>
+    <script>
+        requirejs.config({
+            baseUrl: 'https://rail-sim.de/forum/wcf/js',
+            urlArgs: 't=1658933298'
+            , paths: {
+                'Bastelstu.be/core': 'Bastelstu.be/core/library.min',
+            }
+
+        });
+
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+
+    </script>
+    <script src="https://rail-sim.de/forum/wcf/js/WBBElite.WSC.User.Online.min.js?v=1658933298"></script>
+    <script src="https://rail-sim.de/forum/wcf/js/WoltLabSuite.Forum.min.js?v=1658933298"></script>
+    <noscript>
+        <style>
+            .jsOnly {
+                display: none !important;
+            }
+
+            .noJsOnly {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "https:\/\/rail-sim.de\/forum\/wcf\/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https:\/\/rail-sim.de\/forum\/wcf\/search\/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+
+    <script>;(function () {
+        var noop = function () {
+            return false
+        }
+
+        if (!window.be) window.be = {}
+        if (!window.be.bastelstu) window.be.bastelstu = {}
+        if (!window.be.bastelstu.wcf) window.be.bastelstu.wcf = {}
+        if (!window.be.bastelstu.wcf.push) {
+            var legacy = {
+                init: noop
+                , onConnect: noop
+                , onDisconnect: noop
+                , onMessage: noop
+            }
+            window.be.bastelstu.wcf.push = legacy
+        }
+    })();</script>
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="https://rail-sim.de/forum/wcf/images/style-12/apple-touch-icon.png">
+    <link rel="manifest" href="https://rail-sim.de/forum/wcf/images/style-12/manifest.json">
+    <link rel="shortcut icon" href="https://rail-sim.de/forum/wcf/images/style-12/favicon.ico">
+    <meta name="msapplication-config" content="https://rail-sim.de/forum/wcf/images/style-12/browserconfig.xml">
+    <meta name="theme-color" content="#9b011b">
+
+    <link rel="canonical" href="https://rail-sim.de/forum/wcf/train-sim-world-neuigkeiten/">
+
+</head>
+
+<body id="tpl_wcf_cms"
+      itemscope itemtype="http://schema.org/WebPage" itemid="https://rail-sim.de/forum/wcf/train-sim-world-neuigkeiten/"
+      data-template="cms" data-application="wcf" data-page-id="133" data-page-identifier="com.woltlab.wcf.generic133"
+      class="">
+
+<span id="top"></span>
+
+<div id="pageContainer" class="pageContainer">
+
+
+    <div id="pageHeaderContainer" class="pageHeaderContainer">
+        <header id="pageHeader" class="pageHeader">
+            <div id="pageHeaderPanel" class="pageHeaderPanel">
+                <div class="layoutBoundary">
+                    <div class="box mainMenu" data-box-identifier="com.woltlab.wcf.MainMenu">
+
+
+                        <div class="boxContent">
+                            <nav aria-label="Hauptmenü">
+                                <ol class="boxMenu">
+
+
+                                    <li class="active boxMenuHasChildren" data-identifier="com.woltlab.wcf.Dashboard">
+                                        <a href="https://rail-sim.de/forum/wcf/" class="boxMenuLink"
+                                           aria-current="page">
+                                            <span class="boxMenuLinkTitle">Dashboard</span>
+                                        </a>
+
+                                        <ol class="boxMenuDepth1">
+                                            <li class="" data-identifier="com.woltlab.wcf.generic45">
+                                                <a href="https://rail-sim.de/forum/wcf/train-simulator-neuigkeiten/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Train Simulator</span>
+                                                </a>
+
+                                            </li>
+                                            <li class="active" data-identifier="com.woltlab.wcf.generic46">
+                                                <a href="https://rail-sim.de/forum/wcf/train-sim-world-neuigkeiten/"
+                                                   class="boxMenuLink" aria-current="page">
+                                                    <span class="boxMenuLinkTitle">Train Sim World</span>
+                                                </a>
+
+                                            </li>
+                                            <li class="" data-identifier="com.woltlab.wcf.generic47">
+                                                <a href="https://rail-sim.de/forum/wcf/simrail-neuigkeiten/"
+                                                   class="boxMenuLink">
+                                                    <span
+                                                        class="boxMenuLinkTitle">SimRail - The Railway Simulator</span>
+                                                </a>
+
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class=" boxMenuHasChildren" data-identifier="com.woltlab.wbb.BoardList">
+                                        <a href="https://rail-sim.de/forum/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Forum</span>
+                                        </a>
+
+                                        <ol class="boxMenuDepth1">
+                                            <li class="" data-identifier="com.woltlab.wbb.UnresolvedThreadList">
+                                                <a href="https://rail-sim.de/forum/unresolved-thread-list/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Unerledigte Themen</span>
+                                                </a>
+
+                                            </li>
+                                            <li class="" data-identifier="com.woltlab.wcf.generic34">
+                                                <a href="https://rail-sim.de/forum/index.php?thread/31284-forenregeln/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Forenregeln</span>
+                                                </a>
+
+                                            </li>
+                                            <li class="" data-identifier="com.woltlab.wcf.generic36">
+                                                <a href="https://rail-sim.de/forum/index.php?thread/31280-verwarnkatalog-zu-forenregeln/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Verwarnkatalog</span>
+                                                </a>
+
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="" data-identifier="com.woltlab.wcf.generic30">
+                                        <a href="https://rail-sim.de" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Hauptseite</span>
+                                        </a>
+
+                                    </li>
+                                    <li class=" boxMenuHasChildren" data-identifier="com.viecode.filebase.Filebase">
+                                        <a href="https://rail-sim.de/forum/filebase/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Downloads</span>
+                                        </a>
+
+                                        <ol class="boxMenuDepth1">
+                                            <li class="" data-identifier="com.woltlab.wcf.generic38">
+                                                <a href="https://rail-sim.de/forum/lexicon/entry/163-anleitung-download-einsenden/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Anleitung: Download einsenden</span>
+                                                </a>
+
+                                            </li>
+                                            <li class="" data-identifier="com.woltlab.wcf.generic37">
+                                                <a href="https://rail-sim.de/forum/wcf/aufgaben-assistent/"
+                                                   class="boxMenuLink">
+                                                    <span class="boxMenuLinkTitle">Aufgaben-Assistent</span>
+                                                </a>
+
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="" data-identifier="com.viecode.lexicon.Lexicon">
+                                        <a href="https://rail-sim.de/forum/lexicon/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Wiki</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="" data-identifier="com.woltlab.wcf.generic42">
+                                        <a href="https://rail-sim.de/forum/wcf/chat/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Chat</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="" data-identifier="com.kittmedia.wcf.Partners">
+                                        <a href="https://rail-sim.de/forum/wcf/partners/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Partner</span>
+                                        </a>
+
+                                    </li>
+
+
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <nav id="topMenu" class="userPanel">
+                        <a href="https://rail-sim.de/forum/wcf/login/?url=https%3A%2F%2Frail-sim.de%2Fforum%2Fwcf%2Ftrain-sim-world-neuigkeiten%2F"
+                           class="userPanelLoginLink jsTooltip" title="Anmelden oder registrieren">
+                            <span class="icon icon32 fa-sign-in" aria-hidden="true"></span>
+                        </a>
+
+                        <ul class="userPanelItems">
+                            <li id="pageLanguageContainer">
+                            </li>
+                            <li id="userLogin">
+                                <a class="loginLink"
+                                   href="https://rail-sim.de/forum/wcf/login/?url=https%3A%2F%2Frail-sim.de%2Fforum%2Fwcf%2Ftrain-sim-world-neuigkeiten%2F">Anmelden
+                                    oder registrieren</a>
+                                </a>
+
+
+                                <!-- page search -->
+                            <li>
+                                <a href="https://rail-sim.de/forum/wcf/search/" id="userPanelSearchButton"
+                                   class="jsTooltip" title="Suche"><span class="icon icon32 fa-search"></span> <span>Suche</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div id="pageHeaderFacade" class="pageHeaderFacade">
+                <div class="layoutBoundary">
+                    <div id="pageHeaderLogo" class="pageHeaderLogo">
+
+                        <a href="https://rail-sim.de/forum/wcf/"
+                           aria-label="Rail-Sim.de - Die deutsche Train Simulator Community">
+                            <img src="https://rail-sim.de/forum/wcf/images/style-12/pageLogo-1881533b.png" alt=""
+                                 class="pageHeaderLogoLarge" height="120" width="500" loading="eager">
+                            <img src="https://rail-sim.de/forum/wcf/images/style-12/pageLogoMobile.png" alt=""
+                                 class="pageHeaderLogoSmall" height="45" width="198" loading="eager">
+
+
+                        </a>
+                    </div>
+
+
+                    <a href="#" id="pageHeaderSearchMobile" class="pageHeaderSearchMobile" role="button" tabindex="0"
+                       aria-expanded="false" aria-label="Suche">
+                        <span class="icon icon32 fa-search" aria-hidden="true"></span>
+                    </a>
+
+                    <div id="pageHeaderSearch" class="pageHeaderSearch">
+                        <form method="post" action="https://rail-sim.de/forum/wcf/search/">
+                            <div id="pageHeaderSearchInputContainer" class="pageHeaderSearchInputContainer">
+                                <div class="pageHeaderSearchType dropdown">
+                                    <a href="#" class="button dropdownToggle" id="pageHeaderSearchTypeSelect"><span
+                                        class="pageHeaderSearchTypeLabel">Alles</span></a>
+                                    <ul class="dropdownMenu">
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?extended=1"
+                                               data-object-type="everywhere">Alles</a></li>
+                                        <li class="dropdownDivider"></li>
+
+
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.woltlab.wbb.post&amp;extended=1"
+                                               data-object-type="com.woltlab.wbb.post">Forum</a></li>
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.viecode.lexicon.entry&amp;extended=1"
+                                               data-object-type="com.viecode.lexicon.entry">Eintrag</a></li>
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.woltlab.wcf.article&amp;extended=1"
+                                               data-object-type="com.woltlab.wcf.article">Artikel</a></li>
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.viecode.filebase.entry&amp;extended=1"
+                                               data-object-type="com.viecode.filebase.entry">Filebase-Eintrag</a></li>
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.woltlab.wcf.page&amp;extended=1"
+                                               data-object-type="com.woltlab.wcf.page">Seiten</a></li>
+                                        <li><a href="#"
+                                               data-extended-link="https://rail-sim.de/forum/wcf/search/?type=com.kittmedia.wcf.partners.banner&amp;extended=1"
+                                               data-object-type="com.kittmedia.wcf.partners.banner">Banner</a></li>
+
+                                        <li class="dropdownDivider"></li>
+                                        <li><a class="pageHeaderSearchExtendedLink"
+                                               href="https://rail-sim.de/forum/wcf/search/?extended=1">Erweiterte
+                                            Suche</a></li>
+                                    </ul>
+                                </div>
+
+                                <input type="search" name="q" id="pageHeaderSearchInput" class="pageHeaderSearchInput"
+                                       placeholder="Suchbegriff eingeben" autocomplete="off" value="">
+
+                                <button class="pageHeaderSearchInputButton button" type="submit">
+                                    <span class="icon icon16 fa-search pointer" title="Suche"></span>
+                                </button>
+
+                                <div id="pageHeaderSearchParameters"></div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+    </div>
+
+
+    <div class="pageNavigation">
+        <div class="layoutBoundary">
+            <nav class="breadcrumbs" aria-label="Verlaufsnavigation">
+                <ol itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li title="Rail-Sim.de - Die deutsche Train Simulator Community" itemprop="itemListElement"
+                        itemscope itemtype="http://schema.org/ListItem">
+                        <a href="https://rail-sim.de/forum/wcf/" itemprop="item"><span itemprop="name">Rail-Sim.de - Die deutsche Train Simulator Community</span></a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                </ol>
+            </nav>
+
+
+        </div>
+    </div>
+
+
+    <section id="main" class="main" role="main">
+        <div class="layoutBoundary">
+
+
+            <div id="content" class="content">
+
+
+                <header class="contentHeader">
+                    <div class="contentHeaderTitle">
+                        <h1 class="contentTitle">Train Sim World</h1>
+                    </div>
+
+
+                </header>
+
+
+                <div class="boxesContentTop">
+                    <div class="boxContainer">
+                        <section class="box" data-box-identifier="com.woltlab.wcf.genericBox52">
+
+                            <h2 class="boxTitle">
+                                Letzte Beiträge (Train Sim World) </h2>
+
+                            <div class="boxContent">
+                                <section class="tabularBox messageGroupList wbbThreadList">
+                                    <ol class="tabularList">
+                                        <li class="tabularListRow tabularListRowHead">
+                                            <ol class="tabularListColumns">
+                                                <li class="columnSubject">Thema</li>
+                                                <li class="columnStats">Antworten</li>
+                                                <li class="columnLastPost">Letzte Antwort</li>
+
+
+                                            </ol>
+                                        </li>
+
+                                        <li class="tabularListRow">
+                                            <ol
+                                                id="thread39263"
+                                                class="tabularListColumns messageGroup wbbThread jsClipboardObject new"
+                                                data-thread-id="39263" data-element-id="39263" data-is-closed="0"
+                                                data-is-deleted="0"
+                                                data-is-sticky="0" data-is-disabled="0" data-is-announcement="0"
+                                                data-is-link="0"
+                                            >
+                                                <li class="columnIcon columnAvatar">
+                                                    <div>
+                                                        <p title="Thema durch Doppelklick als gelesen markieren"><img
+                                                            src="https://rail-sim.de/forum/wcf/images/avatars/cb/9998-cbfb3c8f43fa181d1a6966bf970ea40a3a5fe772.webp"
+                                                            width="48" height="48" alt="" class="userAvatarImage"
+                                                            loading="lazy"></p>
+
+
+                                                    </div>
+                                                </li>
+                                                <li class="columnSubject">
+                                                    <ul class="labelList">
+                                                        <li><a
+                                                            href="https://rail-sim.de/forum/board/105-ank%C3%BCndigungen-neuigkeiten-zum-tsw/?labelIDs%5B11%5D=38"
+                                                            class="badge label orangeNew jsTooltip"
+                                                            title="Themen mit dem Label „angekündigt“">angekündigt</a>
+                                                        </li>
+                                                        <li><a
+                                                            href="https://rail-sim.de/forum/board/105-ank%C3%BCndigungen-neuigkeiten-zum-tsw/?labelIDs%5B24%5D=100"
+                                                            class="badge label blue jsTooltip"
+                                                            title="Themen mit dem Label „TSW3“">TSW3</a></li>
+                                                    </ul>
+
+
+                                                    <h3>
+
+
+                                                        <a href="https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/"
+                                                           class="messageGroupLink wbbTopicLink" data-object-id="39263">[TSW3]
+                                                            Niddertalbahn: Bad Vilbel - Stockheim</a>
+
+                                                        <span class="badge messageGroupCounterMobile">204</span>
+                                                    </h3>
+
+                                                    <aside class="statusDisplay" role="presentation">
+                                                        <ul class="inlineList statusIcons">
+                                                            <li>			<span class="topReactionShort jsTooltip"
+                                                                                  title="Gefällt mir × 5 und 2 weitere Reaktionen">
+			<img
+                src="https://rail-sim.de/forum/wcf/images/reaction/2-thumbsUp.svg"
+                alt="Gefällt mir"
+                class="reactionType"
+                data-reaction-type-id="2"
+            >			<span class="reactionCount">5</span>
+		</span>
+                                                            </li>
+                                                            <li><span class="icon icon16 fa-paperclip jsTooltip"
+                                                                      title="Dieses Thema enthält 14 Dateianhänge."></span>
+                                                            </li>
+
+
+                                                        </ul>
+                                                    </aside>
+
+                                                    <ul class="inlineList dotSeparated small messageGroupInfo">
+                                                        <li class="messageGroupAuthor"><a
+                                                            href="https://rail-sim.de/forum/wcf/user/138-steve/"
+                                                            data-object-id="138" class="userLink"><strong><span
+                                                            style="color: #0000FF">Steve</span></strong></a></li>
+                                                        <li class="messageGroupTime">
+                                                            <time datetime="2023-02-06T16:34:31+01:00" class="datetime"
+                                                                  data-timestamp="1675697671"
+                                                                  data-date="6. Februar 2023" data-time="16:34"
+                                                                  data-offset="3600">6. Februar 2023
+                                                            </time>
+                                                        </li>
+                                                        <li class="wbbThreadBoardLink"><a
+                                                            href="https://rail-sim.de/forum/board/105-ank%C3%BCndigungen-neuigkeiten-zum-tsw/">Ankündigungen/Neuigkeiten
+                                                            zum TSW</a></li>
+                                                    </ul>
+
+                                                    <ul class="messageGroupInfoMobile">
+                                                        <li class="messageGroupAuthorMobile">Steve</li>
+                                                        <li class="messageGroupLastPostTimeMobile">
+                                                            <time datetime="2023-03-05T16:02:07+01:00" class="datetime"
+                                                                  data-timestamp="1678028527" data-date="5. März 2023"
+                                                                  data-time="16:02" data-offset="3600">Vor 3 Stunden
+                                                            </time>
+                                                        </li>
+                                                    </ul>
+
+
+                                                </li>
+                                                <li class="columnStats">
+                                                    <dl class="plain statsDataList">
+                                                        <dt>Antworten</dt>
+                                                        <dd>204</dd>
+                                                    </dl>
+                                                    <dl class="plain statsDataList">
+                                                        <dt>Zugriffe</dt>
+                                                        <dd>34k</dd>
+                                                    </dl>
+
+                                                    <div class="messageGroupListStatsSimple"><span
+                                                        class="icon icon16 fa-comment-o" aria-label="Antworten"></span>
+                                                        204
+                                                    </div>
+                                                </li>
+
+                                                <li class="columnLastPost">
+                                                    <div class="box32">
+                                                        <a href="https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/?action=lastPost"
+                                                           class="jsTooltip" title="Zum letzten Beitrag springen"><img
+                                                            src="https://rail-sim.de/forum/wcf/images/avatars/7b/11766-7bf41357eb1d648cfbafbab7ed94b4e4f3ef43b5.webp"
+                                                            width="32" height="32" alt="" class="userAvatarImage"
+                                                            loading="lazy"></a>
+
+                                                        <div>
+                                                            <p>
+                                                                <a href="https://rail-sim.de/forum/wcf/user/16479-hannah/"
+                                                                   data-object-id="16479" class="userLink">Hannah</a>
+                                                            </p>
+                                                            <small>
+                                                                <time datetime="2023-03-05T16:02:07+01:00"
+                                                                      class="datetime" data-timestamp="1678028527"
+                                                                      data-date="5. März 2023" data-time="16:02"
+                                                                      data-offset="3600">Vor 3 Stunden
+                                                                </time>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </section>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+                <footer class="contentFooter">
+
+                </footer>
+
+
+            </div>
+
+
+            <aside class="sidebar boxesSidebarRight" aria-label="Rechte Seitenleiste">
+                <div class="boxContainer">
+
+
+                    <section class="box" data-box-identifier="com.woltlab.wcf.genericBox59">
+
+                        <h2 class="boxTitle">
+                            Spenden </h2>
+
+                        <div class="boxContent">
+                            <style>
+                                :root {
+                                    --progress: 1%;
+                                }
+
+                                @keyframes progressAnimationStrike {
+                                    from {
+                                        width: 0
+                                    }
+                                    to {
+                                        width: var(--progress)
+                                    }
+                                }
+
+                                #BarDonation {
+                                    background-color: #c20020;
+                                    width: var(--progress);
+                                    background-image: linear-gradient(45deg, #720013 25%, transparent 25%, transparent 50%, #720013 50%, #720013 75%, transparent 75%, transparent);
+                                    animation: progressAnimationStrike 6s;
+                                }
+                            </style>
+
+
+                            <div id="Donation">
+                                <div id="DonationInfo">Über eure Unterstützung würden wir uns freuen. Vielen Dank!</div>
+                                <div id="ProgressDonation">
+
+                                    <div id="BarDonation"></div>
+
+                                </div>
+                                <div id="DonationDest">0,50€ von 120€ erreicht <p>Monat März</p></div>
+                                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NVJM4NY8QKFC6"
+                                   class="buttonDonation"><span id="spendentext">Spenden</span></a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="box" data-box-identifier="com.woltlab.wcf.RecentActivity">
+
+                        <h2 class="boxTitle">
+                            <a href="https://rail-sim.de/forum/wcf/recent-activity-list/">Letzte Aktivitäten</a>
+                        </h2>
+
+                        <div class="boxContent">
+                            <ul class="sidebarItemList">
+                                <li class="box24">
+                                    <a href="https://rail-sim.de/forum/wcf/user/756-smokey/" aria-hidden="true"
+                                       tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/7f/612-7fa17cd346c4e2eb6283638bef1f5556e0707b22.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+                                    <div class="sidebarItemTitle">
+                                        <h3>
+                                            <a href="https://rail-sim.de/forum/wcf/user/756-smokey/"
+                                               data-object-id="756" class="userLink">Smokey</a> <small
+                                            class="separatorLeft">
+                                            <time datetime="2023-03-05T19:25:29+01:00" class="datetime"
+                                                  data-timestamp="1678040729" data-date="5. März 2023" data-time="19:25"
+                                                  data-offset="3600">Vor 5 Minuten
+                                            </time>
+                                        </small>
+                                        </h3>
+                                        <small>Hat das Thema <a
+                                            href="https://rail-sim.de/forum/thread/39377-tsw-3-grafik-wird-immer-schlechter/"
+                                            class="wbbTopicLink" data-object-id="39377">TSW 3 Grafik wird immer
+                                            schlechter</a> gestartet.</small>
+                                    </div>
+                                </li>
+                                <li class="box24">
+                                    <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/" aria-hidden="true"
+                                       tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/22/9131-229d4ad589d72f9b501e77085b8e0a4c01ae5e0c.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+                                    <div class="sidebarItemTitle">
+                                        <h3>
+                                            <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/"
+                                               data-object-id="15751" class="userLink">Capricorn</a> <small
+                                            class="separatorLeft">
+                                            <time datetime="2023-03-05T19:24:42+01:00" class="datetime"
+                                                  data-timestamp="1678040682" data-date="5. März 2023" data-time="19:24"
+                                                  data-offset="3600">Vor 5 Minuten
+                                            </time>
+                                        </small>
+                                        </h3>
+                                        <small>Hat mit <span title="Gefällt mir" class="jsTooltip"><img
+                                            src="https://rail-sim.de/forum/wcf/images/reaction/2-thumbsUp.svg"
+                                            alt="Gefällt mir"
+                                            class="reactionType"
+                                            data-reaction-type-id="2"
+                                        ></span> auf <a
+                                            href="https://rail-sim.de/forum/thread/7627-der-simulations-spiele-screenshot-thread-regeln-in-post-1-beachten/?postID=800113#post800113"
+                                            class="wbbPostLink" data-object-id="800113">den Beitrag von
+                                            <span>Nickhawk</span></a> im Thema <a
+                                            href="https://rail-sim.de/forum/thread/7627-der-simulations-spiele-screenshot-thread-regeln-in-post-1-beachten/"
+                                            class="wbbTopicLink" data-object-id="7627">Der Simulations &amp; Spiele
+                                            Screenshot Thread (Regeln in Post #1 beachten!)</a> reagiert.</small>
+                                    </div>
+                                </li>
+                                <li class="box24">
+                                    <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/" aria-hidden="true"
+                                       tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/22/9131-229d4ad589d72f9b501e77085b8e0a4c01ae5e0c.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+                                    <div class="sidebarItemTitle">
+                                        <h3>
+                                            <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/"
+                                               data-object-id="15751" class="userLink">Capricorn</a> <small
+                                            class="separatorLeft">
+                                            <time datetime="2023-03-05T19:24:04+01:00" class="datetime"
+                                                  data-timestamp="1678040644" data-date="5. März 2023" data-time="19:24"
+                                                  data-offset="3600">Vor 6 Minuten
+                                            </time>
+                                        </small>
+                                        </h3>
+                                        <small>Hat mit <span title="Gefällt mir" class="jsTooltip"><img
+                                            src="https://rail-sim.de/forum/wcf/images/reaction/2-thumbsUp.svg"
+                                            alt="Gefällt mir"
+                                            class="reactionType"
+                                            data-reaction-type-id="2"
+                                        ></span> auf <a
+                                            href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/?postID=800118#post800118"
+                                            class="wbbPostLink" data-object-id="800118">den Beitrag von <span>Tobi_das_Tf</span></a>
+                                            im Thema <a
+                                                href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/"
+                                                class="wbbTopicLink" data-object-id="38773">Train Simulator
+                                                Screenshot-Thread - (Regeln angepasst. Bitte 1. Beitrag beachten!)</a>
+                                            reagiert.</small>
+                                    </div>
+                                </li>
+                                <li class="box24">
+                                    <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/" aria-hidden="true"
+                                       tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/22/9131-229d4ad589d72f9b501e77085b8e0a4c01ae5e0c.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+                                    <div class="sidebarItemTitle">
+                                        <h3>
+                                            <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/"
+                                               data-object-id="15751" class="userLink">Capricorn</a> <small
+                                            class="separatorLeft">
+                                            <time datetime="2023-03-05T19:23:56+01:00" class="datetime"
+                                                  data-timestamp="1678040636" data-date="5. März 2023" data-time="19:23"
+                                                  data-offset="3600">Vor 6 Minuten
+                                            </time>
+                                        </small>
+                                        </h3>
+                                        <small>Hat mit <span title="Gefällt mir" class="jsTooltip"><img
+                                            src="https://rail-sim.de/forum/wcf/images/reaction/2-thumbsUp.svg"
+                                            alt="Gefällt mir"
+                                            class="reactionType"
+                                            data-reaction-type-id="2"
+                                        ></span> auf <a
+                                            href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/?postID=800119#post800119"
+                                            class="wbbPostLink" data-object-id="800119">den Beitrag von
+                                            <span>187086</span></a> im Thema <a
+                                            href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/"
+                                            class="wbbTopicLink" data-object-id="38773">Train Simulator
+                                            Screenshot-Thread - (Regeln angepasst. Bitte 1. Beitrag beachten!)</a>
+                                            reagiert.</small>
+                                    </div>
+                                </li>
+                                <li class="box24">
+                                    <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/" aria-hidden="true"
+                                       tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/22/9131-229d4ad589d72f9b501e77085b8e0a4c01ae5e0c.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+                                    <div class="sidebarItemTitle">
+                                        <h3>
+                                            <a href="https://rail-sim.de/forum/wcf/user/15751-capricorn/"
+                                               data-object-id="15751" class="userLink">Capricorn</a> <small
+                                            class="separatorLeft">
+                                            <time datetime="2023-03-05T19:23:49+01:00" class="datetime"
+                                                  data-timestamp="1678040629" data-date="5. März 2023" data-time="19:23"
+                                                  data-offset="3600">Vor 6 Minuten
+                                            </time>
+                                        </small>
+                                        </h3>
+                                        <small>Hat mit <span title="Gefällt mir" class="jsTooltip"><img
+                                            src="https://rail-sim.de/forum/wcf/images/reaction/2-thumbsUp.svg"
+                                            alt="Gefällt mir"
+                                            class="reactionType"
+                                            data-reaction-type-id="2"
+                                        ></span> auf <a
+                                            href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/?postID=800122#post800122"
+                                            class="wbbPostLink" data-object-id="800122">den Beitrag von <span>Train Sim fan</span></a>
+                                            im Thema <a
+                                                href="https://rail-sim.de/forum/thread/38773-train-simulator-screenshot-thread-regeln-angepasst-bitte-1-beitrag-beachten/"
+                                                class="wbbTopicLink" data-object-id="38773">Train Simulator
+                                                Screenshot-Thread - (Regeln angepasst. Bitte 1. Beitrag beachten!)</a>
+                                            reagiert.</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="box" data-box-identifier="com.woltlab.wcf.genericBox68">
+
+                        <h2 class="boxTitle">
+                            Heiße Themen </h2>
+
+                        <div class="boxContent">
+                            <ul class="sidebarItemList wbbSidebarThreadList">
+                                <li class="box24 sidebarItem new">
+                                    <a href="https://rail-sim.de/forum/thread/39377-tsw-3-grafik-wird-immer-schlechter/"
+                                       aria-hidden="true" tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/7f/612-7fa17cd346c4e2eb6283638bef1f5556e0707b22.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+
+                                    <div class="sidebarItemTitle">
+                                        <h3><a
+                                            href="https://rail-sim.de/forum/thread/39377-tsw-3-grafik-wird-immer-schlechter/"
+                                            class="wbbTopicLink" data-object-id="39377" data-sort-order="DESC">TSW 3
+                                            Grafik wird immer schlechter</a></h3>
+                                        <small>0 Antworten, 13 Zugriffe, Vor 4 Minuten</small>
+                                    </div>
+                                </li>
+                                <li class="box24 sidebarItem new">
+                                    <a href="https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/"
+                                       aria-hidden="true" tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/cb/9998-cbfb3c8f43fa181d1a6966bf970ea40a3a5fe772.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+
+                                    <div class="sidebarItemTitle">
+                                        <h3><a
+                                            href="https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/"
+                                            class="wbbTopicLink" data-object-id="39263" data-sort-order="DESC">[TSW3]
+                                            Niddertalbahn: Bad Vilbel - Stockheim</a></h3>
+                                        <small>204 Antworten, 34.487 Zugriffe, Vor 3 Wochen</small>
+                                    </div>
+                                </li>
+                                <li class="box24 sidebarItem new">
+                                    <a href="https://rail-sim.de/forum/thread/39262-tsw3-linke-rheinstrecke-koblenz-mainz/"
+                                       aria-hidden="true" tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/cb/9998-cbfb3c8f43fa181d1a6966bf970ea40a3a5fe772.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+
+                                    <div class="sidebarItemTitle">
+                                        <h3><a
+                                            href="https://rail-sim.de/forum/thread/39262-tsw3-linke-rheinstrecke-koblenz-mainz/"
+                                            class="wbbTopicLink" data-object-id="39262" data-sort-order="DESC">[TSW3]
+                                            Linke Rheinstrecke: Koblenz - Mainz</a></h3>
+                                        <small>112 Antworten, 22.963 Zugriffe, Vor 3 Wochen</small>
+                                    </div>
+                                </li>
+                                <li class="box24 sidebarItem new">
+                                    <a href="https://rail-sim.de/forum/thread/38919-tsw3-dtg-bahnstrecke-bremen-oldenburg/"
+                                       aria-hidden="true" tabindex="-1"><img
+                                        src="https://rail-sim.de/forum/wcf/images/avatars/2f/7603-2fd9a5670b9a57f8ae7fc8faea52443ba4bcf2ea.webp"
+                                        width="24" height="24" alt="" class="userAvatarImage" loading="lazy"></a>
+
+                                    <div class="sidebarItemTitle">
+                                        <h3><a
+                                            href="https://rail-sim.de/forum/thread/38919-tsw3-dtg-bahnstrecke-bremen-oldenburg/"
+                                            class="wbbTopicLink" data-object-id="38919" data-sort-order="DESC">[TSW3][DTG]
+                                            Bahnstrecke Bremen - Oldenburg</a></h3>
+                                        <small>335 Antworten, 44.244 Zugriffe, Vor 2 Monaten</small>
+                                    </div>
+                                </li>
+                                <li class="box24 sidebarItem new">
+                                    <a href="https://rail-sim.de/forum/thread/39355-trainsimworld-texturen-verschwinden-verschwimmen/"
+                                       aria-hidden="true" tabindex="-1"><img
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiPjxwYXRoIGZpbGw9IiMwYjk0OTIiIGQ9Ik0wIDBoMTZ2MTZIMHoiLz48dGV4dCB4PSI4IiB5PSI4IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjciPkVSPC90ZXh0Pjwvc3ZnPg=="
+                                        width="24" height="24" alt="" class="userAvatarImage"></a>
+
+                                    <div class="sidebarItemTitle">
+                                        <h3><a
+                                            href="https://rail-sim.de/forum/thread/39355-trainsimworld-texturen-verschwinden-verschwimmen/"
+                                            class="wbbTopicLink" data-object-id="39355" data-sort-order="DESC">TrainSimWorld
+                                            Texturen verschwinden/verschwimmen</a></h3>
+                                        <small>6 Antworten, 602 Zugriffe, Vor 6 Tagen</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+
+                </div>
+            </aside>
+        </div>
+    </section>
+
+
+    <footer id="pageFooter" class="pageFooter">
+
+
+        <div class="boxesFooter">
+            <div class="layoutBoundary clearfix">
+									<span class="styleChanger jsOnly">
+						<a href="#" class="jsButtonStyleChanger">Stil ändern</a>
+					</span>
+                <div class="boxContainer">
+                    <div class="box" data-box-identifier="com.woltlab.wcf.FooterMenu">
+
+
+                        <div class="boxContent">
+                            <nav aria-label="Footer-Menü">
+                                <ol class="boxMenu">
+
+
+                                    <li class="" data-identifier="com.woltlab.wcf.generic31">
+                                        <a href="https://rail-sim.de/forum/index.php?thread/31284-forenregeln/"
+                                           class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Forenregeln</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="" data-identifier="com.woltlab.wcf.PrivacyPolicy">
+                                        <a href="https://rail-sim.de/forum/wcf/datenschutzerklaerung/"
+                                           class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Datenschutzerklärung</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="" data-identifier="com.woltlab.wcf.LegalNotice">
+                                        <a href="https://rail-sim.de/forum/wcf/legal-notice/" class="boxMenuLink">
+                                            <span class="boxMenuLinkTitle">Impressum</span>
+                                        </a>
+
+                                    </li>
+
+
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="pageFooterCopyright" class="pageFooterCopyright">
+            <div class="layoutBoundary">
+                <div class="copyright"><a href="https://www.woltlab.com/de/" rel="nofollow" target="_blank">Community-Software:
+                    <strong>WoltLab Suite&trade;</strong></a></div>
+            </div>
+        </div>
+
+    </footer>
+</div>
+
+
+<div class="pageFooterStickyNotice">
+
+
+    <noscript>
+        <div class="info" role="status">
+            <div class="layoutBoundary">
+                <span class="javascriptDisabledWarningText">In Ihrem Webbrowser ist JavaScript deaktiviert. Um alle Funktionen dieser Website nutzen zu können, muss JavaScript aktiviert sein.</span>
+            </div>
+        </div>
+    </noscript>
+</div>
+
+<script>
+    require(['Language', 'WoltLabSuite/Core/BootstrapFrontend', 'User'], function (Language, BootstrapFrontend, User) {
+        Language.addObject({
+            '__days': ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+            '__daysShort': ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+            '__months': ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+            '__monthsShort': ['Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+            'wcf.clipboard.item.unmarkAll': 'Demarkieren',
+            'wcf.clipboard.item.markAll': 'Alle Elemente markieren',
+            'wcf.clipboard.item.mark': 'Element markieren',
+            'wcf.date.relative.now': 'Vor einem Moment',
+            'wcf.date.relative.minutes': 'Vor {if $minutes > 1}{#$minutes} Minuten{else}einer Minute{\/if}',
+            'wcf.date.relative.hours': 'Vor {if $hours > 1}{#$hours} Stunden{else}einer Stunde{\/if}',
+            'wcf.date.relative.pastDays': '{if $days > 1}{$day}{else}Gestern{\/if}, {$time}',
+            'wcf.date.dateFormat': 'j. F Y',
+            'wcf.date.dateTimeFormat': '%date%, %time%',
+            'wcf.date.shortDateTimeFormat': '%date%',
+            'wcf.date.hour': 'Stunde',
+            'wcf.date.minute': 'Minute',
+            'wcf.date.timeFormat': 'H:i',
+            'wcf.date.firstDayOfTheWeek': '1',
+            'wcf.global.button.add': 'Hinzufügen',
+            'wcf.global.button.cancel': 'Abbrechen',
+            'wcf.global.button.close': 'Schließen',
+            'wcf.global.button.collapsible': 'Auf- und Zuklappen',
+            'wcf.global.button.delete': 'Löschen',
+            'wcf.button.delete.confirmMessage': '{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{\/if} <span class=\"confirmationObject\">{$objectTitle}<\/span> wirklich löschen?',
+            'wcf.global.button.disable': 'Deaktivieren',
+            'wcf.global.button.disabledI18n': 'einsprachig',
+            'wcf.global.button.edit': 'Bearbeiten',
+            'wcf.global.button.enable': 'Aktivieren',
+            'wcf.global.button.hide': 'Ausblenden',
+            'wcf.global.button.insert': 'Einfügen',
+            'wcf.global.button.more': 'Mehr',
+            'wcf.global.button.next': 'Weiter »',
+            'wcf.global.button.preview': 'Vorschau',
+            'wcf.global.button.reset': 'Zurücksetzen',
+            'wcf.global.button.save': 'Speichern',
+            'wcf.global.button.search': 'Suchen',
+            'wcf.global.button.submit': 'Absenden',
+            'wcf.global.button.upload': 'Hochladen',
+            'wcf.global.confirmation.cancel': 'Abbrechen',
+            'wcf.global.confirmation.confirm': 'OK',
+            'wcf.global.confirmation.title': 'Bestätigung erforderlich',
+            'wcf.global.decimalPoint': ',',
+            'wcf.global.error.ajax.network': '<p>Ein Verbindungsaufbau zum Server war nicht möglich, bitte überprüfen Sie Ihre Internetverbindung.<\/p><p><br><\/p><p>Fehlermeldung von Ihrem Browser: „{$message}“<\/p>',
+            'wcf.global.error.timeout': 'Keine Antwort vom Server erhalten, Anfrage wurde abgebrochen.',
+            'wcf.global.form.error.empty': 'Bitte füllen Sie dieses Eingabefeld aus.',
+            'wcf.global.form.error.greaterThan': 'Der eingegebene Wert muss größer sein als {#$greaterThan}.',
+            'wcf.global.form.error.lessThan': 'Der eingegebene Wert muss kleiner sein als {#$lessThan}.',
+            'wcf.global.form.error.multilingual': 'Bitte füllen Sie dieses Eingabefeld für jede Sprache aus.',
+            'wcf.global.form.input.maxItems': 'Maximale Anzahl erreicht',
+            'wcf.global.language.noSelection': 'Keine Auswahl',
+            'wcf.global.loading': 'Lädt …',
+            'wcf.global.noSelection': '(Keine Auswahl)',
+            'wcf.global.select': 'Auswählen',
+            'wcf.page.jumpTo': 'Gehe zu Seite',
+            'wcf.page.jumpTo.description': 'Geben Sie einen Wert zwischen „1“ und „#pages#“ ein.',
+            'wcf.global.page.pagination': 'Navigation',
+            'wcf.global.page.next': 'Nächste Seite',
+            'wcf.global.page.previous': 'Vorherige Seite',
+            'wcf.global.pageDirection': 'ltr',
+            'wcf.global.reason': 'Begründung',
+            'wcf.global.scrollUp': 'Zum Seitenanfang',
+            'wcf.global.success': 'Die Aktion wurde erfolgreich ausgeführt.',
+            'wcf.global.success.add': 'Der Eintrag wurde gespeichert.',
+            'wcf.global.success.edit': 'Die Änderungen wurden gespeichert.',
+            'wcf.global.thousandsSeparator': '.',
+            'wcf.page.pagePosition': 'Seite {#$pageNo} von {#$pages}',
+            'wcf.style.changeStyle': 'Stil ändern',
+            'wcf.user.activityPoint': 'Punkte',
+            'wcf.global.button.markAllAsRead': 'Alle als gelesen markieren',
+            'wcf.global.button.markAsRead': 'Als gelesen markieren',
+            'wcf.user.panel.settings': 'Einstellungen',
+            'wcf.user.panel.showAll': 'Alle anzeigen',
+            'wcf.menu.page': 'Menü',
+            'wcf.menu.page.button.toggle': 'Weitere {$title} Seiten',
+            'wcf.menu.user': 'Benutzer-Menü',
+            'wcf.global.button.showMenu': 'Menü anzeigen',
+            'wcf.global.button.hideMenu': 'Menü verbergen',
+            'wcf.date.datePicker': 'Datumsauswahl',
+            'wcf.date.datePicker.previousMonth': 'Vorheriger Monat',
+            'wcf.date.datePicker.nextMonth': 'Nächster Monat',
+            'wcf.date.datePicker.month': 'Monat',
+            'wcf.date.datePicker.year': 'Jahr',
+            'wcf.date.datePicker.hour': 'Stunde',
+            'wcf.date.datePicker.minute': 'Minute',
+            'wcf.global.form.password.button.hide': 'Verbergen',
+            'wcf.global.form.password.button.show': 'Anzeigen',
+            'wcf.message.share': 'Teilen',
+            'wcf.message.share.facebook': 'Facebook',
+            'wcf.message.share.twitter': 'Twitter',
+            'wcf.message.share.reddit': 'Reddit',
+            'wcf.message.share.whatsApp': 'WhatsApp',
+            'wcf.message.share.linkedIn': 'LinkedIn',
+            'wcf.message.share.pinterest': 'Pinterest',
+            'wcf.message.share.xing': 'XING',
+            'wcf.message.share.permalink': 'Permalink',
+            'wcf.message.share.permalink.bbcode': 'BBCode',
+            'wcf.message.share.permalink.html': 'HTML',
+            'wcf.message.share.socialMedia': 'Social Media',
+            'wcf.message.share.copy': 'Code kopieren',
+            'wcf.message.share.copy.success': 'Der Code wurde erfolgreich kopiert.',
+            'wcf.message.share.nativeShare': 'Weitere Optionen',
+            'wcf.global.button.rss': 'RSS-Feed',
+            'wcf.global.rss.copy': 'Link kopieren',
+            'wcf.global.rss.copy.success': 'Der Link wurde erfolgreich kopiert.',
+            'wcf.global.rss.accessToken.info': 'Der Link zum anonymen RSS-Feed enthält nur Inhalte, auf die Gäste Zugriff haben. Der Link zum personalisierten RSS-Feed enthält alle Inhalte, auf die Sie Zugriff haben.',
+            'wcf.global.rss.withoutAccessToken': 'Anonymer RSS-Feed',
+            'wcf.global.rss.withAccessToken': 'Personalisierter RSS-Feed'
+            , 'wcf.like.button.like': 'sich für diesen Beitrag bedanken',
+            'wcf.like.button.dislike': 'Gefällt mir nicht',
+            'wcf.like.tooltip': '{if $likes}{#$likes} Danksagung{if $likes != 1}en{\/if}{if $dislikes},{\/if}{\/if}{if $dislikes}{#$dislikes} Dislike{if $dislikes != 1}en{\/if}{\/if}',
+            'wcf.like.summary': '​{if $others == 0}{@$users.slice(0, -1).join(\", \")}{if $users.length > 1} und {\/if}{@$users.slice(-1)[0]}{if $users.length > 1} haben{else} hat{\/if}{else}{@$users.join(\", \")} und {if $others == 1} ein weiterer hat{else}{#$others} weitere haben {\/if}{\/if} sich für diesen Beitrag bedankt.',
+            'wcf.like.details': 'Details',
+            'wcf.reactions.react': 'Reagieren'
+
+
+            , 'wcf.global.fontawesome.title': 'Font Awesome Icons',
+            'wcf.global.fontawesome.icons': 'Icons',
+            'wcf.global.fontawesome.search': 'Icon suchen',
+            'wcf.global.fontawesome.confirm': 'Icon auswählen',
+            'wcf.global.fontawesome.cancel': 'Abbrechen'
+
+
+        });
+
+        User.init(
+            0,
+            '',
+            '');
+
+        BootstrapFrontend.setup({
+            backgroundQueue: {
+                url: 'https://rail-sim.de/forum/wcf/background-queue-perform/',
+                force: false
+            },
+            enableUserPopover: false,
+            executeCronjobs: false,
+            shareButtonProviders: ['Facebook', 'Twitter', 'Google', 'Reddit', 'LinkedIn', 'Pinterest'],
+            styleChanger: true
+        });
+    });
+
+    // prevent jQuery and other libraries from utilizing define()
+    __require_define_amd = define.amd;
+    define.amd = undefined;
+</script>
+<script src="https://rail-sim.de/forum/wcf/js/WCF.Combined.min.js?v=1658933298"></script>
+<script>
+    define.amd = __require_define_amd;
+    $.holdReady(true);
+
+    WCF.User.init(
+        0,
+        '');
+</script>
+<script>
+    require(['WBBElite/WSC/User/Online/Marking'], function (UserOnlineMarking) {
+        UserOnlineMarking.init();
+    });
+    require(['WBBElite/WSC/User/Online/MembersList'], function (MembersListMarking) {
+        MembersListMarking.init();
+    });
+</script>
+<script src="https://rail-sim.de/forum/js/WBB.min.js?v=1658933298"></script>
+<script>
+    $(function () {
+        WCF.User.Profile.ActivityPointList.init();
+
+        require(['WoltLabSuite/Core/Ui/User/Trophy/List'], function (UserTrophyList) {
+            new UserTrophyList();
+        });
+
+
+        require(['WBBElite/WSF/Thread/Ignore/Clipboard', 'WBBElite/WSF/Thread/Ignore/UserList'], function (Clipboard, UserList) {
+            Clipboard.init();
+            UserList.init();
+        });
+        require(['WBBElite/WSF/Thread/Ignore/Clipboard', 'WBBElite/WSF/Thread/Ignore/UserList'], function (Clipboard, UserList) {
+            Clipboard.init();
+            UserList.init();
+        });
+        require(['WoltLabSuite/Forum/Bootstrap'], (Bootstrap) => {
+            Bootstrap.setup();
+        });
+
+    });
+</script>
+<script>
+    var $imageViewer = null;
+    $(function () {
+        WCF.Language.addObject({
+            'wcf.imageViewer.button.enlarge': 'Vollbild-Modus',
+            'wcf.imageViewer.button.full': 'Originalversion aufrufen',
+            'wcf.imageViewer.seriesIndex': '{literal}{x} von {y}{\/literal}',
+            'wcf.imageViewer.counter': '{literal}Bild {x} von {y}{\/literal}',
+            'wcf.imageViewer.close': 'Schließen',
+            'wcf.imageViewer.enlarge': 'Bild direkt anzeigen',
+            'wcf.imageViewer.next': 'Nächstes Bild',
+            'wcf.imageViewer.previous': 'Vorheriges Bild'
+        });
+
+        $imageViewer = new WCF.ImageViewer();
+    });
+
+    // WCF 2.0 compatibility, dynamically fetch slimbox and initialize it with the request parameters
+    $.widget('ui.slimbox', {
+        _create: function () {
+            var self = this;
+            head.load('https://rail-sim.de/forum/wcf/js/3rdParty/slimbox2.min.js', function () {
+                self.element.slimbox(self.options);
+            });
+        }
+    });
+</script>
+<script>
+    WCF.Language.addObject({
+
+        'wcf.global.error.title': 'Fehlermeldung'
+
+
+    });
+</script>
+<script>
+    $(function () {
+
+        require(['WoltLabSuite/Core/Controller/Popover'], function (ControllerPopover) {
+            ControllerPopover.init({
+                className: 'lexiconEntryLink',
+                dboAction: 'lexicon\\data\\entry\\EntryAction',
+                identifier: 'com.viecode.lexicon.entry'
+            });
+        });
+        require(['WoltLabSuite/Core/Controller/Popover'], function (ControllerPopover) {
+            ControllerPopover.init({
+                className: 'filebaseEntryLink',
+                dboAction: 'filebase\\data\\entry\\EntryAction',
+                identifier: 'com.viecode.filebase.entry'
+            });
+        });
+    });
+</script>
+<script>
+    require(['WoltLabSuite/Core/Language/Chooser'], function (LanguageChooser) {
+        var languages = {
+            '1': {
+                iconPath: 'https:\/\/rail-sim.de\/forum\/wcf\/icon\/flag\/de.svg',
+                languageName: 'Deutsch',
+                languageCode: 'de'
+            }
+            , '2': {
+                iconPath: 'https:\/\/rail-sim.de\/forum\/wcf\/icon\/flag\/gb.svg',
+                languageName: 'English',
+                languageCode: 'en'
+            }
+        };
+
+        var callback = function (listItem) {
+            var location;
+            var languageCode = elData(listItem, 'language-code');
+            var link = elBySel('link[hreflang="' + languageCode + '"]');
+            if (link !== null) {
+                location = link.href;
+            } else {
+                location = window.location.toString().replace(/#.*/, '').replace(/(\?|&)l=[0-9]+/g, '');
+            }
+
+            var delimiter = (location.indexOf('?') == -1) ? '?' : '&';
+            window.location = location + delimiter + 'l=' + elData(listItem, 'language-id') + window.location.hash;
+        };
+
+        LanguageChooser.init('pageLanguageContainer', 'pageLanguageID', 1, languages, callback);
+    });
+</script>
+<script>
+    require(['WoltLabSuite/Core/Ui/Search/Page'], function (UiSearchPage) {
+        UiSearchPage.init('everywhere');
+    });
+</script>
+<script>
+    $(function () {
+        new WBB.Thread.MarkAsRead();
+    });
+</script>
+<script>
+    $('time.datetime').each(function (index, element) {
+        if (_offset === null) _offset = timestamp - window.TIME_NOW;
+        var $element = $(element);
+        var date = new Date();
+        var timestamp = (date.getTime() - date.getMilliseconds()) / 1000;
+        var _offset = null;
+        var elTimestamp = ~~elData(element, 'timestamp') + _offset;
+        var elDate = elData(element, 'date');
+        var elTime = elData(element, 'time');
+        var elOffset = elData(element, 'offset');
+        $element.attr('time');
+        if (timestamp < (elTimestamp + 60)) {
+            $element.text('wcf.date.relative.now').addClass('now');
+        } else if (timestamp < (elTimestamp + 3540)) {
+            var minutes = Math.max(Math.round((timestamp - elTimestamp) / 60), 1);
+            $element.text('wcf.date.relative.minutes').addClass('minutes');
+        } else if (timestamp < (elTimestamp + 86400)) {
+            var hours = Math.round((timestamp - elTimestamp) / 3600);
+            $element.text('wcf.date.relative.hours').addClass('hours');
+        } else if (timestamp < (elTimestamp + 518400)) {
+            $element.text('wcf.date.relative.pastDays').addClass('week');
+        }
+        if (timestamp > (elTimestamp + 518400)) {
+            $element.text('wcf.date.relative.pastDays').addClass('pastDay');
+        }
+    });
+</script>
+<script>
+    var darkmodestatus = $(":root").css("--darkmode");
+
+    if (darkmodestatus == "true") {
+
+        $(".userPanelItems").prepend('<li><a href="https://rail-sim.de/forum/?styleID=12"><span class="icon icon32 fa-sun-o"></span></a></li>');
+    } else {
+        $(".userPanelItems").prepend('<li><a href="https://rail-sim.de/forum/?styleID=14"><span class="icon icon32 fa-moon-o"></span></a></li>');
+    }
+
+</script>
+
+<span id="bottom"></span>
+
+</body>
+</html>

@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Provider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,9 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => $this->faker->name . ' - ' . $this->faker->company,
-            'subTitle' => $this->faker->text,
-            'newsType' => $this->faker->randomElement(['ASMODEE']),
+            'subTitle' => $this->faker->boolean ? $this->faker->text : null,
+            'provider' => $this->faker->randomElement(Provider::getAllValues()),
+            'description' => $this->faker->boolean ? $this->faker->text : null,
             'link' => $this->faker->url,
             'date' => $this->faker->date,
             'image' => $this->faker->imageUrl,

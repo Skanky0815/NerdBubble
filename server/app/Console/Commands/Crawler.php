@@ -1,10 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Services\Crawler\AsmodeeCrawler;
+use App\Exceptions\MissingImageException;
+use App\Services\Crawler\Crawler as CrawlerService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
 class Crawler extends Command
@@ -23,10 +25,16 @@ class Crawler extends Command
      */
     protected $description = 'Command description';
 
-    public function __construct(
-        private readonly AsmodeeCrawler $asmodee,
-    ) {
+    /**
+     * @var CrawlerService[]
+     */
+    private array $allCrawler;
+
+    public function __construct(CrawlerService ...$allCrawler)
+    {
         parent::__construct();
+
+        $this->allCrawler = $allCrawler;
     }
 
     /**
@@ -34,10 +42,32 @@ class Crawler extends Command
      */
     public function handle(): void
     {
-        try {
-            $this->asmodee->crawl();
-        } catch (Throwable $exception) {
-            Log::alert($exception->getMessage(), $exception->getTrace());
-        }
+            $bar = $this->output->createProgressBar(\count($this->allCrawler));
+            $this->info('Start import');
+            $bar->start();
+
+            foreach ($this->allCrawler as $crawler) {
+                try {
+                    $crawler->crawl();
+
+                    $bar->advance();
+                    $this->info(" Finished import {$crawler->provider()}");
+                } catch (MissingImageException $exception) {
+                    $bar->advance();
+                    $this->error(" {$crawler->provider()}: {$exception->getMessage()}");
+                    $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
+                    $this->newLine();
+                    $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
+                    Log::alert($exception->getMessage(), $exception->getTrace());
+                } catch (Throwable $exception) {
+                    $bar->advance();
+                    $this->error(" {$crawler->provider()}: {$exception->getMessage()}");
+                    $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
+                    Log::alert($exception->getMessage(), $exception->getTrace());
+                }
+            }
+
+            $bar->finish();
+            $this->info(' Import done!');
     }
 }

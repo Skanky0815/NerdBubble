@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Database\Factories;
 
@@ -17,7 +17,7 @@ class KeywordFactory extends Factory
     public function definition(): array
     {
         return [
-            'word' => $this->faker->word
+            'word' => $this->faker->word,
         ];
     }
 }

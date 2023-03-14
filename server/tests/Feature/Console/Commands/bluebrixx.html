@@ -1,0 +1,2023 @@
+
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="p:domain_verify" content="beafec6fe9c1dfaf932f497bd164ac09"/>
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+
+    <link rel="icon" type="image/png" href="https://www.bluebrixx.com/favicon-16x16.png" sizes="16x16">
+
+    <!-- Google Fonts -->
+    <link href="https://www.bluebrixx.com/css/googlefonts_roboto.css" rel="stylesheet" >
+    <link href="https://www.bluebrixx.com/css/googlefonts_robotocondensed.css" rel="stylesheet" >
+    <link href="https://www.bluebrixx.com/css/googlefonts_robotomono.css" rel="stylesheet" >
+
+
+    <!-- Material Icons -->
+    <link href="https://www.bluebrixx.com/css/material-icons.css" rel="stylesheet" />
+
+    <!-- Flag Sprite -->
+    <link href="https://www.bluebrixx.com/css/flags.css" rel="stylesheet" />
+
+    <!-- CSS Loader Icon -->
+    <link href="https://www.bluebrixx.com/css/loader.css" rel="stylesheet" />
+
+    <link href="https://www.bluebrixx.com/css/slick.css" rel="stylesheet" />
+
+    <!-- jQuery CSS -->
+    <link rel="stylesheet" href="https://www.bluebrixx.com/js/jquery-ui-1.12.1.bluebrixx/jquery-ui.min.css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://www.bluebrixx.com/js/jquery/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="https://www.bluebrixx.com/js/jquery-ui-1.12.1.bluebrixx/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://www.bluebrixx.com/js/simpleUpload.min.js"></script>
+    <script type="text/javascript" src="https://www.bluebrixx.com/js/slick/slick.min.js"></script>
+
+
+    <script type="text/javascript" >
+        function result_check(mode){
+            if(mode == "code"){
+                return "201";
+            }
+
+            if(mode == "Transaction created"){
+                return "201";
+            }
+        }
+
+        //Takes URL, data (param , value)
+        //Sends to the server.. The server can respond with binary data to download
+        function download(url, data){
+
+            // Build a form
+            var form = $('<form></form>').attr('action', url).attr('method', 'post');
+
+            // add key value pairs
+            Object.keys(data).forEach(function(key){
+                var value = data[key];
+
+                if(value instanceof Array) {
+                    value.forEach(function (v) {
+                        form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', value));
+                    });
+                } else {
+                    form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', value));
+                }
+
+            });
+
+            //send request
+            form.appendTo('body').submit().remove();
+        };
+
+
+        function getTranslation(term)
+        {
+            if (translation[term] != undefined && translation[term] != '')
+            {
+                return translation[term];
+            }
+            else
+            {
+                return term;
+            }
+        }
+
+
+        function capitaliseFirstLetter(string)
+        {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+
+        // scroll to element
+        function scrollTo(element, topspace)
+        {
+            if (typeof(topspace)==='undefined')
+            {
+                topspace = 0;
+            }
+
+            $('html, body').animate({
+                scrollTop: ($(element).offset().top - topspace)
+            });
+        }
+
+
+        // executed when the user scrolls the page.
+        $(window).scroll(function(e) {
+            if($(".scroller_anchor").length){
+                // get position to start
+                var scroller_anchor = $(".scroller_anchor").offset().top;
+
+                if ($(this).scrollTop() >= scroller_anchor && $('.scroller').css('position') != 'fixed') // user has scrolled below scroller_anchor
+                {
+                    // change CSS of the scroller to highlight it and fix it at the top of the screen.
+                    $('.scroller').css({
+                        'position': 'fixed',
+                        'top': '0px',
+                        'z-index': '100'
+                    });
+
+                    // change height of the scroller anchor to that of scroller to keep overall height of the page
+                    $('.scroller_anchor').css('height', $('.scroller').height());
+                }
+                else if ($(this).scrollTop() < scroller_anchor && $('.scroller').css('position') != 'relative') // user has scrolled back above scroller_anchor
+                {
+                    // reset the height of the scroller anchor to 0 and reset position of scroller back relativly to the content.
+                    $('.scroller_anchor').css('height', '0px');
+
+                    // change CSS and put it back to original position.
+                    $('.scroller').css({
+                        'position': 'relative',
+                        'z-index': '1'
+                    });
+                }
+            }
+        });
+
+
+        //When the user scrolls down 100px from the top of the document, show button
+        $(window).scroll(function(e) {
+            if( $(this).scrollTop() > 100 && $(window).width() > 480){
+                $('#page_go-to-top_bt').fadeIn();
+            } else {
+                $('#page_go-to-top_bt').fadeOut();
+            }
+        });
+
+        /* DOCUMENT.READY =================================================================================== */
+        $( document ).ready(function() {
+
+            $('.menu-tab').click(function(){
+                var activeurl = window.location;
+
+                $('a[href="'+activeurl+'"]').each(function() {
+
+                    $( this ).parent('li').addClass('linkAktiv');
+                    $( this ).parent('li').parent('ul').show();
+                    $( this ).parent('li').parent('ul').parent('li').show();
+                    $( this ).parent('li').parent('ul').parent('li').parent('ul').show();
+
+                    var nr = $( this ).parent('li').data("nr");
+
+                    if (nr === undefined) {
+                        var nr2 = $( this ).parent('li').parent('ul').parent('li').attr('id');
+                        if (nr2 !== undefined) {
+                            nr2 = nr2.replace("nr_", "");
+                            $('#nr_'+nr2).show();
+                            $('#add_'+nr2).hide();
+                            $('#remove_'+nr2).show();
+                        }
+                    }else{
+                        $('#nr_'+nr).show();
+                        $('#add_'+nr).hide();
+                        $('#remove_'+nr).show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "catPp"){
+                        $('#catPul').show();
+                        $('#remove_catPp').show();
+                        $('#add_catPp').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "catPp2" || $( this ).parent('li').parent('ul').attr('id') == "catPul2"){
+                        $('#catPul2').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#remove_catPp2').show();
+                        $('#add_catPp2').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "brandPp" || $( this ).parent('li').parent('ul').attr('id') == "brandPul"){
+                        $('#brandPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_brandPp').hide();
+                        $('#remove_brandPp').show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "zuPp" || $( this ).parent('li').parent('ul').attr('id') == "zuPul"){
+                        $('#zuPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_zuPp').hide();
+                        $('#remove_zuPp').show();
+                    }
+
+                });
+
+                $('.menu-hide').toggleClass('show');
+                $('.menu-tab').toggleClass('active');
+
+                if($('.menu-hide').hasClass('show') && $( window ).width() < 650){
+                    if( $('.menu-hide').scrollTop() > 100){
+                        $('#arrowUp').fadeIn();
+                    } else {
+                        $('#arrowUp').fadeOut();
+                    }
+
+                    if( $('.menu-hide').scrollTop() > 570){
+                        $('#arrowDown').fadeOut();
+                    } else {
+                        $('#arrowDown').fadeIn();
+                    }
+                }else{
+                    $('#arrowUp').hide();
+                    $('#arrowDown').hide();
+                }
+
+                $('.menu-tab').hide();
+            });
+
+            $('.menu-hide').scroll(function(e) {
+                if($( window ).width() < 650){
+                    if( $(this).scrollTop() > 100){
+                        $('#arrowUp').fadeIn();
+                    } else {
+                        $('#arrowUp').fadeOut();
+                    }
+
+                    if( $(this).scrollTop() > 570){
+                        $('#arrowDown').fadeOut();
+                    } else {
+                        $('#arrowDown').fadeIn();
+                    }
+                }
+            });
+
+            /* $('.menu-tab2').click(function(){
+                   $('.menu-hide').toggleClass('show');
+                   $('.menu-tab').toggleClass('active');
+                   $('.menu-tab').show();
+                 });*/
+
+            $('.menuTabClass').click(function(){
+                $('.menu-hide').toggleClass('show');
+
+                if($('.menu-hide').hasClass('show')){
+                    if($('.menu-tab').show()){
+                        $('.menu-tab').removeClass('active');
+
+                    }
+                }else{
+                    $('.menu-tab').hide()
+                }
+
+                if($('.menu-hide').hasClass('show') && $( window ).width() < 650){
+                    if( $('.menu-hide').scrollTop() > 100){
+                        $('#arrowUp').fadeIn();
+                    } else {
+                        $('#arrowUp').fadeOut();
+                    }
+
+                    if( $('.menu-hide').scrollTop() > 570){
+                        $('#arrowDown').fadeOut();
+                    } else {
+                        $('#arrowDown').fadeIn();
+                    }
+                }else{
+                    $('#arrowUp').hide();
+                    $('#arrowDown').hide();
+                }
+
+                $('.menu-tab').toggleClass('active');
+
+                $('#nr_1').hide();
+                $('#remove_1').hide();
+                $('#nr_2').hide();
+                $('#remove_2').hide();
+                $('#nr_3').hide();
+                $('#remove_3').hide();
+                $('#nr_4').hide();
+                $('#remove_4').hide();
+                $('#nr_5').hide();
+                $('#remove_5').hide();
+                $('#nr_6').hide();
+                $('#remove_6').hide();
+                $('#nr_7').hide();
+                $('#remove_7').hide();
+                $('#catPul2').hide();
+                $('#remove_catPp2').hide();
+                $('#brandPul').hide();
+                $('#remove_brandPp').hide();
+                $('#zuPul').hide();
+                $('#remove_zuPp').hide();
+                $('#add_catPp').hide();
+
+                var activeurl = window.location;
+
+                $('a[href="'+activeurl+'"]').each(function() {
+
+                    $( this ).parent('li').addClass('linkAktiv');
+                    $( this ).parent('li').parent('ul').show();
+                    $( this ).parent('li').parent('ul').parent('li').show();
+                    $( this ).parent('li').parent('ul').parent('li').parent('ul').show();
+
+                    var nr = $( this ).parent('li').data("nr");
+
+                    if (nr === undefined) {
+                        var nr2 = $( this ).parent('li').parent('ul').parent('li').attr('id');
+                        if (nr2 !== undefined) {
+                            nr2 = nr2.replace("nr_", "");
+                            $('#nr_'+nr2).show();
+                            $('#add_'+nr2).hide();
+                            $('#remove_'+nr2).show();
+                        }
+                    }else{
+                        $('#nr_'+nr).show();
+                        $('#add_'+nr).hide();
+                        $('#remove_'+nr).show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "catPp"){
+                        $('#catPul').show();
+                        $('#remove_catPp').show();
+                        $('#add_catPp').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "catPp2" || $( this ).parent('li').parent('ul').attr('id') == "catPul2"){
+                        $('#catPul2').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#remove_catPp2').show();
+                        $('#add_catPp2').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "brandPp" || $( this ).parent('li').parent('ul').attr('id') == "brandPul"){
+                        $('#brandPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_brandPp').hide();
+                        $('#remove_brandPp').show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "zuPp" || $( this ).parent('li').parent('ul').attr('id') == "zuPul"){
+                        $('#zuPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_zuPp').hide();
+                        $('#remove_zuPp').show();
+                    }
+
+                });
+            });
+
+            //$('a').click(function(){
+            //  $('.menu-hide').removeClass('show');
+            //  $('.menu-tab').removeClass('active');
+
+            //  	$('.menu-tab').hide();
+            //  	$('#arrowUp').fadeOut();
+            //  	$('#arrowDown').fadeOut();
+
+            //});
+
+            $('.hideMenuClick').click(function(){
+                var nr = $(this).data("nr");
+
+                if($('#nr_'+nr).is(":hidden")){
+                    $('#nr_'+nr).show();
+                    $('#add_'+nr).hide();
+                    $('#remove_'+nr).show();
+                }else{
+                    $('#nr_'+nr).hide();
+                    $('#add_'+nr).show();
+                    $('#remove_'+nr).hide();
+                }
+
+            });
+
+            $('#add_catPp, #remove_catPp').click(function(){
+                if($('#catPul').is(":hidden")){
+                    $('#catPul').show();
+                    $('#add_catPp').hide();
+                    $('#remove_catPp').show();
+                }else{
+                    $('#catPul').hide();
+                    $('#add_catPp').show();
+                    $('#remove_catPp').hide();
+                }
+
+            });
+
+            $('#add_catPp2, #remove_catPp2').click(function(){
+                if($('#catPul2').is(":hidden")){
+                    $('#catPul2').show();
+                    $('#add_catPp2').hide();
+                    $('#remove_catPp2').show();
+                }else{
+                    $('#catPul2').hide();
+                    $('#add_catPp2').show();
+                    $('#remove_catPp2').hide();
+                }
+
+            });
+
+            $('#add_brandPp, #remove_brandPp').click(function(){
+                if($('#brandPul').is(":hidden")){
+                    $('#brandPul').show();
+                    $('#add_brandPp').hide();
+                    $('#remove_brandPp').show();
+                }else{
+                    $('#brandPul').hide();
+                    $('#add_brandPp').show();
+                    $('#remove_brandPp').hide();
+                }
+
+            });
+
+            $('#add_zuPp, #remove_zuPp').click(function(){
+                if($('#zuPul').is(":hidden")){
+                    $('#zuPul').show();
+                    $('#add_zuPp').hide();
+                    $('#remove_zuPp').show();
+                }else{
+                    $('#zuPul').hide();
+                    $('#add_zuPp').show();
+                    $('#remove_zuPp').hide();
+                }
+
+            });
+
+            $('#add_themenPp, #remove_themenPp').click(function(){
+                if($('#themenPul').is(":hidden")){
+                    $('#themenPul').show();
+                }else{
+                    $('#themenPul').hide();
+                }
+
+            });
+
+//			if($( window ).width() > 1559){
+            if($( window ).width() >= 1240){
+                $('.menu-hide').toggleClass('show');
+                if($('.menu-tab').show()){
+                    $('.menu-tab').removeClass('active');
+
+                }
+
+                if($('.menu-hide').hasClass('show') && $( window ).width() < 650){
+                    if( $('.menu-hide').scrollTop() > 100){
+                        $('#arrowUp').fadeIn();
+                    } else {
+                        $('#arrowUp').fadeOut();
+                    }
+
+                    if( $('.menu-hide').scrollTop() > 570){
+                        $('#arrowDown').fadeOut();
+                    } else {
+                        $('#arrowDown').fadeIn();
+                    }
+                }else{
+                    $('#arrowUp').hide();
+                    $('#arrowDown').hide();
+                }
+
+                if($( window ).width() < 1121){
+                    $('.menu-tab').hide();
+                }
+
+                $('.menu-tab').toggleClass('active');
+                $('#nr_1').hide();
+                $('#remove_1').hide();
+                $('#nr_2').hide();
+                $('#remove_2').hide();
+                $('#nr_3').hide();
+                $('#remove_3').hide();
+                $('#nr_4').hide();
+                $('#remove_4').hide();
+                $('#nr_5').hide();
+                $('#remove_5').hide();
+                $('#nr_6').hide();
+                $('#remove_6').hide();
+                $('#nr_7').hide();
+                $('#remove_7').hide();
+                $('#catPul2').hide();
+                $('#remove_catPp2').hide();
+                $('#brandPul').hide();
+                $('#remove_brandPp').hide();
+                $('#zuPul').hide();
+                $('#remove_zuPp').hide();
+                $('#add_catPp').hide();
+
+                var activeurl = window.location;
+
+                $('a[href="'+activeurl+'"]').each(function() {
+
+                    $( this ).parent('li').addClass('linkAktiv');
+                    $( this ).parent('li').parent('ul').show();
+                    $( this ).parent('li').parent('ul').parent('li').show();
+                    $( this ).parent('li').parent('ul').parent('li').parent('ul').show();
+
+                    var nr = $( this ).parent('li').data("nr");
+
+                    if (nr === undefined) {
+                        var nr2 = $( this ).parent('li').parent('ul').parent('li').attr('id');
+                        if (nr2 !== undefined) {
+                            nr2 = nr2.replace("nr_", "");
+                            $('#nr_'+nr2).show();
+                            $('#add_'+nr2).hide();
+                            $('#remove_'+nr2).show();
+                        }
+                    }else{
+                        $('#nr_'+nr).show();
+                        $('#add_'+nr).hide();
+                        $('#remove_'+nr).show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "catPp"){
+                        $('#catPul').show();
+                        $('#remove_catPp').show();
+                        $('#add_catPp').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "catPp2" || $( this ).parent('li').parent('ul').attr('id') == "catPul2"){
+                        $('#catPul2').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#remove_catPp2').show();
+                        $('#add_catPp2').hide();
+                    }
+                    if($( this ).parent('p').attr('id') == "brandPp" || $( this ).parent('li').parent('ul').attr('id') == "brandPul"){
+                        $('#brandPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_brandPp').hide();
+                        $('#remove_brandPp').show();
+                    }
+
+                    if($( this ).parent('p').attr('id') == "zuPp" || $( this ).parent('li').parent('ul').attr('id') == "zuPul"){
+                        $('#zuPul').show();
+                        $('#catPul').hide();
+                        $('#remove_catPp').hide();
+                        $('#add_catPp').show();
+
+                        $('#add_zuPp').hide();
+                        $('#remove_zuPp').show();
+                    }
+
+                });
+            }
+
+
+            /* Quicksearch form */
+            $( '#qsform' ).submit(function(){
+
+                if($('#qsinput').val() == $('#qsinput').data('placeholder'))
+                {
+                    $('#qsinput').val('');
+                }
+
+                $(this).submit();
+            });
+
+            $('#hd_toggle_login_menu, .loginShowMenu').on('click', function(e){
+                e.preventDefault();
+
+                $('#hd_login_menu').toggle();
+
+                return false;
+            });
+
+            $('#hd_toggle_login_menu_mobil, .loginShowMenu_mobil').on('click', function(e){
+                e.preventDefault();
+
+                $('#hd_login_menu_mobil').toggle();
+
+                return false;
+            });
+
+            $('#hd_lang_button').on('click', function(e){
+                e.preventDefault();
+
+                $('#hd_lang_select').toggle();
+
+                return false;
+            });
+
+
+            /* Get tracking details from YunExpress */
+            $( '.getTrackingDetails' ).on('click', function() {
+
+                $( '#loader' ).show();
+
+                var order = $( this ).data('yun');
+                var button = $( this );
+
+                $.post('/models/orders/getTrackingDetails.php', { 'order': order }, function(ret) {
+
+                    $( '#loader' ).hide();
+
+                    if (ret.status == 'ok')
+                    {
+                        button.hide().before(ret.show);
+                    }
+                    else
+                    {
+                        button.before(ret.show);
+                    }
+
+                }, 'json');
+            });
+
+            $('.go-to-top').on('click',function () {
+                $('html,body').animate({ scrollTop: 0 }, 500);
+                return false;
+            });
+
+            /* SLIDER ============================================================= */
+            $('.responsive').slick({
+                // dots: true,
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                autoplay: false,
+                autoplaySpeed: 15000,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 500,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+
+            setInterval(function() {
+                $('#mainSlider').slick('slickNext');
+            }, 10000);
+            /* SLIDER END ========================================================= */
+
+
+            /* POPUP ============================================================== */
+            function closePopup(){
+                $('#popup').hide();
+                $('#popupContent').html('');
+            }
+
+            // When the user clicks on <span> (x), close the popup
+            $('body').on('click', '#popupClose, .popupClose', function(){
+                closePopup();
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            $('#popup').mouseup(function(e)
+            {
+                var popupContainer = $('#popupContainer');
+
+                if(e.target.id != popupContainer.attr('id')
+                    && !popupContainer.has(e.target).length
+                    && $('#popup').prop('scrollHeight') <= $('#popup').prop('clientHeight')) // only if not scrollable
+                {
+                    closePopup();
+                }
+            });
+            /* POPUP END ========================================================== */
+
+
+            /* TABLESORTER ============================================================== */
+//	$.tablesorter.defaults.widgets = ['zebra'];
+//	$.tablesorter.defaults.theme = ['baseplate'];
+//
+//
+//	/* PARSER: Date (DE) */
+//	$.tablesorter.addParser({
+//		id: 'germandate',
+//		is: function(s) {
+//			return false;
+//		},
+//		format: function(s) {
+//			var a = s.split('.');
+//			a[1] = a[1].replace(/^[0]+/g,"");
+//			return new Date(a.reverse().join("/")).getTime();
+//		},
+//		type: 'numeric'
+//	});
+//
+//	/* PARSER: Scale */
+//	$.tablesorter.addParser({
+//		id: 'scale',
+//		is: function(s) {
+//			return false;
+//		},
+//		format: function(s) {
+//			return s.toLowerCase().replace(/[0-9]\W/g,'');
+//		},
+//		type: 'numeric'
+//	});
+//
+//	/* PARSER: comma separated digits */
+//	$.tablesorter.addParser({
+//		id: 'commadigits',
+//		is: function(s) {
+//			return false;
+//		},
+//		format: function(s) {
+//			return s.toLowerCase().replace(/\./,'');
+//		},
+//		type: 'numeric'
+//	});
+//
+//	/* PARSER: Currency */
+//	$.tablesorter.addParser({
+//		id: 'umsatz',
+//		is: function(s) {
+//			return /^\d+\.\d+,\d+ \u20AC$/.test(s);
+//		},
+//		format: function(s) {
+//			return jQuery.tablesorter.formatInt( s.replace(/[\., \u20AC]/g,'') );
+//		},
+//		type: 'numeric'
+//	});
+
+            /* TABLESORTER END ========================================================== */
+
+            /* DATE-PICKER ============================================================== */
+
+            $("input.datepicker").datepicker({ dateFormat: 'yy-mm-dd', changeYear: true });
+
+            $("input.datepickerBd").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeYear: true,
+                minDate: new Date(1900, 1, 1),
+                maxDate: "-10 years",
+                selectOtherMonths: true
+            });
+
+            /* DATE-PICKER END ========================================================== */
+
+            /* PRE-FILLED INPUTS ======================================================== */
+
+            $.each($( '.preText' ), function(key, value) {
+                if ($(this).val() == '')
+                {
+                    $(this).css('color', '#C9C9C9').val($(this).attr('data-standard'));
+                }
+            });
+
+            $( '.preText' ).focus(function() {
+
+                var standard = $( this ).attr('data-standard');
+
+                if ($(this).val() == standard)
+                {
+                    $(this).css('color', '#000').val('');
+                }
+
+            });
+
+            $( '.preText' ).blur(function() {
+
+                var standard = $( this ).attr('data-standard');
+
+                if ($(this).val() == '')
+                {
+                    $(this).css('color', '#C9C9C9').val(standard);
+                }
+
+            });
+
+            /* PRE-FILLED INPUTS END ==================================================== */
+
+
+            /* CART ============================================================ */
+
+            /* add item to cart ------------------------------------ */
+            $("body").on('click', ".addItemCart", function(e) {
+                e.preventDefault();
+
+                var reload = 0;
+                if($(this).data('reload') == '1'){
+                    reload = 1;
+                }
+                $("#closeCart").data('reload', reload);
+
+                /* show loader image */
+                $("#divCartContent").html('<div class="loader_icon_small">Loading...</div>');
+
+                /* show popup */
+                $("#divCart").fadeIn("fast", function(){
+                    $( '#pagewrapper' ).css('opacity', '0.2');
+                });
+
+                /* item */
+                var itemno = $( this ).data('itemno');
+
+                /* fill content */
+                $("#divCartContent").load("/views/addtocart.php?itemno=" + itemno, function(){
+                    $(".hd_cart_count").load("/includes/getCartCount.php");
+                });
+
+                return false;
+            });
+
+
+            /* close cart popup ------------------------------ */
+            $("#closeCart").on('click', function(e) {
+                e.preventDefault();
+
+                // Fenster ausblenden
+                $( '#pagewrapper' ).css('opacity', '1');
+                $("#divCart").css("display", "none");
+
+                // Fensterinhalt leeren
+                $("#divCartContent").empty();
+
+                if($(this).data('reload') == '1')
+                {
+                    $('.loader').show();
+                    location.reload(true);
+                }
+                return false;
+            });
+
+            /* CART END ======================================================= */
+
+            $( '.subCat' ).on('click', '.subCatHeader',function() {
+                $(this).siblings().slideToggle();
+            });
+
+        });
+    </script>
+
+    <!-- BrixParadise CSS -->
+    <link rel="stylesheet" href="https://www.bluebrixx.com/css/bluebrixx.css" />
+
+    <!-- Renew Session every 5 minutes //-->
+    <script>
+        var sec = 300;
+        function updateSession()
+        {
+            $.post('/includes/updateSession.php');
+        }
+        window.setInterval("updateSession()", (sec * 1000));
+    </script>
+
+    <title>BlueBrixx</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WB87NMZ');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <!-- COOKIE CONSENT START -->
+    <!-- Cookie Consent by https://www.PrivacyPolicies.com -->
+    <script type="text/javascript" src="https://www.bluebrixx.com/js/privacypolicies/public/cookie-consent/3.1.0/cookie-consent.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({"notice_banner_type":"headline","consent_type":"express","palette":"light","language":"de","website_name":"www.bluebrixx.com","change_preferences_selector":"#changeCookiePreferences","cookies_policy_url":"https://www.bluebrixx.com/de/policy_privacy"});
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-111559286-1"></script>
+    <script type="text/plain" cookie-consent="tracking"> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-111559286-1'); </script>
+
+    <!-- Google Analytics -->
+    <script type="text/plain" cookie-consent="tracking">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-111559286-1']);
+  _gaq.push(['_setDomainName', 'bluebrixx.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_gat._anonymizeIp']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+    <!-- end of Google Analytics-->
+
+    <!-- Google AdSense -->
+    <!-- Global site tag (gtag.js) - Google Ads: 801425396 -->
+    <script type="text/plain" cookie-consent="targeting" async src="https://www.googletagmanager.com/gtag/js?id=AW-801425396"></script>
+    <script type="text/plain" cookie-consent="targeting"> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-801425396'); </script>
+    <!-- end of Google AdSense-->
+
+    <!-- Facebook -->
+    <!-- Facebook Pixel Code -->
+    <script type="text/plain" cookie-consent="tracking">
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '722301601468254');
+fbq('track', 'PageView');
+</script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=722301601468254&ev=PageView
+&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- end of Facebook-->
+
+    <!-- Bing -->
+    <!-- Bing Pixel Code -->
+    <script type="text/plain" cookie-consent="tracking">
+(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"26023070"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+</script>
+    <!-- end of Bing-->
+
+    <noscript>Cookie Consent by <a href="https://www.PrivacyPolicies.com/cookie-consent/" rel="nofollow noopener">PrivacyPolicies.com</a></noscript>
+    <!-- COOKIE CONSENT END -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB87NMZ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<style>
+
+    .loader {
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+        position:fixed;
+        text-align:center;
+        z-index:10000;
+        display:none;
+    }
+
+    .loader_bg {
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+        position:fixed;
+        z-index:10001;
+        /* IE filter */
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+        -moz-opacity:0.5;    /* Mozilla extension */
+        -khtml-opacity:0.5;  /* Safari/Conqueror extension */
+        opacity:0.5; /* CSS3 */
+        background-color:white;
+    }
+
+    .loader_icon,
+    .loader_icon:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+        z-index:10002;
+    }
+    .loader_icon {
+        margin: -5em auto 0;
+        font-size: 10px;
+        position: relative;
+        top:50%;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(64,64,65, 0.2);
+        border-right: 1.1em solid rgba(64,64,65, 0.2);
+        border-bottom: 1.1em solid rgba(64,64,65, 0.2);
+        border-left: 1.1em solid #404041;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
+    }
+    @-webkit-keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+</style>
+
+
+<div class="loader" >
+    <div class="loader_bg"></div>
+    <div class="loader_icon">Loading...</div>
+</div>
+<div id="overlay"></div>
+
+<input type="button" class="btnsmall go-to-top tooltip_low" id="page_go-to-top_bt" onclick="scrollTo('body', 0);" title="Nach oben" value="&#x25B2;" />
+
+<!-- ####### NEW NAVIGATION ####### -->
+<!-- Cached copy, generated 21:41 -->
+
+<div class="menu-tab">
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+</div>
+<div class="menu-hide">
+    <span class="material-icons sub" style="font-size:20px;position:fixed; left:265px; top:50px;display:none;" id="arrowUp">arrow_upward</span>
+    <span class="material-icons sub" style="font-size:20px;position:fixed; left:265px; bottom:10px;display:none;" id="arrowDown">arrow_downward</span>
+    <nav>
+        <p style="text-align:left; vertical-align:middle; padding:10px; font-weight:bold; font-size: 17px; margin-bottom:0px;cursor:pointer;color:RGB(25,49,83);" id="catPp"><span class="material-icons sub" style="font-size: 20px;" id="add_catPp">add</span><span class="material-icons sub"  style="font-size: 20px;" id="remove_catPp">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/bluebrixx" class="menuAhref">BlueBrixx</a></p>
+        <ul id="catPul">
+            <li class="menu-hide-link hideMenuClick"  data-nr="1"><span class="material-icons sub" id="add_1">add</span><span class="material-icons sub" id="remove_1">remove</span>&nbsp;&nbsp;BlueBrixx-Specials</li>
+            <li style="height: 100%; overflow: auto;" id="nr_1" class="not_class">
+                <ul>
+                    <li><a href="https://www.bluebrixx.com/de/bluebrixxspecials" class="menuAhref" alt="Übersicht aller Specials" style="font-style:normal;">Übersicht aller Specials</a></li>
+                    <li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/architecture" class="menuAhref" alt="Architektur" style="font-style:normal;">Architektur</a></li>
+                    <li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trains" class="menuAhref" alt="Eisenbahn" style="font-style:normal;">Eisenbahn</a></li>
+                    <li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/motor_vehicle" class="menuAhref" alt="Fahrzeuge" style="font-style:normal;">Fahrzeuge</a></li>
+                </ul>
+            </li>
+            <li ><span class="material-icons sub hideMenuClick" id="add_2" data-nr="2">add</span><span data-nr="2" class="material-icons sub hideMenuClick" id="remove_2">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/bluebrixx-pro" class="menuAhref" >BlueBrixx-Pro</a></li>
+            <li style="height: 100%; overflow: auto;" id="nr_2" class="not_class">
+                <ul>
+                    <li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/architecture" class="menuAhref" alt="Architektur" style="font-style:normal;">Architektur</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/cars" class="menuAhref" alt="Autos" style="font-style:normal;">Autos</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/city" class="menuAhref" alt="City" style="font-style:normal;">City</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/western" class="menuAhref" alt="Der Wilde Westen" style="font-style:normal;">Der Wilde Westen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/trains" class="menuAhref" alt="Eisenbahn" style="font-style:normal;">Eisenbahn</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/food_drinks" class="menuAhref" alt="Essen & Trinken" style="font-style:normal;">Essen & Trinken</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/fire_rescue" class="menuAhref" alt="Feuerwehr" style="font-style:normal;">Feuerwehr</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/girls_world" class="menuAhref" alt="Girls-World" style="font-style:normal;">Girls-World</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/kids" class="menuAhref" alt="Kinder" style="font-style:normal;">Kinder</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/knights" class="menuAhref" alt="Mittelalter" style="font-style:normal;">Mittelalter</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/modular_buildings" class="menuAhref" alt="Modulare Gebäude" style="font-style:normal;">Modulare Gebäude</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/plants" class="menuAhref" alt="Pflanzen" style="font-style:normal;">Pflanzen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/pirates" class="menuAhref" alt="Piraten" style="font-style:normal;">Piraten</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/police_swat" class="menuAhref" alt="Polizei-SWAT" style="font-style:normal;">Polizei-SWAT</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/ships" class="menuAhref" alt="Schiffe" style="font-style:normal;">Schiffe</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/scifi" class="menuAhref" alt="Science-Fiction" style="font-style:normal;">Science-Fiction</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/others" class="menuAhref" alt="Sonstige" style="font-style:normal;">Sonstige</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/star_trek" class="menuAhref" alt="Star Trek" style="font-style:normal;">Star Trek</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/animals" class="menuAhref" alt="Tiere" style="font-style:normal;">Tiere</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/weapons" class="menuAhref" alt="Waffen" style="font-style:normal;">Waffen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixx-pro/christmas" class="menuAhref" alt="Weihnachten" style="font-style:normal;">Weihnachten</a></li></ul></li>
+            <li ><span data-nr="3" class="material-icons sub hideMenuClick" id="add_3">add</span><span data-nr="3" class="material-icons sub hideMenuClick" id="remove_3">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/part-packs?&available_only=1" class="menuAhref"  alt="Part-Packs">Part-Packs</a></li>
+            <li style="height: 100%; overflow: auto;" id="nr_3" class="not_class">
+                <ul>
+                    <li><a href="https://www.bluebrixx.com/de/chrome-packs" class="menuAhref"  alt="Chrome-Packs">Chrome-Packs</a></li>
+                </ul></li>       	        <li ><span data-nr="4" class="material-icons sub hideMenuClick" id="add_4">add</span><span data-nr="4" class="material-icons sub hideMenuClick" id="remove_4">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/bluebrixxaccessories?&available_only=1" class="menuAhref" alt="BlueBrixx-Zubehör" >BlueBrixx-Zubehör</a></li>
+            <li style="height: 100%; overflow: auto;" id="nr_4" class="not_class"><ul>
+
+                <li><a href="https://www.bluebrixx.com/de/brix-elemente-sets" class="menuAhref" alt="Brix Elemente-Sets">Brix Elemente-Sets</a></li>
+
+                <li><a href="https://www.bluebrixx.com/de/part-packs?&available_only=1" class="menuAhref"  alt="Part-Packs">Part-Packs</a></li>
+
+                <li><a href="https://www.bluebrixx.com/de/chrome-packs" class="menuAhref"  alt="Chrome-Packs">Chrome-Packs</a></li>
+
+
+                <li><a href="https://www.bluebrixx.com/de/brix-elemente-sets/minifig_accessories" class="menuAhref" alt="Figuren-Zubehör">Figuren-Zubehör</a></li>
+
+                <li><a href="https://www.bluebrixx.com/de/sticker"  class="menuAhref" alt="Stickerbögen">Stickerbögen</a></li>
+
+            </ul></li>
+            <li ><span data-nr="5" class="material-icons sub hideMenuClick" id="add_5">add</span><span data-nr="5" class="material-icons sub hideMenuClick" id="remove_5">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/bluebrixx#bbthemen" class="menuAhref" style="height:100%;width:200px;display:inline-block;">BlueBrixx-Themen</a></li>
+
+            <li style="height: 100%; overflow: auto;" id="nr_5" class="not_class"><ul>
+                <li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/8w" class="menuAhref" alt="8w" style="font-style:normal;">8w</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/architecture" class="menuAhref" alt="Architektur" style="font-style:normal;">Architektur</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/cars" class="menuAhref" alt="Autos" style="font-style:normal;">Autos</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/baumaschinen" class="menuAhref" alt="Baumaschinen" style="font-style:normal;">Baumaschinen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/city" class="menuAhref" alt="City" style="font-style:normal;">City</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/das_schwarze_auge" class="menuAhref" alt="Das Schwarze Auge" style="font-style:normal;">Das Schwarze Auge</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/western" class="menuAhref" alt="Der Wilde Westen" style="font-style:normal;">Der Wilde Westen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/dinosaurier" class="menuAhref" alt="Dinosaurier" style="font-style:normal;">Dinosaurier</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trains" class="menuAhref" alt="Eisenbahn" style="font-style:normal;">Eisenbahn</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/motor_vehicle" class="menuAhref" alt="Fahrzeuge" style="font-style:normal;">Fahrzeuge</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/fire_rescue" class="menuAhref" alt="Feuerwehr" style="font-style:normal;">Feuerwehr</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/planes" class="menuAhref" alt="Flugzeuge" style="font-style:normal;">Flugzeuge</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trains_freight_cars" class="menuAhref" alt="Güterwagen" style="font-style:normal;">Güterwagen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/landmaschinen" class="menuAhref" alt="Landmaschinen" style="font-style:normal;">Landmaschinen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trucks" class="menuAhref" alt="LKWs" style="font-style:normal;">LKWs</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trains_locomotives" class="menuAhref" alt="Lokomotiven" style="font-style:normal;">Lokomotiven</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/military_models" class="menuAhref" alt="Militär-Modelle" style="font-style:normal;">Militär-Modelle</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/knights" class="menuAhref" alt="Mittelalter" style="font-style:normal;">Mittelalter</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/modular_buildings" class="menuAhref" alt="Modulare Gebäude" style="font-style:normal;">Modulare Gebäude</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/trains_passenger_cars" class="menuAhref" alt="Personenwagen" style="font-style:normal;">Personenwagen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/plants" class="menuAhref" alt="Pflanzen" style="font-style:normal;">Pflanzen</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/pirates" class="menuAhref" alt="Piraten" style="font-style:normal;">Piraten</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/police_swat" class="menuAhref" alt="Polizei-SWAT" style="font-style:normal;">Polizei-SWAT</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/ships" class="menuAhref" alt="Schiffe" style="font-style:normal;">Schiffe</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/scifi" class="menuAhref" alt="Science-Fiction" style="font-style:normal;">Science-Fiction</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/others" class="menuAhref" alt="Sonstige" style="font-style:normal;">Sonstige</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/assortments" class="menuAhref" alt="Sortimente" style="font-style:normal;">Sortimente</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/technic" class="menuAhref" alt="Technik" style="font-style:normal;">Technik</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/animals" class="menuAhref" alt="Tiere" style="font-style:normal;">Tiere</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/wanddekoration" class="menuAhref" alt="Wanddekoration" style="font-style:normal;">Wanddekoration</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/warriors" class="menuAhref" alt="Warriors" style="font-style:normal;">Warriors</a></li><li><a href="https://www.bluebrixx.com/de/bluebrixxspecials/accessories" class="menuAhref" alt="Zubehör" style="font-style:normal;">Zubehör</a></li></ul></li><li><a href="https://www.bluebrixx.com/de/gift_vouchers" class="menuAhref" alt="Gutschein erwerben" style="font-style:normal;">Gutschein erwerben</a></li>    </ul>
+
+        <p style="text-align:left; vertical-align:middle; padding:10px; font-weight:bold; font-size: 17px; margin-bottom:0px;cursor:pointer;color:RGB(25,49,83);" id="catPp2"><span class="material-icons sub" style="font-size: 20px;" id="add_catPp2">add</span><span id="remove_catPp2" class="material-icons sub"  style="font-size: 20px;">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/themen" class="menuAhref">Themen</a></p>
+        <ul id="catPul2" >
+            <li><a href="https://www.bluebrixx.com/de/sets/adventure" class="menuAhref" alt="Abenteuer" style="font-style:normal;">Abenteuer</a></li><li><a href="https://www.bluebrixx.com/de/sets/architecture" class="menuAhref" alt="Architektur" style="font-style:normal;">Architektur</a></li><li><a href="https://www.bluebrixx.com/de/sets/cars" class="menuAhref" alt="Autos" style="font-style:normal;">Autos</a></li><li><a href="https://www.bluebrixx.com/de/sets/baumaschinen" class="menuAhref" alt="Baumaschinen" style="font-style:normal;">Baumaschinen</a></li><li><a href="https://www.bluebrixx.com/de/sets/bundeswehr" class="menuAhref" alt="Bundeswehr" style="font-style:normal;">Bundeswehr</a></li><li><a href="https://www.bluebrixx.com/de/sets/ancient_china" class="menuAhref" alt="Chinesische Architektur" style="font-style:normal;">Chinesische Architektur</a></li><li><a href="https://www.bluebrixx.com/de/sets/city" class="menuAhref" alt="City" style="font-style:normal;">City</a></li><li><a href="https://www.bluebrixx.com/de/sets/das_schwarze_auge" class="menuAhref" alt="Das Schwarze Auge" style="font-style:normal;">Das Schwarze Auge</a></li><li><a href="https://www.bluebrixx.com/de/sets/western" class="menuAhref" alt="Der Wilde Westen" style="font-style:normal;">Der Wilde Westen</a></li><li><a href="https://www.bluebrixx.com/de/sets/dinosaurier" class="menuAhref" alt="Dinosaurier" style="font-style:normal;">Dinosaurier</a></li><li><a href="https://www.bluebrixx.com/de/sets/trains" class="menuAhref" alt="Eisenbahn" style="font-style:normal;">Eisenbahn</a></li><li><a href="https://www.bluebrixx.com/de/sets/food_drinks" class="menuAhref" alt="Essen & Trinken" style="font-style:normal;">Essen & Trinken</a></li><li><a href="https://www.bluebrixx.com/de/sets/motor_vehicle" class="menuAhref" alt="Fahrzeuge" style="font-style:normal;">Fahrzeuge</a></li><li><a href="https://www.bluebrixx.com/de/sets/fire_rescue" class="menuAhref" alt="Feuerwehr" style="font-style:normal;">Feuerwehr</a></li><li><a href="https://www.bluebrixx.com/de/sets/figures" class="menuAhref" alt="Figuren" style="font-style:normal;">Figuren</a></li><li><a href="https://www.bluebrixx.com/de/sets/planes" class="menuAhref" alt="Flugzeuge" style="font-style:normal;">Flugzeuge</a></li><li><a href="https://www.bluebrixx.com/de/sets/girls_world" class="menuAhref" alt="Girls-World" style="font-style:normal;">Girls-World</a></li><li><a href="https://www.bluebrixx.com/de/sets/baseplates" class="menuAhref" alt="Grundplatten" style="font-style:normal;">Grundplatten</a></li><li><a href="https://www.bluebrixx.com/de/sets/kids" class="menuAhref" alt="Kinder" style="font-style:normal;">Kinder</a></li><li><a href="https://www.bluebrixx.com/de/sets/trucks" class="menuAhref" alt="LKWs" style="font-style:normal;">LKWs</a></li><li><a href="https://www.bluebrixx.com/de/sets/landmaschinen" class="menuAhref" alt="Landmaschinen" style="font-style:normal;">Landmaschinen</a></li><li><a href="https://www.bluebrixx.com/de/sets/military_models" class="menuAhref" alt="Militär-Modelle" style="font-style:normal;">Militär-Modelle</a></li><li><a href="https://www.bluebrixx.com/de/sets/knights" class="menuAhref" alt="Mittelalter" style="font-style:normal;">Mittelalter</a></li><li><a href="https://www.bluebrixx.com/de/sets/modular_buildings" class="menuAhref" alt="Modulare Gebäude" style="font-style:normal;">Modulare Gebäude</a></li><li><a href="https://www.bluebrixx.com/de/sets/motor" class="menuAhref" alt="Motoren & Elektronik" style="font-style:normal;">Motoren & Elektronik</a></li><li><a href="https://www.bluebrixx.com/de/sets/motorcycles" class="menuAhref" alt="Motorräder" style="font-style:normal;">Motorräder</a></li><li><a href="https://www.bluebrixx.com/de/sets/plants" class="menuAhref" alt="Pflanzen" style="font-style:normal;">Pflanzen</a></li><li><a href="https://www.bluebrixx.com/de/sets/pirates" class="menuAhref" alt="Piraten" style="font-style:normal;">Piraten</a></li><li><a href="https://www.bluebrixx.com/de/sets/police_swat" class="menuAhref" alt="Polizei-SWAT" style="font-style:normal;">Polizei-SWAT</a></li><li><a href="https://www.bluebrixx.com/de/sets/space" class="menuAhref" alt="Raumfahrt" style="font-style:normal;">Raumfahrt</a></li><li><a href="https://www.bluebrixx.com/de/sets/robotics" class="menuAhref" alt="Roboter" style="font-style:normal;">Roboter</a></li><li><a href="https://www.bluebrixx.com/de/sets/ships" class="menuAhref" alt="Schiffe" style="font-style:normal;">Schiffe</a></li><li><a href="https://www.bluebrixx.com/de/sets/scifi" class="menuAhref" alt="Science-Fiction" style="font-style:normal;">Science-Fiction</a></li><li><a href="https://www.bluebrixx.com/de/sets/others" class="menuAhref" alt="Sonstige" style="font-style:normal;">Sonstige</a></li><li><a href="https://www.bluebrixx.com/de/sets/assortments" class="menuAhref" alt="Sortimente" style="font-style:normal;">Sortimente</a></li><li><a href="https://www.bluebrixx.com/de/sets/star_trek" class="menuAhref" alt="Star Trek" style="font-style:normal;">Star Trek</a></li><li><a href="https://www.bluebrixx.com/de/sets/technic" class="menuAhref" alt="Technik" style="font-style:normal;">Technik</a></li><li><a href="https://www.bluebrixx.com/de/sets/animals" class="menuAhref" alt="Tiere" style="font-style:normal;">Tiere</a></li><li><a href="https://www.bluebrixx.com/de/sets/transbots" class="menuAhref" alt="Transbots" style="font-style:normal;">Transbots</a></li><li><a href="https://www.bluebrixx.com/de/sets/weapons" class="menuAhref" alt="Waffen" style="font-style:normal;">Waffen</a></li><li><a href="https://www.bluebrixx.com/de/sets/wanddekoration" class="menuAhref" alt="Wanddekoration" style="font-style:normal;">Wanddekoration</a></li><li><a href="https://www.bluebrixx.com/de/sets/warriors" class="menuAhref" alt="Warriors" style="font-style:normal;">Warriors</a></li><li><a href="https://www.bluebrixx.com/de/sets/christmas" class="menuAhref" alt="Weihnachten" style="font-style:normal;">Weihnachten</a></li><li><a href="https://www.bluebrixx.com/de/sets/accessories" class="menuAhref" alt="Zubehör" style="font-style:normal;">Zubehör</a></li>    </ul>
+
+        <p style="text-align:left; vertical-align:middle; padding:10px; font-weight:bold; font-size: 17px; margin-bottom:0px;cursor:pointer;color:RGB(25,49,83);" id="brandPp"><span class="material-icons sub" style="font-size: 20px;" id="add_brandPp">add</span><span id="remove_brandPp" class="material-icons sub"  style="font-size: 20px;">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/brands" class="menuAhref">Marken</a></p>
+        <ul id="brandPul">
+            <li><a href="https://www.bluebrixx.com/de/brand/achko" alt="Achko" class="menuAhref" style="font-style:normal;">Achko</a></li><li><a href="https://www.bluebrixx.com/de/brand/ausini" alt="Ausini" class="menuAhref" style="font-style:normal;">Ausini</a></li><li><a href="https://www.bluebrixx.com/de/brand/balody" alt="Balody" class="menuAhref" style="font-style:normal;">Balody</a></li><li><a href="https://www.bluebrixx.com/de/brand/bb-chrome-packs" alt="BB-Chrome-Packs" class="menuAhref" style="font-style:normal;">BB-Chrome-Packs</a></li><li><a href="https://www.bluebrixx.com/de/brand/bb-part-packs" alt="BB-Part-Packs" class="menuAhref" style="font-style:normal;">BB-Part-Packs</a></li><li><a href="https://www.bluebrixx.com/de/brand/cada" alt="CaDA" class="menuAhref" style="font-style:normal;">CaDA</a></li><li><a href="https://www.bluebrixx.com/de/brand/cobi" alt="Cobi" class="menuAhref" style="font-style:normal;">Cobi</a></li><li><a href="https://www.bluebrixx.com/de/brand/cogo" alt="Cogo" class="menuAhref" style="font-style:normal;">Cogo</a></li><li><a href="https://www.bluebrixx.com/de/brand/daia" alt="Daia" class="menuAhref" style="font-style:normal;">Daia</a></li><li><a href="https://www.bluebrixx.com/de/brand/decool" alt="Decool" class="menuAhref" style="font-style:normal;">Decool</a></li><li><a href="https://www.bluebrixx.com/de/brand/diverse" alt="Diverse" class="menuAhref" style="font-style:normal;">Diverse</a></li><li><a href="https://www.bluebrixx.com/de/brand/forange" alt="Forange" class="menuAhref" style="font-style:normal;">Forange</a></li><li><a href="https://www.bluebrixx.com/de/brand/funwhole" alt="FunWhole" class="menuAhref" style="font-style:normal;">FunWhole</a></li><li><a href="https://www.bluebrixx.com/de/brand/gudi" alt="Gudi" class="menuAhref" style="font-style:normal;">Gudi</a></li><li><a href="https://www.bluebrixx.com/de/brand/happy+build" alt="Happy Build" class="menuAhref" style="font-style:normal;">Happy Build</a></li><li><a href="https://www.bluebrixx.com/de/brand/hengtai" alt="HengTai" class="menuAhref" style="font-style:normal;">HengTai</a></li><li><a href="https://www.bluebrixx.com/de/brand/hpd" alt="HPD" class="menuAhref" style="font-style:normal;">HPD</a></li><li><a href="https://www.bluebrixx.com/de/brand/hsanhe" alt="Hsanhe" class="menuAhref" style="font-style:normal;">Hsanhe</a></li><li><a href="https://www.bluebrixx.com/de/brand/jaki" alt="Jaki" class="menuAhref" style="font-style:normal;">Jaki</a></li><li><a href="https://www.bluebrixx.com/de/brand/jekca+limited" alt="Jekca Limited" class="menuAhref" style="font-style:normal;">Jekca Limited</a></li><li><a href="https://www.bluebrixx.com/de/brand/kaiyu" alt="Kaiyu" class="menuAhref" style="font-style:normal;">Kaiyu</a></li><li><a href="https://www.bluebrixx.com/de/brand/lele+brother" alt="Lele Brother" class="menuAhref" style="font-style:normal;">Lele Brother</a></li><li><a href="https://www.bluebrixx.com/de/brand/lezi" alt="Lezi" class="menuAhref" style="font-style:normal;">Lezi</a></li><li><a href="https://www.bluebrixx.com/de/brand/limei+toys" alt="LiMei Toys" class="menuAhref" style="font-style:normal;">LiMei Toys</a></li><li><a href="https://www.bluebrixx.com/de/brand/loz" alt="LOZ" class="menuAhref" style="font-style:normal;">LOZ</a></li><li><a href="https://www.bluebrixx.com/de/brand/mork" alt="Mork" class="menuAhref" style="font-style:normal;">Mork</a></li><li><a href="https://www.bluebrixx.com/de/brand/mould+king" alt="Mould King" class="menuAhref" style="font-style:normal;">Mould King</a></li><li><a href="https://www.bluebrixx.com/de/brand/moyu" alt="MoYu" class="menuAhref" style="font-style:normal;">MoYu</a></li><li><a href="https://www.bluebrixx.com/de/brand/others" alt="Others" class="menuAhref" style="font-style:normal;">Others</a></li><li><a href="https://www.bluebrixx.com/de/brand/panbo" alt="PanBo" class="menuAhref" style="font-style:normal;">PanBo</a></li><li><a href="https://www.bluebrixx.com/de/brand/panlos" alt="Panlos" class="menuAhref" style="font-style:normal;">Panlos</a></li><li><a href="https://www.bluebrixx.com/de/brand/pantasy" alt="Pantasy" class="menuAhref" style="font-style:normal;">Pantasy</a></li><li><a href="https://www.bluebrixx.com/de/brand/pinzhixing" alt="PinZhiXing" class="menuAhref" style="font-style:normal;">PinZhiXing</a></li><li><a href="https://www.bluebrixx.com/de/brand/qiaoletong" alt="Qiaoletong" class="menuAhref" style="font-style:normal;">Qiaoletong</a></li><li><a href="https://www.bluebrixx.com/de/brand/qihui" alt="Qihui" class="menuAhref" style="font-style:normal;">Qihui</a></li><li><a href="https://www.bluebrixx.com/de/brand/qizhile" alt="QiZhiLe" class="menuAhref" style="font-style:normal;">QiZhiLe</a></li><li><a href="https://www.bluebrixx.com/de/brand/quan+guan" alt="Quan Guan" class="menuAhref" style="font-style:normal;">Quan Guan</a></li><li><a href="https://www.bluebrixx.com/de/brand/qunlong" alt="QunLong" class="menuAhref" style="font-style:normal;">QunLong</a></li><li><a href="https://www.bluebrixx.com/de/brand/reobrix" alt="Reobrix" class="menuAhref" style="font-style:normal;">Reobrix</a></li><li><a href="https://www.bluebrixx.com/de/brand/sembo" alt="Sembo" class="menuAhref" style="font-style:normal;">Sembo</a></li><li><a href="https://www.bluebrixx.com/de/brand/sluban" alt="Sluban" class="menuAhref" style="font-style:normal;">Sluban</a></li><li><a href="https://www.bluebrixx.com/de/brand/taigaole" alt="TaiGaoLe" class="menuAhref" style="font-style:normal;">TaiGaoLe</a></li><li><a href="https://www.bluebrixx.com/de/brand/urge" alt="UrGe" class="menuAhref" style="font-style:normal;">UrGe</a></li><li><a href="https://www.bluebrixx.com/de/brand/wange" alt="Wange" class="menuAhref" style="font-style:normal;">Wange</a></li><li><a href="https://www.bluebrixx.com/de/brand/winner+bricks" alt="Winner Bricks" class="menuAhref" style="font-style:normal;">Winner Bricks</a></li><li><a href="https://www.bluebrixx.com/de/brand/woma" alt="Woma" class="menuAhref" style="font-style:normal;">Woma</a></li><li><a href="https://www.bluebrixx.com/de/brand/xingbao" alt="Xingbao" class="menuAhref" style="font-style:normal;">Xingbao</a></li><li><a href="https://www.bluebrixx.com/de/brand/yz-diamond" alt="YZ-Diamond" class="menuAhref" style="font-style:normal;">YZ-Diamond</a></li><li><a href="https://www.bluebrixx.com/de/brand/zhe+gao" alt="ZHE GAO" class="menuAhref" style="font-style:normal;">ZHE GAO</a></li>    </ul>
+
+        <p style="text-align:left; vertical-align:middle; padding:10px; font-weight:bold; font-size: 17px; margin-bottom:0px;cursor:pointer;color:RGB(25,49,83);" id="zuPp"><span class="material-icons sub" style="font-size: 20px;" id="add_zuPp">add</span><span id="remove_zuPp" class="material-icons sub"  style="font-size: 20px;">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/accessories" class="menuAhref">Zubehör</a></p>
+        <ul id="zuPul" >
+            <li class="hideMenuClick" data-nr="6" ><span class="material-icons sub" id="add_6">add</span><span class="material-icons sub" id="remove_6">remove</span>&nbsp;&nbsp;Bausteine</li>
+            <li style="height: 100%; overflow: auto;" class="not_class">
+                <ul style="text-align:left; list-style-type: none;" id="nr_6">
+                    <li><a href="https://www.bluebrixx.com/de/part-packs?&available_only=1" class="menuAhref" alt="Part-Packs">Part-Packs</a></li><li><a href="https://www.bluebrixx.com/de/chrome-packs" class="menuAhref" alt="Chrome-Packs" >Chrome-Packs</a></li><li><a href="https://www.bluebrixx.com/de/brix-elemente-sets" class="menuAhref" alt="Brix Elemente-Sets">Brix Elemente-Sets</a></li>
+                </ul>
+            </li>
+
+            <li ><span class="material-icons sub hideMenuClick" id="add_7" data-nr="7">add</span><span data-nr="7" class="material-icons sub hideMenuClick" id="remove_7">remove</span>&nbsp;&nbsp;<a href="https://www.bluebrixx.com/de/sets/baseplates" class="menuAhref" alt="Grundplatten">Grundplatten</a></li>
+            <li style="height: 100%; overflow: auto;" id="nr_7" class="not_class">
+                <ul style="text-align:left; list-style-type: none;">
+
+                </ul>
+            </li>
+
+
+            <li><a href="https://www.bluebrixx.com/de/sets/motor" class="menuAhref" alt="Motoren">Motoren & Elektronik</a></li>
+            <li><a href="https://www.bluebrixx.com/de/sets/accessories" class="menuAhref" alt="Sonstiges">Sonstiges</a></li>
+        </ul>
+        <p id="sonderPreisCss" style="text-align:left; vertical-align:middle; padding:10px; font-weight:bold; font-size: 17px; margin-bottom:0px;cursor:pointer; text-decoration:none;"><a href="https://www.bluebrixx.com/de/sale" alt="Sale" class="sale_li" style="text-decoration:none;color:RGB(255, 0, 0);">Sonderpreise</a></p>
+
+
+
+    </nav>
+</div>
+
+
+<!-- ####### DIALOGS AND POPUPS ####### -->
+<div id="divCart" style="display: none;" >
+    <div id="divCartContent" class="row" ></div>
+    <div id="divCartClose" class="row" >
+        <div class="six columns" style="text-align: center;" >
+            <a href="https://www.bluebrixx.com/cart" class="btn" >Warenkorb anzeigen</a>
+        </div>
+        <div class="six columns" style="text-align: center;" >
+            <a href="#" id="closeCart" class="btn" data-reload="0" rel="nofollow" >Weiter einkaufen</a>
+        </div>
+    </div>
+</div>
+
+<div id="popup" style="display:none; ">
+    <div id="popupContainer" >
+        <span id="popupClose" >&times;</span>
+        <div id="popupContent" ></div>
+    </div>
+</div>
+
+<div id="bigPicOverlay" style="display:none;" >
+    <div id="bigPicLoader" style="display:none;" ><div class="smallloader_icon" >&nbsp;</div></div>
+    <div id="bigPicContainer" ></div>
+</div>
+
+<!-- ##### DIALOGS AND POPUPS END ##### -->
+
+<div id="topbarproxy" ></div>
+
+<div id="pagewrapper" >
+    <header id="header" >
+        <div id="langheader" style="z-index:1000">
+            <div class="hd_konto_icon_new">
+                <a href="https://www.bluebrixx.com/de/newsletter" title="Newsletter" rel="nofollow" style="float:left;display:block;margin-right:5px;">
+                    <img src="/img/new_design/icons/newsletter.png" border="0" style="height:100%;" title="Newsletter" >
+                </a>
+
+                <a href="https://www.bluebrixx.com/de/newsletter" title="Newsletter" rel="nofollow" style="float:left;display:block;margin-top:3px; color:RGB(25,49,83);" >
+                    Newsletter    		</a>
+            </div>
+            <div class="hd_konto_icon_new">
+                <a href="https://www.bluebrixx.com/de/login?referrer=https%3A%2F%2Fwww.bluebrixx.com%2Fde%2Fneuheiten%3Flimit%3D32" title="Anmelden / Registrierung" rel="nofollow" style="float:left;display:block;margin-right:5px;">
+                    <img src="/img/new_design/icons/login.png" border="0" style="height:100%;" title="Anmelden / Registrierung" >
+                </a>
+
+                <a href="https://www.bluebrixx.com/de/login?referrer=https%3A%2F%2Fwww.bluebrixx.com%2Fde%2Fneuheiten%3Flimit%3D32" title="Anmelden / Registrierung" rel="nofollow" style="float:left;display:block;margin-top:3px; color:RGB(25,49,83);" >
+                    Anmelden    		</a>
+            </div>
+
+            <div id="langen"><a href="https://www.bluebrixx.com/en/neuheiten?limit=32" style="z-index:1000"><img src="/img/new_design/en_inaktiv.png" ></a></div>
+
+            <div id="langde"><img src="/img/new_design/de_aktiv.png" ></div>
+        </div>
+
+        <div id="mainheader" >
+            <div id="header_logo">
+                <a href="https://www.bluebrixx.com" id="logomitsteinen" ><img src="/img/new_design/logo_mitSteinen-min.png" ></a>
+            </div>
+
+            <div id="header_quicksearch">
+                <form id="qsform" action="https://www.bluebrixx.com/de/items" >
+                    <input id="qsinput" data-min-length="2" onfocus="if(this.value=='Suchbegriff'){this.value='';}" onblur="if(this.value==''){this.value='Suchbegriff';}" value="Suchbegriff" data-placeholder="Suchbegriff" name="q" type="text">
+                    <input type="submit" id="qsbutton" value="" >
+                </form>
+            </div>
+
+            <div id="header_info" >
+
+                <!-- Login/Registrierung/Kundenkonto -->
+                <div class="hd_konto">
+                    <div class="hd_konto_icon menuTabClass" style="cursor:pointer;">
+                        <img src="/img/new_design/icons/sortiment_hb.png" border="0" style="height:100%;" title="Sortiment" >
+                    </div>
+                    <span class="menuTabClass" title="Sortiment" rel="nofollow" style="cursor:pointer; font-style:italic;" >
+	    				Sortiment	    			</span>
+                    <div id="hd_login_menu" >
+
+
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="hd_newsletter">
+                    <div class="hd_newsletter_icon">
+                        <a href="https://www.bluebrixx.com/de/profisuche" title="Profisuche" >
+                            <img src="/img/new_design/icons/profisuche.png" border="0" style="height:100%;" title="Profisuche" >
+                        </a>
+                    </div>
+                    <a href="https://www.bluebrixx.com/de/profisuche" title="Profisuche" >
+                        Profisuche	    			</a>
+                </div>
+
+                <!-- Cart -->
+                <div class="hd_cart">
+                    <div class="hd_cart_icon" >
+                        <div class="hd_cart_icon_container" >
+                            <a href="https://www.bluebrixx.com/de/cart" title="Warenkorb"  rel="nofollow" >
+                                <img src="/img/new_design/icons/cart.png" border="0" style="height:100%;" title="Warenkorb"/>
+                            </a>
+                            <div class="hd_cart_count" >0</div>
+                        </div>
+                    </div>
+                    <a href="https://www.bluebrixx.com/de/cart" title="Warenkorb" rel="nofollow" >
+                        Warenkorb	    			</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="subheader2" >
+            <div id="header_info_mobil">
+
+                <!-- Login/Registrierung/Kundenkonto -->
+                <div class="hd_konto">
+                    <div class="hd_konto_icon menuTabClass" style="cursor:pointer;">
+                        <img src="/img/new_design/icons/sortiment_hb.png" border="0" style="height:100%;" title="Sortiment" >
+                    </div>
+                    <span class="menuTabClass" title="Sortiment" rel="nofollow" style="cursor:pointer; font-style:italic;" >
+	    				Sortiment	    			</span>
+
+                </div>
+
+                <!-- Newsletter -->
+                <div class="hd_newsletter">
+                    <div class="hd_newsletter_icon">
+                        <a href="https://www.bluebrixx.com/de/profisuche" title="Profisuche" >
+                            <img src="/img/new_design/icons/profisuche.png" border="0" style="height:100%;" title="Profisuche" >
+                        </a>
+                    </div>
+                    <a href="https://www.bluebrixx.com/de/profisuche" title="Profisuche" >
+                        Profisuche	    			</a>
+                </div>
+
+                <!-- Cart -->
+                <div class="hd_cart">
+                    <div class="hd_cart_icon" >
+                        <div class="hd_cart_icon_container" >
+                            <a href="https://www.bluebrixx.com/de/cart" title="Warenkorb"  rel="nofollow" >
+                                <img src="/img/new_design/icons/cart.png" border="0" style="height:100%;" title="Warenkorb"/>
+                            </a>
+                            <div class="hd_cart_count" >0</div>
+                        </div>
+                    </div>
+                    <a href="https://www.bluebrixx.com/de/cart" title="Warenkorb"  rel="nofollow" >
+                        Warenkorb	    			</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="subheader" >
+            <div id="header_quicksearch_mobile">
+                <form id="qsform_mobile" action="https://www.bluebrixx.com/de/items" >
+                    <input id="qsinput_mobile" data-min-length="2" onfocus="if(this.value=='Suchbegriff'){this.value='';}" onblur="if(this.value==''){this.value='Suchbegriff';}" value="Suchbegriff" data-placeholder="Suchbegriff" name="q" type="text">
+                    <input type="submit" id="qsbutton_mobile" value="" >
+                </form>
+            </div>
+        </div>
+
+
+    </header>
+
+
+    <div id="main">
+        <script>
+            $(document).ready(function() {
+                $('.productVideoImgFake').mouseover(function() {
+                    $('#vaimg_'+$(this).data("vcode")).show();
+                    $('#vimg_'+$(this).data("vcode")).hide();
+                });
+
+                $('.productVideoImgFake').mouseout(function() {
+                    $('#vaimg_'+$(this).data("vcode")).hide();
+                    $('#vimg_'+$(this).data("vcode")).show();
+                });
+
+                $(document).delegate('.productVideoImgFake, .videoLinkFake', 'click', function() {
+                    $('#overlay').show();
+
+                    var data = {
+                        videoid: $(this).data('videoid'),
+                        flag2: "video",
+
+                    };
+
+                    $.post("https://www.bluebrixx.com/videolist.php", data, function(response){
+
+                        $('#videoframe').html(response);
+                    });
+                });
+
+                $('#overlay').click(function(){
+                    $('#overlay').hide();
+                    $('.video_overlay').each(function(){
+                        $(this).hide();
+                        $(this).attr("src","");
+                    });
+                });
+            });
+        </script>
+        <style>
+
+            #details_container {
+                margin-left: 10%;
+                margin-bottom: 2rem;
+                margin-top:35px;
+            }
+
+            #details_container .currencies {
+                line-height: 0.9rem;
+                font-size: 0.8rem;
+                color:RGB(87,87,86);
+            }
+
+            #details_container .prices {
+                color: #000;
+                font-family: "Arial Black", Arial;
+                font-weight: 900;
+                font-size: 1.6rem;
+                line-height: 1.7rem;
+                margin-top: 1rem;
+                margin-bottom: 0.2rem;
+            }
+
+            #details_container .prices.prices_before_whs {
+                color: #666;
+            }
+
+        </style>
+
+        <div style="margin:5px;margin-top:-10px; margin-bottom: 10px;">
+            <a href="https://www.bluebrixx.com/de/" alt="Startseite">Startseite</a> &raquo; Neuheiten</div>
+
+
+
+
+        <div class="bbSubSort">
+
+            <div class="bbSubSortDiv">
+                Marke		<a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=brand&order=asc"><span class="material-icons sub sortBtn" >keyboard_arrow_up</span></a>
+                <a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=brand&order=desc"><span class="material-icons sub sortBtn" >keyboard_arrow_down</span></a>
+            </div>
+            <div class="bbSubSortDiv">
+                Preise		<a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=price&order=asc"><span class="material-icons sub sortBtn" >keyboard_arrow_up</span></a>
+                <a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=price&order=desc"><span class="material-icons sub sortBtn" >keyboard_arrow_down</span></a>
+            </div>
+            <div class="bbSubSortDiv">
+                Teile		<a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=parts&order=asc"><span class="material-icons sub sortBtn" >keyboard_arrow_up</span></a>
+                <a href="https://www.bluebrixx.com/de/neuheiten?limit=32&filter=parts&order=desc"><span class="material-icons sub sortBtn" >keyboard_arrow_down</span></a>
+            </div>
+            <div class="bbSubSortDiv">
+                <a href="https://www.bluebrixx.com/de/neuheiten?available_only=1">Nur verfügbare anzeigen<span class="material-icons sub sortBtn" >keyboard_arrow_right</span></a>
+            </div>
+        </div>
+
+
+        <div id="shopsearchItems" class="categoriesDiv" style="text-align:left;">
+
+
+            <div class="category" style="text-align:left;">
+                <div class="catImg catImg158">
+
+                    <div class="label_parts" >1544 PCS</div>
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105543/Quantum-Colony-Container-Shuttle-6quot%3BVulture6quot%3B-BlueBrixx-Special" class="" data-itemno="105543" style="text-align:center;" >
+                        <!-- ITEM IMAGE -->
+                        <img src="https://www.bluebrixx.com/img/items/105/105543/300/105543_1.jpg" alt="Quantum Colony: Container Shuttle &quot;Vulture&quot;" class="" style="">
+                    </a>
+
+
+                    <!-- Add to cart - Button -->
+                    <div class="addItemCart cartIconBtn" data-itemno="105543" ><i class="material-icons md-24">add_shopping_cart</i></div>
+
+
+                </div>
+
+                <div class="catText" >
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105543/Quantum-Colony-Container-Shuttle-6quot%3BVulture6quot%3B-BlueBrixx-Special" class="" data-itemno="105543" >
+                        <div class="searchItemData" >
+                            <div class="searchItemTitle" >
+                                Star Trek Spaceship			</div>
+
+
+                            <div class="searchItemInfo" >
+
+                                <!-- ITEM DESCRIPTION -->
+                                <div class="searchItemDesc" >
+                                    BlueBrixx-Special				</div>
+
+                                <!--  ITEM PRICE -->
+                                <div class="searchItemPrices" >
+                                    <span class="regPrice">59,95 EUR*</span>				</div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="catButtons" >
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="category" style="text-align:left;">
+                <div class="catImg catImg158">
+
+                    <div class="label_parts" >1219 PCS</div>
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105598/Fliegendes-Polizeiauto-BlueBrixx-Special" class="" data-itemno="105598" style="text-align:center;" >
+                        <!-- ITEM IMAGE -->
+                        <img src="https://www.bluebrixx.com/img/items/105/105598/300/105598_1.jpg" alt="Fliegendes Polizeiauto" class="" style="">
+                    </a>
+
+
+                    <!-- Add to cart - Button -->
+                    <div class="addItemCart cartIconBtn" data-itemno="105598" ><i class="material-icons md-24">add_shopping_cart</i></div>
+
+
+                </div>
+
+                <div class="catText" >
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105598/Fliegendes-Polizeiauto-BlueBrixx-Special" class="" data-itemno="105598" >
+                        <div class="searchItemData" >
+                            <div class="searchItemTitle" >
+                                Fliegendes Polizeiauto			</div>
+
+
+                            <div class="searchItemInfo" >
+
+                                <!-- ITEM DESCRIPTION -->
+                                <div class="searchItemDesc" >
+                                    BlueBrixx-Special				</div>
+
+                                <!--  ITEM PRICE -->
+                                <div class="searchItemPrices" >
+                                    <span class="regPrice">47,95 EUR*</span>				</div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="catButtons" >
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="category" style="text-align:left;">
+                <div class="catImg catImg158">
+
+                    <div class="label_parts" >558 PCS</div>
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105639/Logistik-LKW-mit-Dolly-und-Anhaenger-BlueBrixx-Special" class="" data-itemno="105639" style="text-align:center;" >
+                        <!-- ITEM IMAGE -->
+                        <img src="https://www.bluebrixx.com/img/items/105/105639/300/105639_1.jpg" alt="Logistik LKW mit Dolly und Anhänger" class="" style="">
+                    </a>
+
+
+                    <!-- Add to cart - Button -->
+                    <div class="addItemCart cartIconBtn" data-itemno="105639" ><i class="material-icons md-24">add_shopping_cart</i></div>
+
+
+                </div>
+
+                <div class="catText" >
+                    <a href="https://www.bluebrixx.com/de/neuheiten/105639/Logistik-LKW-mit-Dolly-und-Anhaenger-BlueBrixx-Special" class="" data-itemno="105639" >
+                        <div class="searchItemData" >
+                            <div class="searchItemTitle" >
+                                Logistik LKW mit Dolly und Anhänger			</div>
+
+
+                            <div class="searchItemInfo" >
+
+                                <!-- ITEM DESCRIPTION -->
+                                <div class="searchItemDesc" >
+                                    BlueBrixx-Special				</div>
+
+                                <!--  ITEM PRICE -->
+                                <div class="searchItemPrices" >
+                                    <span class="regPrice">29,95 EUR*</span>				</div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="catButtons" >
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="category" style="text-align:left;">
+                <div class="catImg catImg158">
+
+                    <div class="label_parts" >477 PCS</div>
+                    <a href="https://www.bluebrixx.com/de/military-models/106737/COB-5737-P-47-Thunderbolt-Cobi" class="" data-itemno="106737" style="text-align:center;" >
+                        <!-- ITEM IMAGE -->
+                        <img src="https://www.bluebrixx.com/img/items/106/106737/300/106737_2.jpg" alt="P-47 Thunderbolt" class="" style="">
+                    </a>
+
+
+                    <!-- Add to cart - Button -->
+                    <div class="addItemCart cartIconBtn" data-itemno="106737" ><i class="material-icons md-24">add_shopping_cart</i></div>
+
+
+                </div>
+
+                <div class="catText" >
+                    <a href="https://www.bluebrixx.com/de/military-models/106737/COB-5737-P-47-Thunderbolt-Cobi" class="" data-itemno="106737" >
+                        <div class="searchItemData" >
+                            <div class="searchItemTitle" >
+                                P-47 Thunderbolt			</div>
+
+
+                            <div class="searchItemInfo" >
+
+                                <!-- ITEM DESCRIPTION -->
+                                <div class="searchItemDesc" >
+                                    Cobi				</div>
+
+                                <!--  ITEM PRICE -->
+                                <div class="searchItemPrices" >
+                                    <span class="regPrice">44,95 EUR*</span>				</div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="catButtons" >
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="category" style="text-align:left;">
+                <div class="catImg catImg158">
+
+                    <div class="label_parts" >2933 PCS</div>
+                    <a href="https://www.bluebrixx.com/de/military-models/106742/COB-4840-Schlachtschiff-Bismarck-Executive-Edition-Cobi" class="" data-itemno="106742" style="text-align:center;" >
+                        <!-- ITEM IMAGE -->
+                        <img src="https://www.bluebrixx.com/img/items/106/106742/300/106742_3.jpg" alt="Schlachtschiff Bismarck Executive Edition" class="" style="">
+                    </a>
+
+
+                    <!-- Add to cart - Button -->
+                    <div class="addItemCart cartIconBtn" data-itemno="106742" ><i class="material-icons md-24">add_shopping_cart</i></div>
+
+
+                </div>
+
+                <div class="catText" >
+                    <a href="https://www.bluebrixx.com/de/military-models/106742/COB-4840-Schlachtschiff-Bismarck-Executive-Edition-Cobi" class="" data-itemno="106742" >
+                        <div class="searchItemData" >
+                            <div class="searchItemTitle" >
+                                Schlachtschiff Bismarck Executive Edition			</div>
+
+
+                            <div class="searchItemInfo" >
+
+                                <!-- ITEM DESCRIPTION -->
+                                <div class="searchItemDesc" >
+                                    Cobi				</div>
+
+                                <!--  ITEM PRICE -->
+                                <div class="searchItemPrices" >
+                                    <span class="regPrice">195,95 EUR*</span>				</div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="catButtons" >
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" >
+            <div class="twelve columns" style="text-align:center">
+                Treffer<br>
+                <span id="trefferListe">1 - 5 von 5</span>
+            </div>
+        </div>
+
+
+        <div style="clear:both;"></div>
+        <a href="" class="zurueck">&#171; Zurück</a>
+        <span style="font-weight:1; font-size: 10pt;color: RGB(87,87,86);font-family:Arial;">* inkl. MwSt, <a href="'.$shop->getBaseUrl().'/policy_delivery">zzgl. Versandkosten</a></span><br>
+        <div style="clear:both;"></div>
+        <hr></hr>
+        <h2 class="videos"><a href="https://www.bluebrixx.com/de/videos" alt="Videos">Videos</a></h2>
+        <div id="productVideos">
+            <div class="productVideoDiv">
+                <div class="productVideoImgFake" style="background-image: url('https://img.youtube.com/vi/Y6blgr5_lJ8/0.jpg'); " data-videoid = "464">
+                    <img id="vaimg_Y6blgr5_lJ8" src="/img/new_design/video_aktiv.png" style="margin: 15%;display:none;">
+                    <img id="vimg_Y6blgr5_lJ8" src="/img/new_design/video_inaktiv.png" style="margin: 15%;">
+                </div>
+
+
+                <div class="productVideoText videoLinkFake" style="cursor: pointer;" data-vcode="Y6blgr5_lJ8" data-videoid = "464">
+                    Pommes-Frites-Laden von LOZ aus Mini Blocks @ BlueBrixx
+                </div>
+            </div>
+            <div class="productVideoDiv">
+                <div class="productVideoImgFake" style="background-image: url('https://img.youtube.com/vi/HL9MLqDBA9k/0.jpg'); " data-videoid = "1299">
+                    <img id="vaimg_HL9MLqDBA9k" src="/img/new_design/video_aktiv.png" style="margin: 15%;display:none;">
+                    <img id="vimg_HL9MLqDBA9k" src="/img/new_design/video_inaktiv.png" style="margin: 15%;">
+                </div>
+
+
+                <div class="productVideoText videoLinkFake" style="cursor: pointer;" data-vcode="HL9MLqDBA9k" data-videoid = "1299">
+                    Mittelalter Szenerie von BlueBrixx
+                </div>
+            </div>
+            <div class="productVideoDiv">
+                <div class="productVideoImgFake" style="background-image: url('https://img.youtube.com/vi/aPElAMQNEOg/0.jpg'); " data-videoid = "398">
+                    <img id="vaimg_aPElAMQNEOg" src="/img/new_design/video_aktiv.png" style="margin: 15%;display:none;">
+                    <img id="vimg_aPElAMQNEOg" src="/img/new_design/video_inaktiv.png" style="margin: 15%;">
+                </div>
+
+
+                <div class="productVideoText videoLinkFake" style="cursor: pointer;" data-vcode="aPElAMQNEOg" data-videoid = "398">
+                    Australian Shepherd, Hund aus Diamond Blocks - BlueBrixx Pro @ BlueBrixx
+                </div>
+            </div>
+            <div class="productVideoDiv">
+                <div class="productVideoImgFake" style="background-image: url('https://img.youtube.com/vi/VGqupDT5EPM/0.jpg'); " data-videoid = "922">
+                    <img id="vaimg_VGqupDT5EPM" src="/img/new_design/video_aktiv.png" style="margin: 15%;display:none;">
+                    <img id="vimg_VGqupDT5EPM" src="/img/new_design/video_inaktiv.png" style="margin: 15%;">
+                </div>
+
+
+                <div class="productVideoText videoLinkFake" style="cursor: pointer;" data-vcode="VGqupDT5EPM" data-videoid = "922">
+                    1963 US Sportwagen 2in1 Set von BlueBrixx
+                </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('.productVideoImgFake').mouseover(function() {
+                        $('#vaimg_'+$(this).data("vcode")).show();
+                        $('#vimg_'+$(this).data("vcode")).hide();
+                    });
+
+                    $('.productVideoImgFake').mouseout(function() {
+                        $('#vaimg_'+$(this).data("vcode")).hide();
+                        $('#vimg_'+$(this).data("vcode")).show();
+                    });
+
+                    $(document).delegate('.productVideoImgFake, .videoLinkFake', 'click', function() {
+                        $('#overlay').show();
+
+                        var data = {
+                            videoid: $(this).data('videoid'),
+                            flag2: "video",
+                        };
+
+                        $.post("https://www.bluebrixx.com/videolist.php", data, function(response){
+
+                            $('#videoframe').html(response);
+                        });
+                    });
+
+                    $('#overlay').click(function(){
+                        $('#overlay').hide();
+                        $('.video_overlay').each(function(){
+                            $(this).hide();
+                            $(this).attr("src","");
+                        });
+                    });
+                });
+            </script>
+        </div>
+
+        <div name="videoframe" id="videoframe"></div>
+
+        <h2 class="blog">Der Noppenstein Blog</h2>
+
+        <div id="noppBlog">
+            <div id="BlogDiv">
+                <div class="blogPost1">
+                    <a href="https://www.bluebrixx.com/de/blog?bid=2195#beitrag2195" alt="Blog" style="font-style:normal;">
+                        <div class="blogPost2" style="display: flex; flex-direction: row; flex-wrap:wrap">
+                            <div class="blogImg" style="">
+                                <img src="https://www.bluebrixx.com/data/files/blog/blogpost_2195/300/2195_1.jpg?rand=880380237" alt="Store-News 2023" style="max-width:100%; max-height:100%;" >
+                            </div>
+                            <div class="blogText" style="min-width:150px;">
+                                <h3>Store-News 2023</h3>
+                                <p style="margin-bottom: 0px; font-size:7pt;">Veröffentlicht am 10.02.2023</p>
+
+                                <p><span style="color: #3366ff;"><strong>Afobs aufgepasst!</strong></span></p>
+                                <p><strong><span style="color: #000080;">Was gibt es Neues aus unseren <a title="Stores" href="https://www.bluebrixx.com/de/stores" target="_blank" rel="noopener">Stores</a>?</span></strong></p>
+                                <p>In <strong>Berlin</strong> wird flei&szlig;ig <strong>umgezogen</strong>, unsere Stores im <a title="Boulevard" href="https://www.boulevardberlin.de/" target="_blank" rel="noopener"><strong>Boulevard</strong></a> und <a title="Alexa" href="https://www.alexacentre.com/" target="_blank" rel="noopener"><strong>Alexa</strong></a> bekommen einen <strong>neuen Platz</strong>!</p>
+                                <p><img style="width: 700px; height: auto;auto;" title="DSC_0070.JPG" src="https://www.bluebrixx.com/de/data/files/blog/blobid1676016432301.jpg" alt="Berlin Boulevard" /></p>
+                                <p>&nbsp;</p>
+                                <p>Au&szlig;erdem steht mal wieder eine <strong>Neuer&ouml;ffnung</strong> vor der T&uuml;r...</p>
+                                <p><strong>Wolfsburg</strong> bekommt seinen ersten BlueBrixx Store und das wird nat&uuml;rlich kein normaler, sondern ein <strong>Megastore</strong>!</p>
+                                <p>Die <strong>Er&ouml;ffnung</strong> findet vorraussichtlich am <strong>04.03.2023</strong> statt. Wir freuen uns auf Euch!</p>
+                                <p>&nbsp;</p>
+                                <p>Aber das ist nat&uuml;rlich nicht alles...<strong>eine Storeer&ouml;ffnung ist keine Storeer&ouml;ffnung</strong>...</p>
+                                <p>Also machen wir doch gleich <strong>noch einen Store</strong> auf und zwar in...</p>
+                                <p>...<strong>Koblenz</strong>!!!</p>
+                                <p>&nbsp;</p>
+                                <p>Aktuell l&auml;uft unsere <strong>Inventur</strong> in den Stores auf Hochtouren, bleibt auf dem <strong>Laufenden in unseren Social Media Kan&auml;len</strong> um die genauen <strong>&Ouml;ffnungszeiten</strong> nicht zu verpassen.</p>
+                                <p>--&gt; <a title="Facebook" href="https://www.facebook.com/bluebrixx/" target="_blank" rel="noopener"><span style="color: #000080;"><strong>Facebook</strong></span></a></p>
+                                <p>--&gt; <a title="Instagram" href="https://www.instagram.com/bluebrixx_group/" target="_blank" rel="noopener"><span style="color: #000080;"><strong>Instagram</strong></span></a></p>
+                                <p>&nbsp;</p>
+                                <p>Das war's erstmal mit <strong>Neuigkeiten</strong> aus unseren Stores, bald gibt es mit Sicherheit noch mehr...</p>
+                                <p>Bis dahin, <strong>Noppensteine kann man nie genug haben!</strong></p>
+                                <p><strong>Viel Spa&szlig; beim Bauen und St&ouml;bern!</strong></p>    		</div>
+                        </div>
+                    </a>
+                    <div style="float:right;margin-top:-10px;background-color: #ffffff;"><a href="https://www.bluebrixx.com/de/blog?bid=2195#beitrag2195" alt="Blog" class="klein" style="background-color: #ffffff;position:relative; z-index: 10000;">mehr &raquo;</a></div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            $( document ).ready(function() {
+
+                var start 	= parseInt(0);
+                var limit 	= parseInt(32);
+                var max 	= parseInt(5);
+                var url 	= '/de/neuheiten?';
+
+                $('body').on('change', '.filter_bricklink_color', function(){
+                    window.location.href=$(this).val();
+                });
+
+                /* wishlist buttons */
+                $( 'body' ).on('click', '.change_wishlist', function(){
+                    var data = {
+                        user_id:	'',
+                        action:		$(this).data('action'),
+                        itemno:		$(this).data('itemno')
+                    };
+
+                    $.post('https://www.bluebrixx.com/de/includes/change_wishlist.php', data, function(ret){
+                        console.log(ret);
+
+                        if(ret.status == 1)
+                        {
+                            var button_content = $( '#wishlist_button_container_'+data.itemno ).html();
+
+                            switch(data.action)
+                            {
+                                case 'del':
+                                    button_content = '<div class="change_wishlist btn" data-action="add" data-itemno="' + data.itemno +'"  >Zum Merkzettel hinzufügen</div>';
+                                    break;
+
+                                case 'add':
+                                    button_content = '<div class="change_wishlist btn" data-action="del" data-itemno="' + data.itemno +'"  >Vom Merkzettel löschen</div>';
+                                    break;
+                            }
+
+                            $( '#wishlist_button_container_' + data.itemno ).html(button_content);
+                        }
+                        else
+                        {
+                            if(ret.err_msg)
+                            {
+                                alert(ret.err_msg);
+                            }
+                        }
+                    }, "json");
+
+                    return false;
+                });
+
+
+                $('.loadMore, .loadAll').click(function(){
+
+                    if ($(this).hasClass('loadAll'))
+                    {
+                        zulimit = max - (start+limit);
+                    }else{
+                        zulimit = limit;
+                    }
+
+                    $( '.loadMore' ).hide(function() {
+
+                        $( '#smallloader' ).show(function() {
+
+                            console.log(url);
+
+                            $.get(url, { 'start': (start+limit), 'limit': zulimit }, function (data) {
+
+                                data = $(data).find('#shopsearchItems').html();
+
+                                console.log(data);
+
+                                start = start + limit;
+
+                                console.log('start+limit: '+(start + zulimit));
+                                console.log('max: '+max);
+
+                                if( (start + zulimit) < max)
+                                {
+                                    $( '.loadMore' ).show(function() {
+                                        $( '#smallloader' ).hide();
+                                    });
+                                }
+                                else
+                                {
+                                    $( '.loadMore, #smallloader' ).hide();
+                                    $( '.loadAll, #smallloader' ).hide();
+                                }
+
+                                var query_delim = '?';
+                                if(url.indexOf(query_delim) != -1)
+                                {
+                                    query_delim = '&';
+                                }
+
+                                var history = url + query_delim + 'limit=' + (start+zulimit);
+
+                                window.history.pushState('shopsesarch', 'Shopsearch', history);
+
+                                if((start + zulimit) > max){
+                                    var endlimit = max;
+                                }else{
+                                    endlimit = (start + zulimit);
+                                }
+
+                                if(endlimit < 1){
+                                    var startlimit = 0;
+                                }else{
+                                    var startlimit = 1;
+                                }
+
+                                $('#trefferListe').html(startlimit+' - '+endlimit+' von '+max);
+
+                                $( '#shopsearchItems' ).append(data);
+
+                            });
+
+                        });
+                    });
+                });
+
+            });
+
+        </script>	</div>
+
+    <footer id="footer">
+        <div id="footer_info">
+        </div>
+
+        <div class="footer_grid">
+            <div style="min-width:260px;">
+                <h2>Unsere Zahlungsweisen</h2>
+                <img src="/img/external/visa.gif" alt="VISA Logo">
+                <img src="/img/external/mastercard.gif" alt="MasterCard Logo">
+                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_secured_by_pp_2line.png" style="height:40px;width:auto;" alt="PayPal Logo" border="0">
+                <img src="/img/external/ssl.gif" alt="SSL Logo">
+                <img src="/img/external/SofortUeberweisung.png" alt="SofortÜberweisung">
+            </div>
+
+            <div >
+                <img src="/img/dhl-icon-design100x100.png" alt="DHL Logo">
+            </div>
+
+
+            <div>
+                <a href="https://www.bluebrixx.com/de/stores" ><img src="/img/stores.jpg" alt="Outlet Store infos"  style="max-height: 120px;"></a>
+            </div>
+
+            <div style="min-width:200px;">
+                <h2>Hinter den Kulissen<br>Unboxing - News</h2>
+                <a href="https://de-de.facebook.com/bluebrixx/" target="_blank" style="margin-left:5px;margin-right:5px;"><img src="/img/fb-icon.png" alt="FACEBOOK" style="max-width:50px;"></a>
+                <a href="https://www.youtube.com/channel/UCCJChBZqxOaAQcgUbaXA8zw/videos?shelf_id=0&view=0&sort=dd" target="_blank" style="margin-left:5px;margin-right:5px;"><img src="/img/yt-icon.png" alt="YOUTUBE" style="max-width:50px;"></a>
+                <a href="https://www.instagram.com/bluebrixx_group/?hl=de" target="_blank" style="margin-left:5px;margin-right:5px;"><img src="/img/instagram-icon.png" alt="INSTAGRAM" border="0" style="max-width:50px;"></a>
+            </div>
+        </div>
+
+        <hr></hr>
+
+        <div class="footer_textgrid">
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/contact"><img src="/img/new_design/30x30/kontakt.png" border="0" > Kontakt</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/gift_vouchers" ><img src="/img/new_design/30x30/voucher.png" border="0" > Gutschein erwerben</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/policy_withdrawal" ><img src="/img/new_design/30x30/widerruf.png" border="0" > Recht auf Widerruf</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/legal_notice" ><img src="/img/new_design/30x30/impressum.png" border="0" > Impressum</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/blog" ><img src="/img/new_design/30x30/blog.png" border="0" > Blog</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/policy_delivery" ><img src="/img/new_design/30x30/Lieferung.png" border="0" > Lieferzeiten und -kosten</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/policy_terms" ><img src="/img/new_design/30x30/AGB.png" border="0" > Unsere AGB</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/policy_privacy" ><img src="/img/new_design/30x30/datenschutz.png" border="0" > Datenschutzerklärung</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/policy_payment" ><img src="/img/new_design/30x30/Zahlungsweisen.png" border="0" > Zahlungsweise</a>
+            </div>
+
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/newsletter" ><img src="/img/new_design/30x30/newletter_positiv.png" border="0" > Newsletter</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/inst" ><img src="/img/new_design/30x30/pdf_download_bb.png" border="0" > Bauanleitungen</a>
+            </div>
+
+            <div class="footerLink">
+                <a href="https://www.bluebrixx.com/de/wholesale?referrer=https%3A%2F%2Fwww.bluebrixx.com%2Fde%2Fneuheiten%3Flimit%3D32" ><img src="/img/new_design/30x30/store_bb.png" border="0" > Großhandel</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<div id="hd_login_menu_mobil" >
+
+
+</div>
+<div class="menufooter">
+    <div class="hd_konto_icon" style="margin:1px;float:left;">
+        <a href="https://www.bluebrixx.com/de/login?referrer=https%3A%2F%2Fwww.bluebrixx.com%2Fde%2Fneuheiten%3Flimit%3D32" title="Anmelden / Registrierung" rel="nofollow" style="float:left;display:block;margin-right:5px;">
+            <img src="/img/new_design/icons/login.png" border="0" style="height:100%;" title="Anmelden / Registrierung" >
+        </a>
+
+        <a href="https://www.bluebrixx.com/de/login?referrer=https%3A%2F%2Fwww.bluebrixx.com%2Fde%2Fneuheiten%3Flimit%3D32" title="Anmelden / Registrierung" rel="nofollow" style="float:left;display:block;margin-right:5px;margin-top:7px;">
+            Anmelden		</a>
+
+    </div>
+    <div class="hd_konto_icon" style="margin:1px;float:left;">
+        <a href="https://www.bluebrixx.com/de/newsletter" title="Newsletter" rel="nofollow" style="float:left;display:block;margin-right:5px;">
+            <img src="/img/new_design/icons/newsletter.png" border="0" style="height:100%;" title="Newsletter" >
+        </a>
+
+        <a href="https://www.bluebrixx.com/de/newsletter" title="Newsletter" rel="nofollow" style="float:left;display:block;margin-right:5px;margin-top:7px;">
+            Newsletter		</a>
+
+    </div>
+</div>
+
+
+</body>
+</html>

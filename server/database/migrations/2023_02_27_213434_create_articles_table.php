@@ -1,5 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
+use App\Models\Provider;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,13 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table): void {
             $table->uuid('id')->primary();
             $table->string('title')->nullable(false);
-            $table->string('subTitle')->nullable(false);
-            $table->enum('newsType', ['ASMODEE'])->nullable(false);
+            $table->string('subTitle')->nullable();
+            $table->text('description')->nullable();
+            $table->enum('provider', Provider::getAllValues())->nullable(false);
             $table->string('link')->nullable(false);
-            $table->string('date')->nullable(false);
+            $table->date('date')->nullable(false);
             $table->string('image')->nullable(false);
             $table->timestamps();
         });

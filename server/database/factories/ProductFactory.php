@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->company,
+            'name' => $this->faker->company,
             'link' => $this->faker->url,
             'image' => $this->faker->imageUrl,
+            'article_id' => Article::factory()->create()->id,
         ];
     }
 }

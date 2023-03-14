@@ -1,54 +1,52 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
 use App\Models\Keyword;
+use App\Repository\KeywordRepository;
 use App\Services\Crawler\KeywordFilter;
 use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
 
-class KeywordFilterTest extends TestCase
+class KeywordFilterTest extends MockeryTestCase
 {
-    use MockeryPHPUnitIntegration;
+    private (KeywordRepository&LegacyMockInterface)|(KeywordRepository&MockInterface) $keywordRepository;
 
-    private Keyword $keyword;
-
-    public function test_matchKeyword_when_keyword_is_in_given_string_then_return_true(): void
+    public function testMatchKeyword_when_keyword_is_in_given_string_then_return_true(): void
     {
         $keyword = new Keyword();
         $keyword->word = 'Test';
 
-        $this->keyword->shouldReceive('all')->andReturn(collect([$keyword]));
+        $this->keywordRepository->allows()->findAll()->andReturn(collect([$keyword]));
 
         $result = $this->service()->matchKeyword('my Test string');
 
-        $this->assertTrue($result);
+        static::assertTrue($result);
     }
 
-    public function test_matchKeyword_when_keyword_is_not_in_given_string_than_return_false(): void
+    public function testMatchKeyword_when_keyword_is_not_in_given_string_than_return_false(): void
     {
         $keyword = new Keyword();
         $keyword->word = 'not found';
 
-        $this->keyword->shouldReceive('all')->andReturn(collect([$keyword]));
+        $this->keywordRepository->allows()->findAll()->andReturn(collect([$keyword]));
 
         $result = $this->service()->matchKeyword('my Test string');
 
-        $this->assertFalse($result);
+        static::assertFalse($result);
     }
 
-    protected function setUp(): void
+    protected function mockeryTestSetUp(): void
     {
-        parent::setUp();
-
-        $this->keyword = Mockery::mock(Keyword::class);
+        $this->keywordRepository = Mockery::mock(KeywordRepository::class);
     }
 
     private function service(): KeywordFilter
     {
         return new KeywordFilter(
-            $this->keyword,
+            $this->keywordRepository,
         );
     }
 }
