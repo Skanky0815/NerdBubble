@@ -5,7 +5,7 @@ Dieser Abschnitt führt in die Aufgabenstellung ein und skizziert die Ziele, die
 
 ### Was ist NerdBubble?
 
-- NerdBubble ist eine WebApp in der Content von diversen Webseiten aggregiert, als News-Stream angezeigt wird.
+- NerdBubble ist eine WebApp, in der Content von diversen Webseiten aggregiert und als News-Stream angezeigt wird.
 
 ### Wesentliche Features
 

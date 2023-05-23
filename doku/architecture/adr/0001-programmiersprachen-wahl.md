@@ -1,8 +1,8 @@
-# Die Backend-Services werden in der Programmiersprache Kotlin implementiert
+# Die Backend-Services werden in der Programmiersprache PHP implementiert
 
 * Status: accepted
 * Deciders: Rico Schulz
-* Date: 2022-11-16
+* Date: 2023-05-20
 
 ## Context and Problem Statement
 
@@ -17,15 +17,15 @@ Die Services für das Projekt NerdBubble soll implementiert werden, dazu stehen 
 
 ## Decision Outcome
 
-Gewählte Option: "Kotlin", weil Kotlin stark typisiert ist und überflüssigen Boilerplate Code vermeidet.
+Gewählte Option: "PHP", weil PHP einfach und kostengünstig zu hosten ist.
 
 ### Positive Consequences
 
-* Team ist motiviert mit einer neuen Sprache zu arbeiten
+* Es lässt sich leicht ein hoster für das Projekt finden.
 
 ### Negative Consequences
 
-* Team muss sich erst in alle Konzepte von Kotlin einarbeiten
+* Leider kein Kotlin.
 
 ## Pros and Cons of the Options
 

@@ -8,8 +8,7 @@
 - die News vom aktuellen Tag soll besonders hervorgehoben werden
 
 # NewsStream neu laden
-> Als User will ich die List mit den News aktualisieren wenn weiter nach oben scrolle.
+> Als User will ich die List mit den News aktualisieren, wenn ich den Reload-Button drücke.
 
 **Akzeptanzkriterien:**
-- wenn man in der App die NewsStream oben scrollt wenn man ganz oben ist, sollen neue News nachgeladen werden
-- es sollen wirklich nur die neusten, noch nicht angezeigten News nachgeladen werden
+- wenn man in der App die NewsStream den Reload-Button drücke, sollen neue News nachgeladen werden

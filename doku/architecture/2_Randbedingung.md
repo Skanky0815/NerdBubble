@@ -5,12 +5,11 @@ Abschnitt stellt sie dar und erklärt auch – wo nötig – deren Motivation.
 
 ## 2.1 Technisch
 
-| Randbedingung                   | Erläuterungen, Hintergrund                                                           |
-|---------------------------------|--------------------------------------------------------------------------------------|
-| Backend implementierung in PHP  | Die Backend Services werden in PHP implementiert                                     |
-| App implementierung mit Nuxt.js | Die App soll als WeApp mit dem Nuxt.js Framework implementiert werden                |
-| Testabdeckung                   | Die Testabdeckung mit UnitTest soll mindestens 90% sein                              |
-| Layout in Material Design       | Das Layout soll im ersten Wurf auf dem des Material Design basieren                  |
+| Randbedingung                  | Erläuterungen, Hintergrund                                          |
+|--------------------------------|---------------------------------------------------------------------|
+| Backend implementierung in PHP | Die Backend Services werden in PHP implementiert                    |
+| App implementierung mit react  | Die App soll als WeApp mit dem react Framework implementiert werden |
+| Testabdeckung                  | Die Testabdeckung mit UnitTest soll mindestens 90% sein             |
 
 ## 2.2 Organisatorisch
 
@@ -23,8 +22,8 @@ Abschnitt stellt sie dar und erklärt auch – wo nötig – deren Motivation.
 
 ## 2.3 Konventionen
 
-| Randbedingung      | Erläuterungen, Hintergrund                                                                                                   |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------|
-| Sprache            | Der Code wird komplett in Englisch verfasst und die Dokumentation in Deutsch.                                                |
-| Coding conventions | Der Code wird nach den Code conventions von [kotlinlang.org](https://kotlinlang.org/docs/coding-conventions.html) formatiert |
-| DDD                | Das Projekt wird frei nach DDD umgesetzt.                                                                                    |
+| Randbedingung      | Erläuterungen, Hintergrund                                                              |
+|--------------------|-----------------------------------------------------------------------------------------|
+| Sprache            | Der Code wird komplett in Englisch verfasst und die Dokumentation in Deutsch.           |
+| Coding conventions | Der Code wird nach den PSR12 von [php-fig.org](https://www.php-fig.org/psr/) formatiert |
+| DDD                | Das Projekt wird frei nach DDD umgesetzt.                                               |

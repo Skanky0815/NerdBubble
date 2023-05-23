@@ -12,4 +12,4 @@ Benutzten die App um sich über Neuigkeiten aus ihrem Interessensgebieten zu inf
 
 ### Neuigkeiten Anbieter
 
-Interessens Webseiten sind Webpages .
+Interessens Webseiten sind Webpages.
