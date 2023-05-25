@@ -6,13 +6,15 @@ use App\Models\Provider;
 use Database\Seeders\KeywordSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CrawlerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_when_no_errors_then_the_articles_with_products_will_be_stored_in_the_database(): void
+    #[Test]
+    public function when_no_errors_then_the_articles_with_products_will_be_stored_in_the_database(): void
     {
         $this->seed(KeywordSeeder::class);
 

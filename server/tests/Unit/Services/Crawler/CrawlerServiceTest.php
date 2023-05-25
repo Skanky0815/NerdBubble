@@ -41,7 +41,7 @@ class CrawlerServiceTest extends MockeryTestCase
 
     public function testProvider_should_return_the_provider(): void
     {
-        static::assertSame($this->provider::class, $this->service()->provider());
+        self::assertSame($this->provider::class, $this->service()->provider());
     }
 
     protected function mockeryTestSetUp(): void

@@ -16,7 +16,7 @@ class ArticleTest extends TestCase
         $article = $this->createHtmlArticle('<div><h1><small>test</small></h1></div>');
 
         $element = $article->findElement('//div/h1/small');
-        static::assertSame('test', $element->textContent);
+        self::assertSame('test', $element->textContent);
     }
 
     public function testText_when_element_found_then_return_the_text_content(): void
@@ -25,7 +25,7 @@ class ArticleTest extends TestCase
 
         $text = $article->text('//div/h1/small');
 
-        static::assertSame('Foo Bar', $text);
+        self::assertSame('Foo Bar', $text);
     }
 
     public function testLink_when_element_found_then_the_href_will_returned(): void
@@ -34,7 +34,7 @@ class ArticleTest extends TestCase
 
         $link = $article->link('//div/a');
 
-        static::assertSame('link.to', $link);
+        self::assertSame('link.to', $link);
     }
 
     public function testLink_when_element_not_found_then_a_exception_will_be_thrown(): void
@@ -52,7 +52,7 @@ class ArticleTest extends TestCase
 
         $link = $article->image('//div/img');
 
-        static::assertSame('image.jpg', $link);
+        self::assertSame('image.jpg', $link);
     }
 
     public function testImage_when_element_not_found_then_a_exception_will_be_thrown(): void
@@ -76,7 +76,7 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/time', DATE_RSS, attribute: 'datetime');
 
-        static::assertSame($date->timestamp, $dateResult->timestamp);
+        self::assertSame($date->timestamp, $dateResult->timestamp);
     }
 
     public function testDate_when_date_is_found_in_textContent_then_a_carbone_instance_will_be_returned(): void
@@ -85,7 +85,7 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/span', 'd M Y', 'de_DE');
 
-        static::assertSame('2010-01-01', $dateResult->format('Y-m-d'));
+        self::assertSame('2010-01-01', $dateResult->format('Y-m-d'));
     }
 
     public function testDate_when_date_is_not_found_in_textContent_then_a_carbone_instance_with_current_time_will_be_returned(): void
@@ -97,6 +97,6 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/span', 'd M Y');
 
-        static::assertSame($date->timestamp, $dateResult->timestamp);
+        self::assertSame($date->timestamp, $dateResult->timestamp);
     }
 }

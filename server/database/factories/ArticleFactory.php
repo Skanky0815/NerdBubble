@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Provider;
+use Carbon\CarbonImmutable;
+use Domains\Article\ValueObjects\Headline;
+use Domains\Article\ValueObjects\PublishDate;
+use Domains\Article\ValueObjects\SubHeadline;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,12 +22,12 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->name . ' - ' . $this->faker->company,
-            'subTitle' => $this->faker->boolean ? $this->faker->text : null,
+            'title' => new Headline($this->faker->name . ' - ' . $this->faker->company),
+            'subTitle' => $this->faker->boolean ? new SubHeadline($this->faker->text) : null,
             'provider' => $this->faker->randomElement(Provider::getAllValues()),
             'description' => $this->faker->boolean ? $this->faker->text : null,
             'link' => $this->faker->url,
-            'date' => $this->faker->date,
+            'date' => new PublishDate(CarbonImmutable::parse($this->faker->date)),
             'image' => $this->faker->imageUrl,
         ];
     }

@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: NerdBubble API
+  description: API for the NerdBubble backend.
+  version: 1.0.0
+servers:
+  - url: http://0.0.0.0/api
+    description: Local Docker System for Testing
+paths:
+  /articles:
+    get:
+      summary: Returns a list of Articles.
+      description: Return a list of all Articles of the last 14 Days.
+      responses:
+        '200':
+          description: A JSON array of Article data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ArticleList'
+components:
+  schemas:
+    UUID:
+      type: string
+      description: The unique entity identifier as UUIDv4
+      example: 58a33e2e-543c-4dca-9c07-fd710e0238a2
+    Product:
+      type: object
+      required:
+        - id
+        - name
+        - link
+        - image
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          description: The name of the product.
+        link:
+          type: string
+          description: Link to the original product page.
+        image:
+          type: string
+          description: The URL of a product image.
+    Article:
+      type: object
+      required:
+        - id
+        - title
+        - subTitle
+        - link
+        - image
+        - date
+        - provider
+        - description
+        - products
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        title:
+          type: string
+          description: Title of the article.
+        subTitle:
+          type: string
+          description: Optional sub title of the article.
+        link:
+          type: string
+          description: Link to the original article.
+        image:
+          type: string
+          description: The URL of a teaser image.
+        date:
+          type: string
+          description: Article publishing date.
+        provider:
+          type: string
+        description:
+          type: string
+          description: A short preview text of the article.
+        products:
+          type: array
+          description: Products of the article.
+          items:
+            $ref: '#/components/schemas/Product'
+    ArticleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Article'

@@ -71,20 +71,20 @@ class UlissesSpieleProviderTest extends TestCase
 
         $allLoadedArticle = $this->service()->loadArticles();
 
-        static::assertCount(1, $allLoadedArticle);
+        self::assertCount(1, $allLoadedArticle);
 
         $article = $allLoadedArticle->get(0);
-        static::assertInstanceOf(UlissesSpieleArticle::class, $article);
+        self::assertInstanceOf(UlissesSpieleArticle::class, $article);
 
         $articleData = $article->toArray();
-        static::assertNotEmpty($articleData);
-        static::assertSame(Provider::ULISSES_SPIELE, $articleData['provider']);
-        static::assertSame('some title', $articleData['title']);
-        static::assertSame('https://ulisses-spiele.de/wp-content/uploads/2022/11/01_Aventuria_Allgemein-256x143.webp', $articleData['image']);
-        static::assertSame('https://ulisses-spiele.de/aventuria-stories-legends/', $articleData['link']);
-        static::assertNull($articleData['subTitle']);
-        static::assertSame('some text', $articleData['description']);
-        static::assertInstanceOf(Carbon::class, $articleData['date']);
+        self::assertNotEmpty($articleData);
+        self::assertSame(Provider::ULISSES_SPIELE, $articleData['provider']);
+        self::assertSame('some title', $articleData['title']);
+        self::assertSame('https://ulisses-spiele.de/wp-content/uploads/2022/11/01_Aventuria_Allgemein-256x143.webp', $articleData['image']);
+        self::assertSame('https://ulisses-spiele.de/aventuria-stories-legends/', $articleData['link']);
+        self::assertNull($articleData['subTitle']);
+        self::assertSame('some text', $articleData['description']);
+        self::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
     private function service(): UlissesSpieleProvider

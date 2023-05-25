@@ -195,6 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\ArticleProvider::class,
         App\Providers\CrawlerServiceProvider::class,
     ],
 

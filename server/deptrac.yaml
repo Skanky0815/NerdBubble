@@ -1,0 +1,37 @@
+deptrac:
+  paths:
+    - ./src
+  exclude_files:
+    - '#.*tests.*#'
+  layers:
+    - name: App
+      collectors:
+        - type: classLike
+          value: .*App.*
+    - name: ArticleDomain
+      collectors:
+        - type: directory
+          value: src/Domains/Article/.*
+    - name: Framework
+      collectors:
+        - type: classNameRegex
+          value: '#.*Illuminate.*#'
+        - type: classNameRegex
+          value: '#.*Laravel.*#'
+        - type: classNameRegex
+          value: '#.*Symfony.*#'
+        - type: classNameRegex
+          value: '#.*JetBrains.*#'
+    - name: Util
+      collectors:
+        - type: classNameRegex
+          value: '#.*Carbon.*#'
+  ruleset:
+    ArticleDomain:
+      - Util
+    App:
+      - ArticleDomain
+      - Framework
+      - Util
+    Framework: ~
+    Util: ~

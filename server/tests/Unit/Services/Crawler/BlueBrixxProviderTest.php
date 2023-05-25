@@ -13,6 +13,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
@@ -34,7 +35,8 @@ class BlueBrixxProviderTest extends TestCase
         $this->keywordFilter = Mockery::mock(KeywordFilter::class);
     }
 
-    public function testGetArticles_when_products_are_new_then_a_new_article_with_products_will_created(): void
+    #[Test]
+    public function getArticles_when_products_are_new_then_a_new_article_with_products_will_created(): void
     {
         Http::fake([
             'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
@@ -68,29 +70,30 @@ class BlueBrixxProviderTest extends TestCase
             </div>
             HTML);
         $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
-        $this->productRepository->allows()->withNameNotExists('ProductName')->andReturn(true);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(true);
         $this->keywordFilter->allows()->matchKeyword('ProductName')->andReturn(true);
 
         $allArticles = $this->service()->loadArticles();
 
-        static::assertCount(1, $allArticles);
+        self::assertCount(1, $allArticles);
 
         $article = $allArticles->get(0);
-        static::assertInstanceOf(BlueBrixxArticle::class, $article);
+        self::assertInstanceOf(BlueBrixxArticle::class, $article);
 
-        static::assertCount(1, $article->products());
+        self::assertCount(1, $article->products());
         $product = $article->products()->get(0);
-        static::assertInstanceOf(BlueBrixxProduct::class, $product);
+        self::assertInstanceOf(BlueBrixxProduct::class, $product);
         $productData = $product->toArray();
 
-        static::assertNotEmpty($productData);
+        self::assertNotEmpty($productData);
 
-        static::assertSame('ProductName', $productData['name']);
-        static::assertSame('bluebrixx-article.link', $productData['link']);
-        static::assertSame('bluebrixx-product-bild.jpg', $productData['image']);
+        self::assertSame('ProductName', $productData['name']);
+        self::assertSame('bluebrixx-article.link', $productData['link']);
+        self::assertSame('bluebrixx-product-bild.jpg', $productData['image']);
     }
 
-    public function testGetArticles_when_products_is_konwn_then_a_new_article_with_products_will_created(): void
+    #[Test]
+    public function getArticles_when_products_is_konwn_then_a_new_article_with_products_will_created(): void
     {
         Http::fake([
             'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
@@ -126,11 +129,11 @@ class BlueBrixxProviderTest extends TestCase
             </div>
             HTML);
         $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
-        $this->productRepository->allows()->withNameNotExists('ProductName')->andReturn(false);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(false);
 
         $allArticles = $this->service()->loadArticles();
 
-        static::assertEmpty($allArticles);
+        self::assertEmpty($allArticles);
     }
 
     private function service(): BlueBrixxProvider

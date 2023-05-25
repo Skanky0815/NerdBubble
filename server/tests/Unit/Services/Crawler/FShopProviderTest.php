@@ -13,6 +13,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
@@ -34,7 +35,8 @@ class FShopProviderTest extends TestCase
         $this->productRepository = Mockery::mock(ProductRepository::class);
     }
 
-    public function testGetArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    #[Test]
+    public function getArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
     {
         Http::fake([
             'https://www.f-shop.de/neuheiten/' => Http::response('content'),
@@ -102,26 +104,26 @@ class FShopProviderTest extends TestCase
             HTML);
 
         $this->htmlParser->allows()->parse('content', './/div[contains(@class, "product--box")]')->andReturn(collect([$articleDto]));
-        $this->productRepository->allows()->withNameNotExists('Aventuria')->andReturn(true);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(true);
         $this->keywordFilter->allows()->matchKeyword('Aventuria')->andReturn(true);
 
         $allArticles = $this->service()->loadArticles();
 
-        static::assertCount(1, $allArticles);
+        self::assertCount(1, $allArticles);
 
         $article = $allArticles->get(0);
-        static::assertInstanceOf(FShopArticle::class, $article);
+        self::assertInstanceOf(FShopArticle::class, $article);
 
-        static::assertCount(1, $article->products());
+        self::assertCount(1, $article->products());
         $product = $article->products()->get(0);
-        static::assertInstanceOf(FShopProduct::class, $product);
+        self::assertInstanceOf(FShopProduct::class, $product);
         $productData = $product->toArray();
 
-        static::assertNotEmpty($productData);
+        self::assertNotEmpty($productData);
 
-        static::assertSame('Aventuria', $productData['name']);
-        static::assertSame('aventuria-article.link', $productData['link']);
-        static::assertSame('aventuria-product-bild.jpg', $productData['image']);
+        self::assertSame('Aventuria', $productData['name']);
+        self::assertSame('aventuria-article.link', $productData['link']);
+        self::assertSame('aventuria-product-bild.jpg', $productData['image']);
     }
 
     private function service(): FShopProvider

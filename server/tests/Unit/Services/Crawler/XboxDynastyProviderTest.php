@@ -63,20 +63,20 @@ class XboxDynastyProviderTest extends TestCase
 
         $allLoadedArticle = $this->service()->loadArticles();
 
-        static::assertCount(1, $allLoadedArticle);
+        self::assertCount(1, $allLoadedArticle);
 
         $article = $allLoadedArticle->get(0);
-        static::assertInstanceOf(XboxDynastyArticle::class, $article);
+        self::assertInstanceOf(XboxDynastyArticle::class, $article);
 
         $articleData = $article->toArray();
-        static::assertNotEmpty($articleData);
-        static::assertSame(Provider::XBOX_DYNASTY, $articleData['provider']);
-        static::assertSame('some title', $articleData['title']);
-        static::assertSame('xbox.link.jpg', $articleData['image']);
-        static::assertSame('xbox.link', $articleData['link']);
-        static::assertSame('some description', $articleData['subTitle']);
-        static::assertNull($articleData['description']);
-        static::assertInstanceOf(Carbon::class, $articleData['date']);
+        self::assertNotEmpty($articleData);
+        self::assertSame(Provider::XBOX_DYNASTY, $articleData['provider']);
+        self::assertSame('some title', $articleData['title']);
+        self::assertSame('xbox.link.jpg', $articleData['image']);
+        self::assertSame('xbox.link', $articleData['link']);
+        self::assertSame('some description', $articleData['subTitle']);
+        self::assertNull($articleData['description']);
+        self::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
     private function service(): XboxDynastyProvider

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\Crawler\Html;
 
+use App\Services\Crawler\Html\HtmlContent;
 use App\Services\Crawler\Html\HtmlParser;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,8 @@ class HtmlParserTest extends TestCase
             '//selction'
         );
 
-        static::assertCount(2, $allArticles);
+        self::assertCount(2, $allArticles);
+        self::assertInstanceOf(HtmlContent::class, $allArticles->get(0));
     }
 
     private function service(): HtmlParser

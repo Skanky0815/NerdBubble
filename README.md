@@ -27,4 +27,14 @@ Die GameApp ist eine APP über der sich der Benutzer Neuigkeiten von diversen We
 11. [Risiken und technische Schulden](doku/architecture/11_Risiken_technische_Schulden.md)
 12. [Glossar](doku/architecture/12_Glossar.md)
 
+## Dokumentation
+
+- [API Dokumentation](server/storage/openapi.yml)
+
 ## DevSetup
+
+### Frontend 
+
+```bash
+npm run start
+```
