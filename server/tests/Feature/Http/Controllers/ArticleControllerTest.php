@@ -22,7 +22,7 @@ class ArticleControllerTest extends TestCase
 
         $response = $this->getJson('/api/articles');
 
-        $this->asserApiSpec($response, '/api/articles');
+        $this->asserApiSpec($response,'GET', '/api/articles');
         $response->assertSuccessful();
         $response->assertJsonCount(10, 'data');
     }
