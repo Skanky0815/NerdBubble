@@ -24,7 +24,7 @@ class KeywordFilter
     private function allKeywords(): Collection
     {
         if (null === $this->allKeywords) {
-            $mapToString = fn (Keyword $keyword): string => $keyword->word;
+            $mapToString = fn (Keyword $keyword): string => (string) $keyword->word;
 
             $this->allKeywords = $this->keywordRepository->findAll()->map($mapToString);
         }

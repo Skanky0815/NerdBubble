@@ -1,3 +1,7 @@
+article {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
 article.xbox_dynasty {
     @apply md:h-48 h-auto bg-right-top bg-auto pt-16 bg-contain;
 }

@@ -12,12 +12,12 @@ type ArticleProps = {
 
 export default function Article({ article }: ArticleProps) {
     const products = article.products.map((product: ProductType) => <Product key={product.id} product={product} />);
-    
+
     const timeBgColor = datesAreOnSameDay(new Date(article.date), new Date()) ? 'bg-red-700/[.8]' : 'bg-black/[.5]';
 
     return (
         <article className={`drop-shadow-lg rounded-xl bg-no-repeat bg-top bg-contain bg-white pt-28 pb-1 mb-5 block relative overflow-hidden ${article.provider}`} style={{backgroundImage: `url(${article.image})`}}>
-            <a href={article.link} target="_blank" className="w-full aspect-auto">
+            <a href={article.link} target="_blank" rel="noreferrer" className="w-full aspect-auto">
                 <time className={`text-white text-xs absolute ${timeBgColor} px-1 py-0.5 mb-5 top-0 left-0`} dateTime={article.date}>
                     {article.date}
                 </time>

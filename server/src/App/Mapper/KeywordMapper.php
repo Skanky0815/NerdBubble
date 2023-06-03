@@ -12,8 +12,8 @@ class KeywordMapper
     public static function fromEloquent(KeywordEloquentModel $keywordEloquent): Keyword
     {
         return new Keyword(
-            word: new Word($keywordEloquent->word),
-            id: new Id($keywordEloquent->id),
+            word: $keywordEloquent->word,
+            id: $keywordEloquent->id,
         );
     }
 }

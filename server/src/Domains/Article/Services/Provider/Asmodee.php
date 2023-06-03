@@ -57,12 +57,11 @@ class Asmodee implements Crawler
 
     private function mapArrayToArticle(array $allArticleData): array
     {
-        $mapping = function (array $articleData): Article {
+        $emptyProductContentFilter = static fn (array $productContent): bool => false === empty($productContent['product']);
+
+        $mapping = function (array $articleData) use ($emptyProductContentFilter): Article {
             $contents = $articleData['content'] ?? [];
-            $contentWithProduct = array_filter(
-                $contents,
-                fn (array $productContent): bool => false === empty($productContent['product'])
-            );
+            $contentWithProduct = array_filter($contents, $emptyProductContentFilter);
             $allProducts = $this->createProductFromArray($contentWithProduct);
             $filteredProducts = $this->productExistFilter->removeKnownProducts($allProducts);
 
