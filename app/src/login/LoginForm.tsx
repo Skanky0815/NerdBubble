@@ -18,14 +18,14 @@ export default function LoginForm({login}: LoginFormProps) {
 
         apiClient.get('/sanctum/csrf-cookie').then(() => {
             apiClient.post('/login', {
-                    email: emailRef.current?.value,
-                    password: passwordRef.current?.value
-                }).then(res => {
-                    if (res.status === 200) {
-                        login();
-                    }
-                }).catch(res => {
-                    setAlert(res.response.data.message || res.message, AlertType.WARNING);
+                email: emailRef.current?.value,
+                password: passwordRef.current?.value
+            }).then(res => {
+                if (200 === res.status) {
+                    login();
+                }
+            }).catch(res => {
+                setAlert(res.response.data.message || res.message, AlertType.ERROR);
             });
         });
     }

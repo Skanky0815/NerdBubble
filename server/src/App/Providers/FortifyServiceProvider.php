@@ -8,6 +8,8 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
@@ -32,14 +34,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
+        $this->configureRateLimiting();
+    }
+
+    protected function configureRateLimiting(): void
+    {
         RateLimiter::for('login', function (Request $request) {
+            $maxAttempts = App::isProduction() ? 5 : 1000;
             $email = (string) $request->email;
 
-            return Limit::perMinute(5)->by($email.$request->ip());
+            return Limit::perMinute($maxAttempts)->by($email.$request->ip());
         });
 
         RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+            $maxAttempts = App::isProduction() ? 5 : 1000;
+
+            return Limit::perMinute($maxAttempts)->by($request->session()->get('login.id'));
         });
     }
 }
