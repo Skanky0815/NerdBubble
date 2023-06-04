@@ -34,7 +34,7 @@ export default function LoginForm({login}: LoginFormProps) {
         <>
             <PageTitle text={`Anmelden`} />
             <div className="bg-white rounded-xl shadow-lg p-8 mb-5">
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-6" onSubmit={handleSubmit} data-testid="loginForm">
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">E-Mail-Adresse:</label>
                         <input
@@ -56,6 +56,7 @@ export default function LoginForm({login}: LoginFormProps) {
                     </div>
                     <button
                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform transition-all duration-300 hover:scale-105"
+                        data-testid="login"
                         type="submit"
                     >
                         Anmelden

@@ -24,7 +24,7 @@ export default function Alert() {
 
         return(
             <>
-                <div className={`fixed top-4 left-0 right-0 z-50 mx-auto w-96 ${typeColor} border px-4 py-3 rounded`}>
+                <div data-testid="alert" className={`fixed top-4 left-0 right-0 z-50 mx-auto w-96 ${typeColor} border px-4 py-3 rounded`}>
                     <span className="block sm:inline">{text}</span>
                 </div>
             </>
