@@ -8,7 +8,7 @@ use Domains\Article\Repositories\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ArticleController extends Controller
+class ArticleListController extends Controller
 {
     public function __construct(
         private readonly Articles $allArticles,

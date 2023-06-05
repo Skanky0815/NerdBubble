@@ -23,7 +23,7 @@ describe('<ArticleList />', () => {
                 })
             )
         }),
-    )
+    );
 
     beforeAll(() => server.listen())
     afterEach(() => server.resetHandlers())

@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-class ArticleControllerTest extends TestCase
+class ArticleListControllerTest extends TestCase
 {
     use RefreshDatabase;
 

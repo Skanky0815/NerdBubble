@@ -21,12 +21,50 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/ArticleList'
+  /me:
+    get:
+      summary: Returns the logged in User.
+      description: Return a user object from the logged in user.
+      responses:
+        '200':
+          description: A JSON with the User data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /products/{productId}/mark:
+    post:
+      parameters:
+        - $ref: '#/components/parameters/UUID'
+      summary: Mark an Product.
+      description: Mark a product for the logged in user.
+      responses:
+        '204':
+          description: no content
 components:
+  parameters:
+    UUID:
+      name: id
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
   schemas:
     UUID:
       type: string
       description: The unique entity identifier as UUIDv4
       example: 58a33e2e-543c-4dca-9c07-fd710e0238a2
+    User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          description: The name of the user.
+        email:
+          type: string
+          description: The email of the user.
     Product:
       type: object
       required:

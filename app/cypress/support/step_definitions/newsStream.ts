@@ -1,16 +1,19 @@
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then, Given, Before } from "@badeball/cypress-cucumber-preprocessor";
+
+Before(() => {
+    cy.intercept('/api/articles').as('getArticles');
+});
 
 Given("I visit {string} page", (route: string) => {
     cy.visit(route)
 })
 
 Then("I see the loading animation", () => {
-    cy.contains('Loading...')
+    cy.get('[data-testid="loading"]').should('exist');
 })
 
 When("the articles are successful loaded", () => {
-    cy.intercept('/api/articles').as('getArticles')
-    cy.wait('@getArticles')
+    cy.wait('@getArticles').its('response.statusCode').should('eq', 200);
 })
 
 Then("I will see all articles", () => {
@@ -28,5 +31,23 @@ When("I click the first article",  () => {
 })
 
 Then("the article page is loaded", () => {
-    cy.get('@articlePageRequest').its('status').should('equals', 200)
+    cy.get('@articlePageRequest').its('response.statusCode').should('eq', 200)
 })
+
+When("I click on the mark button of the product {string}", (productTitle: string) => {
+    cy.intercept('/api/products/*/mark').as('postMarkProduct');
+    cy.contains(productTitle).parent().find('[data-testid="mark-button"]').click();
+});
+
+Then("the success message {string} is shown", (alertMessage: string) => {
+    cy.wait('@postMarkProduct').its('response.statusCode').should('eq', 204);
+    cy.get('[data-testid="alert"]').should('have.text', alertMessage);
+});
+
+When("I click the {string} in the navigation", (navigationItem: string) => {
+    cy.get('[data-testid="bottom-navigation"]').contains(navigationItem).click();
+});
+
+Then("the product {string} is in the list", (productTitle: string) => {
+
+});

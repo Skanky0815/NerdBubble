@@ -24,10 +24,10 @@ Feature: News Stream Page
     When I click the first article
     Then the article page is loaded
 
- Scenario: Add a product to the wishlist
-   Given I visit "/" page
-    And the article page is loaded
-    When I click on the mark button of the product "X-Wing"
+  Scenario: Add a product to the wishlist
+    Given I visit "/" page
+    And the articles are successful loaded
+    When I click on the mark button of the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack"
     Then the success message "Produkt gemerkt" is shown
     When I click the "Merkliste" in the navigation
-    Then the product "X-Wing" is in the list
+    Then the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack" is in the list
