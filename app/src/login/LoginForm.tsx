@@ -34,7 +34,7 @@ export default function LoginForm({login}: LoginFormProps) {
         <>
             <PageTitle text={`Anmelden`} />
             <div className="bg-white rounded-xl shadow-lg p-8 mb-5">
-                <form className="space-y-6" onSubmit={handleSubmit} data-testid="loginForm">
+                <form className="space-y-6" onSubmit={handleSubmit} data-testid="login-form">
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">E-Mail-Adresse:</label>
                         <input
