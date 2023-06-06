@@ -1,4 +1,9 @@
 import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import ViewportPreset = Cypress.ViewportPreset;
+
+Given("I use my {string}", (device: ViewportPreset) => {
+    cy.viewport(device);
+});
 
 Given("I am logged in as {string} and password {string}", (email: string, password: string)  => {
     cy.request('http://localhost/sanctum/csrf-cookie').then((response) => {
@@ -23,4 +28,8 @@ Given("I am logged in as {string} and password {string}", (email: string, passwo
             }
         });
     });
+});
+
+When("I click the {string} in the navigation", (navigationItem: string) => {
+    cy.get('[data-testid="bottom-navigation"]').contains(navigationItem).click();
 });

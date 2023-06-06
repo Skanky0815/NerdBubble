@@ -70,7 +70,7 @@ export default function ArticleList() {
     return (
         <>
             <PageTitle text={`NerdBubble`}>
-                <button className="h-8 w-8" onClick={reload}>
+                <button className="h-8 w-8" data-testid={`reload-button`} onClick={reload}>
                     <ArrowPathIcon className="h-6 w-6 text-gray-500 hover:text-black" />
                 </button>
             </PageTitle>

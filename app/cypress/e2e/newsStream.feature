@@ -3,7 +3,8 @@ Feature: News Stream Page
   The News Stream shows all new Articles
 
   Background:
-    Given I am logged in as "rico-schulz@web.de" and password "password"
+    Given I use my "iphone-x"
+    And I am logged in as "rico-schulz@web.de" and password "password"
 
   Scenario: Load all articles after enter the page
     Given I visit "/" page
@@ -29,5 +30,5 @@ Feature: News Stream Page
     And the articles are successful loaded
     When I click on the mark button of the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack"
     Then the success message "Produkt gemerkt" is shown
-    When I click the "Merkliste" in the navigation
+    When I click the "Gemerkte Produkte" in the navigation
     Then the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack" is in the list

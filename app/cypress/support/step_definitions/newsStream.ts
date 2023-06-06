@@ -5,7 +5,7 @@ Before(() => {
 });
 
 Given("I visit {string} page", (route: string) => {
-    cy.visit(route)
+    cy.visit(route);
 })
 
 Then("I see the loading animation", () => {
@@ -17,21 +17,21 @@ When("the articles are successful loaded", () => {
 })
 
 Then("I will see all articles", () => {
-    cy.get('article').should('exist')
+    cy.get('article').should('exist');
 })
 
 When("I click the reload button", () => {
-    cy.get('button').click()
+    cy.get('[data-testid="reload-button"]').click();
 })
 
 When("I click the first article",  () => {
     cy.get('article > a').first().invoke('attr', 'href').then(url => {
         cy.request(url).as('articlePageRequest')
-    })
+    });
 })
 
 Then("the article page is loaded", () => {
-    cy.get('@articlePageRequest').its('response.statusCode').should('eq', 200)
+    cy.get('@articlePageRequest').its('status').should('eq', 200);
 })
 
 When("I click on the mark button of the product {string}", (productTitle: string) => {
@@ -44,10 +44,6 @@ Then("the success message {string} is shown", (alertMessage: string) => {
     cy.get('[data-testid="alert"]').should('have.text', alertMessage);
 });
 
-When("I click the {string} in the navigation", (navigationItem: string) => {
-    cy.get('[data-testid="bottom-navigation"]').contains(navigationItem).click();
-});
-
 Then("the product {string} is in the list", (productTitle: string) => {
-
+    cy.get('[data-testid="product"]').should('have.text', productTitle);
 });
