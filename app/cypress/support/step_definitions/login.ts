@@ -1,4 +1,4 @@
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 beforeEach(() => {
     cy.intercept('/login').as('login');
@@ -6,11 +6,11 @@ beforeEach(() => {
 });
 
 When("I type {string} in to the mail field", (emailAddress: string) => {
-    cy.get('[data-testid="email"]').type(emailAddress);
+    cy.getByTestId('email').type(emailAddress);
 });
 
 When("I type {string} in to the password field", (password: string) =>  {
-    cy.get('[data-testid="password"]').type(password);
+    cy.getByTestId('password').type(password);
 });
 
 When("I click the {string} button", (buttonLabel: string) => {

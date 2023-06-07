@@ -9,7 +9,7 @@ Given("I visit {string} page", (route: string) => {
 })
 
 Then("I see the loading animation", () => {
-    cy.get('[data-testid="loading"]').should('exist');
+    cy.getByTestId('loading').should('exist');
 })
 
 When("the articles are successful loaded", () => {
@@ -21,12 +21,12 @@ Then("I will see all articles", () => {
 })
 
 When("I click the reload button", () => {
-    cy.get('[data-testid="reload-button"]').click();
+    cy.getByTestId('reload-button').click();
 })
 
 When("I click the first article",  () => {
     cy.get('article > a').first().invoke('attr', 'href').then(url => {
-        cy.request(url).as('articlePageRequest')
+        cy.request(url!).as('articlePageRequest')
     });
 })
 
@@ -41,9 +41,9 @@ When("I click on the mark button of the product {string}", (productTitle: string
 
 Then("the success message {string} is shown", (alertMessage: string) => {
     cy.wait('@postMarkProduct').its('response.statusCode').should('eq', 204);
-    cy.get('[data-testid="alert"]').should('have.text', alertMessage);
+    cy.getByTestId('alert').should('have.text', alertMessage);
 });
 
 Then("the product {string} is in the list", (productTitle: string) => {
-    cy.get('[data-testid="product"]').should('have.text', productTitle);
+    cy.getByTestId('product').should('have.text', productTitle);
 });

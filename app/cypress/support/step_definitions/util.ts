@@ -1,4 +1,4 @@
-import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Given } from "@badeball/cypress-cucumber-preprocessor";
 import ViewportPreset = Cypress.ViewportPreset;
 
 Given("I use my {string}", (device: ViewportPreset) => {
@@ -20,7 +20,7 @@ Given("I am logged in as {string} and password {string}", (email: string, passwo
             },
             headers: {
                 'Accept': 'application/json',
-                'X-XSRF-TOKEN': decodeURIComponent(token.value),
+                'X-XSRF-TOKEN': decodeURIComponent(token!.value),
             }
         }).then((response) => {
             if (200 === response.status) {
@@ -31,5 +31,5 @@ Given("I am logged in as {string} and password {string}", (email: string, passwo
 });
 
 When("I click the {string} in the navigation", (navigationItem: string) => {
-    cy.get('[data-testid="bottom-navigation"]').contains(navigationItem).click();
+    cy.getByTestId('bottom-navigation').contains(navigationItem).click();
 });
