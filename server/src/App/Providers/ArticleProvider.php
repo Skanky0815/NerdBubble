@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -38,6 +40,5 @@ class ArticleProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
     }
 }

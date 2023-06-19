@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -9,7 +11,6 @@ use App\Services\Crawler\FShopProvider;
 use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\KeywordFilter;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
@@ -17,6 +18,11 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FShopProviderTest extends TestCase
 {
     use HtmlArticleFixture;
@@ -30,9 +36,9 @@ class FShopProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->htmlParser = Mockery::mock(HtmlParser::class);
-        $this->keywordFilter = Mockery::mock(KeywordFilter::class);
-        $this->productRepository = Mockery::mock(ProductRepository::class);
+        $this->htmlParser = \Mockery::mock(HtmlParser::class);
+        $this->keywordFilter = \Mockery::mock(KeywordFilter::class);
+        $this->productRepository = \Mockery::mock(ProductRepository::class);
     }
 
     #[Test]
@@ -42,7 +48,7 @@ class FShopProviderTest extends TestCase
             'https://www.f-shop.de/neuheiten/' => Http::response('content'),
         ]);
 
-        $articleDto = $this->createHtmlArticle(<<<HTML
+        $articleDto = $this->createHtmlArticle(<<<'HTML'
             <div class="box--content is--rounded">
                 <div class="product--badges">
                     <div class="product--badge badge--newcomer">NEU</div>
@@ -104,7 +110,7 @@ class FShopProviderTest extends TestCase
             HTML);
 
         $this->htmlParser->allows()->parse('content', './/div[contains(@class, "product--box")]')->andReturn(collect([$articleDto]));
-        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(true);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(\Mockery::any())->andReturn(true);
         $this->keywordFilter->allows()->matchKeyword('Aventuria')->andReturn(true);
 
         $allArticles = $this->service()->loadArticles();

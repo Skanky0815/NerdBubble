@@ -1,12 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
 use Illuminate\Support\Str;
-use Stringable;
 
-readonly class Id implements Stringable
+readonly class Id implements \Stringable
 {
     public function __construct(
         private string $value

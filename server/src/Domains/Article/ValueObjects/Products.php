@@ -1,13 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
-use ArrayIterator;
 use Domains\Article\Entities\Product;
-use InvalidArgumentException;
-use Stringable;
 
-class Products extends ArrayIterator
+class Products extends \ArrayIterator
 {
     public function __construct(
         private readonly array $products
@@ -19,21 +18,21 @@ class Products extends ArrayIterator
 
     public function filterText(): FilterText
     {
-        $filterTexts = array_map(fn (Product $product): Stringable => $product->name, $this->products);
+        $filterTexts = array_map(fn (Product $product): \Stringable => $product->name, $this->products);
 
         return new FilterText(...$filterTexts);
     }
 
     public function isEmpty(): bool
     {
-        return $this->count() === 0;
+        return 0 === $this->count();
     }
 
     private function validate(): void
     {
         foreach ($this->products as $product) {
             if (!$product instanceof Product) {
-                throw new InvalidArgumentException('Invalid Product!');
+                throw new \InvalidArgumentException('Invalid Product!');
             }
         }
     }

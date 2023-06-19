@@ -1,14 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler;
-
 
 use App\Services\Crawler\DTO\Article;
 use App\Services\Crawler\DTO\UlissesSpieleArticle;
 use App\Services\Crawler\Html\HtmlContent;
 use App\Services\Crawler\Html\HtmlParser;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 class UlissesSpieleProvider implements Provider
 {

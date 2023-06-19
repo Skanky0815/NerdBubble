@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler\DTO;
 
@@ -12,10 +14,10 @@ class FShopArticle extends Article
     {
         return new static(
             provider: Provider::F_SHOP,
-            title: "F-Shop",
-            link: "https://www.f-shop.de/neuheiten/",
+            title: 'F-Shop',
+            link: 'https://www.f-shop.de/neuheiten/',
             date: Carbon::now(),
-            image: "https://www.f-shop.de/media/image/37/53/7c/logo_website_F_Shop_2.png",
+            image: 'https://www.f-shop.de/media/image/37/53/7c/logo_website_F_Shop_2.png',
             products: $content['products'],
         );
     }

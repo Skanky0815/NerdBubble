@@ -9,10 +9,10 @@ $finder = PhpCsFixer\Finder::create()->in([
 $config = new PhpCsFixer\Config();
 
 return $config->setRules([
-    '@PSR12:risky' => true,
-    '@Symfony:risky' => true,
-    '@PhpCsFixer:risky' => true,
-    '@PHP80Migration:risky' => true,
+    '@PSR12' => true,
+    '@Symfony' => true,
+    '@PhpCsFixer' => true,
+    '@PHP80Migration' => true,
     '@PHP82Migration' => true,
     'strict_param' => true,
     'declare_strict_types' => true,

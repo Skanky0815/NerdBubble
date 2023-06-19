@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler\DTO;
 
@@ -13,7 +15,7 @@ class UlissesSpieleArticle extends Article
             provider: Provider::ULISSES_SPIELE,
             title: $content->text('.//*[contains(@class, "entry-title")]'),
             link: $content->link(),
-            date: $content->date('.//*[contains(@class, "entry-meta-date")]', "d. M Y", "de"),
+            date: $content->date('.//*[contains(@class, "entry-meta-date")]', 'd. M Y', 'de'),
             image: $content->image(),
             description: $content->text('.//*[contains(@class, "entry-content")]/p'),
         );

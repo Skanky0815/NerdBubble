@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Http\Resources;
 
@@ -19,14 +21,14 @@ class ArticleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => (string)$this->id,
-            'title' => (string)$this->headline,
-            'subTitle' => (string)$this->subHeadline,
-            'link' => (string)$this->link,
-            'image' => (string)$this->image,
-            'date' => (string)$this->publishDate,
+            'id' => (string) $this->id,
+            'title' => (string) $this->headline,
+            'subTitle' => (string) $this->subHeadline,
+            'link' => (string) $this->link,
+            'image' => (string) $this->image,
+            'date' => (string) $this->publishDate,
             'provider' => $this->provider,
-            'description' => (string)$this->description,
+            'description' => (string) $this->description,
             'products' => ProductResource::collection($this->products->getArrayCopy()),
         ];
     }

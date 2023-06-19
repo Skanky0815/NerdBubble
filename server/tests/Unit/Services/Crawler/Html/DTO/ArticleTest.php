@@ -1,17 +1,23 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler\Html\DTO;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 use Tests\HtmlArticleFixture;
-use Throwable;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ArticleTest extends TestCase
 {
     use HtmlArticleFixture;
 
-    public function testFindElement_when_element_is_in_dom_then_it_will_be_returned(): void
+    public function testFindElementWhenElementIsInDomThenItWillBeReturned(): void
     {
         $article = $this->createHtmlArticle('<div><h1><small>test</small></h1></div>');
 
@@ -19,7 +25,7 @@ class ArticleTest extends TestCase
         self::assertSame('test', $element->textContent);
     }
 
-    public function testText_when_element_found_then_return_the_text_content(): void
+    public function testTextWhenElementFoundThenReturnTheTextContent(): void
     {
         $article = $this->createHtmlArticle('<div><h1><small>Foo   Bar </small></h1></div>');
 
@@ -28,7 +34,7 @@ class ArticleTest extends TestCase
         self::assertSame('Foo Bar', $text);
     }
 
-    public function testLink_when_element_found_then_the_href_will_returned(): void
+    public function testLinkWhenElementFoundThenTheHrefWillReturned(): void
     {
         $article = $this->createHtmlArticle('<div><a href="link.to"></a></div>');
 
@@ -37,16 +43,16 @@ class ArticleTest extends TestCase
         self::assertSame('link.to', $link);
     }
 
-    public function testLink_when_element_not_found_then_a_exception_will_be_thrown(): void
+    public function testLinkWhenElementNotFoundThenAExceptionWillBeThrown(): void
     {
         $article = $this->createHtmlArticle('<div></div>');
 
-        $this->expectException(Throwable::class);
+        $this->expectException(\Throwable::class);
 
         $article->link();
     }
 
-    public function testImage_when_element_found_then_the_src_will_returned(): void
+    public function testImageWhenElementFoundThenTheSrcWillReturned(): void
     {
         $article = $this->createHtmlArticle('<div><img src="image.jpg"></img></div>');
 
@@ -55,16 +61,16 @@ class ArticleTest extends TestCase
         self::assertSame('image.jpg', $link);
     }
 
-    public function testImage_when_element_not_found_then_a_exception_will_be_thrown(): void
+    public function testImageWhenElementNotFoundThenAExceptionWillBeThrown(): void
     {
         $article = $this->createHtmlArticle('<div></div>');
 
-        $this->expectException(Throwable::class);
+        $this->expectException(\Throwable::class);
 
         $article->image();
     }
 
-    public function testDate_when_date_is_found_in_attribute_then_a_carbone_instance_will_be_returned(): void
+    public function testDateWhenDateIsFoundInAttributeThenACarboneInstanceWillBeReturned(): void
     {
         $date = Carbon::create(2010);
         $article = $this->createHtmlArticle(
@@ -79,7 +85,7 @@ class ArticleTest extends TestCase
         self::assertSame($date->timestamp, $dateResult->timestamp);
     }
 
-    public function testDate_when_date_is_found_in_textContent_then_a_carbone_instance_will_be_returned(): void
+    public function testDateWhenDateIsFoundInTextContentThenACarboneInstanceWillBeReturned(): void
     {
         $article = $this->createHtmlArticle('<div><span>1 Januar 2010</span></div>');
 
@@ -88,7 +94,7 @@ class ArticleTest extends TestCase
         self::assertSame('2010-01-01', $dateResult->format('Y-m-d'));
     }
 
-    public function testDate_when_date_is_not_found_in_textContent_then_a_carbone_instance_with_current_time_will_be_returned(): void
+    public function testDateWhenDateIsNotFoundInTextContentThenACarboneInstanceWithCurrentTimeWillBeReturned(): void
     {
         $date = Carbon::create(2042);
         Carbon::setTestNow($date);

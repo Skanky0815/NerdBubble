@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Article\Factories;
 
@@ -12,6 +14,11 @@ use Domains\Article\ValueObjects\Provider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ArticleFactoryTest extends TestCase
 {
     #[Test]
@@ -24,7 +31,8 @@ class ArticleFactoryTest extends TestCase
                 publishDate: CarbonImmutable::create(1984),
                 image: 'https://article-image.png',
                 link: 'https://article.link',
-            )->build();
+            )->build()
+        ;
 
         self::assertSame(Provider::ASMODEE, $article->provider);
         self::assertSame('https://article-image.png', (string) $article->image);
@@ -47,7 +55,8 @@ class ArticleFactoryTest extends TestCase
                 image: 'https://article-image.png',
                 link: 'https://article.link',
                 description: 'some text'
-            )->build();
+            )->build()
+        ;
 
         self::assertSame('some text', (string) $article->description);
     }
@@ -63,7 +72,8 @@ class ArticleFactoryTest extends TestCase
                 image: 'https://article-image.png',
                 link: 'https://article.link',
                 subHeadline: 'sub headline'
-            )->build();
+            )->build()
+        ;
 
         self::assertSame('sub headline', (string) $article->subHeadline);
     }
@@ -84,7 +94,8 @@ class ArticleFactoryTest extends TestCase
                     link: new Link('https://some.ling'),
                     image: new ImageUrl('https://image.url')
                 ),
-            ])->build();
+            ])->build()
+        ;
 
         self::assertFalse($article->products->isEmpty());
     }

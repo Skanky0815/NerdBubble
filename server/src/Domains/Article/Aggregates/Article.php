@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\Aggregates;
 
@@ -17,13 +19,13 @@ use Domains\Article\ValueObjects\SubHeadline;
 readonly class Article
 {
     public function __construct(
-        public Provider     $provider,
-        public Headline     $headline,
-        public PublishDate  $publishDate,
-        public ImageUrl     $image,
-        public Link         $link,
-        public Products     $products,
-        public ?Id          $id = null,
+        public Provider $provider,
+        public Headline $headline,
+        public PublishDate $publishDate,
+        public ImageUrl $image,
+        public Link $link,
+        public Products $products,
+        public ?Id $id = null,
         public ?SubHeadline $subHeadline = null,
         public ?Description $description = null,
     ) {

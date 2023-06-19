@@ -1,20 +1,26 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
 use App\Models\Keyword;
 use App\Repository\KeywordRepository;
 use App\Services\Crawler\KeywordFilter;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class KeywordFilterTest extends MockeryTestCase
 {
     private (KeywordRepository&LegacyMockInterface)|(KeywordRepository&MockInterface) $keywordRepository;
 
-    public function testMatchKeyword_when_keyword_is_in_given_string_then_return_true(): void
+    public function testMatchKeywordWhenKeywordIsInGivenStringThenReturnTrue(): void
     {
         $keyword = new Keyword();
         $keyword->word = 'Test';
@@ -26,7 +32,7 @@ class KeywordFilterTest extends MockeryTestCase
         self::assertTrue($result);
     }
 
-    public function testMatchKeyword_when_keyword_is_not_in_given_string_than_return_false(): void
+    public function testMatchKeywordWhenKeywordIsNotInGivenStringThanReturnFalse(): void
     {
         $keyword = new Keyword();
         $keyword->word = 'not found';
@@ -40,7 +46,7 @@ class KeywordFilterTest extends MockeryTestCase
 
     protected function mockeryTestSetUp(): void
     {
-        $this->keywordRepository = Mockery::mock(KeywordRepository::class);
+        $this->keywordRepository = \Mockery::mock(KeywordRepository::class);
     }
 
     private function service(): KeywordFilter

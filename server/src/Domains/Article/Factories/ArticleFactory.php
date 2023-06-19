@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\Factories;
 
@@ -28,7 +30,7 @@ class ArticleFactory
         Provider $provider,
         string $headline,
         CarbonImmutable $publishDate,
-        string  $image,
+        string $image,
         string $link,
         ?string $subHeadline = null,
         ?string $description = null,

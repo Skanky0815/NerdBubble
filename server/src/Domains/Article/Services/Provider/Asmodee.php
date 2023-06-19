@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\Services\Provider;
 
@@ -47,7 +49,7 @@ class Asmodee implements Crawler
         $scripts = $dom->getElementsByTagName('script');
 
         foreach ($scripts as $script) {
-            if (preg_match('/\/_next\/static\/(.*?)\/_buildManifest.js/', $script->getAttribute('src'), $match) === 1) {
+            if (1 === preg_match('/\/_next\/static\/(.*?)\/_buildManifest.js/', $script->getAttribute('src'), $match)) {
                 return sprintf(self::ASMODEE_NEWS_URL, $match[1]);
             }
         }
@@ -80,10 +82,11 @@ class Asmodee implements Crawler
             headline: $articleData['headline'],
             publishDate: CarbonImmutable::parse($articleData['creationDate']),
             image: $articleData['tileImage']['formats']['small']['url'] ?? $articleData['tileImage']['url'],
-            link: "https://www.asmodee.de/$linkCategory/{$articleData['slug']}",
+            link: "https://www.asmodee.de/{$linkCategory}/{$articleData['slug']}",
             subHeadline: $articleData['subHeadline'],
         )->setProducts($products)
-            ->build();
+            ->build()
+        ;
     }
 
     private function createProductFromArray(array $contentDatas): array

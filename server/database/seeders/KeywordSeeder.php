@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -23,7 +25,7 @@ class KeywordSeeder extends Seeder
         ];
 
         foreach ($keywords as $keyword) {
-            Keyword::create(['word' => $keyword,]);
+            Keyword::create(['word' => $keyword]);
         }
     }
 }

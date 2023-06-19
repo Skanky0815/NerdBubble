@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Casts;
 
@@ -8,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class DescriptionCast implements CastsAttributes
 {
-
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
         return null === $value ? null : new Description($value);

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Fixtures\Domains\Article\Entities;
 
@@ -19,6 +21,7 @@ trait ArticleFixture
     private function createArticle(): Article
     {
         $faker = fake();
+
         return new Article(
             provider: Provider::from($faker->randomElement(Provider::getAllValues())),
             headline: new Headline($faker->company),

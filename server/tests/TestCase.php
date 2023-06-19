@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -10,7 +12,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public function asserApiSpec(TestResponse $response, string $method, string $path) : void
+    public function asserApiSpec(TestResponse $response, string $method, string $path): void
     {
         $validator = ValidatorBuilder::fromYaml(storage_path('openapi.yml'))->getValidator();
 

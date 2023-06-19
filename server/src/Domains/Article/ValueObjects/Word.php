@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
-use Stringable;
 
-readonly class Word implements Stringable
+readonly class Word implements \Stringable
 {
     private string $value;
 

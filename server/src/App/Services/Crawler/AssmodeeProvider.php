@@ -1,11 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler;
 
 use App\Services\Crawler\DTO\Article;
 use App\Services\Crawler\DTO\AsmodeeArticle;
-use DOMDocument;
-use DOMElement;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -43,14 +43,14 @@ class AssmodeeProvider implements Provider
     {
         $response = Http::get(self::ASMODEE_HOME_URL);
 
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->loadHTML($response->body());
 
         $scripts = collect($dom->getElementsByTagName('script'));
 
-        /** @var DOMElement $neededScript */
+        /** @var \DOMElement $neededScript */
         $neededScript = $scripts->firstOrFail(
-            fn (DOMElement $element) => Str::contains($element->getAttribute('src'), '_buildManifest.js', true)
+            fn (\DOMElement $element) => Str::contains($element->getAttribute('src'), '_buildManifest.js', true)
         );
 
         return Str::between($neededScript->getAttribute('src'), '/_next/static/', '/_buildManifest.js');

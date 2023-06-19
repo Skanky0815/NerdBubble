@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Article\Factories;
 
@@ -6,6 +8,11 @@ use Domains\Article\Factories\ProductFactory;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ProductFactoryTest extends TestCase
 {
     #[Test]
@@ -16,7 +23,8 @@ class ProductFactoryTest extends TestCase
                 name: 'pTitle',
                 link: 'https://product.link',
                 image: 'https://product-image.png',
-            )->build();
+            )->build()
+        ;
 
         self::assertSame('pTitle', (string) $product->name);
         self::assertSame('https://product.link', (string) $product->link);

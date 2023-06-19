@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -9,13 +11,17 @@ use App\Services\Crawler\KeywordFilter;
 use App\Services\Crawler\UlissesSpieleProvider;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UlissesSpieleProviderTest extends TestCase
 {
     use HtmlArticleFixture;
@@ -28,17 +34,17 @@ class UlissesSpieleProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->htmlParser = Mockery::mock(HtmlParser::class);
-        $this->keywordFilter = Mockery::mock(KeywordFilter::class);
+        $this->htmlParser = \Mockery::mock(HtmlParser::class);
+        $this->keywordFilter = \Mockery::mock(KeywordFilter::class);
     }
 
-    public function testGetArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    public function testGetArticlesWhenArticleDataFoundThenAArticleCollectionWillBeReturned(): void
     {
         Http::fake([
             'https://ulisses-spiele.de/news/' => Http::response('content'),
         ]);
 
-        $articleDto = $this->createHtmlArticle(<<<HTML
+        $articleDto = $this->createHtmlArticle(<<<'HTML'
             <a href="https://ulisses-spiele.de/aventuria-stories-legends/"
                title="Aventuria Stories und Legends" class="entry-thumb">
                 <img loading="lazy"
@@ -65,7 +71,8 @@ class UlissesSpieleProviderTest extends TestCase
 
         $this->htmlParser->allows()
             ->parse('content', '//article[contains(@class, "post")]')
-            ->andReturn(collect([$articleDto]));
+            ->andReturn(collect([$articleDto]))
+        ;
 
         $this->keywordFilter->allows()->matchKeyword('some titlesome text')->andReturn(true);
 

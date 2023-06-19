@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -8,12 +10,16 @@ use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\RailSimProvider;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class RailSimProviderTest extends TestCase
 {
     use HtmlArticleFixture;
@@ -25,16 +31,16 @@ class RailSimProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->htmlParser = Mockery::mock(HtmlParser::class);
+        $this->htmlParser = \Mockery::mock(HtmlParser::class);
     }
 
-    public function testLoadArticles_when_api_is_available_then_store_data_as_article_in_the_database(): void
+    public function testLoadArticlesWhenApiIsAvailableThenStoreDataAsArticleInTheDatabase(): void
     {
         Http::fake([
             'https://rail-sim.de/forum/wcf/train-sim-world-neuigkeiten/' => Http::response('content'),
         ]);
 
-        $articleDto = $this->createHtmlArticle(<<<HTML
+        $articleDto = $this->createHtmlArticle(<<<'HTML'
             <ol>
                 <li class="tabularListRow">
                     <ol>
@@ -58,7 +64,8 @@ class RailSimProviderTest extends TestCase
 
         $this->htmlParser->allows()
             ->parse('content', '//li[@class="tabularListRow"]')
-            ->andReturn(collect([$articleDto]));
+            ->andReturn(collect([$articleDto]))
+        ;
 
         $allLoadedArticle = $this->service()->loadArticles();
 

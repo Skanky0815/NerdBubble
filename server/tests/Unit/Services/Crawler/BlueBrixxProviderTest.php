@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -9,7 +11,6 @@ use App\Services\Crawler\DTO\BlueBrixxProduct;
 use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\KeywordFilter;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
@@ -17,6 +18,11 @@ use PHPUnit\Framework\Attributes\Test;
 use Tests\HtmlArticleFixture;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class BlueBrixxProviderTest extends TestCase
 {
     use HtmlArticleFixture;
@@ -30,9 +36,9 @@ class BlueBrixxProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->htmlParser = Mockery::mock(HtmlParser::class);
-        $this->productRepository = Mockery::mock(ProductRepository::class);
-        $this->keywordFilter = Mockery::mock(KeywordFilter::class);
+        $this->htmlParser = \Mockery::mock(HtmlParser::class);
+        $this->productRepository = \Mockery::mock(ProductRepository::class);
+        $this->keywordFilter = \Mockery::mock(KeywordFilter::class);
     }
 
     #[Test]
@@ -42,7 +48,7 @@ class BlueBrixxProviderTest extends TestCase
             'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
         ]);
 
-        $productDto = $this->createHtmlArticle(<<<HTML
+        $productDto = $this->createHtmlArticle(<<<'HTML'
             <div class="category" style="text-align:left;">
                 <div class="catImg catImg158">
 
@@ -70,7 +76,7 @@ class BlueBrixxProviderTest extends TestCase
             </div>
             HTML);
         $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
-        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(true);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(\Mockery::any())->andReturn(true);
         $this->keywordFilter->allows()->matchKeyword('ProductName')->andReturn(true);
 
         $allArticles = $this->service()->loadArticles();
@@ -99,7 +105,7 @@ class BlueBrixxProviderTest extends TestCase
             'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
         ]);
 
-        $productDto = $this->createHtmlArticle(<<<HTML
+        $productDto = $this->createHtmlArticle(<<<'HTML'
             <div class="category" style="text-align:left;">
                 <div class="catImg catImg158">
 
@@ -129,7 +135,7 @@ class BlueBrixxProviderTest extends TestCase
             </div>
             HTML);
         $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
-        $this->productRepository->allows()->withTheGivenNameDoNotExist(Mockery::any())->andReturn(false);
+        $this->productRepository->allows()->withTheGivenNameDoNotExist(\Mockery::any())->andReturn(false);
 
         $allArticles = $this->service()->loadArticles();
 

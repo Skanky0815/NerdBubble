@@ -1,14 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
 use Illuminate\Support\Str;
-use Stringable;
 
-readonly class ImageUrl implements Stringable
+readonly class ImageUrl implements \Stringable
 {
-
     public function __construct(
         private string $value,
     ) {
@@ -27,7 +27,7 @@ readonly class ImageUrl implements Stringable
         }
 
         if (false === Str::startsWith($this->value, ['http://', 'https://'])) {
-            throw new ValueObjectValidateException("ImageUrl '$this->value' should start with http:// or https://");
+            throw new ValueObjectValidateException("ImageUrl '{$this->value}' should start with http:// or https://");
         }
     }
 }

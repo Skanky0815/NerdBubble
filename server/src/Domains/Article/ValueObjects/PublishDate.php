@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
 use Carbon\CarbonImmutable;
-use Stringable;
 
-readonly class PublishDate implements Stringable
+readonly class PublishDate implements \Stringable
 {
     public function __construct(
         private CarbonImmutable $value,

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler;
 
@@ -9,7 +11,6 @@ use App\Services\Crawler\DTO\Product as ProductDTO;
 
 class CrawlerService implements Crawler
 {
-
     public function __construct(
         private readonly Provider $provider,
         private readonly ArticleRepository $articleRepository,

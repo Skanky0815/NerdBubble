@@ -1,20 +1,19 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler\Html;
 
 use App\Exceptions\MissingImageException;
 use App\Exceptions\MissingLinkException;
-use DOMElement;
-use DOMNode;
-use DOMXPath;
 use Illuminate\Support\Carbon;
 use JetBrains\PhpStorm\Language;
 
 readonly class HtmlContent
 {
     public function __construct(
-        private DOMXPath   $xpath,
-        private DOMElement $rootElement,
+        private \DOMXPath $xpath,
+        private \DOMElement $rootElement,
     ) {
     }
 
@@ -53,7 +52,7 @@ readonly class HtmlContent
         return empty($dateString) ? Carbon::now() : Carbon::createFromLocaleFormat($format, $local, $dateString);
     }
 
-    public function findElement(#[Language('XPath')] string $query): ?DOMNode
+    public function findElement(#[Language('XPath')] string $query): ?\DOMNode
     {
         return $this->xpath->query($query, $this->rootElement)->item(0);
     }

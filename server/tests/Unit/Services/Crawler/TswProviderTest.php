@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -9,12 +11,17 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TswProviderTest extends TestCase
 {
-    public function testGetArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    public function testGetArticlesWhenArticleDataFoundThenAArticleCollectionWillBeReturned(): void
     {
         Http::fake([
-            'https://cms.dovetailgames.com/api/v1/ghost/hub/tsw/web?limit=24&page=1' => Http::response(<<<JSON
+            'https://cms.dovetailgames.com/api/v1/ghost/hub/tsw/web?limit=24&page=1' => Http::response(<<<'JSON'
                   {
                     "posts": {
                       "items": [

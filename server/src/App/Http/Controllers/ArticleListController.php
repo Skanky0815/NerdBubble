@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -19,7 +21,8 @@ class ArticleListController extends Controller
     {
         $allArticles = collect($this->allArticles->fromTheLastTwoWeeks())
             ->shuffle()
-            ->sortByDesc(fn (Article $article): string => (string)$article->publishDate);
+            ->sortByDesc(fn (Article $article): string => (string) $article->publishDate)
+        ;
 
         return ArticleResource::collection($allArticles);
     }

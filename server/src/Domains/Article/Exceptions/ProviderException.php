@@ -1,10 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\Exceptions;
 
-use RuntimeException;
-
-class ProviderException extends RuntimeException implements ArticleException
+class ProviderException extends \RuntimeException implements ArticleException
 {
-
 }

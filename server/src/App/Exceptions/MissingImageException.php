@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Exceptions;
-
-use DOMElement;
 
 class MissingImageException extends CrawlerException
 {
@@ -11,10 +11,10 @@ class MissingImageException extends CrawlerException
         parent::__construct($msg);
     }
 
-    public static function createForDom(DOMElement $rootElement, string $query, string $attribute): self
+    public static function createForDom(\DOMElement $rootElement, string $query, string $attribute): self
     {
         return new static(
-            "No image found for $attribute in $query!",
+            "No image found for {$attribute} in {$query}!",
             $rootElement->ownerDocument->saveHTML($rootElement),
         );
     }
@@ -22,7 +22,7 @@ class MissingImageException extends CrawlerException
     public static function createForArray(array $content): self
     {
         return new static(
-            "No image in array found!",
+            'No image in array found!',
             json_encode($content),
         );
     }

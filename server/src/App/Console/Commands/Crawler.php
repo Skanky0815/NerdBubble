@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Console\Commands;
 
@@ -8,7 +10,6 @@ use Domains\Article\Services\Crawler as DomainCrawler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Output\OutputInterface;
-use Throwable;
 
 class Crawler extends Command
 {
@@ -49,21 +50,22 @@ class Crawler extends Command
 
         foreach ($this->allCrawler as $crawler) {
             $crawlerName = $crawler::class;
+
             try {
                 $crawler->crawl();
 
                 $bar->advance();
-                $this->info(" Finished import $crawlerName");
+                $this->info(" Finished import {$crawlerName}");
             } catch (MissingImageException $exception) {
                 $bar->advance();
-                $this->error(" $crawlerName: {$exception->getMessage()}");
+                $this->error(" {$crawlerName}: {$exception->getMessage()}");
                 $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
                 $this->newLine();
                 $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
                 Log::alert($exception->getMessage(), $exception->getTrace());
-            } catch (Throwable $exception) {
+            } catch (\Throwable $exception) {
                 $bar->advance();
-                $this->error(" $crawlerName: {$exception->getMessage()}");
+                $this->error(" {$crawlerName}: {$exception->getMessage()}");
                 $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
                 Log::alert($exception->getMessage(), $exception->getTrace());
             }

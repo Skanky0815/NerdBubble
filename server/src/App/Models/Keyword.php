@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -11,13 +13,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Keyword
+ * App\Models\Keyword.
  *
- * @property Id $id
- * @property Word $word
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\KeywordFactory factory($count = null, $state = [])
+ * @property Id                              $id
+ * @property Word                            $word
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ *
+ * @method static \Database\Factories\KeywordFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword query()
@@ -25,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword whereWord($value)
+ *
  * @mixin \Eloquent
  */
 class Keyword extends Model

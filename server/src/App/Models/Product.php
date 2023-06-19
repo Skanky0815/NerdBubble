@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -16,16 +18,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * App\Models\Product
+ * App\Models\Product.
  *
- * @property Id $id
- * @property string $article_id
- * @property ProductName $name
- * @property Link $link
- * @property ImageUrl $image
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
+ * @property Id                              $id
+ * @property string                          $article_id
+ * @property ProductName                     $name
+ * @property Link                            $link
+ * @property ImageUrl                        $image
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ *
+ * @method static \Database\Factories\ProductFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -37,9 +40,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
- * @property-read int|null $users_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property null|int                                                        $users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ *
  * @mixin \Eloquent
  */
 class Product extends Model

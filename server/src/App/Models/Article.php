@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -22,21 +24,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * App\Models\Article
+ * App\Models\Article.
  *
- * @property Id $id
- * @property Headline $title
- * @property SubHeadline|null $subTitle
- * @property string|null $description
- * @property \Domains\Article\ValueObjects\Provider $provider
- * @property Link $link
- * @property PublishDate $date
- * @property ImageUrl $image
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property-read int|null $products_count
- * @method static \Database\Factories\ArticleFactory factory($count = null, $state = [])
+ * @property Id                                                                 $id
+ * @property Headline                                                           $title
+ * @property null|SubHeadline                                                   $subTitle
+ * @property null|string                                                        $description
+ * @property \Domains\Article\ValueObjects\Provider                             $provider
+ * @property Link                                                               $link
+ * @property PublishDate                                                        $date
+ * @property ImageUrl                                                           $image
+ * @property null|\Illuminate\Support\Carbon                                    $created_at
+ * @property null|\Illuminate\Support\Carbon                                    $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property null|int                                                           $products_count
+ *
+ * @method static \Database\Factories\ArticleFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article query()
@@ -50,8 +53,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereSubTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ *
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ *
  * @mixin \Eloquent
  */
 class Article extends Model

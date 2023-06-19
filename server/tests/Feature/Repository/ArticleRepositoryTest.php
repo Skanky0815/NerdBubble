@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Feature\Repository;
 
@@ -11,6 +13,11 @@ use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ArticleRepositoryTest extends TestCase
 {
     use RefreshDatabase;
@@ -41,7 +48,7 @@ class ArticleRepositoryTest extends TestCase
         $this->repository()->addAll($article);
 
         $this->assertDatabaseHas('articles', [
-            'title' => (string)$articleData->title,
+            'title' => (string) $articleData->title,
             'link' => $articleData->link,
             'image' => $articleData->image,
         ]);

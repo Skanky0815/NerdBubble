@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -12,10 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         \App\Models\User::factory()->create([
-             'name' => 'Rico Schulz',
-             'email' => 'rico-schulz@web.de',
+            'name' => 'Rico Schulz',
+            'email' => 'rico-schulz@web.de',
         ]);
     }
 }

@@ -1,16 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
-use Stringable;
 
-readonly class Headline implements Stringable
+readonly class Headline implements \Stringable
 {
     public function __construct(
         private string $value,
-    )
-    {
+    ) {
         $this->validate();
     }
 

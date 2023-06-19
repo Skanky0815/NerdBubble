@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Database\Factories;
 
@@ -22,7 +24,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => new Headline($this->faker->name . ' - ' . $this->faker->company),
+            'title' => new Headline($this->faker->name.' - '.$this->faker->company),
             'subTitle' => $this->faker->boolean ? new SubHeadline($this->faker->text) : null,
             'provider' => $this->faker->randomElement(Provider::getAllValues()),
             'description' => $this->faker->boolean ? $this->faker->text : null,

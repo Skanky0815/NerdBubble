@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
@@ -8,12 +10,16 @@ use App\Services\Crawler\DTO\AsmodeeProduct;
 use App\Services\Crawler\KeywordFilter;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AssmodeeProviderTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
@@ -24,14 +30,14 @@ class AssmodeeProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->keywordFilter = Mockery::mock(KeywordFilter::class);
+        $this->keywordFilter = \Mockery::mock(KeywordFilter::class);
     }
 
-    public function testGetArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    public function testGetArticlesWhenArticleDataFoundThenAArticleCollectionWillBeReturned(): void
     {
         Http::fake([
             'https://www.asmodee.de' => Http::response('<html><script src="/_next/static/7tXb0PpAu7QfRz2jnvnIo/_buildManifest.js"/></html>'),
-            'https://www.asmodee.de/_next/data/7tXb0PpAu7QfRz2jnvnIo/news.json' => Http::response(<<<JSON
+            'https://www.asmodee.de/_next/data/7tXb0PpAu7QfRz2jnvnIo/news.json' => Http::response(<<<'JSON'
                     {
                       "pageProps": {
                         "articles": [
@@ -72,12 +78,12 @@ class AssmodeeProviderTest extends TestCase
         self::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
-    public function testGetArticles_when_product_is_empty_then_a_article_without_products_will_be_created(): void
+    public function testGetArticlesWhenProductIsEmptyThenAArticleWithoutProductsWillBeCreated(): void
     {
         Http::fake([
             'https://www.asmodee.de' => Http::response('<html><script src="/_next/static/7tXb0PpAu7QfRz2jnvnIo/_buildManifest.js"/></html>'),
             'https://www.asmodee.de/_next/data/7tXb0PpAu7QfRz2jnvnIo/news.json' => Http::response(
-                <<<JSON
+                <<<'JSON'
                         {
                           "pageProps": {
                             "articles": [
@@ -116,12 +122,12 @@ class AssmodeeProviderTest extends TestCase
         self::assertCount(0, $article->products());
     }
 
-    public function testGetArticles_when_products_data_found_then_a_article_with_products_will_be_created(): void
+    public function testGetArticlesWhenProductsDataFoundThenAArticleWithProductsWillBeCreated(): void
     {
         Http::fake([
             'https://www.asmodee.de' => Http::response('<html><script src="/_next/static/7tXb0PpAu7QfRz2jnvnIo/_buildManifest.js"/></html>'),
             'https://www.asmodee.de/_next/data/7tXb0PpAu7QfRz2jnvnIo/news.json' => Http::response(
-                <<<JSON
+                <<<'JSON'
                         {
                           "pageProps": {
                             "articles": [
@@ -176,7 +182,6 @@ class AssmodeeProviderTest extends TestCase
         self::assertSame('Go-NinjaGO', $productData['name']);
         self::assertSame('https://www.asmodee.de/produkte/nin-slug-go', $productData['link']);
         self::assertSame('image-bild.png', $productData['image']);
-
     }
 
     private function service(): AssmodeeProvider

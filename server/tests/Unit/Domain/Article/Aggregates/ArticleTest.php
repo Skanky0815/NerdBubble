@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Article\Aggregates;
 
@@ -16,6 +18,11 @@ use Domains\Article\ValueObjects\SubHeadline;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ArticleTest extends TestCase
 {
     #[Test]

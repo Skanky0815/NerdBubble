@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Services\Crawler\DTO;
 
@@ -12,10 +14,10 @@ class BlueBrixxArticle extends Article
     {
         return new self(
             provider: Provider::BLUE_BRIXX,
-            title: "BlueBrixx",
-            link: "https://www.bluebrixx.com/de/neuheiten?limit=32",
+            title: 'BlueBrixx',
+            link: 'https://www.bluebrixx.com/de/neuheiten?limit=32',
             date: Carbon::now(),
-            image: "https://www.bluebrixx.com/img/new_design/logo_mitSteinen-min.png",
+            image: 'https://www.bluebrixx.com/img/new_design/logo_mitSteinen-min.png',
             products: $content['products'],
         );
     }
