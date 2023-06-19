@@ -24,8 +24,9 @@ When("I click the reload button", () => {
     cy.getByTestId('reload-button').click();
 })
 
-When("I click the first article",  () => {
-    cy.get('article > a').first().invoke('attr', 'href').then(url => {
+When("I click the {string} article",  (articleTitle: string) => {
+    cy.get('article').contains(articleTitle).parentsUntil('a[data-testid="article-external-link"]').invoke('attr', 'href').then(url => {
+        cy.log(url!);
         cy.request(url!).as('articlePageRequest')
     });
 })
@@ -45,5 +46,10 @@ Then("the success message {string} is shown", (alertMessage: string) => {
 });
 
 Then("the product {string} is in the list", (productTitle: string) => {
-    cy.getByTestId('product').should('have.text', productTitle);
+    cy.getByTestId('product').should('contain.text', productTitle);
+});
+
+When("The marked products are successful loaded", () => {
+    cy.intercept('/api/marked-products').as('getMargetProducts');
+    cy.wait('@getMargetProducts').its('response.statusCode').should('equal', 200);
 });

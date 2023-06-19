@@ -17,7 +17,13 @@ export default function Article({ article }: ArticleProps) {
 
     return (
         <article className={`drop-shadow-lg rounded-xl bg-no-repeat bg-top bg-contain bg-white pt-28 pb-1 mb-5 block relative overflow-hidden ${article.provider}`} style={{backgroundImage: `url(${article.image})`}}>
-            <a href={article.link} target="_blank" rel="noreferrer" className="w-full aspect-auto">
+            <a
+                href={article.link}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full aspect-auto"
+                data-testid="article-external-link"
+            >
                 <time className={`text-white text-xs absolute ${timeBgColor} px-1 py-0.5 mb-5 top-0 left-0`} dateTime={article.date}>
                     {article.date}
                 </time>

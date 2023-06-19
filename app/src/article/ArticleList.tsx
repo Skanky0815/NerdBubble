@@ -63,7 +63,7 @@ export default function ArticleList() {
         fetchArticles(dispatch, setAlert);
     }, [dispatch, setAlert]);
 
-    const articleLst = state.data.map((article: ArticleType) => <Article key={article.id} article={article} />);
+    const articleList = state.data.map((article: ArticleType) => <Article key={article.id} article={article} />);
 
     const reload = (e: React.MouseEvent<HTMLElement>) => fetchArticles(dispatch, setAlert);
 
@@ -75,7 +75,9 @@ export default function ArticleList() {
                 </button>
             </PageTitle>
 
-            {state.loading ? <Loading color={`red`} /> : <div className="gap-4 columns-1 md:columns-2">{articleLst}</div>}
+            {state.loading
+                ? <Loading color={`red`} />
+                : <div className="gap-4 columns-1 md:columns-2">{articleList}</div>}
         </>
     );
 }

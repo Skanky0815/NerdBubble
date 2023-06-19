@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use App\Http\Controllers\ArticleListController;
+use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductMarkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/articles', ArticleListController::class);
     Route::post('/products/{id}/mark', ProductMarkController::class);
+    Route::get('marked-products', ProductListController::class);
 });

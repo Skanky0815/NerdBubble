@@ -4,7 +4,7 @@ Feature: News Stream Page
 
   Background:
     Given I use my "iphone-x"
-    And I am logged in as "rico-schulz@web.de" and password "password"
+    And I am logged in as "john.doe@nerdbubble.org" and password "password"
 
   Scenario: Load all articles after enter the page
     Given I visit "/" page
@@ -22,13 +22,14 @@ Feature: News Stream Page
   Scenario: Click a article will open the article page
     Given I visit "/" page
     And the articles are successful loaded
-    When I click the first article
+    When I click the "Einfacher Artikel" article
     Then the article page is loaded
 
   Scenario: Add a product to the wishlist
     Given I visit "/" page
     And the articles are successful loaded
-    When I click on the mark button of the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack"
+    When I click on the mark button of the product "Das Produkt"
     Then the success message "Produkt gemerkt" is shown
     When I click the "Gemerkte Produkte" in the navigation
-    Then the product "Star Wars: Shatterpoint – This Party‘s Over Squad Pack" is in the list
+    And The marked products are successful loaded
+    Then the product "Das Produkt" is in the list

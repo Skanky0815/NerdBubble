@@ -10,10 +10,13 @@ export default function BottomNavigation() {
             >
                 <div className={`grid h-full max-w-lg grid-cols-2 mx-auto`}>
                     <BottomNavigationItem to={`/`} color={`red`}>
-                        News
+                        Neues
+                    </BottomNavigationItem>
+                    <BottomNavigationItem to={`/marked-products`} color={`green`}>
+                        Gemerkte Produkte
                     </BottomNavigationItem>
                     <BottomNavigationItem to={`/settings`} color={`blue`}>
-                        Settings
+                        Account
                     </BottomNavigationItem>
                 </div>
             </nav>

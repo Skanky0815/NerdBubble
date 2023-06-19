@@ -4,8 +4,6 @@ namespace App\Mapper;
 
 use App\Models\Keyword as KeywordEloquentModel;
 use Domains\Article\Entities\Keyword;
-use Domains\Article\ValueObjects\Id;
-use Domains\Article\ValueObjects\Word;
 
 class KeywordMapper
 {

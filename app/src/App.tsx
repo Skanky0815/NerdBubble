@@ -6,6 +6,7 @@ import LoginForm from "./login/LoginForm";
 import useLoggedIn from "./common/hook/useLoggedIn";
 import Setting from "./setting/Setting";
 import Alert from "./components/Alert";
+import MarkedProducts from "./markedProducts/MarkedProducts";
 
 export default function App() {
     const {loggedIn, login, logout} = useLoggedIn();
@@ -27,6 +28,7 @@ export default function App() {
                 <Alert />
                 <Routes>
                     <Route path="/" element={<ArticleList />} />
+                    <Route path="/marked-products" element={<MarkedProducts />} />
                     <Route path="/settings" element={<Setting logout={logout} />} />
                 </Routes>
             </div>

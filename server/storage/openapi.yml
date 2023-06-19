@@ -32,6 +32,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+  /marked-products:
+    get:
+      summary: Returns all marked products.
+      description: Returns all marked products of the logged in user.
+      responses:
+        '200':
+          description: A JSON array with Product data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProductList'
   /products/{productId}/mark:
     post:
       parameters:
@@ -84,6 +98,13 @@ components:
         image:
           type: string
           description: The URL of a product image.
+        isMarked:
+          type: boolean
+          description: Show if the product is marked by the logged in user.
+    ProductList:
+        type: array
+        items:
+          $ref: '#/components/schemas/Product'
     Article:
       type: object
       required:
