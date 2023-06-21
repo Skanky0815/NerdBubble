@@ -2,7 +2,7 @@ name: QA
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  build:
+  app_unittests:
     runs-on: ubuntu-latest
     
     env:
