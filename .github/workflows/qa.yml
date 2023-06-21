@@ -39,7 +39,7 @@ jobs:
           working-directory: ${{ env.SERVER_DIR }}
           
         - name: Run code style tests
-          run: vendor/bin/php-cs-fixer fix --diff --dry-run
+          run: vendor/bin/php-cs-fixer fix --diff --allow-risky=yes --dry-run
           working-directory: ${{ env.SERVER_DIR }}
           
         - name: Run unit tests
