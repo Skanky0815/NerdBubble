@@ -4,6 +4,18 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+
+    
     steps:
-      - run: pwd
-      - run: ls -la
+      - name: Checkout repository 
+        uses: actions/checkout@v2
+        
+      - name: Change to App directory 
+      - run: cd app
+
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run Tests
+        run: npm run tests
