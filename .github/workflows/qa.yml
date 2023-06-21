@@ -17,8 +17,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: $APP_DIR
+        working-directory: ${{ APP_DIR }}
         
       - name: Run Tests
         run: npm test --coverage
-        working-directory: $APP_DIR
+        working-directory: ${{ APP_DIR }}
