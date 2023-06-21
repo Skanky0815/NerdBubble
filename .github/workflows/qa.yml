@@ -1,12 +1,15 @@
 name: QA
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
+
+    
+env:
+  APP_DIR: ./app
+  SERVER_DIR: ./server
+
 jobs:
   app_unittests:
     runs-on: ubuntu-latest
-    
-    env:
-      app-dir: ./app
     
     steps:
       - name: Checkout repository 
@@ -14,8 +17,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ env.app-dir }}
+        working-directory: $APP_DIR
         
       - name: Run Tests
-        run: npm run test
-        working-directory: ${{ env.app-dir }}
+        run: npm test --coverage
+        working-directory: $APP_DIR
