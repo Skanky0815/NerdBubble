@@ -5,14 +5,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-
-    
     steps:
       - name: Checkout repository 
         uses: actions/checkout@v2
         
       - name: Change to App directory 
-      - run: cd app
+        run: cd app
 
       - name: Install dependencies
         run: npm install
