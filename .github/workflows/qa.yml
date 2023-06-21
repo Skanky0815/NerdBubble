@@ -8,7 +8,7 @@ env:
   SERVER_DIR: ./server
 
 jobs:
-  app_unittests:
+  app_tests:
     runs-on: ubuntu-latest
     
     steps:
@@ -19,6 +19,25 @@ jobs:
         run: npm install
         working-directory: ${{ env.APP_DIR }}
         
-      - name: Run Tests
+      - name: Run tests
         run: npm test --coverage
         working-directory: ${{ env.APP_DIR }}
+    
+  server_tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+        - name: Check repository
+          uses: actions/checkout@v2
+
+        - name: Install dependencies
+          run: composer install
+          working-directory: ${{ env.SERVER_DIR }}
+          
+        - name: Run archithekture tests
+          run: vendor/bin/phpunit --configuration ./phpunit.xml
+          working-directory: ${{ env.SERVER_DIR }}
+          
+        - name: Run archithekture tests
+          run: vendor/bin/deptrac analyse --report-uncovered
+          working-directory: ${{ env.SERVER_DIR }}
