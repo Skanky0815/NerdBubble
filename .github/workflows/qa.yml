@@ -19,7 +19,7 @@ jobs:
         run: npm install
         working-directory: ${{ env.APP_DIR }}
         
-      - name: Run tests
+      - name: Run components tests
         run: npm test --coverage
         working-directory: ${{ env.APP_DIR }}
     
@@ -38,7 +38,11 @@ jobs:
           run: composer install
           working-directory: ${{ env.SERVER_DIR }}
           
-        - name: Run archithekture tests
+        - name: Run code style tests
+          run: vendor/bin/php-cs-fixer fix --diff --dry-run
+          working-directory: ${{ env.SERVER_DIR }}
+          
+        - name: Run unit tests
           run: vendor/bin/phpunit --configuration ./phpunit.xml
           working-directory: ${{ env.SERVER_DIR }}
           
