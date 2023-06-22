@@ -10,7 +10,41 @@ env:
   SERVER_DIR: ./server
 
 jobs:
-  server_tests:
+  server_feature_tests:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Check repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Prepare Laravel Application
+        run: |
+          cp .env.ci .env
+          php artisan key:generate
+        working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Run feature tests
+        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
+        working-directory: ${{ env.SERVER_DIR }}
+
+  server_unit_tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,22 +67,6 @@ jobs:
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
         working-directory: ${{ env.SERVER_DIR }}
 
-      - name: Create Database
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
-        working-directory: ${{ env.SERVER_DIR }}
-
-      - name: Prepare Laravel Application
-        run: php artisan key:generate
-        working-directory: ${{ env.SERVER_DIR }}
-
-      - name: Run feature tests
-        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run architecture tests
         run: vendor/bin/deptrac analyse --report-uncovered
