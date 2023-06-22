@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: composer install
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run code style tests
@@ -30,11 +30,19 @@ jobs:
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run unit tests
-        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit
+        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
         working-directory: ${{ env.SERVER_DIR }}
 
+      - name: Create Database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
       - name: Run feature tests
-        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature
+        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run architecture tests
