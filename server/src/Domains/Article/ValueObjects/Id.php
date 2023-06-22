@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
-use Illuminate\Support\Str;
 
 readonly class Id implements \Stringable
 {
@@ -27,7 +26,7 @@ readonly class Id implements \Stringable
 
     private function validate(): void
     {
-        if (false === Str::isUuid($this->value)) {
+        if (1 !== preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $this->value)) {
             throw new ValueObjectValidateException('Id should be a UUID!');
         }
     }
