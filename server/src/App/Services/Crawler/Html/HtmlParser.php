@@ -21,6 +21,6 @@ class HtmlParser
         $dom = new \DOMDocument();
         $dom->loadHTML($html, LIBXML_NOERROR);
 
-        return new \DOMXpath($dom);
+        return new \DOMXPath($dom);
     }
 }
