@@ -1,8 +1,5 @@
 import React from "react";
 import {ProductType} from "./ProductType";
-import useAlert from "../common/hook/useAlert";
-import {AlertType} from "../common/context/AlertContext";
-import apiClient from "../service/api";
 import MarkButton from "./MarkButton";
 
 type ProductProps = {
