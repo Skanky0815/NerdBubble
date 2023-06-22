@@ -26,7 +26,7 @@ readonly class Id implements \Stringable
 
     private function validate(): void
     {
-        if (1 !== preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $this->value)) {
+        if (1 !== preg_match('/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $this->value)) {
             throw new ValueObjectValidateException('Id should be a UUID!');
         }
     }
