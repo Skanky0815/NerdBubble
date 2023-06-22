@@ -37,6 +37,6 @@ jobs:
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature
         working-directory: ${{ env.SERVER_DIR }}
 
-      - name: Run archithekture tests
+      - name: Run architecture tests
         run: vendor/bin/deptrac analyse --report-uncovered
         working-directory: ${{ env.SERVER_DIR }}
