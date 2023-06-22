@@ -1,0 +1,26 @@
+name: App QA
+run-name: QA for the App
+
+on:
+  push:
+    paths:
+      - .app/
+
+env:
+  APP_DIR: ./app
+
+jobs:
+  app_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Run components tests
+        run: npm test --coverage
+        working-directory: ${{ env.APP_DIR }}
