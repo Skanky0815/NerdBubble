@@ -4,7 +4,7 @@ run-name: QA for the App
 on:
   push:
     paths:
-      - ./app/
+      - 'app/'
 
 env:
   APP_DIR: ./app

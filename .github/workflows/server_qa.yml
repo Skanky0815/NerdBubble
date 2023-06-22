@@ -4,7 +4,7 @@ run-name: QA for the Server
 on:
   push:
     paths:
-      - ./server/
+      - 'server/'
 
 env:
   SERVER_DIR: ./server
