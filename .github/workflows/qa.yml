@@ -43,7 +43,11 @@ jobs:
           working-directory: ${{ env.SERVER_DIR }}
           
         - name: Run unit tests
-          run: vendor/bin/phpunit --configuration ./phpunit.xml
+          run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit
+          working-directory: ${{ env.SERVER_DIR }}
+            
+        - name: Run feature tests
+          run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature
           working-directory: ${{ env.SERVER_DIR }}
           
         - name: Run archithekture tests
