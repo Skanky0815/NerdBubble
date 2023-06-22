@@ -5,6 +5,7 @@ import { AlertType } from '../common/context/AlertContext';
 import useAlert from '../common/hook/useAlert';
 
 jest.mock('../common/hook/useAlert');
+
 describe('<Alert />', () => {
     test('renders nothing when no alert is present', () => {
         (useAlert as jest.Mock).mockReturnValue({ text: '', type: '' });
