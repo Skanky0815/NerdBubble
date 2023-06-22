@@ -9,6 +9,7 @@ jest.mock("./article/ArticleList", () => () => {
     // @ts-ignore
     return <mock-article-list data-testid="article-list" />;
 });
+
 jest.mock("./components/BottomNavigation", () => () => {
     // @ts-ignore
     return <mock-bottom-navigation data-testid="bottom-navigation" />;
