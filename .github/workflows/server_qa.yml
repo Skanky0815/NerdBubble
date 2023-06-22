@@ -67,7 +67,6 @@ jobs:
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
         working-directory: ${{ env.SERVER_DIR }}
 
-
       - name: Run architecture tests
         run: vendor/bin/deptrac analyse --report-uncovered
         working-directory: ${{ env.SERVER_DIR }}
