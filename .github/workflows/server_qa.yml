@@ -38,6 +38,9 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
 
+      - name: Prepare Laravel Application
+        run: php artisan key:generate
+
       - name: Run feature tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
         env:
