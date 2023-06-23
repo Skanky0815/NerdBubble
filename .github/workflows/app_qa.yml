@@ -49,11 +49,11 @@ jobs:
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ${{ env.APP_DIR }}
 
       - name: Run components tests
-        run: npm test -- --coverage
+        run: CI=true npm test -- --coverage
         working-directory: ${{ env.APP_DIR }}
 
       - name: SonarCloud Scan
