@@ -41,9 +41,9 @@ describe('<LoginForm />', () => {
 
         render(<LoginForm login={login}/>);
 
-        userEvent.type(screen.getByTestId('email'), 'test@example.com');
-        userEvent.type(screen.getByTestId('password'), 'password');
-        userEvent.click(screen.getByTestId('login'));
+        await userEvent.type(screen.getByTestId('email'), 'test@example.com');
+        await userEvent.type(screen.getByTestId('password'), 'password');
+        await userEvent.click(screen.getByTestId('login'));
 
         await waitFor(() => {
             expect(apiClient.get).toHaveBeenCalledWith('/sanctum/csrf-cookie');
@@ -62,9 +62,9 @@ describe('<LoginForm />', () => {
 
         render(<LoginForm login={jest.fn()}/>);
 
-        userEvent.type(screen.getByTestId('email'), 'test@example.com');
-        userEvent.type(screen.getByTestId('password'), 'incorrect');
-        userEvent.click(screen.getByTestId('login'));
+        await userEvent.type(screen.getByTestId('email'), 'test@example.com');
+        await userEvent.type(screen.getByTestId('password'), 'incorrect');
+        await userEvent.click(screen.getByTestId('login'));
 
         await waitFor(() => {
             expect(apiClient.get).toHaveBeenCalledWith('/sanctum/csrf-cookie');
