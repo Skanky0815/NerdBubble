@@ -10,17 +10,8 @@ env:
   SERVER_DIR: ./server
 
 jobs:
-  server_feature_tests:
+  build:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: test
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - uses: shivammathur/setup-php@v2
@@ -34,39 +25,42 @@ jobs:
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         working-directory: ${{ env.SERVER_DIR }}
 
-      - name: Prepare Laravel Application
-        run: |
-          cp .env.ci .env
-          php artisan key:generate
-        working-directory: ${{ env.SERVER_DIR }}
+  feature_tests:
+    needs: build
 
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Run feature tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
         working-directory: ${{ env.SERVER_DIR }}
 
-  server_unit_tests:
+  unit_tests:
+    needs: build
+
     runs-on: ubuntu-latest
 
     steps:
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-
-      - name: Check repository
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-        working-directory: ${{ env.SERVER_DIR }}
-
-      - name: Run code style tests
-        run: vendor/bin/php-cs-fixer fix --diff --allow-risky=yes --dry-run
-        working-directory: ${{ env.SERVER_DIR }}
-
       - name: Run unit tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
         working-directory: ${{ env.SERVER_DIR }}
 
+  code_style_test:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run code style tests
+        run: vendor/bin/php-cs-fixer fix --diff --allow-risky=yes --dry-run
+        working-directory: ${{ env.SERVER_DIR }}
+
+  architecture_test:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Run architecture tests
         run: vendor/bin/deptrac analyse --report-uncovered
         working-directory: ${{ env.SERVER_DIR }}
