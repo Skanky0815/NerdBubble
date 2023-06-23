@@ -74,6 +74,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
+          coverage: xdebug
 
       - name: Check repository
         uses: actions/checkout@v2
@@ -89,8 +90,17 @@ jobs:
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run unit tests
-        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
+        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml
         working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Fix code coverage paths
+        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   code_style_test:
     needs: build
