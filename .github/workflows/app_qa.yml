@@ -22,7 +22,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
 
       - name: Run components tests
-        run: npm test --coverage
+        run: npm test -- --coverage
         working-directory: ${{ env.APP_DIR }}
 
       - name: SonarCloud Scan
