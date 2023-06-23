@@ -6,8 +6,8 @@ deptrac:
   layers:
     - name: App
       collectors:
-        - type: classLike
-          value: .*App.*
+        - type: directory
+          value: src/App/.*
     - name: ArticleDomain
       collectors:
         - type: directory
