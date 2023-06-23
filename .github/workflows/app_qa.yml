@@ -55,6 +55,8 @@ jobs:
       - name: Run components tests
         run: CI=true npm test -- --coverage
         working-directory: ${{ env.APP_DIR }}
+        env:
+          CI: true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
