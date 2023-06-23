@@ -53,7 +53,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
 
       - name: Run components tests
-        run: CI=true npm test -- --coverage --no-watch
+        run: CI=true npm test -- --coverage --watchAll=false
         working-directory: ${{ env.APP_DIR }}
         env:
           CI: true
