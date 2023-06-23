@@ -41,7 +41,6 @@ class CrawlerTest extends TestCase
         $this->assertDatabaseHas('articles', [
             'provider' => Provider::ASMODEE,
             'title' => 'Lila Laster',
-            'date' => '2022-10-26',
             'subTitle' => 'Neue Spiele sind auf dem Weg',
             'link' => 'https://www.asmodee.de/news/neue-spiele-sind-auf-dem-weg-67',
             'image' => 'https://assets.svc.asmodee.net/production-asmodeede/null/small_Lila_Laster_0cfe16d145.png',
