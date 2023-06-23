@@ -1,6 +1,8 @@
-# GameApp
+# NerdBubble
+
 [![Server QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml)
 [![App QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml)
+
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Skanky0815_NerdBubble&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Skanky0815_NerdBubble)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Skanky0815_NerdBubble&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Skanky0815_NerdBubble)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Skanky0815_NerdBubble&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Skanky0815_NerdBubble)
