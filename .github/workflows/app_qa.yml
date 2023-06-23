@@ -10,12 +10,43 @@ env:
   APP_DIR: ./app
 
 jobs:
-  app_tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Restore Package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Save Package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
+
+  compontent_tests:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Restore Package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: npm install
