@@ -24,7 +24,7 @@ jobs:
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ${{ env.APP_DIR }}
 
       - name: Save Package cache
