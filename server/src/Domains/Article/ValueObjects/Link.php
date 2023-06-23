@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Domains\Article\ValueObjects;
 
 use Domains\Article\Exceptions\ValueObjectValidateException;
-use Illuminate\Support\Str;
 
 readonly class Link implements \Stringable
 {
@@ -26,8 +25,10 @@ readonly class Link implements \Stringable
             throw new ValueObjectValidateException('Link should not be empty!');
         }
 
-        if (false === Str::startsWith($this->value, ['http://', 'https://'])) {
-            throw new ValueObjectValidateException('Link should start with http:// or https://');
+        foreach (['http://', 'https://'] as $needed) {
+            if (false === str_starts_with($this->value, $needed)) {
+                throw new ValueObjectValidateException('Link should start with http:// or https://');
+            }
         }
     }
 }
