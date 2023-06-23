@@ -93,10 +93,6 @@ jobs:
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml --log-junit=phpunit-log.xml
         working-directory: ${{ env.SERVER_DIR }}
 
-      - name: Fix code coverage paths
-        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
-        working-directory: ${{ env.SERVER_DIR }}
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
