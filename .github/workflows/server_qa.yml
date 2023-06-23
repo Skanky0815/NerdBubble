@@ -78,6 +78,8 @@ jobs:
 
       - name: Check repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Restore Composer cache
         uses: actions/cache@v2
@@ -91,6 +93,10 @@ jobs:
 
       - name: Run unit tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml --log-junit=phpunit-log.xml
+        working-directory: ${{ env.SERVER_DIR }}
+
+      - name: check files
+        run: ls -la
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: SonarCloud Scan
