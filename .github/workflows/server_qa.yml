@@ -90,7 +90,7 @@ jobs:
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run unit tests
-        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml
+        run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml --log-junit=phpunit.xml
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Fix code coverage paths
