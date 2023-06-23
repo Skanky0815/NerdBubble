@@ -8,6 +8,7 @@ on:
 
 env:
   SERVER_DIR: ./server
+  PHP_VERSION: '8.2'
 
 jobs:
   build:
@@ -16,15 +17,26 @@ jobs:
     steps:
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
-          extensions: graphviz
+          php-version: ${{ env.PHP_VERSION }}
 
       - name: Check repository
         uses: actions/checkout@v2
 
+      - name: Restore Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
         working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Save Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
   feature_tests:
     needs: build
@@ -32,6 +44,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Check repository
+        uses: actions/checkout@v2
+
+      - name: Restore Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ${{ env.SERVER_DIR }}
+
       - name: Run feature tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Feature --testdox
         working-directory: ${{ env.SERVER_DIR }}
@@ -42,6 +71,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Check repository
+        uses: actions/checkout@v2
+
+      - name: Restore Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ${{ env.SERVER_DIR }}
+
       - name: Run unit tests
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox
         working-directory: ${{ env.SERVER_DIR }}
@@ -52,6 +98,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - name: Check repository
+        uses: actions/checkout@v2
+
+      - name: Restore Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ${{ env.SERVER_DIR }}
+
       - name: Run code style tests
         run: vendor/bin/php-cs-fixer fix --diff --allow-risky=yes --dry-run
         working-directory: ${{ env.SERVER_DIR }}
@@ -62,6 +125,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: graphviz
+
+      - name: Check repository
+        uses: actions/checkout@v2
+
+      - name: Restore Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ${{ env.SERVER_DIR }}
+
       - name: Run architecture tests
         run: vendor/bin/deptrac analyse --report-uncovered
         working-directory: ${{ env.SERVER_DIR }}
