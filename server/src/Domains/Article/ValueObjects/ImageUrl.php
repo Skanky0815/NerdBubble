@@ -25,12 +25,10 @@ readonly class ImageUrl implements \Stringable
             throw new ValueObjectValidateException('ImageUrl should not be empty!');
         }
 
-        foreach (['http://', 'https://'] as $needed) {
-            if (false === str_starts_with($this->value, $needed)) {
-                throw new ValueObjectValidateException(
-                    "ImageUrl '{$this->value}' should start with http:// or https://"
-                );
-            }
+        if (1 !== preg_match('/^(http|https):\/\//i', $this->value)) {
+            throw new ValueObjectValidateException(
+                "ImageUrl '{$this->value}' should start with http:// or https://"
+            );
         }
     }
 }
