@@ -20,8 +20,8 @@ describe('<LoginForm />', () => {
         rest.get('/sanctum/csrf-cookie', (req, res, ctx) => {
             return res(ctx.status(200));
         }),
-        rest.post('/login', (req, res, ctx) => {
-            const { email, password } = req.body as {email: string, password: string};
+        rest.post('/login', async (req, res, ctx) => {
+            const { email, password } = await req.json() as { email: string, password: string};
             if (email === 'test@example.com' && password === 'password') {
                 return res(ctx.status(200));
             } else {

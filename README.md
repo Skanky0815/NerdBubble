@@ -3,6 +3,25 @@
 [![Server QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml)
 [![App QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml)
 
+**App**
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=bugs)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=coverage)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app_app)
+
+
+**Server**
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=bugs)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=coverage)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server_server)
+
 Die GameApp ist eine APP über der sich der Benutzer Neuigkeiten von diversen Webseiten anzeigen lassen kann.
 
 ## User Stories

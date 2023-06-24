@@ -1,6 +1,6 @@
 # NerdBubble App
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Skanky0815_NerdBubble_app&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=bugs)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
