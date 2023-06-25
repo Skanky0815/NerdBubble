@@ -104,8 +104,8 @@ jobs:
         with:
           name: code-coverage-report
           path: |
-            coverage.xml
-            phpunit-log.xml
+            server/coverage.xml
+            server/phpunit-log.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -171,4 +171,5 @@ jobs:
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: check whats happen
+        working-directory: ${{ env.SERVER_DIR }}
         run: ls -la
