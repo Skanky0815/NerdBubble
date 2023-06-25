@@ -99,6 +99,14 @@ jobs:
         run: ls -la
         working-directory: ${{ env.SERVER_DIR }}
 
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: |
+            coverage.xml
+            phpunit-log.xml
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
