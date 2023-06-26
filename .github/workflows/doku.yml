@@ -13,17 +13,27 @@ env:
 jobs:
   deploy:
     name: Deploy to GitHub Pages
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Restore Package cache
+        uses: actions/cache@v2
         with:
-          node-version: 18
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: npm ci
         working-directory: ${{ env.APP_DIR }}
+
+      - name: Save Package cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
       - name: Build website
         run: npm build
