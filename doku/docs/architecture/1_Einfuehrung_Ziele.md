@@ -18,7 +18,7 @@ Dieser Abschnitt führt in die Aufgabenstellung ein und skizziert die Ziele, die
 | Benutzbarkeit   | Das System soll intuitiv nutzbar sein damit die Anwender ohne Einführung alle Features nutzten können |
 | Erweiterbarkeit | Das System soll offen für Erweiterungen sein                                                          |
 
-Die [Qualitätsszenarien in Abschnitt 10](10_Qualitaetsanforderung.md) konkretisieren diese Qualitätsziele und dienen
+Die [Qualitätsszenarien in Abschnitt 10](10_Qualitaetsanforderungen.md) konkretisieren diese Qualitätsziele und dienen
 insbesondere auch dazu ihre Erreichung zu bewerten.
 
 ## 1.3 Stakeholder

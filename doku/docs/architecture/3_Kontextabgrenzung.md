@@ -4,7 +4,15 @@ Dieser Abschnitt beschreibt das Umfeld von NerdBubble. Für welche Benutzer ist 
 
 ## 3.1 Fachlicher Kontext
 
-![](system-context.drawio.png)
+```mermaid
+C4Context
+    Person(customer, "Benutzer")
+    System(nerdBubble, "NerdBubble")
+    System_Ext(newsProvider, "Neuigkeiten Anbieter")
+    
+    Rel(customer, nerdBubble, "")
+    Rel(nerdBubble, newsProvider, "")
+```
 
 ### Benutzer
 
