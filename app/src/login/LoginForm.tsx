@@ -1,5 +1,5 @@
 import React, {FormEvent, useRef} from "react";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/PageTitle/PageTitle";
 import useAlert from "../common/hook/useAlert";
 import apiClient from "../service/api";
 import {AlertType} from "../common/context/AlertContext";

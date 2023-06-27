@@ -1,6 +1,6 @@
 import React, {useEffect, useReducer} from "react";
-import PageTitle from "../components/PageTitle";
-import Loading from "../components/Loading";
+import PageTitle from "../components/PageTitle/PageTitle";
+import Loading from "../components/Loading/Loading";
 import useAlert from "../common/hook/useAlert";
 import apiClient from "../service/api";
 import {AlertType} from "../common/context/AlertContext";

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/PageTitle/PageTitle";
 import apiClient from "../service/api";
 import useAlert from "../common/hook/useAlert";
 import {AlertType} from "../common/context/AlertContext";
 import {useNavigate} from "react-router-dom";
-import Loading from "../components/Loading";
+import Loading from "../components/Loading/Loading";
 
 type SettingProps = {
     logout: () => void

@@ -1,9 +1,9 @@
 import React, {useEffect, useReducer} from "react";
 import {ArticleType} from "./ArticleType";
 import Article from "./Article";
-import Loading from "../components/Loading";
+import Loading from "../components/Loading/Loading";
 import {ArrowPathIcon} from "@heroicons/react/24/solid";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/PageTitle/PageTitle";
 import apiClient from "../service/api";
 import useAlert from "../common/hook/useAlert";
 import {AlertType} from "../common/context/AlertContext";
