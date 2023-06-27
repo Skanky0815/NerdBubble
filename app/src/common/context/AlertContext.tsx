@@ -1,4 +1,4 @@
-import React, {createContext, PropsWithChildren, useCallback, useState} from "react";
+import React, {createContext, PropsWithChildren, useCallback, useMemo, useState} from "react";
 
 const ALERT_TIME = 5000;
 export enum AlertType {
@@ -26,19 +26,21 @@ export const AlertProvider = ({ children }: PropsWithChildren) => {
     const [text, setText] = useState<string|null>(null);
     const [type, setType] = useState<AlertType|null>(null);
 
-    const contextValue = {
+    const alertCallback =  useCallback((text: string, type: AlertType) => {
+        setText(text);
+        setType(type);
+
+        setTimeout(() => {
+            setText(null);
+            setType(null);
+        }, ALERT_TIME);
+    }, [setText, setType]);
+
+    const contextValue = useMemo(() => ({
         text,
         type,
-        setAlert: useCallback((text: string, type: AlertType) => {
-            setText(text);
-            setType(type);
-
-            setTimeout(() => {
-                setText(null);
-                setType(null);
-            }, ALERT_TIME);
-        }, [setText, setType])
-    }
+        setAlert: alertCallback
+    }), [text, type, alertCallback]);
 
     return (
         <AlertContext.Provider value={contextValue}>
