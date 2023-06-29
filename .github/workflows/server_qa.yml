@@ -100,7 +100,7 @@ jobs:
           's@'$GITHUB_WORKSPACE'@/github/workspace/server@g' coverage.xml
         working-directory: ${{ env.SERVER_DIR }}
 
-      - run: echo ${{ env.SERVER_DIR }}
+      - run: echo $GITHUB_WORKSPACE
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -164,7 +164,7 @@ jobs:
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: Run architecture tests
-        run: vendor/bin/deptrac analyse --report-uncovered
+        run: vendor/bin/deptrac analyse --report-uncovered --formatter=graphviz-image
         working-directory: ${{ env.SERVER_DIR }}
 
       - name: check whats happen
