@@ -95,7 +95,9 @@ jobs:
         run: vendor/bin/phpunit --configuration ./phpunit.xml --testsuite Unit --testdox --coverage-clover=coverage.xml --log-junit=phpunit-log.xml
         working-directory: ${{ env.SERVER_DIR }}
 
-      - run: echo $GITHUB_WORKSPACE
+      - name: Fix code coverage paths
+        run: sed -i
+          's@'$GITHUB_WORKSPACE'/server/@server/@g' server/coverage.xml
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
