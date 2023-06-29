@@ -100,13 +100,15 @@ jobs:
           's@'$GITHUB_WORKSPACE'@/github/workspace/server@g' coverage.xml
         working-directory: ${{ env.SERVER_DIR }}
 
+      - run: echo ${{ env.SERVER_DIR }}
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_SERVER }}
         with:
-          projectBaseDir: server/
+          projectBaseDir: ${{ env.SERVER_DIR }}
 
   code_style_test:
     needs: build
@@ -144,7 +146,9 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          extensions: graphviz
+
+      - name: Setup graphviz
+        uses: ts-graphviz/setup-graphviz@v1
 
       - name: Check repository
         uses: actions/checkout@v2
