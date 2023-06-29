@@ -7,3 +7,4 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=coverage)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server_server)
+
