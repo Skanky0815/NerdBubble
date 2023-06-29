@@ -104,7 +104,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: php-code-coverage-report
-          path: coverage.xml
+          path: server/coverage.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -171,6 +171,9 @@ jobs:
         run: vendor/bin/deptrac analyse --report-uncovered --formatter=graphviz-image --output=architecture.png
         working-directory: ${{ env.SERVER_DIR }}
 
-      - name: check whats happen
-        working-directory: ${{ env.SERVER_DIR }}
-        run: ls -la
+      - name: Archive architecture diagram
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: php-architecture-diagram
+          path: server/architecture.png
