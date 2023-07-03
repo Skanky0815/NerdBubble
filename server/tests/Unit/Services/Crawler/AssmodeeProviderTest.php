@@ -65,17 +65,17 @@ class AssmodeeProviderTest extends TestCase
 
         $result = $this->service()->loadArticles();
 
-        self::assertCount(1, $result);
+        static::assertCount(1, $result);
         $article = $result->get(0);
 
-        self::assertInstanceOf(AsmodeeArticle::class, $article);
+        static::assertInstanceOf(AsmodeeArticle::class, $article);
         $articleData = $article->toArray();
 
-        self::assertSame('test', $articleData['title']);
-        self::assertSame('sub test line', $articleData['subTitle']);
-        self::assertSame('https://www.asmodee.de/news/noooo', $articleData['link']);
-        self::assertSame('image-url.png', $articleData['image']);
-        self::assertInstanceOf(Carbon::class, $articleData['date']);
+        static::assertSame('test', $articleData['title']);
+        static::assertSame('sub test line', $articleData['subTitle']);
+        static::assertSame('https://www.asmodee.de/news/noooo', $articleData['link']);
+        static::assertSame('image-url.png', $articleData['image']);
+        static::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
     public function testGetArticlesWhenProductIsEmptyThenAArticleWithoutProductsWillBeCreated(): void
@@ -114,12 +114,12 @@ class AssmodeeProviderTest extends TestCase
 
         $result = $this->service()->loadArticles();
 
-        self::assertCount(1, $result);
+        static::assertCount(1, $result);
         $article = $result->get(0);
 
-        self::assertInstanceOf(AsmodeeArticle::class, $article);
+        static::assertInstanceOf(AsmodeeArticle::class, $article);
 
-        self::assertCount(0, $article->products());
+        static::assertCount(0, $article->products());
     }
 
     public function testGetArticlesWhenProductsDataFoundThenAArticleWithProductsWillBeCreated(): void
@@ -167,21 +167,21 @@ class AssmodeeProviderTest extends TestCase
 
         $result = $this->service()->loadArticles();
 
-        self::assertCount(1, $result);
+        static::assertCount(1, $result);
         $article = $result->get(0);
 
-        self::assertInstanceOf(AsmodeeArticle::class, $article);
+        static::assertInstanceOf(AsmodeeArticle::class, $article);
 
-        self::assertCount(1, $article->products());
+        static::assertCount(1, $article->products());
 
         $product = $article->products()->get(0);
 
-        self::assertInstanceOf(AsmodeeProduct::class, $product);
+        static::assertInstanceOf(AsmodeeProduct::class, $product);
         $productData = $product->toArray();
 
-        self::assertSame('Go-NinjaGO', $productData['name']);
-        self::assertSame('https://www.asmodee.de/produkte/nin-slug-go', $productData['link']);
-        self::assertSame('image-bild.png', $productData['image']);
+        static::assertSame('Go-NinjaGO', $productData['name']);
+        static::assertSame('https://www.asmodee.de/produkte/nin-slug-go', $productData['link']);
+        static::assertSame('image-bild.png', $productData['image']);
     }
 
     private function service(): AssmodeeProvider

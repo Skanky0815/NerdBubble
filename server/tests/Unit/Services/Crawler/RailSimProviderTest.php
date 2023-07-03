@@ -69,20 +69,20 @@ class RailSimProviderTest extends TestCase
 
         $allLoadedArticle = $this->service()->loadArticles();
 
-        self::assertCount(1, $allLoadedArticle);
+        static::assertCount(1, $allLoadedArticle);
 
         $article = $allLoadedArticle->get(0);
-        self::assertInstanceOf(RailSimArticle::class, $article);
+        static::assertInstanceOf(RailSimArticle::class, $article);
 
         $articleData = $article->toArray();
-        self::assertNotEmpty($articleData);
-        self::assertSame(Provider::RAIL_SIM, $articleData['provider']);
-        self::assertSame('[TSW3] Niddertalbahn: Bad Vilbel - Stockheim', $articleData['title']);
-        self::assertSame('https://www.rail-sim.de/wp-content/uploads/2016/04/rail-sim_logo.png', $articleData['image']);
-        self::assertSame('https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/', $articleData['link']);
-        self::assertNull($articleData['subTitle']);
-        self::assertNull($articleData['description']);
-        self::assertInstanceOf(Carbon::class, $articleData['date']);
+        static::assertNotEmpty($articleData);
+        static::assertSame(Provider::RAIL_SIM, $articleData['provider']);
+        static::assertSame('[TSW3] Niddertalbahn: Bad Vilbel - Stockheim', $articleData['title']);
+        static::assertSame('https://www.rail-sim.de/wp-content/uploads/2016/04/rail-sim_logo.png', $articleData['image']);
+        static::assertSame('https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/', $articleData['link']);
+        static::assertNull($articleData['subTitle']);
+        static::assertNull($articleData['description']);
+        static::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
     private function service(): RailSimProvider

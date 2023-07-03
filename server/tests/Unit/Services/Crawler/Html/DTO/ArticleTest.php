@@ -22,7 +22,7 @@ class ArticleTest extends TestCase
         $article = $this->createHtmlArticle('<div><h1><small>test</small></h1></div>');
 
         $element = $article->findElement('//div/h1/small');
-        self::assertSame('test', $element->textContent);
+        static::assertSame('test', $element->textContent);
     }
 
     public function testTextWhenElementFoundThenReturnTheTextContent(): void
@@ -31,7 +31,7 @@ class ArticleTest extends TestCase
 
         $text = $article->text('//div/h1/small');
 
-        self::assertSame('Foo Bar', $text);
+        static::assertSame('Foo Bar', $text);
     }
 
     public function testLinkWhenElementFoundThenTheHrefWillReturned(): void
@@ -40,7 +40,7 @@ class ArticleTest extends TestCase
 
         $link = $article->link('//div/a');
 
-        self::assertSame('link.to', $link);
+        static::assertSame('link.to', $link);
     }
 
     public function testLinkWhenElementNotFoundThenAExceptionWillBeThrown(): void
@@ -58,7 +58,7 @@ class ArticleTest extends TestCase
 
         $link = $article->image('//div/img');
 
-        self::assertSame('image.jpg', $link);
+        static::assertSame('image.jpg', $link);
     }
 
     public function testImageWhenElementNotFoundThenAExceptionWillBeThrown(): void
@@ -82,7 +82,7 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/time', DATE_RSS, attribute: 'datetime');
 
-        self::assertSame($date->timestamp, $dateResult->timestamp);
+        static::assertSame($date->timestamp, $dateResult->timestamp);
     }
 
     public function testDateWhenDateIsFoundInTextContentThenACarboneInstanceWillBeReturned(): void
@@ -91,7 +91,7 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/span', 'd M Y', 'de_DE');
 
-        self::assertSame('2010-01-01', $dateResult->format('Y-m-d'));
+        static::assertSame('2010-01-01', $dateResult->format('Y-m-d'));
     }
 
     public function testDateWhenDateIsNotFoundInTextContentThenACarboneInstanceWithCurrentTimeWillBeReturned(): void
@@ -103,6 +103,6 @@ class ArticleTest extends TestCase
 
         $dateResult = $article->date('//div/span', 'd M Y');
 
-        self::assertSame($date->timestamp, $dateResult->timestamp);
+        static::assertSame($date->timestamp, $dateResult->timestamp);
     }
 }

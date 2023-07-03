@@ -45,7 +45,7 @@ class CastsTest extends TestCase
     ): void {
         $result = $cast->set(new Article(), $key, $valueObject, []);
 
-        self::assertSame((string) $valueObject, (string) $result);
+        static::assertSame((string) $valueObject, (string) $result);
     }
 
     public static function setDataProvider(): array
@@ -73,8 +73,8 @@ class CastsTest extends TestCase
     ): void {
         $result = $cast->get(new Article(), $key, $value, []);
 
-        self::assertInstanceOf($className, $result);
-        self::assertSame($value, (string) $result);
+        static::assertInstanceOf($className, $result);
+        static::assertSame($value, (string) $result);
     }
 
     public static function getDataProvider(): array
@@ -100,7 +100,7 @@ class CastsTest extends TestCase
     ): void {
         $result = $cast->get(new Article(), $key, null, []);
 
-        self::assertNull($result);
+        static::assertNull($result);
     }
 
     public static function getNullDataProvider(): array

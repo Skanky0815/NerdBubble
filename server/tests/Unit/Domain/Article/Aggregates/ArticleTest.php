@@ -30,7 +30,7 @@ class ArticleTest extends TestCase
     {
         $result = $this->aggregate()->matchWithKeywords(Keyword::fromString('Sub'));
 
-        self::assertTrue($result);
+        static::assertTrue($result);
     }
 
     #[Test]
@@ -38,7 +38,7 @@ class ArticleTest extends TestCase
     {
         $result = $this->aggregate()->matchWithKeywords(Keyword::fromString('Missing'));
 
-        self::assertFalse($result);
+        static::assertFalse($result);
     }
 
     private function aggregate(): Article

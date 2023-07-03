@@ -22,8 +22,8 @@ class HtmlParserTest extends TestCase
             '//selction'
         );
 
-        self::assertCount(2, $allArticles);
-        self::assertInstanceOf(HtmlContent::class, $allArticles->get(0));
+        static::assertCount(2, $allArticles);
+        static::assertInstanceOf(HtmlContent::class, $allArticles->get(0));
     }
 
     private function service(): HtmlParser

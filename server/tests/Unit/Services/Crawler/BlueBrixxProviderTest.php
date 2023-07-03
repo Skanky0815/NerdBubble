@@ -81,21 +81,21 @@ class BlueBrixxProviderTest extends TestCase
 
         $allArticles = $this->service()->loadArticles();
 
-        self::assertCount(1, $allArticles);
+        static::assertCount(1, $allArticles);
 
         $article = $allArticles->get(0);
-        self::assertInstanceOf(BlueBrixxArticle::class, $article);
+        static::assertInstanceOf(BlueBrixxArticle::class, $article);
 
-        self::assertCount(1, $article->products());
+        static::assertCount(1, $article->products());
         $product = $article->products()->get(0);
-        self::assertInstanceOf(BlueBrixxProduct::class, $product);
+        static::assertInstanceOf(BlueBrixxProduct::class, $product);
         $productData = $product->toArray();
 
-        self::assertNotEmpty($productData);
+        static::assertNotEmpty($productData);
 
-        self::assertSame('ProductName', $productData['name']);
-        self::assertSame('bluebrixx-article.link', $productData['link']);
-        self::assertSame('bluebrixx-product-bild.jpg', $productData['image']);
+        static::assertSame('ProductName', $productData['name']);
+        static::assertSame('bluebrixx-article.link', $productData['link']);
+        static::assertSame('bluebrixx-product-bild.jpg', $productData['image']);
     }
 
     #[Test]
@@ -139,7 +139,7 @@ class BlueBrixxProviderTest extends TestCase
 
         $allArticles = $this->service()->loadArticles();
 
-        self::assertEmpty($allArticles);
+        static::assertEmpty($allArticles);
     }
 
     private function service(): BlueBrixxProvider

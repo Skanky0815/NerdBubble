@@ -26,9 +26,9 @@ class ProductFactoryTest extends TestCase
             )->build()
         ;
 
-        self::assertSame('pTitle', (string) $product->name);
-        self::assertSame('https://product.link', (string) $product->link);
-        self::assertSame('https://product-image.png', (string) $product->image);
+        static::assertSame('pTitle', (string) $product->name);
+        static::assertSame('https://product.link', (string) $product->link);
+        static::assertSame('https://product-image.png', (string) $product->image);
     }
 
     private function service(): ProductFactory

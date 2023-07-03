@@ -28,7 +28,7 @@ class HttpClientServiceTest extends TestCase
 
         $result = $this->service()->loadContentFromWebsite('https://some.html');
 
-        self::assertInstanceOf(\DOMDocument::class, $result);
+        static::assertInstanceOf(\DOMDocument::class, $result);
     }
 
     #[Test]
@@ -42,7 +42,7 @@ class HttpClientServiceTest extends TestCase
 
         $result = $this->service()->loadContentFromWebsite('https://some.json');
 
-        self::assertIsArray($result);
+        static::assertIsArray($result);
     }
 
     private function service(): HttpClientService

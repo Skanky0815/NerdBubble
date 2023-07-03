@@ -34,14 +34,14 @@ class ArticleFactoryTest extends TestCase
             )->build()
         ;
 
-        self::assertSame(Provider::ASMODEE, $article->provider);
-        self::assertSame('https://article-image.png', (string) $article->image);
-        self::assertSame('https://article.link', (string) $article->link);
-        self::assertSame('headline', (string) $article->headline);
-        self::assertSame('1984-01-01', (string) $article->publishDate);
-        self::assertNull($article->description);
-        self::assertNull($article->subHeadline);
-        self::assertTrue($article->products->isEmpty());
+        static::assertSame(Provider::ASMODEE, $article->provider);
+        static::assertSame('https://article-image.png', (string) $article->image);
+        static::assertSame('https://article.link', (string) $article->link);
+        static::assertSame('headline', (string) $article->headline);
+        static::assertSame('1984-01-01', (string) $article->publishDate);
+        static::assertNull($article->description);
+        static::assertNull($article->subHeadline);
+        static::assertTrue($article->products->isEmpty());
     }
 
     #[Test]
@@ -58,7 +58,7 @@ class ArticleFactoryTest extends TestCase
             )->build()
         ;
 
-        self::assertSame('some text', (string) $article->description);
+        static::assertSame('some text', (string) $article->description);
     }
 
     #[Test]
@@ -75,7 +75,7 @@ class ArticleFactoryTest extends TestCase
             )->build()
         ;
 
-        self::assertSame('sub headline', (string) $article->subHeadline);
+        static::assertSame('sub headline', (string) $article->subHeadline);
     }
 
     #[Test]
@@ -97,7 +97,7 @@ class ArticleFactoryTest extends TestCase
             ])->build()
         ;
 
-        self::assertFalse($article->products->isEmpty());
+        static::assertFalse($article->products->isEmpty());
     }
 
     private function service(): ArticleFactory

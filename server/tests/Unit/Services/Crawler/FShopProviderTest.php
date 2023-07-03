@@ -115,21 +115,21 @@ class FShopProviderTest extends TestCase
 
         $allArticles = $this->service()->loadArticles();
 
-        self::assertCount(1, $allArticles);
+        static::assertCount(1, $allArticles);
 
         $article = $allArticles->get(0);
-        self::assertInstanceOf(FShopArticle::class, $article);
+        static::assertInstanceOf(FShopArticle::class, $article);
 
-        self::assertCount(1, $article->products());
+        static::assertCount(1, $article->products());
         $product = $article->products()->get(0);
-        self::assertInstanceOf(FShopProduct::class, $product);
+        static::assertInstanceOf(FShopProduct::class, $product);
         $productData = $product->toArray();
 
-        self::assertNotEmpty($productData);
+        static::assertNotEmpty($productData);
 
-        self::assertSame('Aventuria', $productData['name']);
-        self::assertSame('aventuria-article.link', $productData['link']);
-        self::assertSame('aventuria-product-bild.jpg', $productData['image']);
+        static::assertSame('Aventuria', $productData['name']);
+        static::assertSame('aventuria-article.link', $productData['link']);
+        static::assertSame('aventuria-product-bild.jpg', $productData['image']);
     }
 
     private function service(): FShopProvider

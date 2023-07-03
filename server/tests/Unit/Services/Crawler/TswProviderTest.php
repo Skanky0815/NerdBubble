@@ -45,22 +45,22 @@ class TswProviderTest extends TestCase
 
         $allArticles = $this->service()->loadArticles();
 
-        self::assertCount(1, $allArticles);
+        static::assertCount(1, $allArticles);
 
         $article = $allArticles->get(0);
 
-        self::assertInstanceOf(TswArticle::class, $article);
+        static::assertInstanceOf(TswArticle::class, $article);
 
         $articleData = $article->toArray();
 
-        self::assertNotEmpty($articleData);
-        self::assertSame(Provider::TSW, $articleData['provider']);
-        self::assertSame('Train Sim World 3 - Rheinland Revival', $articleData['title']);
-        self::assertSame('https://media.dovetailgames.com/1678379793513_TSW3_leftR_keyart_400x200.jpg', $articleData['image']);
-        self::assertSame('https://live.dovetailgames.com/live/train-sim-world/articles/article/tsw3-rheinland-revival', $articleData['link']);
-        self::assertNull($articleData['subTitle']);
-        self::assertSame('In this article we shall be taking you through all the fun nuances and layers you can look forward to in the Cross-City timetable!', $articleData['description']);
-        self::assertInstanceOf(Carbon::class, $articleData['date']);
+        static::assertNotEmpty($articleData);
+        static::assertSame(Provider::TSW, $articleData['provider']);
+        static::assertSame('Train Sim World 3 - Rheinland Revival', $articleData['title']);
+        static::assertSame('https://media.dovetailgames.com/1678379793513_TSW3_leftR_keyart_400x200.jpg', $articleData['image']);
+        static::assertSame('https://live.dovetailgames.com/live/train-sim-world/articles/article/tsw3-rheinland-revival', $articleData['link']);
+        static::assertNull($articleData['subTitle']);
+        static::assertSame('In this article we shall be taking you through all the fun nuances and layers you can look forward to in the Cross-City timetable!', $articleData['description']);
+        static::assertInstanceOf(Carbon::class, $articleData['date']);
     }
 
     private function service(): TswProvider

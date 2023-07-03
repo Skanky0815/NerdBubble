@@ -29,7 +29,7 @@ class KeywordFilterTest extends MockeryTestCase
 
         $result = $this->service()->matchKeyword('my Test string');
 
-        self::assertTrue($result);
+        static::assertTrue($result);
     }
 
     public function testMatchKeywordWhenKeywordIsNotInGivenStringThanReturnFalse(): void
@@ -41,7 +41,7 @@ class KeywordFilterTest extends MockeryTestCase
 
         $result = $this->service()->matchKeyword('my Test string');
 
-        self::assertFalse($result);
+        static::assertFalse($result);
     }
 
     protected function mockeryTestSetUp(): void

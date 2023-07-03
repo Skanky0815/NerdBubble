@@ -1,4 +1,6 @@
 /.phpunit.cache
+coverage.xml
+phpunit-log.xml
 /.php-cs-fixer.cache
 /.phpstorm.meta.php
 .deptrac.cache
