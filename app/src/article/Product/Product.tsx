@@ -1,6 +1,6 @@
 import React from "react";
-import {ProductType} from "./ProductType";
-import MarkButton from "./MarkButton";
+import {ProductType} from "../ProductType";
+import MarkButton from "../MarkButton/MarkButton";
 
 type ProductProps = {
     product: ProductType

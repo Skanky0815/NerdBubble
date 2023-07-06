@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import Article from "./Article";
-import {ArticleType, Provider} from "./ArticleType";
-import {ProductType} from "./ProductType";
+import {ArticleType, Provider} from "../ArticleType";
+import {ProductType} from "../ProductType";
 
 jest.mock('./Product', () => ({ product }: any) => {
     // @ts-ignore

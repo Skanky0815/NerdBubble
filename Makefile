@@ -3,6 +3,9 @@ dockerPHP = docker exec -it server-laravel.test-1 php
 start_client:
 	npm run start --prefix app
 
+dev_storybook:
+	npm run storybook --prefix app
+
 test_setup_e2e:
 	${dockerPHP} artisan migrate:fresh --seed --seeder=E2ETestSeeder
 

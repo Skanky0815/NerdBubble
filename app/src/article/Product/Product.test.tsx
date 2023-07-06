@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Product from "./Product";
-import {ProductType} from "./ProductType";
+import {ProductType} from "../ProductType";
 
-jest.mock('./MarkButton',() => ({ product }: any) => {
+jest.mock('../MarkButton/MarkButton',() => ({ product }: any) => {
     // @ts-ignore
     return <mock-mark-button data-testid={`mark-button-${product.id}`} />;
 });

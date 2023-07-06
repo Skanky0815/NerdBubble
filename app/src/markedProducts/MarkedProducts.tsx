@@ -5,7 +5,7 @@ import useAlert from "../common/hook/useAlert";
 import apiClient from "../service/api";
 import {AlertType} from "../common/context/AlertContext";
 import {ProductType} from "../article/ProductType";
-import Product from "../article/Product";
+import Product from "../article/Product/Product";
 
 enum ActionType {
     SUCCESS = 'SUCCESS',

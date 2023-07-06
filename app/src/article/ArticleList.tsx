@@ -1,6 +1,6 @@
 import React, {useEffect, useReducer} from "react";
 import {ArticleType} from "./ArticleType";
-import Article from "./Article";
+import Article from "./Article/Article";
 import Loading from "../components/Loading/Loading";
 import {ArrowPathIcon} from "@heroicons/react/24/solid";
 import PageTitle from "../components/PageTitle/PageTitle";

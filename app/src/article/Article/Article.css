@@ -1,0 +1,30 @@
+article.xbox_dynasty h2 {
+    @apply w-52 md:w-96 text-gray-500 bg-white pr-0;
+}
+
+article.blue_brixx {
+    background-size: auto;
+    background-position-y: 20px;
+}
+
+article.f_shop {
+    background-position-y: 5px;
+}
+
+article.rail_sim {
+    background-position-y: 25px;
+    background-size: 80%;
+}
+
+article.tsw p {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    margin-bottom: 0;
+    padding: 10px 5px 10px 5px;
+}
+
+article.fantasy_flight_games h2 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
