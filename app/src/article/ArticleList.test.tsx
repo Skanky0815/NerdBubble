@@ -4,7 +4,7 @@ import { setupServer } from 'msw/node';
 import { render, screen, waitFor } from '@testing-library/react';
 import ArticleList from './ArticleList';
 
-jest.mock("./Article", () => ({ article }: any) => {
+jest.mock("./Article/Article", () => ({ article }: any) => {
     // @ts-ignore
     return <mock-article data-testid={article.id} />;
 });

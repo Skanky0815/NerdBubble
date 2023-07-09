@@ -4,7 +4,7 @@ import Article from "./Article";
 import {ArticleType, Provider} from "../ArticleType";
 import {ProductType} from "../ProductType";
 
-jest.mock('./Product', () => ({ product }: any) => {
+jest.mock('../Product/Product', () => ({ product }: any) => {
     // @ts-ignore
     return <mock-product data-testid={product.id} />;
 })

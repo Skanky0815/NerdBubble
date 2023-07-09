@@ -15,36 +15,36 @@ export default function Article({ article }: ArticleProps) {
 
     const timeBgColor = datesAreOnSameDay(new Date(article.date), new Date()) ? 'bg-red-700/[.8]' : 'bg-black/[.5]';
 
-    let classNames = null;
+    let articleClassNames = null;
     switch (article.provider) {
         case Provider.ASMODEE:
-            classNames = 'pt-20 md:pt-32 border-l-fuchsia-800 hover:shadow-fuchsia-800';
+            articleClassNames = 'pt-20 md:pt-32 border-l-fuchsia-800 hover:shadow-fuchsia-800 bg-top bg-contain';
             break;
         case Provider.XBOX_DYNASTY:
-            classNames = 'md:h-48 h-auto bg-right-top pt-16 bg-contain border-l-lime-500 hover:shadow-lime-500';
+            articleClassNames = 'lg:h-36 h-28 pt-6 bg-right bg-contain border-l-lime-500 hover:shadow-lime-500';
             break;
         case Provider.TSW:
-            classNames = 'bg-cover relative md:h-80 md:pt-64 border-l-orange-500 hover:shadow-orange-500';
+            articleClassNames = 'bg-cover bg-center relative md:h-80 md:pt-52 border-l-orange-500 hover:shadow-orange-500 ';
             break;
         case Provider.RAIL_SIM:
-            classNames = 'border-l-red-900 hover:shadow-red-900 bg-auto';
+            articleClassNames = 'border-l-red-900 hover:shadow-red-900 bg-[length:80%] lg:bg-[center_top_1rem] bg-[center_top_2rem]';
             break;
         case Provider.F_SHOP:
-            classNames = 'border-l-green-600 hover:shadow-green-600';
+            articleClassNames = 'border-l-green-600 hover:shadow-green-600 bg-[center_top_1rem] bg-[length:16rem]';
             break;
         case Provider.BLUE_BRIXX:
-            classNames = 'border-l-sky-500 hover:shadow-sky-500';
+            articleClassNames = 'border-l-sky-500 hover:shadow-sky-500 bg-[center_top_1rem] bg-auto';
             break;
         case Provider.FANTASY_FLIGHT_GAMES:
-            classNames = 'border-l-blue-600 hover:shadow-blue-600 bg-bottom p-5 h-80 bg-cover';
+            articleClassNames = 'border-l-blue-600 hover:shadow-blue-600 bg-bottom p-5 h-80 bg-cover';
             break;
         case Provider.ULISSES_SPIELE:
-            classNames = 'h-44 md:h-80 pt-32 md:pt-64 bg-cover border-l-green-600 hover:shadow-green-600';
+            articleClassNames = 'h-44 md:h-80 pt-24 md:pt-64 bg-cover bg-center border-l-green-600 hover:shadow-green-600';
             break;
     }
 
     return (
-        <article className={`shadow-md rounded-xl bg-no-repeat bg-top bg-contain bg-white pt-28 pb-1 mb-5 block relative overflow-hidden border-l-8 transition-shadow duration-500 ${article.provider} ${classNames}`} style={{backgroundImage: `url(${article.image})`}}>
+        <article className={`shadow-md rounded-tr-3xl bg-no-repeat bg-white pt-28 pb-1 mb-5 block relative overflow-hidden border-l-8 transition-shadow duration-500 ${article.provider} ${articleClassNames}`} style={{backgroundImage: `url(${article.image})`}}>
             <a
                 href={article.link}
                 target="_blank"
@@ -57,7 +57,7 @@ export default function Article({ article }: ArticleProps) {
                 </time>
                 <h2 className="text-white w-auto block bg-black/[.5] px-2 py-2 mt-0.5 mb-1">{article.title}</h2>
             </a>
-            {article.subTitle && <p className="px-2 mb-2 text-sm">{article.subTitle}</p>}
+            {article.subTitle && Provider.XBOX_DYNASTY !== article.provider && <p className="px-2 mb-2 text-sm">{article.subTitle}</p>}
             {article.description && <p className="px-2 mb-2 text-sm">{article.description}</p>}
             {products.length > 0 && <div className="grid grid-flow-row grid-cols-2 gap-2 px-2">{products}</div>}
         </article>

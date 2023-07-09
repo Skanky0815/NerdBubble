@@ -1,7 +1,11 @@
 import type { Preview } from "@storybook/react";
 import '../src/index.css'
-
+import withAxiosDecorator from 'storybook-axios';
 import {withThemeByDataAttribute} from "@storybook/addon-styling";
+import apiClient from "../src/service/api";
+import {initialize, mswDecorator} from "msw-storybook-addon";
+
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -16,6 +20,8 @@ const preview: Preview = {
 };
 
 export const decorators = [
+    mswDecorator,
+    withAxiosDecorator(apiClient),
     withThemeByDataAttribute({
         themes: {
             light: 'light',
