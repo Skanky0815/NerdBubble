@@ -9,6 +9,7 @@ use App\Services\Crawler\Crawler as CrawlerService;
 use Domains\Article\Services\Crawler as DomainCrawler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Crawler extends Command
@@ -25,7 +26,7 @@ class Crawler extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Aggregate all News from the News Provider.';
 
     /**
      * @var CrawlerService[]|DomainCrawler[]
@@ -39,9 +40,6 @@ class Crawler extends Command
         $this->allCrawler = $allCrawler;
     }
 
-    /**
-     * Execute the console command.
-     */
     public function handle(): void
     {
         $bar = $this->output->createProgressBar(\count($this->allCrawler));
@@ -49,29 +47,26 @@ class Crawler extends Command
         $bar->start();
 
         foreach ($this->allCrawler as $crawler) {
-            $crawlerName = $crawler::class;
-
-            try {
-                $crawler->crawl();
-
-                $bar->advance();
-                $this->info(" Finished import {$crawlerName}");
-            } catch (MissingImageException $exception) {
-                $bar->advance();
-                $this->error(" {$crawlerName}: {$exception->getMessage()}");
-                $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
-                $this->newLine();
-                $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
-                Log::alert($exception->getMessage(), $exception->getTrace());
-            } catch (\Throwable $exception) {
-                $bar->advance();
-                $this->error(" {$crawlerName}: {$exception->getMessage()}");
-                $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
-                Log::alert($exception->getMessage(), $exception->getTrace());
-            }
+            $this->runCrawler($crawler);
+            $bar->advance();
         }
 
         $bar->finish();
         $this->info(' Import done!');
+    }
+
+    private function runCrawler(CrawlerService $crawler): void
+    {
+        try {
+            $crawler->crawl();
+
+            $this->info(sprintf(' Finished import %s', $crawler::class));
+        } catch (\Throwable $exception) {
+            $this->error(sprintf(' %s: %s', $crawler::class, $exception->getMessage()));
+            $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
+            $this->newLine();
+            $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
+            Log::alert($exception->getMessage(), $exception->getTrace());
+        }
     }
 }
