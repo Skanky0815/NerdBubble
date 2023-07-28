@@ -36,7 +36,7 @@ class CrawlerTest extends TestCase
             'https://www.f-shop.de/neuheiten/' => Http::response(file_get_contents(__DIR__.'/fshop.html')),
         ]);
 
-        $this->artisan('crawler:run')->assertSuccessful();
+        $this->artisan('app:crawl')->assertSuccessful();
 
         $this->assertDatabaseHas('articles', [
             'provider' => Provider::ASMODEE,

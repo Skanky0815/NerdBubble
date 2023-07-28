@@ -1,6 +1,5 @@
-version: '3'
 services:
-    laravel.test:
+    backend:
         build:
             context: ./vendor/laravel/sail/runtimes/8.2
             dockerfile: Dockerfile
@@ -27,7 +26,7 @@ services:
             - meilisearch
             - mailpit
             - selenium
-    mysql:
+    database:
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'

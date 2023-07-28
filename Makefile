@@ -1,4 +1,4 @@
-dockerPHP = docker exec -it server-laravel.test-1 php
+dockerPHP = docker compose exec -it backend php
 
 start_client:
 	npm run start --prefix app

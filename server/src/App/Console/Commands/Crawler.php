@@ -18,7 +18,7 @@ class Crawler extends Command
      *
      * @var string
      */
-    protected $signature = 'crawler:run';
+    protected $signature = 'app:crawl';
 
     /**
      * The console command description.
