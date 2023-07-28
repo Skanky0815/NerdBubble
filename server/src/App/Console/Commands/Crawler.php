@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Exceptions\MissingImageException;
 use App\Services\Crawler\Crawler as CrawlerService;
 use Domains\Article\Services\Crawler as DomainCrawler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Crawler extends Command
