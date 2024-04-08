@@ -1,4 +1,4 @@
-name: App Deployment
+name: Deploy App
 run-name: Deployment for the App
 
 on:
