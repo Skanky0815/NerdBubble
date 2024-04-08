@@ -19,4 +19,5 @@ jobs:
           remote_path: //home/www/p666144/html/
           remote_host: nerd-bubble.de
           remote_user: ${{ secrets.REMOTE_USER }}
+          remote_password: ${{ secrets.REMOTE_PASSWORD }}
           remote_key: ${{ secrets.DEPLOY_KEY }}
