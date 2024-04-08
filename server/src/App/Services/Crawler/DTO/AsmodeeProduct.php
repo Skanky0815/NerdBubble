@@ -13,7 +13,10 @@ class AsmodeeProduct extends Product
         return new self(
             $content['name'],
             'https://www.asmodee.de/produkte/'.$content['slug'],
-            $content['facets']['image'],
+            $content['facets']['image']
+                ?? $content['images']['3dboxl']['url']
+                ?? $content['images']['cover']['url']
+                ?? dd($content),
         );
     }
 }
