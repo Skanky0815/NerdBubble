@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
         with:
           local-dir: ./test
           ftp-server: sftp://${{ secrets.REMOTE_USER }}.mittwaldserver.info/html/
