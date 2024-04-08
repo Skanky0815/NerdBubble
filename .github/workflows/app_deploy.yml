@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           local-dir: ./test
-          ftp-server: sftp://${{ secrets.REMOTE_USER }}.mittwaldserver.info/html/
-          ftp-username: ${{ secrets.REMOTE_USER }}
-          ftp-password: ${{ secrets.REMOTE_PASSWORD }}
+          server: sftp://${{ secrets.REMOTE_USER }}.mittwaldserver.info/html/
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
