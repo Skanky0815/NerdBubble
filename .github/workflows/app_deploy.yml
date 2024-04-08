@@ -16,6 +16,6 @@ jobs:
         with:
           local-dir: ./test
           protocol: ftps
-          ftp-server: ftp://p666144.mittwaldserver.info/html/
+          ftp-server: ftp://${{ secrets.REMOTE_USER }}.mittwaldserver.info/html/
           ftp-username: ${{ secrets.REMOTE_USER }}
           ftp-password: ${{ secrets.REMOTE_PASSWORD }}
