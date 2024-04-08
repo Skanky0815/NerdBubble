@@ -18,5 +18,5 @@ jobs:
           local-dir: ./test/
           server-dir: html/
           server: 31.220.126.208
-          username: p666144
+          username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
