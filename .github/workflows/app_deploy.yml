@@ -20,3 +20,10 @@ jobs:
           server: 31.220.126.208
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
+      - name: Run PHP Command
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 31.220.126.208
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: php -v
