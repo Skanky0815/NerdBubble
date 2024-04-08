@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - test/**
+      - .github/workflows/app_deploy.yml
 
 jobs:
   deploy:
