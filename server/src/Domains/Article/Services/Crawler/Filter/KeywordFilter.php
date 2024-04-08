@@ -11,8 +11,7 @@ class KeywordFilter
 {
     public function __construct(
         private readonly Keywords $keywords
-    ) {
-    }
+    ) {}
 
     public function removeArticlesWhoNotMatchAnyKeyword(array $allArticles): array
     {

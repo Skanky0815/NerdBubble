@@ -31,12 +31,12 @@ class AsmodeeTest extends MockeryTestCase
     use ArticleFixture;
     use ProductFixture;
 
-    private (KeywordFilter&MockInterface)|(KeywordFilter&LegacyMockInterface) $keywordFilter;
-    private (HttpClient&MockInterface)|(HttpClient&LegacyMockInterface) $httpClient;
-    private (Articles&MockInterface)|(Articles&LegacyMockInterface) $articles;
-    private (ArticleFactory&MockInterface)|(ArticleFactory&LegacyMockInterface) $articleFactory;
-    private (ProductFactory&MockInterface)|(ProductFactory&LegacyMockInterface) $productFactory;
-    private (ProductExistFilter&LegacyMockInterface)|(ProductExistFilter&MockInterface) $productExistFilter;
+    private (KeywordFilter&LegacyMockInterface)|(KeywordFilter&MockInterface) $keywordFilter;
+    private (HttpClient&LegacyMockInterface)|(HttpClient&MockInterface) $httpClient;
+    private (Articles&LegacyMockInterface)|(Articles&MockInterface) $articles;
+    private (ArticleFactory&LegacyMockInterface)|(ArticleFactory&MockInterface) $articleFactory;
+    private (LegacyMockInterface&ProductFactory)|(MockInterface&ProductFactory) $productFactory;
+    private (LegacyMockInterface&ProductExistFilter)|(MockInterface&ProductExistFilter) $productExistFilter;
 
     #[Test]
     public function crawl_when_article_data_found_then_a_article_collection_will_be_returned(): void

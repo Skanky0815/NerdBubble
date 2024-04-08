@@ -15,8 +15,7 @@ class KeywordFilter
 
     public function __construct(
         private readonly KeywordRepository $keywordRepository
-    ) {
-    }
+    ) {}
 
     public function matchKeyword(string $str): bool
     {

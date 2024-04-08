@@ -28,7 +28,7 @@ class UlissesSpieleProviderTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     private (HtmlParser&LegacyMockInterface)|(HtmlParser&MockInterface) $htmlParser;
-    private (KeywordFilter&MockInterface)|(KeywordFilter&LegacyMockInterface) $keywordFilter;
+    private (KeywordFilter&LegacyMockInterface)|(KeywordFilter&MockInterface) $keywordFilter;
 
     protected function setUp(): void
     {

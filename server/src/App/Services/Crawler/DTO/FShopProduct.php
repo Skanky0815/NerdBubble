@@ -8,7 +8,7 @@ use App\Services\Crawler\Html\HtmlContent;
 
 class FShopProduct extends Product
 {
-    public static function create(HtmlContent|array $content): Product
+    public static function create(array|HtmlContent $content): Product
     {
         return new static(
             name: $content->text('.//a[@class="product--title"]'),

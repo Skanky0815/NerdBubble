@@ -23,9 +23,9 @@ use Mockery\MockInterface;
  */
 class CrawlerServiceTest extends MockeryTestCase
 {
-    private (Provider&MockInterface)|(Provider&LegacyMockInterface) $provider;
-    private (ArticleRepository&MockInterface)|(ArticleRepository&LegacyMockInterface) $articleRepository;
-    private (ProductRepository&MockInterface)|(ProductRepository&LegacyMockInterface) $productRepository;
+    private (LegacyMockInterface&Provider)|(MockInterface&Provider) $provider;
+    private (ArticleRepository&LegacyMockInterface)|(ArticleRepository&MockInterface) $articleRepository;
+    private (LegacyMockInterface&ProductRepository)|(MockInterface&ProductRepository) $productRepository;
 
     public function testCrawlWhenArticlesAndProductsAreLoadedThenTheThereWillBeStored(): void
     {

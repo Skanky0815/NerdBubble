@@ -20,8 +20,7 @@ class TrainSimWorld implements Crawler
         private readonly Articles $articles,
         private readonly HttpClient $httpClient,
         private readonly ArticleFactory $articleFactory,
-    ) {
-    }
+    ) {}
 
     public function crawl(): void
     {

@@ -29,8 +29,8 @@ class BlueBrixxProviderTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     private (HtmlParser&LegacyMockInterface)|(HtmlParser&MockInterface) $htmlParser;
-    private (ProductRepository&MockInterface)|(ProductRepository&LegacyMockInterface) $productRepository;
-    private (KeywordFilter&MockInterface)|(KeywordFilter&LegacyMockInterface) $keywordFilter;
+    private (LegacyMockInterface&ProductRepository)|(MockInterface&ProductRepository) $productRepository;
+    private (KeywordFilter&LegacyMockInterface)|(KeywordFilter&MockInterface) $keywordFilter;
 
     protected function setUp(): void
     {

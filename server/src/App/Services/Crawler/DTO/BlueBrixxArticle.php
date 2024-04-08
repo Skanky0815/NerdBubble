@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 class BlueBrixxArticle extends Article
 {
-    public static function create(HtmlContent|array $content): Article
+    public static function create(array|HtmlContent $content): Article
     {
         return new self(
             provider: Provider::BLUE_BRIXX,

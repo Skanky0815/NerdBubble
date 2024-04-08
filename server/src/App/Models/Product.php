@@ -16,17 +16,18 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Product.
  *
- * @property Id                              $id
- * @property string                          $article_id
- * @property ProductName                     $name
- * @property Link                            $link
- * @property ImageUrl                        $image
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property Id          $id
+ * @property string      $article_id
+ * @property ProductName $name
+ * @property Link        $link
+ * @property ImageUrl    $image
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
  *
  * @method static \Database\Factories\ProductFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()

@@ -16,6 +16,5 @@ readonly class Product
         public Link $link,
         public ImageUrl $image,
         public ?Id $id = null,
-    ) {
-    }
+    ) {}
 }

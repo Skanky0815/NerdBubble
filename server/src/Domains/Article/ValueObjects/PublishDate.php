@@ -10,8 +10,7 @@ readonly class PublishDate implements \Stringable
 {
     public function __construct(
         private CarbonImmutable $value,
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {

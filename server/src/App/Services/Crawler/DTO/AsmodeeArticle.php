@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 class AsmodeeArticle extends Article
 {
-    public static function create(HtmlContent|array $content): self
+    public static function create(array|HtmlContent $content): self
     {
         $filterEmptyProducts = fn (array $productContent): bool => false === empty($productContent['product']);
         $mapToProducts = fn (array $productContent): Product => AsmodeeProduct::create($productContent['product']);

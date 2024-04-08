@@ -11,7 +11,7 @@ use Illuminate\Support\Carbon;
 
 class TswArticle extends Article
 {
-    public static function create(HtmlContent|array $content): self
+    public static function create(array|HtmlContent $content): self
     {
         $selectImage = fn (array $img) => $img['thumbSqr']
             ?: $img['thumbWide']

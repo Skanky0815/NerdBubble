@@ -8,8 +8,7 @@ readonly class Description implements \Stringable
 {
     public function __construct(
         private string $value,
-    ) {
-    }
+    ) {}
 
     public function __toString()
     {

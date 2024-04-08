@@ -19,7 +19,7 @@ abstract class Product
         $this->filterText = $this->name;
     }
 
-    abstract public static function create(HtmlContent|array $content): self;
+    abstract public static function create(array|HtmlContent $content): self;
 
     public function getName(): ProductName
     {

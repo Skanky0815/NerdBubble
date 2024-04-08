@@ -11,7 +11,7 @@ readonly class FilterText implements \Stringable
     private string $value;
 
     public function __construct(
-        \Stringable|string|null ...$values,
+        null|string|\Stringable ...$values,
     ) {
         $this->value = strtolower(implode(' ', $values));
     }

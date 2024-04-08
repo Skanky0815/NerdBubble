@@ -6,5 +6,5 @@ namespace Domains\Article\Services;
 
 interface HttpClient
 {
-    public function loadContentFromWebsite(string $url): \DOMDocument|array;
+    public function loadContentFromWebsite(string $url): array|\DOMDocument;
 }

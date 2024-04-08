@@ -17,8 +17,7 @@ class RailSimProvider implements Provider
 
     public function __construct(
         private readonly HtmlParser $htmlParser,
-    ) {
-    }
+    ) {}
 
     public function loadArticles(): Collection
     {

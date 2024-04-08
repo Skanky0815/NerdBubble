@@ -19,8 +19,7 @@ class BlueBrixxProvider implements Provider
         private readonly HtmlParser $htmlParser,
         private readonly ProductRepository $productRepository,
         private readonly KeywordFilter $keywordFilter
-    ) {
-    }
+    ) {}
 
     public function loadArticles(): Collection
     {

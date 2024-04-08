@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 class FShopArticle extends Article
 {
-    public static function create(HtmlContent|array $content): Article
+    public static function create(array|HtmlContent $content): Article
     {
         return new static(
             provider: Provider::F_SHOP,

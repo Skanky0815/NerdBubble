@@ -28,8 +28,7 @@ readonly class Article
         public ?Id $id = null,
         public ?SubHeadline $subHeadline = null,
         public ?Description $description = null,
-    ) {
-    }
+    ) {}
 
     public function matchWithKeywords(Keyword ...$keywords): bool
     {

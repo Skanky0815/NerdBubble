@@ -19,8 +19,7 @@ class FShopProvider implements Provider
         private readonly HtmlParser $htmlParser,
         private readonly KeywordFilter $keywordFilter,
         private readonly ProductRepository $productRepository,
-    ) {
-    }
+    ) {}
 
     public function loadArticles(): Collection
     {

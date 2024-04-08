@@ -29,8 +29,7 @@ class Asmodee implements Crawler
         private readonly HttpClient $httpClient,
         private readonly ArticleFactory $articleFactory,
         private readonly ProductFactory $productFactory,
-    ) {
-    }
+    ) {}
 
     public function crawl(): void
     {

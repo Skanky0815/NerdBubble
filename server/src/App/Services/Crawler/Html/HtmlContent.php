@@ -14,8 +14,7 @@ readonly class HtmlContent
     public function __construct(
         private \DOMXPath $xpath,
         private \DOMElement $rootElement,
-    ) {
-    }
+    ) {}
 
     public function text(#[Language('XPath')] string $query): string
     {
@@ -36,7 +35,8 @@ readonly class HtmlContent
     }
 
     public function date(
-        #[Language('XPath')] string $query,
+        #[Language('XPath')]
+        string $query,
         string $format,
         ?string $local = 'en_EN',
         ?string $attribute = null

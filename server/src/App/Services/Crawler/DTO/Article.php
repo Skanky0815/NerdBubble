@@ -29,7 +29,7 @@ abstract class Article
         $this->filterText = $this->title.$this->subTitle.$productFilterText.$this->description;
     }
 
-    abstract public static function create(HtmlContent|array $content): self;
+    abstract public static function create(array|HtmlContent $content): self;
 
     public function products(): Collection
     {

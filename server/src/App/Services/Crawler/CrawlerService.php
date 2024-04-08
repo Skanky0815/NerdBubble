@@ -15,8 +15,7 @@ class CrawlerService implements Crawler
         private readonly Provider $provider,
         private readonly ArticleRepository $articleRepository,
         private readonly ProductRepository $productRepository,
-    ) {
-    }
+    ) {}
 
     public function provider(): string
     {

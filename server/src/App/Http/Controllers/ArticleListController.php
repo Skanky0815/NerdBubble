@@ -14,8 +14,7 @@ class ArticleListController extends Controller
 {
     public function __construct(
         private readonly Articles $allArticles,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request): ResourceCollection
     {

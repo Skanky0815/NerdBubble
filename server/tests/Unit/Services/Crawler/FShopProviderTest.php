@@ -29,8 +29,8 @@ class FShopProviderTest extends TestCase
     use MockeryPHPUnitIntegration;
 
     private (HtmlParser&LegacyMockInterface)|(HtmlParser&MockInterface) $htmlParser;
-    private (KeywordFilter&MockInterface)|(KeywordFilter&LegacyMockInterface) $keywordFilter;
-    private (ProductRepository&MockInterface)|(ProductRepository&LegacyMockInterface) $productRepository;
+    private (KeywordFilter&LegacyMockInterface)|(KeywordFilter&MockInterface) $keywordFilter;
+    private (LegacyMockInterface&ProductRepository)|(MockInterface&ProductRepository) $productRepository;
 
     protected function setUp(): void
     {

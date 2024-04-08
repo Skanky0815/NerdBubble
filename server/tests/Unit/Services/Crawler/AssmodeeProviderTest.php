@@ -24,7 +24,7 @@ class AssmodeeProviderTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
-    private (KeywordFilter&MockInterface)|(KeywordFilter&LegacyMockInterface) $keywordFilter;
+    private (KeywordFilter&LegacyMockInterface)|(KeywordFilter&MockInterface) $keywordFilter;
 
     protected function setUp(): void
     {

@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Article.
@@ -30,12 +31,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Headline                                                           $title
  * @property null|SubHeadline                                                   $subTitle
  * @property null|string                                                        $description
- * @property \Domains\Article\ValueObjects\Provider                             $provider
+ * @property Provider                                                           $provider
  * @property Link                                                               $link
  * @property PublishDate                                                        $date
  * @property ImageUrl                                                           $image
- * @property null|\Illuminate\Support\Carbon                                    $created_at
- * @property null|\Illuminate\Support\Carbon                                    $updated_at
+ * @property null|Carbon                                                        $created_at
+ * @property null|Carbon                                                        $updated_at
  * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property null|int                                                           $products_count
  *

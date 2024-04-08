@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class HttpClientService implements HttpClient
 {
-    public function loadContentFromWebsite(string $url): \DOMDocument|array
+    public function loadContentFromWebsite(string $url): array|\DOMDocument
     {
         $response = Http::get($url);
 

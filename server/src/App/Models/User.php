@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
@@ -21,11 +22,11 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property int                                                                $id
  * @property string                                                             $name
  * @property string                                                             $email
- * @property null|\Illuminate\Support\Carbon                                    $email_verified_at
+ * @property null|Carbon                                                        $email_verified_at
  * @property string                                                             $password
  * @property null|string                                                        $remember_token
- * @property null|\Illuminate\Support\Carbon                                    $created_at
- * @property null|\Illuminate\Support\Carbon                                    $updated_at
+ * @property null|Carbon                                                        $created_at
+ * @property null|Carbon                                                        $updated_at
  * @property DatabaseNotificationCollection<int, DatabaseNotification>          $notifications
  * @property null|int                                                           $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, PersonalAccessToken> $tokens

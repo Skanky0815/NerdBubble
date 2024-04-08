@@ -12,8 +12,7 @@ readonly class Keyword
     public function __construct(
         public Word $word,
         public ?Id $id = null,
-    ) {
-    }
+    ) {}
 
     public static function fromString(string $word): static
     {

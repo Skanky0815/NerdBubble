@@ -11,8 +11,7 @@ class ProductExistFilter
 {
     public function __construct(
         private readonly Products $products
-    ) {
-    }
+    ) {}
 
     public function removeKnownProducts(array $allProducts): array
     {

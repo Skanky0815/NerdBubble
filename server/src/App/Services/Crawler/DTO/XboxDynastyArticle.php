@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class XboxDynastyArticle extends Article
 {
-    public static function create(HtmlContent|array $content): self
+    public static function create(array|HtmlContent $content): self
     {
         $title = $content->text('.//div/div/header/h1/a');
         $title = Str::replace('Xbox Game Pass: ', '', $title);

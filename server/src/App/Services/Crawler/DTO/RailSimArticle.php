@@ -9,7 +9,7 @@ use App\Services\Crawler\Html\HtmlContent;
 
 class RailSimArticle extends Article
 {
-    public static function create(HtmlContent|array $content): self
+    public static function create(array|HtmlContent $content): self
     {
         return new self(
             provider: Provider::RAIL_SIM,

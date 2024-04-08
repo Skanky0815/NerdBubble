@@ -17,8 +17,7 @@ class AssmodeeProvider implements Provider
 
     public function __construct(
         private readonly KeywordFilter $keywordFilter,
-    ) {
-    }
+    ) {}
 
     public function loadArticles(): Collection
     {

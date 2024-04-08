@@ -8,7 +8,7 @@ use App\Services\Crawler\Html\HtmlContent;
 
 class AsmodeeProduct extends Product
 {
-    public static function create(HtmlContent|array $content): Product
+    public static function create(array|HtmlContent $content): Product
     {
         return new self(
             $content['name'],

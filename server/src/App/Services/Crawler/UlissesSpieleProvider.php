@@ -18,8 +18,7 @@ class UlissesSpieleProvider implements Provider
     public function __construct(
         private readonly HtmlParser $htmlParser,
         private readonly KeywordFilter $keywordFilter,
-    ) {
-    }
+    ) {}
 
     public function loadArticles(): Collection
     {

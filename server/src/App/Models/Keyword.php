@@ -11,14 +11,15 @@ use Domains\Article\ValueObjects\Word;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Keyword.
  *
- * @property Id                              $id
- * @property Word                            $word
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property Id          $id
+ * @property Word        $word
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
  *
  * @method static \Database\Factories\KeywordFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Keyword newModelQuery()
