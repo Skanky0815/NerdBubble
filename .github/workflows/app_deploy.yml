@@ -15,7 +15,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          local-dir: ./test
+          local-dir: ./test/
           server: sftp://${{ secrets.REMOTE_USER }}.mittwaldserver.info/html/
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
