@@ -1,6 +1,6 @@
 # 3. Kontextabgrenzung
 
-Dieser Abschnitt beschreibt das Umfeld von NerdBubble. Für welche Benutzer ist es da, und mit welchen Fremdsystemen interagiert es?
+> Dieser Abschnitt beschreibt das Umfeld von NerdBubble. Für welche Benutzer ist es da, und mit welchen Fremdsystemen interagiert es?
 
 ## 3.1 Fachlicher Kontext
 

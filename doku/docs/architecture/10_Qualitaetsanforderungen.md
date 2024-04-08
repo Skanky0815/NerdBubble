@@ -2,12 +2,11 @@
 
 ```mermaid
 mindmap
-Qualität
-    Wartbarkeit
-        Analysierbarkeit
-        Erweiterbarkeit
-        Änderbarkeit
-    Kompatibilität
-    Funktionale Eignung
-            
+    Qualität
+        Wartbarkeit
+            Analysierbarkeit
+            Erweiterbarkeit
+            Änderbarkeit
+        Kompatibilität
+        Funktionale Eignung
 ```

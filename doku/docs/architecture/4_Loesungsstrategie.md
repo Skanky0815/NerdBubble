@@ -1,6 +1,6 @@
 # 4. Lösungsstrategie
 
-Dieser Abschnitt enthält einen stark verdichteten Architekturüberblick. Eine Gegenüberstellung der wichtigsten Ziele
+> Dieser Abschnitt enthält einen stark verdichteten Architekturüberblick. Eine Gegenüberstellung der wichtigsten Ziele
 und Lösungsansätze.
 
 ## 4.1 Einstieg in die Lösungsstrategie

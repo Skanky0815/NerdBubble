@@ -1,6 +1,6 @@
 # 2. Randbedingung
 
-Beim Lösungsentwurf waren zu Beginn verschiedene Randbedingungen zu beachten, sie wirken in der Lösung fort. Dieser
+> Beim Lösungsentwurf waren zu Beginn verschiedene Randbedingungen zu beachten, sie wirken in der Lösung fort. Dieser
 Abschnitt stellt sie dar und erklärt auch – wo nötig – deren Motivation.
 
 ## 2.1 Technisch

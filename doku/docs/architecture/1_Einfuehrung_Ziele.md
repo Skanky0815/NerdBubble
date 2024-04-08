@@ -1,5 +1,5 @@
 # 1. Einführung und Ziele
-Dieser Abschnitt führt in die Aufgabenstellung ein und skizziert die Ziele, die NerdBubble verfolgt.
+> Dieser Abschnitt führt in die Aufgabenstellung ein und skizziert die Ziele, die NerdBubble verfolgt.
 
 ## 1.1 Aufgabenstellung
 
@@ -10,6 +10,7 @@ Dieser Abschnitt führt in die Aufgabenstellung ein und skizziert die Ziele, die
 ### Wesentliche Features
 
 - Benutzer können sich einen Account anlegen
+- NerdBubble aggregiert Neuigkeiten von diversen Webseiten
 
 ## 1.2 Qualitätsziele
 

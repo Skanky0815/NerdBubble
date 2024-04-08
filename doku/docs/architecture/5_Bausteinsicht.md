@@ -1,6 +1,6 @@
 # 5. Bausteinsicht
 
-Dieser Abschnitt beschreibt die Zerlegung von NerdBubble in Services. Jeder Service wird als FaaS bereitgestellt.
+> Dieser Abschnitt beschreibt die Zerlegung von NerdBubble in Services. Jeder Service wird als FaaS bereitgestellt.
 
 ```mermaid
 C4Context
