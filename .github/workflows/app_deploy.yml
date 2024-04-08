@@ -17,6 +17,6 @@ jobs:
         with:
           local-dir: ./test/
           server-dir: html/
-          server: sftp://${{ secrets.REMOTE_USER }}.webspaceconfig.de
+          server: sftp://p666144.webspaceconfig.de
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
