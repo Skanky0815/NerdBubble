@@ -1,0 +1,22 @@
+name: App Deployment
+run-name: Deployment for the App
+
+on:
+  push:
+    paths:
+      - test/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: test/
+          remote_path: //home/www/p666144/html/
+          remote_host: nerd-bubble.de
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
