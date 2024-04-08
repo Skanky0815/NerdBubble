@@ -10,14 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@7.0.1
+      - uses: actions/checkout@v2
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          switches: -avzr --delete
-          path: test/
-          remote_path: //home/www/p666144/html/
-          remote_host: nerd-bubble.de
-          remote_user: ${{ secrets.REMOTE_USER }}
-          remote_password: ${{ secrets.REMOTE_PASSWORD }}
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+          local-dir: ./test
+          protocol: ftps
+          ftp-server: ftp://p666144.mittwaldserver.info/html/
+          ftp-username: ${{ secrets.REMOTE_USER }}
+          ftp-password: ${{ secrets.REMOTE_PASSWORD }}
