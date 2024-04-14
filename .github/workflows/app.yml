@@ -1,11 +1,11 @@
-name: App QA
-run-name: QA for the App
+name: App Pipe
+run-name: Pipeline for the App
 
 on:
   push:
     paths:
       - app/**
-
+      - .github/workflows/app.yml
 env:
   APP_DIR: ./app
 
@@ -69,3 +69,19 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_APP }}
         with:
           projectBaseDir: ${{ env.APP_DIR }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Build App
+        run: npm run build
+        working-directory: ${{ env.APP_DIR }}
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          local-dir: ./app/build
+          server-dir: html/app
+          server: 31.220.126.208
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
