@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Exceptions\MissingImageException;
 use App\Services\Crawler\Crawler as CrawlerService;
 use Domains\Article\Services\Crawler as DomainCrawler;
 use Illuminate\Console\Command;
@@ -63,7 +64,9 @@ class Crawler extends Command
             $this->error(sprintf(' %s: %s', $crawler::class, $exception->getMessage()));
             $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
             $this->newLine();
-            $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
+            if ($exception instanceof MissingImageException) {
+                $this->error($exception->root, OutputInterface::VERBOSITY_DEBUG);
+            }
             Log::alert($exception->getMessage(), $exception->getTrace());
         }
     }
