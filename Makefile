@@ -1,5 +1,8 @@
 dockerPHP = docker compose exec -it backend php
 
+start_server:
+	cd ./server && ./vendor/bin/sail up
+
 start_client:
 	npm run start --prefix app
 

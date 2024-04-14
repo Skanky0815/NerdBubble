@@ -2,6 +2,7 @@ import { When, Then, Given, Before } from "@badeball/cypress-cucumber-preprocess
 
 Before(() => {
     cy.intercept('/api/articles').as('getArticles');
+    cy.intercept('/api/marked-products').as('getMargetProducts');
 });
 
 Given("I visit {string} page", (route: string) => {
@@ -25,10 +26,13 @@ When("I click the reload button", () => {
 })
 
 When("I click the {string} article",  (articleTitle: string) => {
-    cy.get('article').contains(articleTitle).parentsUntil('a[data-testid="article-external-link"]').invoke('attr', 'href').then(url => {
-        cy.log(url!);
-        cy.request(url!).as('articlePageRequest')
-    });
+    cy.getByTestId('article-external-link')
+        .invoke('attr', 'href')
+        .then(url => {
+            cy.log(url + '');
+            cy.request(url as string).as('articlePageRequest')
+            cy.wait('@articlePageRequest').its('status').should('eq', 404);
+        });
 })
 
 Then("the article page is loaded", () => {
@@ -50,6 +54,5 @@ Then("the product {string} is in the list", (productTitle: string) => {
 });
 
 When("The marked products are successful loaded", () => {
-    cy.intercept('/api/marked-products').as('getMargetProducts');
     cy.wait('@getMargetProducts').its('response.statusCode').should('equal', 200);
 });
