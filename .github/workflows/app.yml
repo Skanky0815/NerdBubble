@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Restore Package cache
-        uses: actions/cache@v2
+        uses: actions/cache@main
         with:
           path: ~/.package/cache
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
@@ -30,7 +30,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
 
       - name: Save Package cache
-        uses: actions/cache@v2
+        uses: actions/cache@main
         with:
           path: ~/.package/cache
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
@@ -47,7 +47,7 @@ jobs:
           fetch-depth: 0
 
       - name: Restore Package cache
-        uses: actions/cache@v2
+        uses: actions/cache@main
         with:
           path: ~/.package/cache
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
