@@ -1,5 +1,5 @@
 import User from "../../authentication/entities/User";
-import {createContext, PropsWithChildren} from "react";
+import {createContext, PropsWithChildren, useEffect} from "react";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import Users from "../../authentication/repositories/Users";
 import {useNavigate} from "react-router-dom";
@@ -55,6 +55,12 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
             navigate('/login');
         }
     });
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/login');
+        }
+    }, [user])
 
     const signIn = (loginData: LoginData) => {
         loginMutation.mutate(loginData);
