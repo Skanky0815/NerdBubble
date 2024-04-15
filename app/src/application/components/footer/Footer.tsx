@@ -9,16 +9,18 @@ export default function Footer() {
     return (
         <footer className={`border-t-2 border-gray-200 bg-white px-4 py-2`}>
 
-            {!user && <div className={`flex flex-row justify-between`}>
-                <div className={`text-xs`}>
-                    &copy; {(new Date).getFullYear()}, NerdBubble.de by Rico Schulz
+            {!user &&
+                <div className={`flex flex-col-reverse md:flex-row items-center justify-between gap-2`}>
+                    <div className={`text-xs`}>
+                        &copy; {(new Date).getFullYear()}, NerdBubble.de by Rico Schulz
+                    </div>
+                    <div className={`text-xs`}>
+                        <NavLink to={`/imprint`}>
+                            Impressum
+                        </NavLink>
+                    </div>
                 </div>
-                <div className={`text-xs`}>
-                    <NavLink to={`/imprint`}>
-                        Impressum
-                    </NavLink>
-                </div>
-            </div>}
+            }
 
             {user && <BottomNavigation />}
         </footer>
