@@ -14,7 +14,7 @@ const Users = {
         return response.data;
     },
     me: async () => {
-        const response = await apiClient.get<User>('/api/me');
+        const response = await apiClient.get<User>('/me');
 
         return response.data;
     }

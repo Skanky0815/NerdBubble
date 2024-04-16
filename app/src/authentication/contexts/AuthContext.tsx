@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     useQuery({
         queryKey: ['csrf'],
-        queryFn: () => apiClient.get('/sanctum/csrf-cookie'),
+        queryFn: () => apiClient.get('/csrf-cookie'),
     });
 
     const loginMutation = useMutation({
