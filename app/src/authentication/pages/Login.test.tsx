@@ -18,7 +18,7 @@ jest.mock('../../common/hook/useAlert', () => {
 
 describe('<Login />', () => {
     const server = setupServer(
-        rest.get('/sanctum/csrf-cookie', (req, res, ctx) => {
+        rest.get('/csrf-cookie', (req, res, ctx) => {
             return res(ctx.status(200));
         }),
         rest.post('/login', async (req, res, ctx) => {
@@ -73,7 +73,7 @@ describe('<Login />', () => {
         await userEvent.click(screen.getByTestId('login'));
 
         await waitFor(() => {
-            expect(apiClient.get).toHaveBeenCalledWith('/sanctum/csrf-cookie');
+            expect(apiClient.get).toHaveBeenCalledWith('/csrf-cookie');
             expect(apiClient.post).toHaveBeenCalledWith('/login', {
                 email: 'test@example.com',
                 password: 'incorrect',

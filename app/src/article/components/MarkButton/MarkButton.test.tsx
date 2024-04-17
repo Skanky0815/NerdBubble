@@ -18,10 +18,10 @@ jest.mock( '../../../common/hook/useAlert', () => {
 
 describe('<MarkButton />', () => {
     const server = setupServer(
-        rest.post('/api/products/success-product-id/mark', (req, res, ctx) => {
+        rest.post('/products/success-product-id/mark', (req, res, ctx) => {
             return res(ctx.status(204));
         }),
-        rest.post('/api/products/error-product-id/mark', (req, res, ctx) => {
+        rest.post('/products/error-product-id/mark', (req, res, ctx) => {
             return res(ctx.status(500), ctx.json({ message: 'Invalid ID' }));
         }),
     );
@@ -53,7 +53,7 @@ describe('<MarkButton />', () => {
         screen.getByTestId('mark-button').click();
 
         await waitFor(() => {
-            expect(apiClient.post).toHaveBeenCalledWith('/api/products/success-product-id/mark');
+            expect(apiClient.post).toHaveBeenCalledWith('/products/success-product-id/mark');
             expect(setAlert).toHaveBeenCalledWith('Produkt gemerkt', AlertType.SUCCESS);
         });
     });
@@ -74,7 +74,7 @@ describe('<MarkButton />', () => {
         screen.getByTestId('mark-button').click();
 
         await waitFor(() => {
-            expect(apiClient.post).toHaveBeenCalledWith('/api/products/error-product-id/mark');
+            expect(apiClient.post).toHaveBeenCalledWith('/products/error-product-id/mark');
             expect(setAlert).toHaveBeenCalledWith('Invalid ID', AlertType.ERROR);
         });
     });

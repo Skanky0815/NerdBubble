@@ -1,5 +1,5 @@
 name: Server Pipe
-run-name: Pipeline for the App
+run-name: Pipeline for the Server
 
 on:
   push:

@@ -12,7 +12,7 @@ jest.mock("../components/ArticleCard/ArticleCard", () => ({ article }: any) => {
 
 describe('<ArticleList />', () => {
     const server = setupServer(
-        rest.get('http://localhost/api/articles', (req, res, ctx) => {
+        rest.get('/articles', (req, res, ctx) => {
             return res(
                 ctx.delay(500),
                 ctx.json({
