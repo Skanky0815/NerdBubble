@@ -1,10 +1,11 @@
-name: Server QA
-run-name: QA for the Server
+name: Server Pipe
+run-name: Pipeline for the App
 
 on:
   push:
     paths:
       - server/**
+      - .github/workflows/server.yml
 
 env:
   SERVER_DIR: ./server
@@ -181,6 +182,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: feature_tests
     steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
       - uses: actions/checkout@main
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
