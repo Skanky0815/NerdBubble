@@ -194,8 +194,24 @@ jobs:
       - name: Prepare Laravel Application
         run: |
           cp .env.prod .env
+          echo DB_DATABASE=${{secrets.DB_DATABASE}} >> .env
+          echo DB_USERNAME=${{secrets.DB_USERNAME}} >> .env
+          echo DB_PASSWORD=${{secrets.DB_PASSWORD}} >> .env
           php artisan key:generate
         working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Stop Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 31.220.126.208
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: |
+            cd ./html/server
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Stop Server +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan down
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -205,11 +221,40 @@ jobs:
           server: 31.220.126.208
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/test/**
+            **/.php-cs-fixer.dist.php
+            **/deptrac.yml
+            **/phpunit.xml
+            **/README.md
+            **/sonar-project.properties
+            **/vite.config.js
+            **/.env.ci
+            **/.env.example
 
-      - name: Run DB migration
+      - name: Run Server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 31.220.126.208
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          script: php artisan migrate --force
+          script: |
+            cd ./html/server
+            echo "++++++++++++++++++++++++++++++++"
+            echo "+++++ Optimize Application +++++"
+            echo "++++++++++++++++++++++++++++++++"
+            php artisan optimize
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Warmup Cache +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan config:cache
+            echo "++++++++++++++++++++++"
+            echo "+++++ Migrate DB +++++"
+            echo "++++++++++++++++++++++"
+            php artisan migrate --force
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Start Server +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan up
