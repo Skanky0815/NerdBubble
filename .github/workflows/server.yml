@@ -193,7 +193,7 @@ jobs:
 
       - name: Prepare Laravel Application
         run: |
-          cp .env.pord .env
+          cp .env.prod .env
           php artisan key:generate
         working-directory: ${{ env.SERVER_DIR }}
 

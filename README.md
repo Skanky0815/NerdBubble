@@ -1,7 +1,7 @@
 # NerdBubble
 
-[![Server QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/server_qa.yml)
-[![App QA](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/app_qa.yml)
+[![Server](https://github.com/Skanky0815/NerdBubble/actions/workflows/server.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/server.yml)
+[![App](https://github.com/Skanky0815/NerdBubble/actions/workflows/app.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/app.yml)
 
 **App**
 
