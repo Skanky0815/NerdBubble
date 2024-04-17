@@ -188,14 +188,14 @@ jobs:
 
       - uses: actions/checkout@main
       - name: Install dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-        working-directory: ${{ env.APP_DIR }}
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --no-dev
+        working-directory: ${{ env.SERVER_DIR }}
 
       - name: Prepare Laravel Application
         run: |
           cp .env.pord .env
           php artisan key:generate
-        working-directory: ${{ env.APP_DIR }}
+        working-directory: ${{ env.SERVER_DIR }}
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
