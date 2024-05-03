@@ -35,7 +35,7 @@ const Login = () => {
                                 rules={{
                                     required: 'Bitte gib deine E-Mail-Adresse ein.'
                                 }}
-                                render={({ field }) => <Input lable={'E-Mail-Adresse*'} {...field} ref={null} error={errors.email?.message} />}
+                                render={({ field }) => <Input lable={'E-Mail-Adresse*'} {...field} ref={null} error={errors.email?.message} data-testid={'email'} />}
                             />
                             <Controller
                                 name={'password'}
@@ -43,7 +43,7 @@ const Login = () => {
                                 rules={{
                                     required: 'Bitte gibt dein Password ein.'
                                 }}
-                                render={({ field }) => <Input lable={'Passwort*'} type="password" autoComplete="off" {...field} ref={null} error={errors.password?.message}/>}
+                                render={({ field }) => <Input lable={'Passwort*'} type="password" autoComplete="off" {...field} ref={null} error={errors.password?.message} data-testid={'password'}/>}
                             />
                             <Button btnType={'primary'} type={'submit'}>
                                 Anmelden
