@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import Loading from "shared-kernel/components/Loading/Loading";
 import PageTitle from "shared-kernel/components/PageTitle/PageTitle";
 import {AuthContext} from "../authentication/contexts/AuthContext";
 import Button from "../shared-kernel/components/Button/Button";
@@ -9,14 +8,16 @@ export default function Setting() {
     const {user, signOut: handleLogout} = useContext(AuthContext);
 
     return (
-        <Card>
-            <PageTitle text={`Einstellungen`} />
+        <>
+            <PageTitle text={`Account`} />
+            <Card>
+                <h2 className={`text-gray-500 font-bold mb-3`}>Profil</h2>
+                {user && <h2>{user.name}</h2>}
 
-            {user ? <h2>{user.name}</h2> : <Loading color={`blue`} />}
-
-            <Button btnType={'default'} onClick={handleLogout}>
-                Abmelden
-            </Button>
-        </Card>
+                <Button btnType={'default'} onClick={handleLogout}>
+                    Abmelden
+                </Button>
+            </Card>
+        </>
     )
 }
