@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleListController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductMarkController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/me', fn (Request $request) => $request->user());
+    Route::get('/me', fn (Request $request) => new UserResource($request->user()));
 
     Route::get('/articles', ArticleListController::class);
     Route::post('/products/{id}/mark', ProductMarkController::class);
-    Route::get('marked-products', ProductListController::class);
+    Route::get('/marked-products', ProductListController::class);
 });
