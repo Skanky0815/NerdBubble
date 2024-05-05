@@ -5,7 +5,7 @@ import Input from "../../shared-kernel/components/Input/Input";
 import Button from "../../shared-kernel/components/Button/Button";
 import React, {useContext} from "react";
 import {AuthContext} from "../contexts/AuthContext";
-import Card from "../../shared-kernel/components/Card/Card";
+import Card, {CardTitle} from "../../shared-kernel/components/Card/Card";
 
 const Login = () => {
     const {signIn} = useContext(AuthContext);
@@ -27,7 +27,7 @@ const Login = () => {
             <Card>
                 <div className={`flex flex-col-reverse md:flex-row justify-between md:items-center gap-4`}>
                     <div className={`md:basis-2/3`}>
-                        <h2 className={`text-gray-500 font-bold mb-3`}>Anmeldung</h2>
+                        <CardTitle>Anmeldung</CardTitle>
                         <form className="space-y-6" onSubmit={handleSubmit(submitHandler)}>
                             <Controller
                                 name={'email'}

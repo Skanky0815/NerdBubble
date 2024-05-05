@@ -1,4 +1,4 @@
-import {PropsWithChildren} from "react";
+import React, {PropsWithChildren} from "react";
 
 export default function Card({children}: PropsWithChildren) {
     return (
@@ -7,3 +7,9 @@ export default function Card({children}: PropsWithChildren) {
         </div>
     );
 }
+
+const CardTitle = ({children}: PropsWithChildren) => {
+    return <h2 className={`text-gray-500 font-bold mb-3`}>{children}</h2>
+}
+
+export {CardTitle};
