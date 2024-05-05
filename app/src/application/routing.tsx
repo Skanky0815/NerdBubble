@@ -5,6 +5,7 @@ import ArticleRoutes from "../article/routing";
 import SettingRoutes from "../setting/routing";
 import Error from "./pages/Error";
 import Imprint from "./pages/Imprint";
+import MarkedProductsRoutes from "../markedProducts/routing";
 
 const AppRoutes: RouteObject[] = [
     {
@@ -13,6 +14,7 @@ const AppRoutes: RouteObject[] = [
         children: [
             AuthenticationRoutes,
             ArticleRoutes,
+            MarkedProductsRoutes,
             SettingRoutes,
             {
                 path: '/imprint',
