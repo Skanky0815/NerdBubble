@@ -51,7 +51,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const logoutMutation = useMutation({
         mutationFn: Users.logout,
         onSuccess: () => {
-            queryClient.removeQueries();
+            queryClient.clear();
             navigate('/login');
         }
     });
