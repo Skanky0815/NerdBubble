@@ -22,14 +22,10 @@ export default function ArticleList() {
 
     const articleElements = articles?.map((article: Article) => <ArticleCard key={article.id} article={article} />);
 
-    const reloadHandler = () => {
-        refetch();
-    }
-
     return (
         <>
             <PageTitle text={`NerdBubble`}>
-                <button className="h-8 w-8" data-testid={`reload-button`} onClick={reloadHandler}>
+                <button className="h-8 w-8" data-testid={`reload-button`} onClick={() => refetch()}>
                     <ArrowPathIcon className="h-6 w-6 text-gray-500 hover:text-black" />
                 </button>
             </PageTitle>
