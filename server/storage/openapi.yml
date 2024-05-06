@@ -55,6 +55,63 @@ paths:
       responses:
         '204':
           description: no content
+  /keywords:
+    get:
+      tags:
+        - keywords
+      summary: Returns all Keywords
+      description: Return a list of all Keywords.
+      responses:
+        '200':
+          description: A Json array with Keywords.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/KeywordList'
+    post:
+      tags:
+        - keywords
+      summary: Create a new Keyword
+      description: Create a new Keyword for the current user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - word
+              properties:
+                word:
+                  type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Keyword'
+
+  /keywords/{keywordId}:
+    delete:
+      tags:
+        - keywords
+      parameters:
+        - $ref: '#/components/parameters/UUID'
+      summary: Delete the Keyword
+      responses:
+        '204':
+          description: No content
 components:
   parameters:
     UUID:
@@ -149,3 +206,18 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Article'
+    Keyword:
+      type: object
+      required:
+        - id
+        - word
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        word:
+          type: string
+          description: The word.
+    KeywordList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Keyword'

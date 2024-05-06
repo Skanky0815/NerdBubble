@@ -13,6 +13,6 @@ class ProductMarkController extends Controller
     {
         $request->user()->addProduct($productId);
 
-        return response([], Response::HTTP_NO_CONTENT);
+        return response(status: Response::HTTP_NO_CONTENT);
     }
 }

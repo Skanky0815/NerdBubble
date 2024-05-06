@@ -16,4 +16,16 @@ class KeywordMapper
             id: $keywordEloquent->id,
         );
     }
+
+    public static function toEloquent(Keyword $keyword): KeywordEloquentModel
+    {
+        $keywordEloquent = new KeywordEloquentModel();
+        if ($keyword->id) {
+            $keywordEloquent = KeywordEloquentModel::findOrFail($keyword->id);
+        }
+
+        $keywordEloquent->word = $keyword->word;
+
+        return $keywordEloquent;
+    }
 }
