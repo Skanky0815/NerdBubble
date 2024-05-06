@@ -38,7 +38,7 @@ export default function KeywordForm() {
                 }}
                 render={({field}) => <Input
                     lable={'Suchwort*'} {...field}
-                    className={'w-full px-4 py-2 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all'}
+                    className={'w-full px-4 py-2 border border-gray-300 rounded-l-md rounded-r-none focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all'}
                     ref={null}
                     error={errors.word?.message}
                     data-testid={'word'}/>}
