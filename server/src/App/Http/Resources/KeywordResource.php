@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use Domains\Article\Entities\Keyword;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -31,7 +32,7 @@ class KeywordResource extends JsonResource
         ];
     }
 
-    public function toResponse($request): \Illuminate\Http\JsonResponse
+    public function toResponse($request): JsonResponse
     {
         return parent::toResponse($request)->setStatusCode($this->status);
     }

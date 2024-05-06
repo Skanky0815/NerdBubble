@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Feature\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Keyword;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 

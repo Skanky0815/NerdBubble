@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreKeywordRequest;
 use App\Http\Resources\KeywordResource;
 use Domains\Article\Repositories\Keywords;
 use Domains\Article\ValueObjects\Id;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,9 +15,7 @@ class KeywordController extends Controller
 {
     public function __construct(
         private readonly Keywords $keywords
-    )
-    {
-    }
+    ) {}
 
     public function index(): ResourceCollection
     {
