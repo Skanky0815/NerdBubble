@@ -20,7 +20,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     const articleClassNames = classNames({
         'pt-20 md:pt-32 border-l-fuchsia-800 hover:shadow-fuchsia-800 bg-top bg-contain': Provider.ASMODEE === article.provider,
         'lg:h-36 h-28 pt-6 bg-right bg-contain border-l-lime-500 hover:shadow-lime-500': Provider.XBOX_DYNASTY === article.provider,
-        'bg-cover bg-center relative md:h-80 md:pt-52 border-l-orange-500 hover:shadow-orange-500': Provider.TSW === article.provider,
+        'bg-contain bg-center relative md:h-80 md:pt-52 border-l-orange-500 hover:shadow-orange-500': Provider.TSW === article.provider,
         'border-l-red-900 hover:shadow-red-900 bg-[length:80%] lg:bg-[center_top_1rem] bg-[center_top_2rem]': Provider.RAIL_SIM === article.provider,
         'border-l-green-600 hover:shadow-green-600 bg-[center_top_1rem] bg-[length:16rem]': Provider.F_SHOP === article.provider,
         'border-l-sky-500 hover:shadow-sky-500 bg-[center_top_1rem] bg-auto': Provider.BLUE_BRIXX === article.provider,
@@ -44,7 +44,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             </a>
             {article.subTitle && Provider.XBOX_DYNASTY !== article.provider && <p className="px-2 mb-2 text-sm">{article.subTitle}</p>}
             {article.description && <p className="px-2 mb-2 text-sm">{article.description}</p>}
-            {products.length > 0 && <div className="grid grid-flow-row grid-cols-2 gap-2 px-2">{products}</div>}
+            {products.length > 0 && <div className="columns-2 gap-2 px-2">{products}</div>}
         </article>
     );
 }

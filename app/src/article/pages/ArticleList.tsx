@@ -25,13 +25,13 @@ export default function ArticleList() {
     return (
         <>
             <PageTitle text={`NerdBubble`}>
-                <button className="h-8 w-8" data-testid={`reload-button`} onClick={() => refetch()}>
-                    <ArrowPathIcon className="h-6 w-6 text-gray-500 hover:text-black" />
+                <button className="size-8" data-testid={`reload-button`} onClick={() => refetch()}>
+                    <ArrowPathIcon className="size-6 text-gray-500 hover:text-black" />
                 </button>
             </PageTitle>
 
             {isLoading ? <Loading color={`red`} />
-                : <div className="gap-4 columns-1 md:columns-2">{articleElements}</div>}
+                : <div className="gap-4 columns-1 md:columns-2 first:mt-0">{articleElements}</div>}
         </>
     );
 }

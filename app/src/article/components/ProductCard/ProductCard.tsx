@@ -9,14 +9,18 @@ type ProductProps = {
 const ProductCard = ({ product }: ProductProps) => {
     return (
         <figure
-            className="p-2 border border-gray-100 rounded hover:shadow-md w-auto h-52 md:h-96 bg-bottom bg-contain bg-no-repeat" style={{backgroundImage: `url(${product.image})`}}
+            className="flex flex-col gap-2 p-2 my-2 border border-gray-100 rounded hover:shadow-md"
             data-testid="product"
         >
-            <a href={product.link} target="_blank" rel="noreferrer">
-                <h3 className="text-xs">{product.name}</h3>
-            </a>
+            <div>
+                <a href={product.link} target="_blank" rel="noreferrer">
+                    <h3 className="text-xs">{product.name}</h3>
+                </a>
 
-            <MarkButton product={product} />
+                <MarkButton product={product} />
+            </div>
+
+            <img src={product.image} alt={product.name}/>
         </figure>
     );
 }
