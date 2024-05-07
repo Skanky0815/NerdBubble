@@ -72,7 +72,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: compontent_tests
+    needs: component_tests
     steps:
       - uses: actions/checkout@main
       - name: Install dependencies
