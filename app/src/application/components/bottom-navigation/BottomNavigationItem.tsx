@@ -1,5 +1,6 @@
 import React, {PropsWithChildren} from "react";
 import {NavLink} from "react-router-dom";
+import classNames from "classnames";
 
 type BottomNavigationItemProps = {
     to: string
@@ -8,7 +9,7 @@ type BottomNavigationItemProps = {
 
 export default function BottomNavigationItem({to, color, children}: PropsWithChildren<BottomNavigationItemProps>) {
     const classes = ({ isActive, isPending }: {isActive: boolean, isPending: boolean}) =>
-        isPending || isActive ? `text-sm text-${color}-800` : `text-sm text-gray-500 group-hover:text-${color}-800`;
+        isPending || isActive ? `p-2 text-sm text-${color}-800` : `p-2 text-sm text-gray-500 group-hover:text-${color}-800`;
 
     return (
         <NavLink to={to} className={classes}>
