@@ -1,5 +1,5 @@
 {
-  "short_name": "Nerd Bubble",
+  "short_name": "NerdBubble",
   "name": "Nerd Bubble App",
   "icons": [
     {
@@ -9,12 +9,12 @@
     },
     {
       "src": "d20_logo192.svg",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
       "src": "d20_logo512.svg",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
