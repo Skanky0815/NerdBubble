@@ -11,7 +11,7 @@ import Article from "../entities/Article";
 
 export default function ArticleList() {
     const {setAlert} = useAlert();
-    const {isError, isLoading, data: articles, error, refetch} = useQuery<Article[], Error>({
+    const {isError, isLoading, isFetching, data: articles, error, refetch} = useQuery<Article[], Error>({
         queryKey: ['articles'],
         queryFn: Articles.findAll,
     });
@@ -30,7 +30,7 @@ export default function ArticleList() {
                 </button>
             </PageTitle>
 
-            {isLoading ? <Loading color={`red`} />
+            {isLoading || isFetching ? <Loading color={`red`} />
                 : <div className="gap-4 columns-1 md:columns-2 first:mt-0">{articleElements}</div>}
         </>
     );
