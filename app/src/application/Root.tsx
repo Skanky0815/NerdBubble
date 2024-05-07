@@ -20,8 +20,8 @@ const Root = () => {
         <QueryClientProvider client={queryClient}>
             <AlertProvider>
                 <AuthContextProvider>
-                    <div className="flex flex-col justify-between content-between w-full min-h-lvh">
-                        <div className="container mx-auto p-5">
+                    <div className="flex flex-col justify-between content-between w-full h-screen">
+                        <div className="grow container mx-auto p-5 overflow-y-scroll">
                             <Alert />
                             <Outlet />
                         </div>

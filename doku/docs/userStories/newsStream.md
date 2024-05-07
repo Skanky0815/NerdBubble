@@ -1,5 +1,5 @@
 # NewsStream anzeigen
-> Als User will ich in einer Liste alle News der letzten 14 Tage sehen.
+> Als eingeloggter User will ich in einer Liste alle News der letzten 14 Tage sehen.
 
 **Akzeptanzkriterien:**
 - die List der News ist nach dem Datum absteigend sortiert.
@@ -8,7 +8,7 @@
 - die News vom aktuellen Tag soll besonders hervorgehoben werden.
 
 # NewsStream neu laden
-> Als User will ich die List mit den News aktualisieren, wenn ich den Reload-Button drücke.
+> Als eingeloggter User will ich die List mit den News aktualisieren, wenn ich den Reload-Button drücke.
 
 **Akzeptanzkriterien:**
 - Immer wenn man in der App im NewsStream den Reload-Button drücke, dann sollen neue News nachgeladen werden.
