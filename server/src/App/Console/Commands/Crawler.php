@@ -51,6 +51,7 @@ class Crawler extends Command
         }
 
         $bar->finish();
+        $this->newLine(2);
         $this->info(' Import done!');
     }
 
@@ -58,9 +59,10 @@ class Crawler extends Command
     {
         try {
             $crawler->crawl();
-
-            $this->info(sprintf(' Finished import %s', $crawler::class));
+            $this->newLine();
+            $this->info(sprintf(' Finished import %s ', $crawler->provider()));
         } catch (\Throwable $exception) {
+            $this->newLine(2);
             $this->error(sprintf(' %s: %s', $crawler::class, $exception->getMessage()));
             $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
             $this->newLine();
