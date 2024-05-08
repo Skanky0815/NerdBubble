@@ -7,10 +7,10 @@ export default function Footer() {
     const {user} = useContext(AuthContext);
 
     return (
-        <footer className={`border-t-2 border-gray-200 bg-white px-4 py-2`}>
+        <footer className={`border-t-2 border-gray-200 bg-white`}>
 
             {!user &&
-                <div className={`flex flex-col-reverse md:flex-row items-center justify-between gap-2`}>
+                <div className={`flex flex-col-reverse md:flex-row items-center justify-between gap-2 px-4 py-2`}>
                     <div className={`text-xs`}>
                         &copy; {(new Date).getFullYear()}, NerdBubble.de by Rico Schulz
                     </div>
