@@ -45,7 +45,7 @@ class BlueBrixxProviderTest extends TestCase
     public function getArticles_when_products_are_new_then_a_new_article_with_products_will_created(): void
     {
         Http::fake([
-            'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
+            'https://www.bluebrixx.com/de/ankuendigungen?limit=32' => Http::response('content'),
         ]);
 
         $productDto = $this->createHtmlArticle(<<<'HTML'
@@ -102,7 +102,7 @@ class BlueBrixxProviderTest extends TestCase
     public function getArticles_when_products_is_konwn_then_a_new_article_with_products_will_created(): void
     {
         Http::fake([
-            'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response('content'),
+            'https://www.bluebrixx.com/de/ankuendigungen?limit=32' => Http::response('content'),
         ]);
 
         $productDto = $this->createHtmlArticle(<<<'HTML'

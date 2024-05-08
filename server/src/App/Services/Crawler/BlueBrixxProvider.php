@@ -23,11 +23,12 @@ class BlueBrixxProvider implements Provider
 
     public function loadArticles(): Collection
     {
-        $response = Http::get('https://www.bluebrixx.com/de/neuheiten?limit=32');
+        $response = Http::get('https://www.bluebrixx.com/de/ankuendigungen?limit=32');
 
-        $htmlContents = $this->htmlParser->parse($response->body(), '//div[@id="shopsearchItems"]');
+        $htmlContents = $this->htmlParser->parse($response->body(), '//div[@class="category"]');
 
         $mapToProduct = fn (HtmlContent $htmlContent): Product => BlueBrixxProduct::create($htmlContent);
+
         $filterKeyword = fn (Product $product): bool => $this->keywordFilter->matchKeyword($product->filterText);
         $filterNewProducts = fn (Product $product): bool => $this->productRepository->withTheGivenNameDoNotExist($product->getName());
 
