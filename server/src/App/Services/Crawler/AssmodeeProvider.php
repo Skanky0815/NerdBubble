@@ -43,7 +43,7 @@ class AssmodeeProvider implements Provider
         $response = Http::get(self::ASMODEE_HOME_URL);
 
         $dom = new \DOMDocument();
-        $dom->loadHTML($response->body());
+        $dom->loadHTML($response->body(), LIBXML_NOERROR);
 
         $scripts = collect($dom->getElementsByTagName('script'));
 

@@ -20,7 +20,7 @@ class HttpClientService implements HttpClient
         }
 
         $dom = new \DOMDocument();
-        $dom->loadHTML($content);
+        $dom->loadHTML($content, LIBXML_NOERROR);
 
         return $dom;
     }
