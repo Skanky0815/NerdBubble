@@ -75,7 +75,7 @@ class BlueBrixxProviderTest extends TestCase
                 <div class="catButtons"></div>
             </div>
             HTML);
-        $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
+        $this->htmlParser->allows()->parse('content', '//div[@class="category"]')->andReturn(collect([$productDto]));
         $this->productRepository->allows()->withTheGivenNameDoNotExist(\Mockery::any())->andReturn(true);
         $this->keywordFilter->allows()->matchKeyword('ProductName')->andReturn(true);
 
@@ -134,7 +134,7 @@ class BlueBrixxProviderTest extends TestCase
                 <div class="catButtons"></div>
             </div>
             HTML);
-        $this->htmlParser->allows()->parse('content', '//div[@id="shopsearchItems"]')->andReturn(collect([$productDto]));
+        $this->htmlParser->allows()->parse('content', '//div[@class="category"]')->andReturn(collect([$productDto]));
         $this->productRepository->allows()->withTheGivenNameDoNotExist(\Mockery::any())->andReturn(false);
 
         $allArticles = $this->service()->loadArticles();

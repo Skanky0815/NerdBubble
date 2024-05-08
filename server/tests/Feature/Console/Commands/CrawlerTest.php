@@ -32,7 +32,7 @@ class CrawlerTest extends TestCase
             'https://www.xboxdynasty.de/game/xbox-game-pass/' => Http::response(file_get_contents(__DIR__.'/xbox_dynasty.html')),
             'https://cms.dovetailgames.com/api/v1/ghost/hub/tsw/web?limit=24&page=1' => Http::response(file_get_contents(__DIR__.'/tsw3_news_list.json')),
             'https://ulisses-spiele.de/news/' => Http::response(file_get_contents(__DIR__.'/ulissesSpiele_news_list.html')),
-            'https://www.bluebrixx.com/de/neuheiten?limit=32' => Http::response(file_get_contents(__DIR__.'/bluebrixx.html')),
+            'https://www.bluebrixx.com/de/ankuendigungen?limit=32' => Http::response(file_get_contents(__DIR__.'/bluebrixx.html')),
             'https://www.f-shop.de/neuheiten/' => Http::response(file_get_contents(__DIR__.'/fshop.html')),
         ]);
 
@@ -84,7 +84,7 @@ class CrawlerTest extends TestCase
         $this->assertDatabaseHas('products', [
             'name' => 'Star Trek Spaceship',
             'image' => 'https://www.bluebrixx.com/img/items/105/105543/300/105543_1.jpg',
-            'link' => 'https://www.bluebrixx.com/de/neuheiten/105543/Quantum-Colony-Container-Shuttle-6quot%3BVulture6quot%3B-BlueBrixx-Special',
+            'link' => 'https://www.bluebrixx.com/de/ankuendigungen/105543/Quantum-Colony-Container-Shuttle-6quot%3BVulture6quot%3B-BlueBrixx-Special',
         ]);
         $this->assertDatabaseHas('articles', [
             'provider' => Provider::F_SHOP,
