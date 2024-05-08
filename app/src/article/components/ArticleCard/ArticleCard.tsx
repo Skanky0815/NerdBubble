@@ -29,7 +29,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     });
 
     return (
-        <article className={`shadow-md rounded-tr-3xl bg-no-repeat bg-white pt-28 pb-1 mb-5 block relative overflow-hidden border-l-8 transition-shadow duration-500 ${article.provider} ${articleClassNames}`} style={{backgroundImage: `url(${article.image})`}}>
+        <article className={`shadow-md rounded-tr-3xl bg-no-repeat bg-white pt-28 pb-1 mb-5 block relative overflow-hidden border-l-8 transition-shadow duration-500 ${article.provider} ${articleClassNames}`} style={{backgroundImage: `url("${article.image}")`}}>
             <a
                 href={article.link}
                 target="_blank"
