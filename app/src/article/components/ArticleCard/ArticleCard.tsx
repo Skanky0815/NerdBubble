@@ -23,7 +23,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         'bg-cover bg-center relative md:h-80 md:pt-52 border-l-orange-500 hover:shadow-orange-500': Provider.TSW === article.provider,
         'border-l-red-900 hover:shadow-red-900 bg-[length:80%] lg:bg-[center_top_1rem] bg-[center_top_2rem]': Provider.RAIL_SIM === article.provider,
         'border-l-green-600 hover:shadow-green-600 bg-[center_top_1rem] bg-[length:16rem]': Provider.F_SHOP === article.provider,
-        'border-l-sky-500 hover:shadow-sky-500 bg-[center_top_1rem] bg-auto': Provider.BLUE_BRIXX === article.provider,
+        'border-l-sky-500 hover:shadow-sky-500 bg-[center_top_1rem] bg-contain': Provider.BLUE_BRIXX === article.provider,
         'border-l-blue-600 hover:shadow-blue-600 bg-bottom p-5 h-80 bg-cover': Provider.FANTASY_FLIGHT_GAMES === article.provider,
         'h-44 md:h-80 pt-24 md:pt-64 bg-cover bg-center border-l-green-600 hover:shadow-green-600': Provider.ULISSES_SPIELE === article.provider,
     });

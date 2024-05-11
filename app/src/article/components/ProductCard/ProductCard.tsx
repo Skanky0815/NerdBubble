@@ -9,7 +9,7 @@ type ProductProps = {
 const ProductCard = ({ product }: ProductProps) => {
     return (
         <figure
-            className="flex flex-col gap-2 p-2 my-2 break-inside-avoid-column border border-gray-100 rounded hover:shadow-md"
+            className="flex flex-col gap-2 p-2 my-2 first:mt-0 break-inside-avoid-column border border-gray-100 rounded hover:shadow-md"
             data-testid="product"
         >
             <div>
