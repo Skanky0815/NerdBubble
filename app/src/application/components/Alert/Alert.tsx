@@ -1,6 +1,6 @@
 import React from "react";
-import useAlert from "../common/hook/useAlert";
-import {AlertType} from "../common/context/AlertContext";
+import useAlert from "../../hook/useAlert";
+import {AlertType} from "../../context/AlertContext";
 import classNames from "classnames";
 
 const Alert = () => {

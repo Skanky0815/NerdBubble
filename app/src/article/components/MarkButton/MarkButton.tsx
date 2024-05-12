@@ -1,10 +1,10 @@
 import React from "react";
-import {AlertType} from "../../../common/context/AlertContext";
+import {AlertType} from "../../../application/context/AlertContext";
 import {BookmarkIcon} from "@heroicons/react/24/solid";
 import {useMutation} from "@tanstack/react-query";
 import Product from "article/entities/Product";
 import Products from "article/repositories/Products";
-import useAlert from "../../../common/hook/useAlert";
+import useAlert from "../../../application/hook/useAlert";
 
 type MarkButtonProps = {
     product: Product

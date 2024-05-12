@@ -1,8 +1,8 @@
 import {Outlet} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import Alert from "../components/Alert";
-import {AlertProvider} from "../common/context/AlertContext";
+import Alert from "./components/Alert/Alert";
+import {AlertProvider} from "./context/AlertContext";
 import {AuthContextProvider} from "../authentication/contexts/AuthContext";
 import Footer from "./components/footer/Footer";
 

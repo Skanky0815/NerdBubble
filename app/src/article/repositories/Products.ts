@@ -1,5 +1,5 @@
 import Product from "article/entities/Product";
-import apiClient from "../../service/api";
+import apiClient from "../../shared-kernel/services/api";
 
 const Products = {
     markAsFavourite: async (id: string) => {

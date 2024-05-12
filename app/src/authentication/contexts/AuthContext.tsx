@@ -3,10 +3,10 @@ import {createContext, PropsWithChildren, useEffect} from "react";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import Users from "../../authentication/repositories/Users";
 import {useNavigate} from "react-router-dom";
-import apiClient from "../../service/api";
-import {AlertType} from "../../common/context/AlertContext";
+import apiClient from "../../shared-kernel/services/api";
+import {AlertType} from "../../application/context/AlertContext";
 import LoginData from "../../authentication/value-objects/LoginData";
-import useAlert from "../../common/hook/useAlert";
+import useAlert from "../../application/hook/useAlert";
 
 type AuthContextType = {
     user?: User

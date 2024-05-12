@@ -1,4 +1,4 @@
-import apiClient from "../../service/api";
+import apiClient from "../../shared-kernel/services/api";
 import Article from "article/entities/Article";
 
 const Articles = {

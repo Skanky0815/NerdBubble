@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from "react";
-import apiClient from "../../../service/api";
-import {AlertType} from "../../../common/context/AlertContext";
+import apiClient from "../../../shared-kernel/services/api";
+import {AlertType} from "../../../application/context/AlertContext";
 import { render, screen, waitFor } from '@testing-library/react';
 import MarkButton from "./MarkButton";
 import {setupServer} from "msw/node";
@@ -8,7 +8,7 @@ import {rest} from "msw";
 import Product from "article/entities/Product";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
-jest.mock( '../../../common/hook/useAlert', () => {
+jest.mock( '../../../application/hook/useAlert', () => {
     const setAlert = jest.fn();
     return {
         __esModule: true,
@@ -38,7 +38,7 @@ describe('<MarkButton />', () => {
     afterAll(() => server.close())
 
     test('when click the mark button and the api will called then a success message is shown', async () => {
-        const {setAlert} = jest.requireMock('../../../common/hook/useAlert').default();
+        const {setAlert} = jest.requireMock('../../../application/hook/useAlert').default();
         jest.spyOn(apiClient, 'post');
 
         const product: Product = {
@@ -59,7 +59,7 @@ describe('<MarkButton />', () => {
     });
 
     test.skip('when click the mark button and the api will called then a error message is shown', async () => {
-        const {setAlert} = jest.requireMock('../../../common/hook/useAlert').default();
+        const {setAlert} = jest.requireMock('../../../application/hook/useAlert').default();
         jest.spyOn(apiClient, 'post');
 
         const product: Product = {

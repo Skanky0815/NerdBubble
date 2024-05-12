@@ -1,4 +1,4 @@
-import apiClient from "../../service/api";
+import apiClient from "../../shared-kernel/services/api";
 import Keyword from "../entities/Keyword";
 import KeywordData from "../value-objects/KeywordData";
 

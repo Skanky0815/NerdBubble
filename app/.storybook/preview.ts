@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/react";
 import '../src/index.css'
 import withAxiosDecorator from 'storybook-axios';
 import {withThemeByDataAttribute} from "@storybook/addon-styling";
-import apiClient from "../src/service/api";
+import apiClient from "../src/shared-kernel/services/api";
 import {initialize, mswDecorator} from "msw-storybook-addon";
 
 initialize();

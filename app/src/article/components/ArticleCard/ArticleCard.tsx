@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./ArticleCard.css";
-import datesAreOnSameDay from "../../../service/DatesAreOnSameDay";
+import datesAreOnSameDay from "../../services/DatesAreOnSameDay";
 import Article from "article/entities/Article";
 import Product from "article/entities/Product";
 import Provider from "article/value-objects/Provider";

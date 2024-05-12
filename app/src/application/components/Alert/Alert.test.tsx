@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Alert from './Alert';
-import { AlertType } from '../common/context/AlertContext';
-import useAlert from '../common/hook/useAlert';
+import { AlertType } from '../../context/AlertContext';
+import useAlert from '../../hook/useAlert';
 
-jest.mock('../common/hook/useAlert');
+jest.mock('../../hook/useAlert');
 
 describe('<Alert />', () => {
     test('renders nothing when no alert is present', () => {

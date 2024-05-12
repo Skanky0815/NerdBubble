@@ -1,5 +1,5 @@
 import LoginData from "authentication/value-objects/LoginData";
-import apiClient from "../../service/api";
+import apiClient from "../../shared-kernel/services/api";
 import User from "../entities/User";
 
 const Users = {
