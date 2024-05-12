@@ -18,7 +18,7 @@ erDiagram
         string name
         string color
         string logoImage
-        string url
+        string aggregateUrl
         boolean hasProducts
         enum leyout
         boolean isActive
