@@ -44,7 +44,6 @@ use Illuminate\Support\Carbon;
  *
  * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property null|int                                                        $users_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  *
  * @mixin \Eloquent
  */
