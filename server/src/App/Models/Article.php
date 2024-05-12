@@ -31,7 +31,7 @@ use Illuminate\Support\Carbon;
  * @property Headline                                                           $title
  * @property null|SubHeadline                                                   $subTitle
  * @property null|string                                                        $description
- * @property Provider                                                           $provider
+ * @property ProviderType                                                           $provider
  * @property Link                                                               $link
  * @property PublishDate                                                        $date
  * @property ImageUrl                                                           $image

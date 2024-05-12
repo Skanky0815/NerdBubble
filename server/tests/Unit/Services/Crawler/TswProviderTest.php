@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\DTO\TswArticle;
 use App\Services\Crawler\TswProvider;
 use Illuminate\Support\Carbon;
@@ -54,7 +54,7 @@ class TswProviderTest extends TestCase
         $articleData = $article->toArray();
 
         static::assertNotEmpty($articleData);
-        static::assertSame(Provider::TSW, $articleData['provider']);
+        static::assertSame(ProviderType::TSW, $articleData['provider']);
         static::assertSame('Train Sim World 3 - Rheinland Revival', $articleData['title']);
         static::assertSame('https://media.dovetailgames.com/1678379793513_TSW3_leftR_keyart_400x200.jpg', $articleData['image']);
         static::assertSame('https://live.dovetailgames.com/live/train-sim-world/articles/article/tsw3-rheinland-revival', $articleData['link']);

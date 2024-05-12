@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\DTO\RailSimArticle;
 use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\RailSimProvider;
@@ -76,7 +76,7 @@ class RailSimProviderTest extends TestCase
 
         $articleData = $article->toArray();
         static::assertNotEmpty($articleData);
-        static::assertSame(Provider::RAIL_SIM, $articleData['provider']);
+        static::assertSame(ProviderType::RAIL_SIM, $articleData['provider']);
         static::assertSame('[TSW3] Niddertalbahn: Bad Vilbel - Stockheim', $articleData['title']);
         static::assertSame('https://www.rail-sim.de/wp-content/uploads/2016/04/rail-sim_logo.png', $articleData['image']);
         static::assertSame('https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/', $articleData['link']);

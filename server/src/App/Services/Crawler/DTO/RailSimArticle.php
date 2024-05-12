@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Crawler\DTO;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\Html\HtmlContent;
 
 class RailSimArticle extends Article
@@ -12,7 +12,7 @@ class RailSimArticle extends Article
     public static function create(array|HtmlContent $content): self
     {
         return new self(
-            provider: Provider::RAIL_SIM,
+            provider: ProviderType::RAIL_SIM,
             title: $content->text('.//li[@class="columnSubject"]/h3/a'),
             link: $content->link('.//li[@class="columnSubject"]/h3/a'),
             date: $content->date(

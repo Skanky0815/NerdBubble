@@ -6,7 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\Product;
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -24,14 +24,14 @@ class E2ETestSeeder extends Seeder
         Article::factory()->create([
             'title' => 'Einfacher Artikel',
             'description' => 'Das ist ein einfacher Artikel ohne produkt aber dafür mit Beschreibung ',
-            'provider' => Provider::RAIL_SIM,
+            'provider' => ProviderType::RAIL_SIM,
             'date' => Carbon::now(),
         ]);
 
         $articleWithProduct = Article::factory()->create([
             'title' => 'Artikel mit einem Produkt',
             'subTitle' => 'Dieser Artikel hat ein Produkt',
-            'provider' => Provider::ASMODEE,
+            'provider' => ProviderType::ASMODEE,
             'date' => Carbon::now(),
         ]);
 

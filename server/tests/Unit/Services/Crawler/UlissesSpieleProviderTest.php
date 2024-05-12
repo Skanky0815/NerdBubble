@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\DTO\UlissesSpieleArticle;
 use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\KeywordFilter;
@@ -85,7 +85,7 @@ class UlissesSpieleProviderTest extends TestCase
 
         $articleData = $article->toArray();
         static::assertNotEmpty($articleData);
-        static::assertSame(Provider::ULISSES_SPIELE, $articleData['provider']);
+        static::assertSame(ProviderType::ULISSES_SPIELE, $articleData['provider']);
         static::assertSame('some title', $articleData['title']);
         static::assertSame('https://ulisses-spiele.de/wp-content/uploads/2022/11/01_Aventuria_Allgemein-256x143.webp', $articleData['image']);
         static::assertSame('https://ulisses-spiele.de/aventuria-stories-legends/', $articleData['link']);

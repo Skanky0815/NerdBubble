@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Crawler\DTO;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\Html\HtmlContent;
 use Illuminate\Support\Carbon;
 
@@ -16,7 +16,7 @@ class AsmodeeArticle extends Article
         $mapToProducts = fn (array $productContent): Product => AsmodeeProduct::create($productContent['product']);
 
         return new self(
-            provider: Provider::ASMODEE,
+            provider: ProviderType::ASMODEE,
             title: $content['headline'],
             link: 'https://www.asmodee.de/news/'.$content['slug'],
             date: Carbon::parse($content['creationDate']),

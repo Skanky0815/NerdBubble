@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Console\Commands;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use Database\Seeders\KeywordSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
@@ -39,7 +39,7 @@ class CrawlerTest extends TestCase
         $this->artisan('app:crawl')->assertSuccessful();
 
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::ASMODEE,
+            'provider' => ProviderType::ASMODEE,
             'title' => 'Lila Laster',
             'subTitle' => 'Neue Spiele sind auf dem Weg',
             'link' => 'https://www.asmodee.de/news/neue-spiele-sind-auf-dem-weg-67',
@@ -51,34 +51,34 @@ class CrawlerTest extends TestCase
             'image' => 'https://retail.asmodee.de/media/catalog/product/d/e/der-herr-der-ringe-lcg-die-gefaehrten-841333117900-3dboxl-web.png',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::RAIL_SIM,
+            'provider' => ProviderType::RAIL_SIM,
             'title' => '[TSW3] Niddertalbahn: Bad Vilbel - Stockheim',
             'image' => 'https://www.rail-sim.de/wp-content/uploads/2016/04/rail-sim_logo.png',
             'link' => 'https://rail-sim.de/forum/thread/39263-tsw3-niddertalbahn-bad-vilbel-stockheim/',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::XBOX_DYNASTY,
+            'provider' => ProviderType::XBOX_DYNASTY,
             'title' => 'Diese beiden Spiele landen im März auch im Abo',
             'subTitle' => 'Es wurden zwei weitere Spiele vorgemerkt, die im März im Xbox Game Pass Katalog erscheinen werden.',
             'image' => 'https://www.xboxdynasty.de/wp-content/uploads/2017/02/xbox-game-pass-17-150x150.jpeg.pagespeed.ce.2uUj5fj4K3.jpg',
             'link' => 'https://www.xboxdynasty.de/news/xbox-game-pass/diese-beiden-spiele-landen-im-maerz-auch-im-abo/',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::TSW,
+            'provider' => ProviderType::TSW,
             'title' => 'Birmingham Cross-City: Timetable Deep Dive | Pre-Order | Release Day Update',
             'description' => 'In this article we shall be taking you through all the fun nuances and layers you can look forward to in the Cross-City timetable!',
             'image' => 'https://media-cdn.dovetailgames.com/2022/112022/11/XCTTA_01.jpg',
             'link' => 'https://live.dovetailgames.com/live/train-sim-world/articles/article/cross-city-timetable-deep-dive',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::ULISSES_SPIELE,
+            'provider' => ProviderType::ULISSES_SPIELE,
             'title' => 'Aventuria Stories und Legends',
             'description' => 'Heute mal ein kleinerer Artikel in eigener Sache: Es war ein gutes Stück Arbeit, aber international tut sich nun was – wir machen einen neuen großen englischen Aventuria Kickstarter!',
             'image' => 'https://ulisses-spiele.de/wp-content/uploads/2022/11/01_Aventuria_Allgemein-256x143.webp',
             'link' => 'https://ulisses-spiele.de/aventuria-stories-legends/',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::BLUE_BRIXX,
+            'provider' => ProviderType::BLUE_BRIXX,
             'title' => 'BlueBrixx',
         ]);
         $this->assertDatabaseHas('products', [
@@ -87,7 +87,7 @@ class CrawlerTest extends TestCase
             'link' => 'https://www.bluebrixx.com/de/ankuendigungen/105543/Quantum-Colony-Container-Shuttle-6quot%3BVulture6quot%3B-BlueBrixx-Special',
         ]);
         $this->assertDatabaseHas('articles', [
-            'provider' => Provider::F_SHOP,
+            'provider' => ProviderType::F_SHOP,
             'title' => 'F-Shop',
         ]);
         $this->assertDatabaseHas('products', [

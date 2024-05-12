@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-enum Provider: string
+enum ProviderType: string
 {
     case RAIL_SIM = 'rail_sim';
 
@@ -24,6 +24,6 @@ enum Provider: string
 
     public static function getAllValues(): array
     {
-        return array_column(Provider::cases(), 'value');
+        return array_column(ProviderType::cases(), 'value');
     }
 }

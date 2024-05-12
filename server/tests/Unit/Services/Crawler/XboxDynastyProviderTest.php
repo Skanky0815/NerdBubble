@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Services\Crawler;
 
-use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Services\Crawler\DTO\XboxDynastyArticle;
 use App\Services\Crawler\Html\HtmlParser;
 use App\Services\Crawler\XboxDynastyProvider;
@@ -76,7 +76,7 @@ class XboxDynastyProviderTest extends TestCase
 
         $articleData = $article->toArray();
         static::assertNotEmpty($articleData);
-        static::assertSame(Provider::XBOX_DYNASTY, $articleData['provider']);
+        static::assertSame(ProviderType::XBOX_DYNASTY, $articleData['provider']);
         static::assertSame('some title', $articleData['title']);
         static::assertSame('xbox.link.jpg', $articleData['image']);
         static::assertSame('xbox.link', $articleData['link']);
