@@ -20,16 +20,19 @@ erDiagram
         string logoImage
         string aggregateUrl
         boolean hasProducts
-        enum leyout
+        enum layout
         boolean isActive
-        string headlineSelector
-        string headline
-        string subHeadlineSelector
-        string descriptionSelector
-        string imageSelector
+        string articleSelectorHeadline
+        string articleHeadline
+        string articleSelectorSubHeadline
+        string articleSelectorDescription
+        string articleSelectorImage
         string articleImage
-        string linkSelector
+        string articleSelectorLink
         string articleLink
+        string productSelectorName
+        string productSelectorImage
+        string productSelectorLink
     }
     Keyword {
         UUID id
@@ -40,7 +43,7 @@ erDiagram
     Artikel {
         UUID id
         UUID providerId
-        string headline
+        string articleHeadline
         string subHeadline
         string description
         string image

@@ -35,9 +35,9 @@
   - entweder muss man bestimmen, welches HTML Element als Headline dient man muss eine Headline hinterlegen
   - entweder muss man ein HTML element als SubHeadline auswähle oder man muss ein HTML element als Description auswählen
   - entweder muss man bestimmen, welches HTML Element als Link zur Webseite dient oder man muss ein Link zu Webseite hinterlegen
-  - man muss bestimmen, welches HTML Element als Link zum Produkt dient
-  - man muss bestimmen, welches HTML Element als Bildquelle dient
-  - man muss bestimmen, welches HTML Element als Name dient
+  - man muss bestimmen, welches HTML Element als Produkt Link dient
+  - man muss bestimmen, welches HTML Element als Produkt Bild dient
+  - man muss bestimmen, welches HTML Element als Produkt Name dient
 - immer wenn man ein Feld ausfüllt, wird einem der Artikel als Vorschau angezeigt
 - man kann den Provider aktivieren
 - der angelegte Provider ist in der Datenbank gespeichert
