@@ -15,13 +15,13 @@ abstract class Article
 
     protected function __construct(
         private readonly ProviderType $provider,
-        private readonly string       $title,
-        private readonly string       $link,
-        private readonly Carbon       $date,
-        private readonly string       $image,
-        private readonly ?string      $subTitle = null,
-        private readonly ?string      $description = null,
-        private readonly Collection   $products = new Collection(),
+        private readonly string $title,
+        private readonly string $link,
+        private readonly Carbon $date,
+        private readonly string $image,
+        private readonly ?string $subTitle = null,
+        private readonly ?string $description = null,
+        private readonly Collection $products = new Collection(),
     ) {
         $mapToString = fn (Product $product): string => $product->filterText;
 

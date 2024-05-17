@@ -31,7 +31,7 @@ use Illuminate\Support\Carbon;
  * @property Headline                                                           $title
  * @property null|SubHeadline                                                   $subTitle
  * @property null|string                                                        $description
- * @property ProviderType                                                           $provider
+ * @property ProviderType                                                       $provider
  * @property Link                                                               $link
  * @property PublishDate                                                        $date
  * @property ImageUrl                                                           $image
@@ -54,9 +54,6 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereSubTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
- *
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  *
  * @mixin \Eloquent
  */
