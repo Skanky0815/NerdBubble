@@ -32,7 +32,7 @@ const Select = ({lable, options, error, ...props}: SelectProps) => {
                 {...props}
             >
                 {options.map(option => (
-                    <option value={option.value}>{option.lable}</option>
+                    <option key={option.value} value={option.value}>{option.lable}</option>
                 ))}
             </select>
             {error && <span className="text-red-500 text-xs">{error}</span>}
