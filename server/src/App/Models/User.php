@@ -47,17 +47,11 @@ use Laravel\Sanctum\PersonalAccessToken;
  *
  * @property null|string                                                        $two_factor_secret
  * @property null|string                                                        $two_factor_recovery_codes
- * @property DatabaseNotificationCollection<int, DatabaseNotification>          $notifications
  * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property null|int                                                           $products_count
- * @property \Illuminate\Database\Eloquent\Collection<int, PersonalAccessToken> $tokens
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
- *
- * @property DatabaseNotificationCollection<int, DatabaseNotification>          $notifications
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property \Illuminate\Database\Eloquent\Collection<int, PersonalAccessToken> $tokens
  *
  * @mixin \Eloquent
  */

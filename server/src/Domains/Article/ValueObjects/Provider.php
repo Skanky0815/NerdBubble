@@ -22,6 +22,8 @@ enum Provider: string
 
     case FANTASY_FLIGHT_GAMES = 'fantasy_flight_games';
 
+    case DEFAULT = 'default';
+
     public static function getAllValues(): array
     {
         return array_column(Provider::cases(), 'value');

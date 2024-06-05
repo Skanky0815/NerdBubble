@@ -9,6 +9,7 @@ use App\Mapper\ProductMapper;
 use App\Models\Article as ArticleEloquentModel;
 use Domains\Article\Aggregates\Article;
 use Domains\Article\Repositories\Articles;
+use Domains\Article\ValueObjects\Headline;
 use Domains\Article\ValueObjects\Products;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -48,6 +49,11 @@ class ArticleRepository implements Articles
 
             return ArticleMapper::fromEloquent($articleEloquent);
         });
+    }
+
+    public function withTheGivenHeadlineDoNotExist(Headline $headline): bool
+    {
+        return false === ArticleEloquentModel::where(['title' => (string) $headline])->exists();
     }
 
     private function saveProduct(ArticleEloquentModel $articleEloquent, Products $products): void

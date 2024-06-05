@@ -31,14 +31,15 @@ readonly class HtmlContent
 
     public function link(#[Language('XPath')] ?string $query = './/*/a'): string
     {
-        return $this->findElement($query)?->getAttribute('href') ?: throw new MissingLinkException();
+        return $this->findElement($query)?->getAttribute('href')
+            ?: throw MissingLinkException::createForDom($this->rootElement, $query);
     }
 
     public function date(
         #[Language('XPath')]
         string $query,
         string $format,
-        ?string $local = 'en_EN',
+        ?string $locale = 'en_EN',
         ?string $attribute = null
     ): Carbon {
         $dateElement = $this->findElement($query);
@@ -49,7 +50,7 @@ readonly class HtmlContent
             $dateString = $dateElement?->getAttribute($attribute);
         }
 
-        return empty($dateString) ? Carbon::now() : Carbon::createFromLocaleFormat($format, $local, $dateString);
+        return empty($dateString) ? Carbon::now() : Carbon::createFromLocaleFormat($format, $locale, trim($dateString));
     }
 
     public function findElement(#[Language('XPath')] string $query): ?\DOMNode

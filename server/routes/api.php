@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\ArticleListController;
 use App\Http\Controllers\KeywordController;
-use App\Http\Controllers\KeywordListController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductMarkController;
+use App\Http\Controllers\ProviderActionController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Resources\UserResource;
 use App\Models\Keyword;
 use Domains\Article\ValueObjects\Id;
@@ -30,4 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/marked-products', ProductListController::class);
 
     Route::apiResource('keywords', KeywordController::class)->only('index', 'store', 'destroy');
+    Route::apiResource('providers', ProviderController::class)->only('index', 'show', 'store');
+    Route::post('/providers/actions', ProviderActionController::class);
 });

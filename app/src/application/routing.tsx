@@ -6,6 +6,7 @@ import SettingRoutes from "../setting/routing";
 import Error from "./pages/Error";
 import Imprint from "./pages/Imprint";
 import MarkedProductsRoutes from "../markedProducts/routing";
+import AdminRoutes from "../admin/routing";
 
 const AppRoutes: RouteObject[] = [
     {
@@ -19,8 +20,10 @@ const AppRoutes: RouteObject[] = [
             {
                 path: '/imprint',
                 element: <Imprint />
-            }
+            },
+            AdminRoutes,
         ],
+
         errorElement: <Error />
     }
 ];

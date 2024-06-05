@@ -112,6 +112,70 @@ paths:
       responses:
         '204':
           description: No content
+  /providers:
+    get:
+      tags:
+        - providers
+      summary: Returns all Providers
+      responses:
+        '200':
+          description: A Json array with Providers.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProviderList'
+    post:
+      tags:
+        - providers
+      summary: Create a new Provider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Provider'
+  /providers/{providerId}:
+    get:
+      tags:
+        - providers
+      parameters:
+        - $ref: '#/components/parameters/UUID'
+      summary: Return on Provider by ID.
+      responses:
+        '200':
+          description: A Json with the Provider data.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Provider'
+
 components:
   parameters:
     UUID:
@@ -221,3 +285,62 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Keyword'
+    Provider:
+      type: object
+      required:
+        - id
+        - name
+        - color
+        - logoImage
+        - aggregateUrl
+        - hasProducts
+        - isActive
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        name:
+          type: string
+          description: Name of the Provider.
+        color:
+          type: string
+          description: The hex color of the company for the border and shadow.
+          example: '#ff0000'
+        logoImage:
+          type: string
+          description: The logo of the Provider.
+        aggregateUrl:
+          type: string
+          description: The linkt to the page which should be crawled.
+        hasProducts:
+          type: boolean
+          description: Should be true if the Provider has Products and not only news.
+        isActive:
+          type: boolean
+        articleSelectorHeadline:
+          type: string
+          nullable: true
+        articleHeadline:
+          type: string
+          nullable: true
+        articleSelectorSubHeadline:
+          type: string
+          nullable: true
+        articleSelectorDescription:
+          type: string
+          nullable: true
+        articleSelectorImage:
+          type: string
+          nullable: true
+        articleImage:
+          type: string
+          nullable: true
+        articleSelectorLink:
+          type: string
+          nullable: true
+        articleLink:
+          type: string
+          nullable: true
+    ProviderList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Provider'

@@ -32,6 +32,11 @@ class TrainSimWorld implements Crawler
         $this->articles->addAll(...$mappedArticles);
     }
 
+    public function provider(): string
+    {
+        return TrainSimWorld::class;
+    }
+
     private function mapToArticle(array $articleData): Article
     {
         $selectImage = fn (array $img): string => $img['thumbSqr']

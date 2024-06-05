@@ -5,6 +5,7 @@ import Card, {CardTitle} from "../../shared-kernel/components/Card/Card";
 import {ArrowRightOnRectangleIcon} from "@heroicons/react/20/solid";
 import KeywordCard from "../components/KeywordCard/KeywordCard";
 import ProviderCard from "../components/ProviderCard/ProviderCard";
+import {NavLink} from "react-router-dom";
 
 export default function Setting() {
     const {user, signOut: handleLogout} = useContext(AuthContext);
@@ -27,9 +28,17 @@ export default function Setting() {
                     }
                 </Card>
 
-                <KeywordCard />
-
                 <ProviderCard />
+
+                <Card>
+                    <CardTitle>Admin</CardTitle>
+
+                    <ul>
+                        <li>
+                            <NavLink to='/admin/provider'>Provider verwaltung</NavLink>
+                        </li>
+                    </ul>
+                </Card>
             </div>
         </>
     )

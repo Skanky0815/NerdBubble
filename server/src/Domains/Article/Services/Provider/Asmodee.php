@@ -42,6 +42,11 @@ class Asmodee implements Crawler
         $this->articles->addAll(...$filterArticles);
     }
 
+    public function provider(): string
+    {
+        return Asmodee::class;
+    }
+
     private function loadNewsUrl(): string
     {
         $dom = $this->httpClient->loadContentFromWebsite(self::ASMODEE_HOME_URL);

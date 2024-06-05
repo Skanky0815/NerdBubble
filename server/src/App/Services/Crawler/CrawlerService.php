@@ -8,6 +8,7 @@ use App\Repository\ArticleRepository;
 use App\Repository\ProductRepository;
 use App\Services\Crawler\DTO\Article as ArticleDTO;
 use App\Services\Crawler\DTO\Product as ProductDTO;
+use Domains\Article\Services\Crawler;
 
 class CrawlerService implements Crawler
 {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Exceptions\MissingImageException;
-use App\Services\Crawler\Crawler as CrawlerService;
+use Domains\Article\Exceptions\HtmlParserException;
 use Domains\Article\Services\Crawler as DomainCrawler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -28,11 +28,11 @@ class Crawler extends Command
     protected $description = 'Aggregate all News from the News Provider.';
 
     /**
-     * @var CrawlerService[]|DomainCrawler[]
+     * @var DomainCrawler[]
      */
     private array $allCrawler;
 
-    public function __construct(CrawlerService ...$allCrawler)
+    public function __construct(DomainCrawler ...$allCrawler)
     {
         parent::__construct();
 
@@ -55,7 +55,7 @@ class Crawler extends Command
         $this->info(' Import done!');
     }
 
-    private function runCrawler(CrawlerService $crawler): void
+    private function runCrawler(DomainCrawler $crawler): void
     {
         try {
             $crawler->crawl();
@@ -64,6 +64,9 @@ class Crawler extends Command
         } catch (\Throwable $exception) {
             $this->newLine(2);
             $this->error(sprintf(' %s: %s', $crawler::class, $exception->getMessage()));
+            if ($exception instanceof HtmlParserException) {
+                $this->warn($exception->root, OutputInterface::VERBOSITY_DEBUG);
+            }
             $this->error($exception->getTraceAsString(), OutputInterface::VERBOSITY_DEBUG);
             $this->newLine();
             if ($exception instanceof MissingImageException) {

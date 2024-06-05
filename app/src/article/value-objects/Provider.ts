@@ -7,6 +7,7 @@ enum Provider {
     F_SHOP = 'f_shop',
     FANTASY_FLIGHT_GAMES = 'fantasy_flight_games',
     ULISSES_SPIELE = 'ulisses_spiele',
+    DEFAULT = 'default'
 }
 
 export default Provider;
