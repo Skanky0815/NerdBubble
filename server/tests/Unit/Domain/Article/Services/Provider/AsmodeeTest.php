@@ -13,7 +13,7 @@ use Domains\Article\Services\Crawler\Filter\KeywordFilter;
 use Domains\Article\Services\Crawler\Filter\ProductExistFilter;
 use Domains\Article\Services\HttpClient;
 use Domains\Article\Services\Provider\Asmodee;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
@@ -77,7 +77,7 @@ class AsmodeeTest extends MockeryTestCase
         $this->articles->expects()->addAll($article)->once();
 
         $this->articleFactory->allows()->setArticleData(
-            Provider::ASMODEE,
+            ProviderType::ASMODEE,
             'test',
             \Mockery::any(),
             'https://image-url.png',
@@ -139,7 +139,7 @@ class AsmodeeTest extends MockeryTestCase
         }))->once();
 
         $this->articleFactory->allows()->setArticleData(
-            Provider::ASMODEE,
+            ProviderType::ASMODEE,
             'test',
             \Mockery::any(),
             'https://image-url.png',
@@ -209,7 +209,7 @@ class AsmodeeTest extends MockeryTestCase
         $this->productFactory->allows()->build()->andReturn($product);
 
         $this->articleFactory->allows()->setArticleData(
-            Provider::ASMODEE,
+            ProviderType::ASMODEE,
             'test',
             \Mockery::any(),
             'https://image-url.png',

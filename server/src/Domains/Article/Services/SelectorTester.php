@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Domains\Article\Services;
 
-use App\Exceptions\MissingImageException;
-use App\Exceptions\MissingLinkException;
+use Domains\Article\Exceptions\HtmlParserException;
 use Domains\Article\ValueObjects\ArticleSelector;
 use Domains\Article\ValueObjects\HtmlNode;
 
@@ -37,7 +36,7 @@ class SelectorTester
                     'description' => null === $articleSelector->description ? null : $node->text($articleSelector->description),
                 ],
             ];
-        } catch (MissingImageException|MissingLinkException $e) {
+        } catch (HtmlParserException $e) {
             dd([
                 'message' => $e->getMessage(),
                 'html' => $e->root,

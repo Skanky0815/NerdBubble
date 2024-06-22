@@ -10,7 +10,7 @@ use Domains\Article\Factories\ArticleFactory;
 use Domains\Article\Repositories\Articles;
 use Domains\Article\Services\Crawler;
 use Domains\Article\Services\HttpClient;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 
 class TrainSimWorld implements Crawler
 {
@@ -45,7 +45,7 @@ class TrainSimWorld implements Crawler
                     ?: '';
 
         return $this->articleFactory->setArticleData(
-            provider: Provider::TSW,
+            provider: ProviderType::TSW,
             headline: $articleData['title'],
             publishDate: CarbonImmutable::parse($articleData['date']),
             image: $selectImage($articleData['images']),

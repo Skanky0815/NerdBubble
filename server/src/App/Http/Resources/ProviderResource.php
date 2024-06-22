@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
+use Domains\Article\Aggregates\Provider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @mixin Provider
+ */
 class ProviderResource extends JsonResource
 {
     public function __construct($resource, private readonly int $status = Response::HTTP_OK)
@@ -23,7 +27,7 @@ class ProviderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [...parent::toArray($request), 'id' => (string) $this->id];
     }
 
     public function toResponse($request): JsonResponse

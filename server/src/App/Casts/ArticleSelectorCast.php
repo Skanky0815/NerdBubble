@@ -19,17 +19,17 @@ class ArticleSelectorCast implements CastsAttributes
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
         return new ArticleSelector(
-            $attributes['articleSelectorWrapper'],
-            $attributes['articleSelectorHeadline'],
-            $attributes['articleSelectorSubHeadline'],
-            $attributes['articleSelectorDescription'],
-            $attributes['articleSelectorImage'],
-            new DateSelector(
+            wrapper: $attributes['articleSelectorWrapper'],
+            headline: $attributes['articleSelectorHeadline'],
+            image: $attributes['articleSelectorImage'],
+            dateSelector: new DateSelector(
                 $attributes['articleSelectorDate'],
                 $attributes['articleSelectorDateFormat'],
                 $attributes['articleSelectorDateLocale'],
             ),
-            $attributes['articleSelectorLink'],
+            link: $attributes['articleSelectorLink'],
+            subHeadline: $attributes['articleSelectorSubHeadline'],
+            description: $attributes['articleSelectorDescription'],
         );
     }
 

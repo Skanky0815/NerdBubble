@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Domains\Article\Services\Crawler;
 
-use App\Models\Provider;
+use Domains\Article\Aggregates\Provider;
 use Domains\Article\Exceptions\HtmlParserException;
 use Domains\Article\Factories\ArticleFactory;
 use Domains\Article\Repositories\Articles;
@@ -13,7 +13,7 @@ use Domains\Article\Services\Crawler;
 use Domains\Article\Services\Crawler\Filter\KeywordFilter;
 use Domains\Article\Services\HttpClient;
 use Domains\Article\ValueObjects\HtmlNode;
-use Domains\Article\ValueObjects\Provider as ProviderType;
+use Domains\Article\ValueObjects\ProviderType;
 
 class ProviderCrawler implements Crawler
 {

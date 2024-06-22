@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Models\ArticleLayout;
 use Doctrine\DBAL\Types\StringType;
 use Doctrine\DBAL\Types\Type;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -50,7 +50,7 @@ return new class() extends Migration {
         }
 
         Schema::table('articles', function (Blueprint $table) {
-            $table->enum('provider', Provider::getAllValues())->change();
+            $table->enum('provider', ProviderType::getAllValues())->change();
         });
     }
 

@@ -10,7 +10,7 @@ use Domains\Article\Factories\ArticleFactory;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\ProductName;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -26,7 +26,7 @@ class ArticleFactoryTest extends TestCase
     {
         $article = $this->service()
             ->setArticleData(
-                provider: Provider::ASMODEE,
+                provider: ProviderType::ASMODEE,
                 headline: 'headline',
                 publishDate: CarbonImmutable::create(1984),
                 image: 'https://article-image.png',
@@ -34,7 +34,7 @@ class ArticleFactoryTest extends TestCase
             )->build()
         ;
 
-        static::assertSame(Provider::ASMODEE, $article->provider);
+        static::assertSame(ProviderType::ASMODEE, $article->provider);
         static::assertSame('https://article-image.png', (string) $article->image);
         static::assertSame('https://article.link', (string) $article->link);
         static::assertSame('headline', (string) $article->headline);
@@ -49,7 +49,7 @@ class ArticleFactoryTest extends TestCase
     {
         $article = $this->service()
             ->setArticleData(
-                provider: Provider::ASMODEE,
+                provider: ProviderType::ASMODEE,
                 headline: 'headline',
                 publishDate: CarbonImmutable::create(1984),
                 image: 'https://article-image.png',
@@ -66,7 +66,7 @@ class ArticleFactoryTest extends TestCase
     {
         $article = $this->service()
             ->setArticleData(
-                provider: Provider::ASMODEE,
+                provider: ProviderType::ASMODEE,
                 headline: 'headline',
                 publishDate: CarbonImmutable::create(1984),
                 image: 'https://article-image.png',
@@ -83,7 +83,7 @@ class ArticleFactoryTest extends TestCase
     {
         $article = $this->service()
             ->setArticleData(
-                provider: Provider::ASMODEE,
+                provider: ProviderType::ASMODEE,
                 headline: 'headline',
                 publishDate: CarbonImmutable::create(1984),
                 image: 'https://article-image.png',

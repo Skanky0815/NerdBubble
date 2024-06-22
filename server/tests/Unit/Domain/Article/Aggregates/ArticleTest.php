@@ -12,7 +12,7 @@ use Domains\Article\ValueObjects\Headline;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\Products;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 use Domains\Article\ValueObjects\PublishDate;
 use Domains\Article\ValueObjects\SubHeadline;
 use PHPUnit\Framework\Attributes\Test;
@@ -44,7 +44,7 @@ class ArticleTest extends TestCase
     private function aggregate(): Article
     {
         return new Article(
-            provider: Provider::ASMODEE,
+            provider: ProviderType::ASMODEE,
             headline: new Headline('Headline Text'),
             publishDate: new PublishDate(CarbonImmutable::create(2077)),
             image: new ImageUrl('https://image.png'),

@@ -6,7 +6,6 @@ namespace Domains\Article\ValueObjects;
 
 use Carbon\CarbonImmutable;
 use Domains\Article\Exceptions\HtmlParserException;
-use JetBrains\PhpStorm\Language;
 
 readonly class HtmlNode
 {
@@ -15,20 +14,20 @@ readonly class HtmlNode
         private \DOMNode $DOMNode,
     ) {}
 
-    public function text(#[Language('XPath')] string $query): string
+    public function text(string $query): string
     {
         $text = $this->findElement($query)?->textContent ?: '';
 
         return preg_replace('/\s+/', ' ', trim($text));
     }
 
-    public function image(#[Language('XPath')] ?string $query = './/*/img', string $attribute = 'src'): string
+    public function image(?string $query = './/*/img', string $attribute = 'src'): string
     {
         return $this->findElement($query)?->getAttribute($attribute)
             ?: throw HtmlParserException::createForDom($this->DOMNode, $query, $attribute);
     }
 
-    public function link(#[Language('XPath')] ?string $query = './/*/a'): string
+    public function link(?string $query = './/*/a'): string
     {
         return $this->findElement($query)?->getAttribute('href')
             ?: throw HtmlParserException::createForDom($this->DOMNode, $query);
@@ -48,7 +47,7 @@ readonly class HtmlNode
             : CarbonImmutable::createFromLocaleFormat($dateSelector->format, $dateSelector->locale, trim($dateString));
     }
 
-    public function findElement(#[Language('XPath')] string $query): ?\DOMNode
+    public function findElement(string $query): ?\DOMNode
     {
         return $this->xpath->query($query, $this->DOMNode)->item(0);
     }

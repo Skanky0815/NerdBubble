@@ -15,7 +15,7 @@ use Domains\Article\ValueObjects\Headline;
 use Domains\Article\ValueObjects\Id;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 use Domains\Article\ValueObjects\PublishDate;
 use Domains\Article\ValueObjects\SubHeadline;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -68,7 +68,7 @@ class Article extends Model
         'id' => IdCast::class,
         'title' => HeadlineCast::class,
         'subTitle' => SubHeadlineCast::class,
-        'provider' => Provider::class,
+        'provider' => ProviderType::class,
         'date' => PublishDateCast::class,
         'link' => LinkCast::class,
         'image' => ImageUrlCast::class,

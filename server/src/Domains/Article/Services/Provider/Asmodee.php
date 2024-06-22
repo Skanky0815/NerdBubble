@@ -15,7 +15,7 @@ use Domains\Article\Services\Crawler;
 use Domains\Article\Services\Crawler\Filter\KeywordFilter;
 use Domains\Article\Services\Crawler\Filter\ProductExistFilter;
 use Domains\Article\Services\HttpClient;
-use Domains\Article\ValueObjects\Provider;
+use Domains\Article\ValueObjects\ProviderType;
 
 class Asmodee implements Crawler
 {
@@ -82,7 +82,7 @@ class Asmodee implements Crawler
         $linkCategory = empty($products) ? 'product' : 'news';
 
         return $this->articleFactory->setArticleData(
-            provider: Provider::ASMODEE,
+            provider: ProviderType::ASMODEE,
             headline: $articleData['headline'],
             publishDate: CarbonImmutable::parse($articleData['creationDate']),
             image: $articleData['tileImage']['formats']['small']['url'] ?? $articleData['tileImage']['url'],

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Casts\ArticleSelectorCast;
+use App\Casts\IdCast;
 use Domains\Article\ValueObjects\ArticleSelector;
+use Domains\Article\ValueObjects\Id;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +16,7 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Provider.
  *
- * @property string      $id
+ * @property Id          $id
  * @property string      $name
  * @property string      $color
  * @property string      $logoImage
@@ -82,6 +84,7 @@ class Provider extends Model
     use HasUuids;
 
     protected $casts = [
+        'id' => IdCast::class,
         'hasProducts' => 'boolean',
         'isActive' => 'boolean',
         'articleSelector' => ArticleSelectorCast::class,
