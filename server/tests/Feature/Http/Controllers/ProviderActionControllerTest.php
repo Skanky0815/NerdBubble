@@ -56,7 +56,9 @@ class ProviderActionControllerTest extends TestCase
         ]);
 
         $response->assertSuccessful();
-        $response->dd();
         $response->assertJsonPath('article.headline', 'EA Play mit neuen In-Game-Belohnungen');
+        $response->assertJsonPath('article.date', '2024-05-19');
+        $response->assertJsonPath('article.image', 'https://www.xboxdynasty.de/wp-content/uploads/2020/05/ea-play-11-150x150.jpg.pagespeed.ce.NyscDM68Bw.jpg');
+        $response->assertJsonPath('article.link', 'https://www.xboxdynasty.de/news/xbox-game-pass/ea-play-mit-neuen-in-game-belohnungen/');
     }
 }

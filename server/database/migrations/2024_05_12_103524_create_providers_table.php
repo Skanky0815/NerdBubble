@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Models\ArticleLayout;
+use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\Type;
 use Domains\Article\ValueObjects\Provider;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -42,6 +44,10 @@ return new class() extends Migration {
             $table->string('productSelectorLink')->nullable();
             $table->timestamps();
         });
+
+        if (!Type::hasType('enum')) {
+            Type::addType('enum', StringType::class);
+        }
 
         Schema::table('articles', function (Blueprint $table) {
             $table->enum('provider', Provider::getAllValues())->change();
