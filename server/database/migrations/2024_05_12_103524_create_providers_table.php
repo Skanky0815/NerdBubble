@@ -44,7 +44,7 @@ return new class() extends Migration {
         });
 
         Schema::table('articles', function (Blueprint $table) {
-            $table->enum('provider', Provider::getAllValues())->nullable(false);
+            $table->enum('provider', Provider::getAllValues())->change();
         });
     }
 
