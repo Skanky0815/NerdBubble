@@ -28,6 +28,8 @@ export default function Setting() {
                     }
                 </Card>
 
+                <KeywordCard />
+
                 <ProviderCard />
 
                 <Card>
