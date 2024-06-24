@@ -18,9 +18,9 @@ readonly class Provider
         public string $layout,
         public bool $isActive,
         public ArticleSelector $articleSelector,
-        public string $articleHeadline,
-        public string $articleImage,
-        public string $articleLink,
+        public ?string $articleHeadline,
+        public ?string $articleImage,
+        public ?string $articleLink,
         public ?Id $id = null,
     ) {}
 }
