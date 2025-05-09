@@ -24,7 +24,7 @@ class ProviderFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'color' => $this->faker->hexColor(),
-            'logoImage' => $this->faker->imageUrl(250, 250),
+            'logoImage' => 'https://de.wikipedia.org/static/images/mobile/copyright/wikipedia-tagline-de.svg',
             'aggregateUrl' => 'https://www.nerd-bubble.de',
             'hasProducts' => $hasProducts,
             'layout' => $hasProducts ? ArticleLayout::PRODUCTS : $this->faker->randomElement(ArticleLayout::getAllValues()),
