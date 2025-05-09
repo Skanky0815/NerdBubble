@@ -20,7 +20,7 @@ class AsmodeeArticle extends Article
             title: $content['headline'],
             link: 'https://www.asmodee.de/news/'.$content['slug'],
             date: Carbon::parse($content['creationDate']),
-            image: $content['tileImage']['formats']['small']['url'] ?? '-',
+            image: $content['tileImage']['formats']['small']['url'] ?? $content['tileImage']['url'] ?? '-',
             subTitle: $content['subHeadline'],
             products: collect($content['content'] ?? [])->filter($filterEmptyProducts)->map($mapToProducts),
         );

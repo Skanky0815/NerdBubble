@@ -15,7 +15,9 @@ class AsmodeeProduct extends Product
             'https://www.asmodee.de/produkte/'.$content['slug'],
             $content['facets']['image']
                 ?? $content['images']['3dboxl']['url']
+                ?? $content['images']['3dboxr']['url']
                 ?? $content['images']['cover']['url']
+                ?? $content['images']['inhalt']['url']
                 ?? dd($content),
         );
     }

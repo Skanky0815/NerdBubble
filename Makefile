@@ -16,10 +16,10 @@ test_e2e:
 	npm run cypress:open --prefix app
 
 test_server_architecture:
-	${dockerPHP} vendor/bin/deptrac analyse --report-uncovered
+	cd ./server && ${dockerPHP} vendor/bin/deptrac analyse --report-uncovered
 
 php_cs_fix:
-	${dockerPHP} vendor/bin/php-cs-fixer fix --allow-risky=yes --diff
+	cd ./server && ${dockerPHP} vendor/bin/php-cs-fixer fix --allow-risky=yes --diff
 
 php_ide_helper_models:
 	${dockerPHP} artisan ide-helper:models --dir="src/App/Models"
