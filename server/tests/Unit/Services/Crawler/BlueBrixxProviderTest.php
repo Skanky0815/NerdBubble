@@ -42,7 +42,7 @@ class BlueBrixxProviderTest extends TestCase
     }
 
     #[Test]
-    public function getArticles_when_products_are_new_then_a_new_article_with_products_will_created(): void
+    public function getArticlesWhenProductsAreNewThenANewArticleWithProductsWillCreated(): void
     {
         Http::fake([
             'https://www.bluebrixx.com/de/ankuendigungen?limit=32' => Http::response('content'),
@@ -99,7 +99,7 @@ class BlueBrixxProviderTest extends TestCase
     }
 
     #[Test]
-    public function getArticles_when_products_is_konwn_then_a_new_article_with_products_will_created(): void
+    public function getArticlesWhenProductsIsKonwnThenANewArticleWithProductsWillCreated(): void
     {
         Http::fake([
             'https://www.bluebrixx.com/de/ankuendigungen?limit=32' => Http::response('content'),

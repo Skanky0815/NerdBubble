@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
 class ArticleFactoryTest extends TestCase
 {
     #[Test]
-    public function build_should_create_a_new_article_model_instance(): void
+    public function buildShouldCreateANewArticleModelInstance(): void
     {
         $article = $this->service()
             ->setArticleData(
@@ -45,7 +45,7 @@ class ArticleFactoryTest extends TestCase
     }
 
     #[Test]
-    public function build_when_description_is_given_then_description_is_not_null(): void
+    public function buildWhenDescriptionIsGivenThenDescriptionIsNotNull(): void
     {
         $article = $this->service()
             ->setArticleData(
@@ -62,7 +62,7 @@ class ArticleFactoryTest extends TestCase
     }
 
     #[Test]
-    public function build_when_subHeadline_is_given_then_subHeadline_is_not_null(): void
+    public function buildWhenSubHeadlineIsGivenThenSubHeadlineIsNotNull(): void
     {
         $article = $this->service()
             ->setArticleData(
@@ -79,7 +79,7 @@ class ArticleFactoryTest extends TestCase
     }
 
     #[Test]
-    public function build_when_products_are_given_then_products_is_not_empty(): void
+    public function buildWhenProductsAreGivenThenProductsIsNotEmpty(): void
     {
         $article = $this->service()
             ->setArticleData(

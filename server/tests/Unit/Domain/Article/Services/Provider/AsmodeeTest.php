@@ -39,7 +39,7 @@ class AsmodeeTest extends MockeryTestCase
     private (LegacyMockInterface&ProductExistFilter)|(MockInterface&ProductExistFilter) $productExistFilter;
 
     #[Test]
-    public function crawl_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    public function crawlWhenArticleDataFoundThenAArticleCollectionWillBeReturned(): void
     {
         $article = $this->createArticle();
 
@@ -91,7 +91,7 @@ class AsmodeeTest extends MockeryTestCase
     }
 
     #[Test]
-    public function crawl_when_product_is_empty_then_a_article_without_products_will_be_created(): void
+    public function crawlWhenProductIsEmptyThenAArticleWithoutProductsWillBeCreated(): void
     {
         $article = $this->createArticle();
 
@@ -153,7 +153,7 @@ class AsmodeeTest extends MockeryTestCase
     }
 
     #[Test]
-    public function crawl_when_products_data_found_then_a_article_with_products_will_be_created(): void
+    public function crawlWhenProductsDataFoundThenAArticleWithProductsWillBeCreated(): void
     {
         $article = $this->createArticle();
         $product = $this->createProduct();
@@ -223,7 +223,7 @@ class AsmodeeTest extends MockeryTestCase
     }
 
     #[Test]
-    public function crawl_when_no_hash_in_first_call_then_a_exception_will_be_thrown(): void
+    public function crawlWhenNoHashInFirstCallThenAExceptionWillBeThrown(): void
     {
         $this->expectException(ProviderException::class);
 

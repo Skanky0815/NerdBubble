@@ -18,6 +18,7 @@ use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\ProviderType;
 use Domains\Article\ValueObjects\PublishDate;
 use Domains\Article\ValueObjects\SubHeadline;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,18 +28,18 @@ use Illuminate\Support\Carbon;
 /**
  * App\Models\Article.
  *
- * @property Id                                                                 $id
- * @property Headline                                                           $title
- * @property null|SubHeadline                                                   $subTitle
- * @property null|string                                                        $description
- * @property ProviderType                                                       $provider
- * @property Link                                                               $link
- * @property PublishDate                                                        $date
- * @property ImageUrl                                                           $image
- * @property null|Carbon                                                        $created_at
- * @property null|Carbon                                                        $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property null|int                                                           $products_count
+ * @property Id                       $id
+ * @property Headline                 $title
+ * @property null|SubHeadline         $subTitle
+ * @property null|string              $description
+ * @property ProviderType             $provider
+ * @property Link                     $link
+ * @property PublishDate              $date
+ * @property ImageUrl                 $image
+ * @property null|Carbon              $created_at
+ * @property null|Carbon              $updated_at
+ * @property Collection<int, Product> $products
+ * @property null|int                 $products_count
  *
  * @method static \Database\Factories\ArticleFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()

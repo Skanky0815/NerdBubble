@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -19,18 +20,18 @@ use Laravel\Sanctum\PersonalAccessToken;
 /**
  * App\Models\User.
  *
- * @property int                                                                $id
- * @property string                                                             $name
- * @property string                                                             $email
- * @property null|Carbon                                                        $email_verified_at
- * @property string                                                             $password
- * @property null|string                                                        $remember_token
- * @property null|Carbon                                                        $created_at
- * @property null|Carbon                                                        $updated_at
- * @property DatabaseNotificationCollection<int, DatabaseNotification>          $notifications
- * @property null|int                                                           $notifications_count
- * @property \Illuminate\Database\Eloquent\Collection<int, PersonalAccessToken> $tokens
- * @property null|int                                                           $tokens_count
+ * @property int                                                       $id
+ * @property string                                                    $name
+ * @property string                                                    $email
+ * @property null|Carbon                                               $email_verified_at
+ * @property string                                                    $password
+ * @property null|string                                               $remember_token
+ * @property null|Carbon                                               $created_at
+ * @property null|Carbon                                               $updated_at
+ * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
+ * @property null|int                                                  $notifications_count
+ * @property Collection<int, PersonalAccessToken>                      $tokens
+ * @property null|int                                                  $tokens_count
  *
  * @method static \Database\Factories\UserFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
@@ -45,10 +46,10 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  *
- * @property null|string                                                        $two_factor_secret
- * @property null|string                                                        $two_factor_recovery_codes
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
- * @property null|int                                                           $products_count
+ * @property null|string              $two_factor_secret
+ * @property null|string              $two_factor_recovery_codes
+ * @property Collection<int, Product> $products
+ * @property null|int                 $products_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)

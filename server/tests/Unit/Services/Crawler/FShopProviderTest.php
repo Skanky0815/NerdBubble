@@ -42,7 +42,7 @@ class FShopProviderTest extends TestCase
     }
 
     #[Test]
-    public function getArticles_when_article_data_found_then_a_article_collection_will_be_returned(): void
+    public function getArticlesWhenArticleDataFoundThenAArticleCollectionWillBeReturned(): void
     {
         Http::fake([
             'https://www.f-shop.de/neuheiten/' => Http::response('content'),

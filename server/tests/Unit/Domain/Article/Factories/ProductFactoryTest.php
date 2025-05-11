@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 class ProductFactoryTest extends TestCase
 {
     #[Test]
-    public function build_should_create_a_new_product_model_instance(): void
+    public function buildShouldCreateANewProductModelInstance(): void
     {
         $product = $this->service()
             ->setProductData(

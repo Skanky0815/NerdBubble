@@ -21,7 +21,7 @@ class CrawlerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function when_no_errors_then_the_articles_with_products_will_be_stored_in_the_database(): void
+    public function whenNoErrorsThenTheArticlesWithProductsWillBeStoredInTheDatabase(): void
     {
         $this->seed(KeywordSeeder::class);
 

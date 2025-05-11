@@ -52,7 +52,7 @@ class KeywordControllerTest extends TestCase
     }
 
     #[Test]
-    public function shouldCreateAKeyword_whenRequestIsValid(): void
+    public function shouldCreateAKeywordWhenRequestIsValid(): void
     {
         $user = User::factory()->create();
 

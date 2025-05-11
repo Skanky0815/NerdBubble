@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
 class ArticleTest extends TestCase
 {
     #[Test]
-    public function matchWithKeywords_when_one_keyword_match_then_true_will_be_returned(): void
+    public function matchWithKeywordsWhenOneKeywordMatchThenTrueWillBeReturned(): void
     {
         $result = $this->aggregate()->matchWithKeywords(Keyword::fromString('Sub'));
 
@@ -34,7 +34,7 @@ class ArticleTest extends TestCase
     }
 
     #[Test]
-    public function matchWithKeywords_when_no_keyword_match_then_false_will_be_returned(): void
+    public function matchWithKeywordsWhenNoKeywordMatchThenFalseWillBeReturned(): void
     {
         $result = $this->aggregate()->matchWithKeywords(Keyword::fromString('Missing'));
 

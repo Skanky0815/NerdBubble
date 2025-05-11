@@ -22,7 +22,7 @@ class ProductRepositoryTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function findByNameOrCreate_when_product_name_exists_then_found_product_returned(): void
+    public function findByNameOrCreateWhenProductNameExistsThenFoundProductReturned(): void
     {
         $article = Article::factory()->create();
         $product = Product::factory()->create([
@@ -40,7 +40,7 @@ class ProductRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function findByNameOrCreate_when_product_name_is_new_then_a_new_product_will_saved(): void
+    public function findByNameOrCreateWhenProductNameIsNewThenANewProductWillSaved(): void
     {
         $article = Article::factory()->create();
 
@@ -60,7 +60,7 @@ class ProductRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function withTheGivenNameDoNotExist_when_name_exists_then_false_will_be_returned(): void
+    public function withTheGivenNameDoNotExistWhenNameExistsThenFalseWillBeReturned(): void
     {
         Product::factory()->create([
             'name' => 'foo',
@@ -72,7 +72,7 @@ class ProductRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function withTheGivenNameDoNotExist_when_name_not_exists_then_true_will_be_returned(): void
+    public function withTheGivenNameDoNotExistWhenNameNotExistsThenTrueWillBeReturned(): void
     {
         $result = $this->repository()->withTheGivenNameDoNotExist(new ProductName('foo'));
 

@@ -23,7 +23,7 @@ class ArticleRepositoryTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function findByTitleOrCreate_when_title_exists_then_found_article_returned(): void
+    public function findByTitleOrCreateWhenTitleExistsThenFoundArticleReturned(): void
     {
         $article = Article::factory()->create([
             'title' => 'Foo',
@@ -37,7 +37,7 @@ class ArticleRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function addAll_when_title_not_exists_then_the_new_article_will_returned(): void
+    public function addAllWhenTitleNotExistsThenTheNewArticleWillReturned(): void
     {
         $productData = Product::factory()->make();
         $articleData = Article::factory()->make([
@@ -60,7 +60,7 @@ class ArticleRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function fromTheLastTwoWeeks_when_article_date_is_in_range_then_they_will_be_returned(): void
+    public function fromTheLastTwoWeeksWhenArticleDateIsInRangeThenTheyWillBeReturned(): void
     {
         Carbon::setTestNow(Carbon::create(2000, 1, 30));
         Article::factory(2)->create(['date' => '2000-01-01']);

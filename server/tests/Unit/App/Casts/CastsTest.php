@@ -38,7 +38,7 @@ class CastsTest extends TestCase
 {
     #[Test]
     #[DataProvider('setDataProvider')]
-    public function set_should_return_the_given_value(
+    public function setShouldReturnTheGivenValue(
         CastsAttributes $cast,
         string $key,
         object $valueObject,
@@ -65,7 +65,7 @@ class CastsTest extends TestCase
 
     #[Test]
     #[DataProvider('getDataProvider')]
-    public function get_should_return_the_given_value_as_value_object(
+    public function getShouldReturnTheGivenValueAsValueObject(
         CastsAttributes $cast,
         string $key,
         string $value,
@@ -94,7 +94,7 @@ class CastsTest extends TestCase
 
     #[Test]
     #[DataProvider('getNullDataProvider')]
-    public function get_when_the_given_value_is_null_then_return_null(
+    public function getWhenTheGivenValueIsNullThenReturnNull(
         CastsAttributes $cast,
         string $key,
     ): void {

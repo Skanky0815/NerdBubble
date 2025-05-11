@@ -20,7 +20,7 @@ class ProductMarkControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function when_all_user_logged_in_and_produkt_exists_then_the_product_will_assigned_to_the_user_return_no_content(): void
+    public function whenAllUserLoggedInAndProduktExistsThenTheProductWillAssignedToTheUserReturnNoContent(): void
     {
         $user = User::factory()->create([
             'id' => '5de7002a-cb10-446a-8aaf-75b270a2fd11',

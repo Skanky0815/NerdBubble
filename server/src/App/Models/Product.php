@@ -12,6 +12,7 @@ use Domains\Article\ValueObjects\Id;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\ProductName;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -42,8 +43,8 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
- * @property null|int                                                        $users_count
+ * @property Collection<int, User> $users
+ * @property null|int              $users_count
  *
  * @mixin \Eloquent
  */

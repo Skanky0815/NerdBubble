@@ -21,7 +21,7 @@ class ArticleListControllerTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function when_controller_is_called_then_response_success(): void
+    public function whenControllerIsCalledThenResponseSuccess(): void
     {
         $user = User::factory()->create();
 

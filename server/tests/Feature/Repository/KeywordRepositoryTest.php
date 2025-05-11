@@ -20,7 +20,7 @@ class KeywordRepositoryTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function all_should_return_all_keywords(): void
+    public function allShouldReturnAllKeywords(): void
     {
         Keyword::factory(2)->create();
 

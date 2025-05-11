@@ -17,7 +17,7 @@ use Tests\TestCase;
 class HttpClientServiceTest extends TestCase
 {
     #[Test]
-    public function loadContentFromWebsite_when_response_is_xml_dom_then_a_DOMDocument_will_be_returned(): void
+    public function loadContentFromWebsiteWhenResponseIsXmlDomThenADOMDocumentWillBeReturned(): void
     {
         Http::fake(['https://some.html' => Http::response(<<<'HTML'
                 <html />
@@ -32,7 +32,7 @@ class HttpClientServiceTest extends TestCase
     }
 
     #[Test]
-    public function loadContentFromWebsite_when_response_is_json_dom_then_a_array_will_be_returned(): void
+    public function loadContentFromWebsiteWhenResponseIsJsonDomThenAArrayWillBeReturned(): void
     {
         Http::fake(['https://some.json' => Http::response(<<<'JSON'
             {
