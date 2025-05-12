@@ -16,8 +16,8 @@ C4Context
 
 ### Benutzer
 
-Benutzten die App um sich über Neuigkeiten aus ihrem Interessensgebieten zu informieren.
+Benutzen die App um sich über Neuigkeiten aus ihrem Interessensgebieten zu informieren.
 
 ### Neuigkeiten Anbieter
 
-Interessens Webseiten sind Webpages.
+Webseiten oder APIs welche nach den Interessen der Benutzer durchsucht werden. 

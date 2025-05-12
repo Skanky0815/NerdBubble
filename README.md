@@ -3,25 +3,7 @@
 [![Server](https://github.com/Skanky0815/NerdBubble/actions/workflows/server.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/server.yml)
 [![App](https://github.com/Skanky0815/NerdBubble/actions/workflows/app.yml/badge.svg)](https://github.com/Skanky0815/NerdBubble/actions/workflows/app.yml)
 
-**App**
-
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=bugs)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_app&metric=coverage)](https://sonarcloud.io/summary/new_code?id=NerdBubble_app_app)
-
-**Server**
-
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=bugs)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=NerdBubble_server&metric=coverage)](https://sonarcloud.io/summary/new_code?id=NerdBubble_server_server)
-
-Die NerdBubble ist eine APP über der sich der Benutzer Neuigkeiten von diversen Webseiten anzeigen lassen kann.
+> Die NerdBubble ist eine APP über der sich der Benutzer Neuigkeiten von diversen Webseiten anzeigen lassen kann.
 
 Das Projekt ist eine reine Spielwiese, um folgende Dinge zu lernen.
 - [arc42](https://www.arc42.de/)
@@ -29,7 +11,6 @@ Das Projekt ist eine reine Spielwiese, um folgende Dinge zu lernen.
 - [Docusaurus](https://docusaurus.io/)
 - [Cucumber](https://cucumber.io/)
 - [Cypress](https://www.cypress.io/)
-- [react.js](https://react.dev/)
 - [react.js](https://react.dev/)
 - [tailwindcss](https://v2.tailwindcss.com/)
 - [Laravel](https://laravel.com/)

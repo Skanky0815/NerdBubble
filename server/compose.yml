@@ -1,4 +1,18 @@
 services:
+    app:
+      build:
+        context: ./../app
+      depends_on:
+        backend:
+          condition: service_started
+      environment:
+        REACT_APP_API_URL: http://localhost:80
+      volumes:
+        - ../door-screen:/app
+        - /app/node_modules
+      ports:
+        - "3000:3000"
+
     backend:
         build:
             context: ./vendor/laravel/sail/runtimes/8.3
@@ -23,6 +37,7 @@ services:
         depends_on:
             - database
             - mailpit
+
     database:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -40,11 +55,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
             retries: 3
             timeout: 5s
     mailpit:
