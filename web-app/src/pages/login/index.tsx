@@ -8,15 +8,23 @@ import {
     Typography,
 } from "@mui/material";
 import Form from "next/form";
-import { FormEvent } from "react";
+import { FormEvent, useContext } from "react";
+import { AuthContext, LoginData } from "@/pages/_hooks/AuthContext";
 
-export default () => {
+export default function Login() {
+    const { signIn } = useContext(AuthContext);
+
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
 
-        console.debug(JSON.stringify(Object.fromEntries(formData)));
+        const loginData: LoginData = {
+            email: formData.get("email") + "",
+            password: formData.get("password") + "",
+        };
+
+        signIn(loginData);
     }
 
     return (
@@ -80,4 +88,4 @@ export default () => {
             </Card>
         </div>
     );
-};
+}
