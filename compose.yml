@@ -29,14 +29,14 @@ services:
             - database
             - mailpit
 
-    database:
+    mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
             - '3306:3306'
         environment:
             MYSQL_ROOT_PASSWORD: 'root'
-            MYSQL_ROOT_HOST: '127.0.0.1'
-            MYSQL_DATABASE: 'laravel'
+            MYSQL_ROOT_HOST: 'mysql'
+            MYSQL_DATABASE: 'server'
             MYSQL_USER: 'root'
             MYSQL_PASSWORD: ''
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
