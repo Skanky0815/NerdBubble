@@ -11,8 +11,8 @@ Das Projekt ist eine reine Spielwiese, um folgende Dinge zu lernen.
 - [Docusaurus](https://docusaurus.io/)
 - [Cucumber](https://cucumber.io/)
 - [Cypress](https://www.cypress.io/)
-- [react.js](https://react.dev/)
-- [tailwindcss](https://v2.tailwindcss.com/)
+- [NextJS](https://nextjs.org/)
+- [MUI](https://mui.com/)
 - [Laravel](https://laravel.com/)
 - [GitHub Actions](https://github.com/features/actions)
 - [sonarcloud](https://sonarcloud.io/)
@@ -45,11 +45,20 @@ Das Projekt ist eine reine Spielwiese, um folgende Dinge zu lernen.
 
 ## DevSetup
 
-### Frontend 
+```bash
+  docker compose up -d
+```
+
+## Development
+### Generate TypeScript Types from Swagger
+For the frontend, the clients for the backend communication are generated using the OPEN API specification. To do this, the following command must be executed in the corresponding frontend project directory.
 
 ```bash
-npm run start
+  npm run client --prefix web-app
 ```
+
+- [OpenAPI-TS](https://openapi-ts.pages.dev/introduction) Dokumentation for type generation.
+
 
 --- 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=NerdBubble)
