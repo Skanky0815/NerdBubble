@@ -8,14 +8,17 @@ import {
     Typography,
 } from "@mui/material";
 import Form from "next/form";
-import { FormEvent, useContext } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { AuthContext, LoginData } from "@/pages/_hooks/AuthContext";
 
 export default function Login() {
     const { signIn } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
+        setIsLoading(true)
 
         const formData = new FormData(event.currentTarget);
 
@@ -66,6 +69,7 @@ export default function Login() {
                                         type="submit"
                                         fullWidth
                                         size="large"
+                                        loading={isLoading}
                                     >
                                         Anmelden
                                     </Button>

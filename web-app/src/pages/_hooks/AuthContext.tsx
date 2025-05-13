@@ -25,7 +25,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const queryClient = useQueryClient();
     const router = useRouter();
 
-    const { data: user, ...userQuery } = client.useQuery("get", "/me", {
+    const { data: user } = client.useQuery("get", "/me", {
         queryKey: ["me"],
         retry: false,
     });
@@ -35,7 +35,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const loginMutation = client.useMutation("post", "/login", {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["me"] }).then(() => {
-                router.push("/articles");
+                router.push("/sec/articles");
             });
         },
         onError: (error: any) => {
@@ -52,7 +52,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     });
 
     useEffect(() => {
-        if (!user) {
+        if (!user?.data) {
             router.push("/login");
         }
     }, [user]);
