@@ -18,6 +18,7 @@ class AsmodeeProduct extends Product
                 ?? $content['images']['3dboxr']['url']
                 ?? $content['images']['cover']['url']
                 ?? $content['images']['inhalt']['url']
+                ?? $content['images']['banner']['url']
                 ?? dd($content),
         );
     }
