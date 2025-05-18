@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "client": "openapi-typescript ./../server/storage/openapi.yml -o ./src/_libs/client/shema.d.ts",
+        "client": "openapi-typescript http://localhost/docs/api.json -o ./src/_libs/client/shema.d.ts --immutable --root-types --root-types-no-schema-prefix",
         "prettier": "prettier . --write"
     },
     "dependencies": {

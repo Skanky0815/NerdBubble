@@ -18,7 +18,7 @@ export default function Login() {
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        setIsLoading(true)
+        setIsLoading(true);
 
         const formData = new FormData(event.currentTarget);
 
