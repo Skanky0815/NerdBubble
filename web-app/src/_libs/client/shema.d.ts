@@ -4,467 +4,773 @@
  */
 
 export interface paths {
-    "/articles": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/articles": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /**
-         * Returns a list of Articles.
-         * @description Return a list of all Articles of the last 14 Days.
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A JSON array of Article data */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data?: components["schemas"]["ArticleList"];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get: operations["articleList"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/login": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /**
-         * Returns the logged in User.
-         * @description Return a user object from the logged in user.
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A JSON with the User data */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": components["schemas"]["User"];
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get?: never;
+        readonly put?: never;
+        /** Attempt to authenticate a new session */
+        readonly post: operations["login.store"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/marked-products": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/logout": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /**
-         * Returns all marked products.
-         * @description Returns all marked products of the logged in user.
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A JSON array with Product data. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data?: components["schemas"]["ProductList"];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get?: never;
+        readonly put?: never;
+        /** Destroy an authenticated session */
+        readonly post: operations["logout"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/products/{productId}/mark": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/user/confirm-password": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        get?: never;
-        put?: never;
-        /**
-         * Mark an Product.
-         * @description Mark a product for the logged in user.
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: components["parameters"]["UUID"];
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description no content */
-                204: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get?: never;
+        readonly put?: never;
+        /** Confirm the user's password */
+        readonly post: operations["password.confirm.store"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/keywords": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/user/confirmed-password-status": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /**
-         * Returns all Keywords
-         * @description Return a list of all Keywords.
-         */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A Json array with Keywords. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data: components["schemas"]["KeywordList"];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        /**
-         * Create a new Keyword
-         * @description Create a new Keyword for the current user.
-         */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        word: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data: components["schemas"]["Keyword"];
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        /** Get the password confirmation status */
+        readonly get: operations["password.confirmation"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/keywords/{keywordId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/csrf-cookie": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        get?: never;
-        put?: never;
-        post?: never;
-        /** Delete the Keyword */
-        delete: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: components["parameters"]["UUID"];
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description No content */
-                204: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content?: never;
-                };
-            };
-        };
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        /** Return an empty response simply to trigger the storage of the CSRF cookie in the browser */
+        readonly get: operations["sanctum.csrf-cookie"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/providers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/keywords": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /** Returns all Providers */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A Json array with Providers. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data: components["schemas"]["ProviderList"];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        /** Create a new Provider */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        name: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Created */
-                201: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data: components["schemas"]["Provider"];
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get: operations["keywords.index"];
+        readonly put?: never;
+        readonly post: operations["keywords.store"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
-    "/providers/{providerId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    readonly "/keywords/{id}": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        /** Return on Provider by ID. */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    id: components["parameters"]["UUID"];
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description A Json with the Provider data. */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            data: components["schemas"]["Provider"];
-                        };
-                    };
-                };
-            };
+        readonly get?: never;
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete: operations["keywords.destroy"];
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/me": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
         };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+        readonly get: operations["meAction"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/marked-products": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly get: operations["productList"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/products/{productId}/mark": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly get?: never;
+        readonly put?: never;
+        readonly post: operations["productMark"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/providers": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        /** Display a listing of the resource */
+        readonly get: operations["providers.index"];
+        readonly put?: never;
+        /** Store a newly created resource in storage */
+        readonly post: operations["providers.store"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/providers/{provider}": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        /** Display the specified resource */
+        readonly get: operations["providers.show"];
+        readonly put?: never;
+        readonly post?: never;
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
+    };
+    readonly "/providers/actions": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly get?: never;
+        readonly put?: never;
+        /** Handle the incoming request */
+        readonly post: operations["providerAction"];
+        readonly delete?: never;
+        readonly options?: never;
+        readonly head?: never;
+        readonly patch?: never;
+        readonly trace?: never;
     };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
         /**
-         * @description The unique entity identifier as UUIDv4
-         * @example 58a33e2e-543c-4dca-9c07-fd710e0238a2
+         * ArticleLayout
+         * @enum {string}
          */
-        UUID: string;
-        User: {
-            id?: components["schemas"]["UUID"];
-            /** @description The name of the user. */
-            name?: string;
-            /** @description The email of the user. */
-            email?: string;
+        readonly ArticleLayout: "IMG_RIGHT" | "IMG_FULL" | "PRODUCTS";
+        /** ArticleResource */
+        readonly ArticleResource: {
+            readonly id: string;
+            readonly title: string;
+            readonly subTitle: string;
+            readonly link: string;
+            readonly image: string;
+            readonly date: string;
+            readonly provider: string;
+            readonly description: string;
+            readonly products: readonly components["schemas"]["ProductResource"][];
         };
-        Product: {
-            id: components["schemas"]["UUID"];
-            /** @description The name of the product. */
-            name: string;
-            /** @description Link to the original product page. */
-            link: string;
-            /** @description The URL of a product image. */
-            image: string;
-            /** @description Show if the product is marked by the logged in user. */
-            isMarked?: boolean;
+        /** KeywordResource */
+        readonly KeywordResource: {
+            readonly id: string;
+            readonly word: string;
         };
-        ProductList: components["schemas"]["Product"][];
-        Article: {
-            id: components["schemas"]["UUID"];
-            /** @description Title of the article. */
-            title: string;
-            /** @description Optional sub title of the article. */
-            subTitle: string;
-            /** @description Link to the original article. */
-            link: string;
-            /** @description The URL of a teaser image. */
-            image: string;
-            /** @description Article publishing date. */
-            date: string;
-            provider: string;
-            /** @description A short preview text of the article. */
-            description: string;
-            /** @description Products of the article. */
-            products: components["schemas"]["Product"][];
+        /** ProductResource */
+        readonly ProductResource: {
+            readonly id: string;
+            readonly name: string;
+            readonly link: string;
+            readonly image: string;
         };
-        ArticleList: components["schemas"]["Article"][];
-        Keyword: {
-            id: components["schemas"]["UUID"];
-            /** @description The word. */
-            word: string;
+        /** ProviderResource */
+        readonly ProviderResource: {
+            readonly ""?: string;
+            readonly id: string;
         };
-        KeywordList: components["schemas"]["Keyword"][];
-        Provider: {
-            id: components["schemas"]["UUID"];
-            /** @description Name of the Provider. */
-            name: string;
-            /**
-             * @description The hex color of the company for the border and shadow.
-             * @example #ff0000
-             */
-            color: string;
-            /** @description The logo of the Provider. */
-            logoImage: string;
-            /** @description The linkt to the page which should be crawled. */
-            aggregateUrl: string;
-            /** @description Should be true if the Provider has Products and not only news. */
-            hasProducts: boolean;
-            isActive: boolean;
-            articleSelectorHeadline?: string | null;
-            articleHeadline?: string | null;
-            articleSelectorSubHeadline?: string | null;
-            articleSelectorDescription?: string | null;
-            articleSelectorImage?: string | null;
-            articleImage?: string | null;
-            articleSelectorLink?: string | null;
-            articleLink?: string | null;
+        /** UserResource */
+        readonly UserResource: {
+            readonly name: string;
+            readonly email: string;
         };
-        ProviderList: components["schemas"]["Provider"][];
     };
-    responses: never;
-    parameters: {
-        UUID: components["schemas"]["UUID"];
+    responses: {
+        /** @description Validation error */
+        readonly ValidationException: {
+            headers: {
+                readonly [name: string]: unknown;
+            };
+            content: {
+                readonly "application/json": {
+                    /** @description Errors overview. */
+                    readonly message: string;
+                    /** @description A detailed description of each field that failed validation. */
+                    readonly errors: {
+                        readonly [key: string]: readonly string[];
+                    };
+                };
+            };
+        };
+        /** @description Authorization error */
+        readonly AuthorizationException: {
+            headers: {
+                readonly [name: string]: unknown;
+            };
+            content: {
+                readonly "application/json": {
+                    /** @description Error overview. */
+                    readonly message: string;
+                };
+            };
+        };
+        /** @description Not found */
+        readonly ModelNotFoundException: {
+            headers: {
+                readonly [name: string]: unknown;
+            };
+            content: {
+                readonly "application/json": {
+                    /** @description Error overview. */
+                    readonly message: string;
+                };
+            };
+        };
     };
+    parameters: never;
     requestBodies: never;
     headers: never;
     pathItems: never;
 }
+export type ArticleLayout = components["schemas"]["ArticleLayout"];
+export type ArticleResource = components["schemas"]["ArticleResource"];
+export type KeywordResource = components["schemas"]["KeywordResource"];
+export type ProductResource = components["schemas"]["ProductResource"];
+export type ProviderResource = components["schemas"]["ProviderResource"];
+export type UserResource = components["schemas"]["UserResource"];
+export type ResponseValidationException =
+    components["responses"]["ValidationException"];
+export type ResponseAuthorizationException =
+    components["responses"]["AuthorizationException"];
+export type ResponseModelNotFoundException =
+    components["responses"]["ModelNotFoundException"];
 export type $defs = Record<string, never>;
-export type operations = Record<string, never>;
+export interface operations {
+    readonly articleList: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description Array of `ArticleResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: readonly components["schemas"]["ArticleResource"][];
+                    };
+                };
+            };
+        };
+    };
+    readonly "login.store": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": {
+                    readonly email: string;
+                    readonly password: string;
+                };
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": string;
+                };
+            };
+            readonly 422: components["responses"]["ValidationException"];
+        };
+    };
+    readonly logout: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": Record<string, never>;
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    readonly "password.confirm.store": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": Record<string, never>;
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    readonly "password.confirmation": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly confirmed: string;
+                    };
+                };
+            };
+        };
+    };
+    readonly "sanctum.csrf-cookie": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            readonly 204: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": string | readonly string[];
+                };
+            };
+        };
+    };
+    readonly "keywords.index": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description Array of `KeywordResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: readonly components["schemas"]["KeywordResource"][];
+                    };
+                };
+            };
+        };
+    };
+    readonly "keywords.store": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": {
+                    readonly word: string;
+                };
+            };
+        };
+        readonly responses: {
+            /** @description `KeywordResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: components["schemas"]["KeywordResource"];
+                    };
+                };
+            };
+            readonly 403: components["responses"]["AuthorizationException"];
+            readonly 422: components["responses"]["ValidationException"];
+        };
+    };
+    readonly "keywords.destroy": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path: {
+                readonly id: string;
+            };
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": Record<string, never>;
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": string;
+                };
+            };
+        };
+    };
+    readonly meAction: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description `UserResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: components["schemas"]["UserResource"];
+                    };
+                };
+            };
+        };
+    };
+    readonly productList: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description Array of `ProductResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: readonly components["schemas"]["ProductResource"][];
+                    };
+                };
+            };
+        };
+    };
+    readonly productMark: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path: {
+                readonly productId: string;
+            };
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": Record<string, never>;
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": string;
+                };
+            };
+        };
+    };
+    readonly "providers.index": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description Array of `ProviderResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: readonly components["schemas"]["ProviderResource"][];
+                    };
+                };
+            };
+        };
+    };
+    readonly "providers.store": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": {
+                    readonly name: string;
+                    readonly color: string;
+                    readonly logoImage: string;
+                    readonly aggregateUrl: string;
+                    readonly hasProducts: boolean;
+                    readonly layout: components["schemas"]["ArticleLayout"];
+                    readonly isActive: boolean;
+                    readonly articleSelectorWrapper: string;
+                    readonly articleSelectorHeadline?: string;
+                    readonly articleHeadline?: string;
+                    readonly articleSelectorSubHeadline?: string | null;
+                    readonly articleSelectorDescription?: string | null;
+                    readonly articleSelectorImage?: string;
+                    readonly articleImage?: string;
+                    readonly articleSelectorDate: string;
+                    readonly articleSelectorDateLocale: string;
+                    readonly articleSelectorDateFormat: string;
+                    readonly articleSelectorLink?: string;
+                    readonly articleLink?: string;
+                    readonly productSelectorWrapper?: string;
+                    readonly productSelectorName?: string;
+                    readonly productSelectorImage?: string;
+                    readonly productSelectorLink?: string;
+                };
+            };
+        };
+        readonly responses: {
+            /** @description `ProviderResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: components["schemas"]["ProviderResource"];
+                    };
+                };
+            };
+            readonly 403: components["responses"]["AuthorizationException"];
+            readonly 422: components["responses"]["ValidationException"];
+        };
+    };
+    readonly "providers.show": {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path: {
+                /** @description The provider ID */
+                readonly provider: string;
+            };
+            readonly cookie?: never;
+        };
+        readonly requestBody?: never;
+        readonly responses: {
+            /** @description `ProviderResource` */
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": {
+                        readonly data: components["schemas"]["ProviderResource"];
+                    };
+                };
+            };
+            readonly 404: components["responses"]["ModelNotFoundException"];
+        };
+    };
+    readonly providerAction: {
+        readonly parameters: {
+            readonly query?: never;
+            readonly header?: never;
+            readonly path?: never;
+            readonly cookie?: never;
+        };
+        readonly requestBody?: {
+            readonly content: {
+                readonly "application/json": {
+                    readonly action: string;
+                    readonly data?: {
+                        readonly aggregateUrl?: string;
+                        readonly articleSelector?: {
+                            readonly wrapper?: string;
+                            readonly headline?: string | null;
+                            readonly subHeadline?: string | null;
+                            readonly description?: string | null;
+                            readonly image?: string | null;
+                            readonly dateSelector?: {
+                                readonly date?: string;
+                                readonly format?: string;
+                                readonly locale?: string | null;
+                                readonly attribute?: string | null;
+                            };
+                            readonly link?: string | null;
+                        };
+                        readonly productSelector?: {
+                            readonly wrapper?: string | null;
+                            readonly name?: string | null;
+                            readonly image?: string | null;
+                            readonly link?: string | null;
+                        };
+                    };
+                };
+            };
+        };
+        readonly responses: {
+            readonly 200: {
+                headers: {
+                    readonly [name: string]: unknown;
+                };
+                content: {
+                    readonly "application/json": string;
+                };
+            };
+            readonly 403: components["responses"]["AuthorizationException"];
+            readonly 422: components["responses"]["ValidationException"];
+        };
+    };
+}

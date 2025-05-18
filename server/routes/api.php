@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleListController;
 use App\Http\Controllers\KeywordController;
+use App\Http\Controllers\MeActionController;
 use App\Http\Controllers\ProductListController;
 use App\Http\Controllers\ProductMarkController;
 use App\Http\Controllers\ProviderActionController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/me', fn (Request $request) => new UserResource($request->user()));
+    Route::get('/me', MeActionController::class);
 
     Route::get('/articles', ArticleListController::class);
     Route::post('/products/{id}/mark', ProductMarkController::class);

@@ -2,7 +2,7 @@ import { createContext, PropsWithChildren, useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
-import { components } from "@/_libs/client/shema";
+import { UserResource } from "@/_libs/client/shema";
 
 export type LoginData = {
     email: string;
@@ -10,7 +10,7 @@ export type LoginData = {
 };
 
 type AuthContextType = {
-    user?: components["schemas"]["User"];
+    user?: UserResource;
     signIn: (loginData: LoginData) => void;
     signOut: () => void;
 };
