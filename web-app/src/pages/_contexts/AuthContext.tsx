@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
 import { UserResource } from "@/_libs/client/shema";
-import {useSnackbar} from "notistack";
+import { useSnackbar } from "notistack";
 
 export type LoginData = {
     email: string;
@@ -14,12 +14,14 @@ type AuthContextType = {
     user?: UserResource;
     signIn: (loginData: LoginData) => void;
     isLoading: boolean;
+    isError: boolean;
     signOut: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType>({
     user: undefined,
     isLoading: false,
+    isError: false,
     signIn: (loginData: LoginData) => {},
     signOut: () => {},
 });
@@ -29,37 +31,31 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const queryClient = useQueryClient();
     const router = useRouter();
 
-    const { data: user } = client.useQuery("get", "/me", {
+    const { data: user, isPending } = client.useQuery("get", "/me", {
         queryKey: ["me"],
         retry: false,
     });
-
     client.useQuery("get", "/csrf-cookie", { queryKey: ["csrf"] });
 
     const loginMutation = client.useMutation("post", "/login", {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["me"] }).then(() => {
-                router.push("/sec/articles");
+                router.push("/articles");
             });
         },
         onError: (error: any) => {
-            console.error(error.response.data.message || error.message);
-            enqueueSnackbar(error.response.data.message || error.message, { variant: "error" })
+            console.error(error.message);
+            enqueueSnackbar(error.message, { variant: "error" });
         },
     });
 
     const logoutMutation = client.useMutation("post", "/logout", {
         onSuccess: () => {
             queryClient.clear();
-            router.push("/login");
+            router.push("/");
+            console.debug("Logout successfull");
         },
     });
-
-    useEffect(() => {
-        if (!user?.data) {
-            router.push("/login");
-        }
-    }, [user]);
 
     const signIn = (loginData: LoginData) => {
         loginMutation.mutate({ body: loginData });
@@ -71,7 +67,8 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     const value: AuthContextType = {
         user: user?.data,
-        isLoading: loginMutation.isPending,
+        isLoading: loginMutation.isPending || isPending,
+        isError: loginMutation.isError,
         signIn,
         signOut,
     };

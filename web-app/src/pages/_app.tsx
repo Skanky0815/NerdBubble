@@ -2,11 +2,10 @@ import type { AppProps } from "next/app";
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import theme from "@/_libs/theme";
-import { Box, CssBaseline, Stack, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import Head from "next/head";
-import Footer from "@/pages/_components/Footer";
 import { AuthContextProvider } from "@/pages/_contexts/AuthContext";
-import {SnackbarProvider} from "notistack";
+import { SnackbarProvider } from "notistack";
 
 export default function App({ Component, pageProps }: AppProps) {
     const client = new QueryClient();
@@ -16,28 +15,16 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <meta
                     name="viewport"
-                    content="initial-scale=1, width=device-width"
+                    content="initial-scale=1.0, width=device-width"
                 />
             </Head>
             <QueryClientProvider client={client}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
                     <AuthContextProvider>
-                        <Stack
-                            direction="column"
-                            sx={{
-                                minHeight: "100vh",
-                                justifyContent: "space-between",
-                                backgroundColor: "grey.100",
-                            }}
-                        >
-                            <Box sx={{ mx: 2, my: 4 }}>
                         <SnackbarProvider maxSnack={3}>
-                                <Component {...pageProps} />
-                    </SnackbarProvider>
-                            </Box>
-                            <Footer />
-                        </Stack>
+                            <Component {...pageProps} />
+                        </SnackbarProvider>
                     </AuthContextProvider>
                 </ThemeProvider>
             </QueryClientProvider>
