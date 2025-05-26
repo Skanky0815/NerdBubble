@@ -1,11 +1,12 @@
 import type { AppProps } from "next/app";
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
-import theme from "@/theme";
+import theme from "@/_libs/theme";
 import { Box, CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import Head from "next/head";
 import Footer from "@/pages/_components/Footer";
-import { AuthContextProvider } from "./_hooks/AuthContext";
+import { AuthContextProvider } from "@/pages/_contexts/AuthContext";
+import {SnackbarProvider} from "notistack";
 
 export default function App({ Component, pageProps }: AppProps) {
     const client = new QueryClient();
@@ -31,7 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
                             }}
                         >
                             <Box sx={{ mx: 2, my: 4 }}>
+                        <SnackbarProvider maxSnack={3}>
                                 <Component {...pageProps} />
+                    </SnackbarProvider>
                             </Box>
                             <Footer />
                         </Stack>
