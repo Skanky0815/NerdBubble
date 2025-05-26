@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
 import { UserResource } from "@/_libs/client/shema";
+import {useSnackbar} from "notistack";
 
 export type LoginData = {
     email: string;
@@ -12,16 +13,19 @@ export type LoginData = {
 type AuthContextType = {
     user?: UserResource;
     signIn: (loginData: LoginData) => void;
+    isLoading: boolean;
     signOut: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType>({
     user: undefined,
+    isLoading: false,
     signIn: (loginData: LoginData) => {},
     signOut: () => {},
 });
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
+    const { enqueueSnackbar } = useSnackbar();
     const queryClient = useQueryClient();
     const router = useRouter();
 
@@ -39,8 +43,8 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
             });
         },
         onError: (error: any) => {
-            console.error(error);
-            // setAlert(error.response.data.message || error.message, AlertType.ERROR);
+            console.error(error.response.data.message || error.message);
+            enqueueSnackbar(error.response.data.message || error.message, { variant: "error" })
         },
     });
 
@@ -67,6 +71,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     const value: AuthContextType = {
         user: user?.data,
+        isLoading: loginMutation.isPending,
         signIn,
         signOut,
     };
