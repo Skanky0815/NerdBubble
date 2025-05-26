@@ -1,9 +1,11 @@
 import { Card, CardContent, Typography, Link } from "@mui/material";
+import withPublic from "@/pages/_utils/withPublic";
+import ScrollTopButton from "@/pages/_components/ScrollTopButton";
 
-export default function Imprint() {
+const Imprint = () => {
     return (
         <>
-            <Link href="/login">
+            <Link href="/">
                 <Typography variant="h1" component="h1">
                     Impressum
                 </Typography>
@@ -90,6 +92,10 @@ export default function Imprint() {
                     </Typography>
                 </CardContent>
             </Card>
+
+            <ScrollTopButton />
         </>
     );
-}
+};
+
+export default withPublic(Imprint);
