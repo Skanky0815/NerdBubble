@@ -31,11 +31,16 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     const queryClient = useQueryClient();
     const router = useRouter();
 
-    const { data: user, isPending } = client.useQuery("get", "/me", {
-        queryKey: ["me"],
-    }, {
-        retry: false
-    });
+    const { data: user, isPending } = client.useQuery(
+        "get",
+        "/me",
+        {
+            queryKey: ["me"],
+        },
+        {
+            retry: false,
+        },
+    );
     client.useQuery("get", "/csrf-cookie", { queryKey: ["csrf"] });
 
     const loginMutation = client.useMutation("post", "/login", {
