@@ -1,6 +1,6 @@
 import {
     Card,
-    CardContent,
+    CardContent, CardHeader,
     IconButton,
     Stack,
     Typography,
@@ -19,7 +19,7 @@ const Settings = () => {
                 alignContent={"baseline"}
                 justifyContent={"space-between"}
             >
-                <Typography variant="h5" component="h1">
+                <Typography variant="h4" component="h1">
                     Einstellungen
                 </Typography>
 
@@ -28,12 +28,9 @@ const Settings = () => {
                 </IconButton>
             </Stack>
 
-            <Card>
+            <Card sx={{ mt: 2 }}>
+                <CardHeader title="Profil" />
                 <CardContent>
-                    <Typography variant="h5" component="h2">
-                        Profil
-                    </Typography>
-
                     <Typography variant="body1">
                         {user?.name} <br />
                         {user?.email}
