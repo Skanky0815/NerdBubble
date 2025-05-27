@@ -33,7 +33,8 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     const { data: user, isPending } = client.useQuery("get", "/me", {
         queryKey: ["me"],
-        retry: false,
+    }, {
+        retry: false
     });
     client.useQuery("get", "/csrf-cookie", { queryKey: ["csrf"] });
 
