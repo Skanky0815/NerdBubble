@@ -1,6 +1,7 @@
 import {
     Card,
-    CardContent, CardHeader,
+    CardContent,
+    CardHeader,
     IconButton,
     Stack,
     Typography,
@@ -39,7 +40,10 @@ const Settings = () => {
             </Card>
 
             <Card sx={{ mt: 2 }}>
-                <CardHeader title="NerdBubble" subheader={`Version: ${process.env.NEXT_PUBLIC_VERSION}`} />
+                <CardHeader
+                    title="NerdBubble"
+                    subheader={`Version: ${process.env.NEXT_PUBLIC_VERSION}`}
+                />
             </Card>
         </>
     );
