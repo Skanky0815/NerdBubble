@@ -84,7 +84,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          local-dir: ./app/build/
+          local-dir: ./app/out/
           server-dir: html/app/
           server: 31.220.126.208
           username: ${{ secrets.REMOTE_USER }}
