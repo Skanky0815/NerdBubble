@@ -79,6 +79,8 @@ jobs:
         run: npm ci
         working-directory: ${{ env.APP_DIR }}
       - name: Build App
+        env:
+          NEXT_PUBLIC_BACKEND_API_URL: ${{ vars.NEXT_PUBLIC_BACKEND_API_URL }}
         run: npm run build
         working-directory: ${{ env.APP_DIR }}
       - name: FTP Deploy
