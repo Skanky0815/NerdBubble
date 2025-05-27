@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
+                <title>NerdBubble</title>
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
