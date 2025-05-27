@@ -1,3 +1,31 @@
+## [1.1.0](https://github.com/Skanky0815/NerdBubble/compare/v1.0.0...v1.1.0) (2025-05-27)
+
+### Features
+
+* Add initial setup for web-app and Docker integration ([c048334](https://github.com/Skanky0815/NerdBubble/commit/c0483342f9dfdc44525fcc4719c765b4a7203332))
+* Add loading state to login and enhance articles page UI ([5973555](https://github.com/Skanky0815/NerdBubble/commit/5973555626c6b45831ec5b261203f5b63a4c46f0))
+* Migrate to Next.js with MUI and add new pages ([8e0dca9](https://github.com/Skanky0815/NerdBubble/commit/8e0dca9ac7dbd8de83b7b1b7d0123d4ee56dd2e2))
+* Refactor Article components and improve structure ([a544594](https://github.com/Skanky0815/NerdBubble/commit/a544594be3762fd52a5a3166fcf8b9d5ed6ac6f6))
+* Refactor articles, add MeActionController, and update schemas ([37eef25](https://github.com/Skanky0815/NerdBubble/commit/37eef2523c4d0fbfc9a0c787a731688a22ef1535))
+* Refactor authentication and articles layout, integrate hooks ([38f99b5](https://github.com/Skanky0815/NerdBubble/commit/38f99b58a123f28028ea6084f68fb7922cb786b5))
+* Refactor login page and add Snackbar notifications ([fd3ba5b](https://github.com/Skanky0815/NerdBubble/commit/fd3ba5b4056b78b41c913f1674ed1f4b72ce3b97))
+* Revamp deployment workflows and update CI pipelines ([59d0e36](https://github.com/Skanky0815/NerdBubble/commit/59d0e366f52d5d5da73a1404fbbd9ac5a1ec50ba))
+* Update UI components and styling for pages ([19a56bf](https://github.com/Skanky0815/NerdBubble/commit/19a56bf8dada8881e2b944e1dad0c722dbae1722))
+
+### Bug Fixes
+
+* add missing env var ([f7d72ed](https://github.com/Skanky0815/NerdBubble/commit/f7d72ed8cda7d13d277e68d1e906f32a4853aa28))
+* Add support for banner image in AsmodeeProduct DTO ([b455df8](https://github.com/Skanky0815/NerdBubble/commit/b455df89173dc6ab2e2aa8c36d32b2bb3fa44c90))
+* compile dir ([998965e](https://github.com/Skanky0815/NerdBubble/commit/998965e756603ee6571111cae0ab94e464d31451))
+* compile dir ([261b2a5](https://github.com/Skanky0815/NerdBubble/commit/261b2a5a097921b5f829df0a5a5566cb4c79139f))
+* Disable component tests in CI workflow ([a947774](https://github.com/Skanky0815/NerdBubble/commit/a94777474d56b33b468732313f18cc14fbcfedba))
+* Fix manifest handling and migrate to public directory. ([28209c7](https://github.com/Skanky0815/NerdBubble/commit/28209c7bfb7f04b48f8fb8dbd4223b4e7cc4eedd))
+* Refactor code formatting for better readability ([0c9e986](https://github.com/Skanky0815/NerdBubble/commit/0c9e9867c33b622553a95e03f825ac81878a6e19))
+* Refactor hooks and context usage; enhance type safety. ([5f444aa](https://github.com/Skanky0815/NerdBubble/commit/5f444aaf6dbf225a9a4c3fac8eb27cb1936f666b))
+* Remove deploy workflow from server.yml ([2c02e28](https://github.com/Skanky0815/NerdBubble/commit/2c02e281f4f0898b9e5d6833e87f3ca184865ad3))
+* Remove unused deploy job from GitHub Actions workflow ([f0c3f59](https://github.com/Skanky0815/NerdBubble/commit/f0c3f59ad750a671d1fce9586b859d71b7ce94ba))
+* type errors ([cf6b7b2](https://github.com/Skanky0815/NerdBubble/commit/cf6b7b27d33e066ab283937ca242b91492b5aa7f))
+
 ## 1.0.0 (2025-05-12)
 
 ### Features
