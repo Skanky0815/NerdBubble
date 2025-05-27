@@ -14,6 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <>
             <Head>
                 <title>NerdBubble</title>
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#000000" />
+                <link rel="apple-touch-icon" href="/d20_logo192.png" />
+
                 <meta
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
