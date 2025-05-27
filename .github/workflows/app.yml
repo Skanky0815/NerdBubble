@@ -1,11 +1,12 @@
-name: App Pipe
-run-name: Pipeline for the App
+name: Frontend Pipe
+run-name: QA-Pipeline for Frontend
 
 on:
-  push:
+  pull_request:
     paths:
       - web-app/**
       - .github/workflows/app.yml
+
 env:
   APP_DIR: ./web-app
 
@@ -35,27 +36,35 @@ jobs:
           path: ~/.package/cache
           key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
 
-  #component_tests:
-  #  needs: build
-  #
-  #  runs-on: ubuntu-latest
-  #
-  #  steps:
-  #    - name: Checkout repository
-  #      uses: actions/checkout@main
-  #      with:
-  #        fetch-depth: 0
-  #
-  #    - name: Restore Package cache
-  #      uses: actions/cache@main
-  #      with:
-  #        path: ~/.package/cache
-  #        key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
-  #
-  #    - name: Install dependencies
-  #      run: npm ci
-  #      working-directory: ${{ env.APP_DIR }}
-  #
+  component_tests:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+
+      - name: Restore Package cache
+        uses: actions/cache@main
+        with:
+          path: ~/.package/cache
+          key: ${{ runner.os }}-package-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Check code style
+        run: npx prettier . --check
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Check lint
+        run: npm run lint
+        working-directory: ${{ env.APP_DIR }}
+
   #    - name: Run components tests
   #      run: CI=true npm test -- --coverage --watchAll=false
   #      working-directory: ${{ env.APP_DIR }}
@@ -81,6 +90,7 @@ jobs:
       - name: Build App
         env:
           NEXT_PUBLIC_BACKEND_API_URL: ${{ vars.NEXT_PUBLIC_BACKEND_API_URL }}
+          NEXT_PUBLIC_VERSION: ${{ github.event.release.tag_name }}
         run: npm run build
         working-directory: ${{ env.APP_DIR }}
       - name: FTP Deploy

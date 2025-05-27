@@ -37,6 +37,10 @@ const Settings = () => {
                     </Typography>
                 </CardContent>
             </Card>
+
+            <Card sx={{ mt: 2 }}>
+                <CardHeader title="NerdBubble" subheader={`Version: ${process.env.NEXT_PUBLIC_VERSION}`} />
+            </Card>
         </>
     );
 };

@@ -1,0 +1,122 @@
+name: Deploye NerdBubble
+run-name: Pipeline for NerdBubble FE/BE release ${{ github.event.release.tag_name || 'no-tag' }}
+
+on:
+  workflow_run:
+    workflows: ["Semantic Versioning"]
+    types:
+      - completed
+
+env:
+  APP_DIR: ./web-app
+  SERVER_DIR: ./server
+  PHP_VERSION: '8.2'
+
+  TARGET_SERVER: 31.220.126.208
+
+jobs:
+  deploy-fe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: Build App
+        env:
+          NEXT_PUBLIC_BACKEND_API_URL: ${{ vars.NEXT_PUBLIC_BACKEND_API_URL }}
+          NEXT_PUBLIC_VERSION: ${{ github.event.release.tag_name }}
+        run: npm run build
+        working-directory: ${{ env.APP_DIR }}
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          local-dir: ./web-app/out/
+          server-dir: html/app/
+          server: ${{ env.TARGET_SERVER }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+
+  deploy-be:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+
+      - uses: actions/checkout@main
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --no-dev
+        working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Prepare Laravel Application
+        run: |
+          cp .env.prod .env
+          echo DB_DATABASE=${{secrets.DB_DATABASE}} >> .env
+          echo DB_USERNAME=${{secrets.DB_USERNAME}} >> .env
+          echo DB_PASSWORD=${{secrets.DB_PASSWORD}} >> .env
+          php artisan key:generate
+        working-directory: ${{ env.SERVER_DIR }}
+
+      - name: Stop Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ env.TARGET_SERVER }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: |
+            cd ./html/server
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Stop Server +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan down
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          local-dir: ./server/
+          server-dir: html/server/
+          server: ${{ env.TARGET_SERVER }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/test/**
+            **/.php-cs-fixer.dist.php
+            **/deptrac.yml
+            **/phpunit.xml
+            **/README.md
+            **/sonar-project.properties
+            **/vite.config.js
+            **/.env.ci
+            **/.env.example
+
+      - name: Run Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ env.TARGET_SERVER }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: |
+            cd ./html/server
+            echo "++++++++++++++++++++++++++++++++"
+            echo "+++++ Optimize Application +++++"
+            echo "++++++++++++++++++++++++++++++++"
+            php artisan optimize
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Warmup Cache +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan config:cache
+            echo "++++++++++++++++++++++"
+            echo "+++++ Migrate DB +++++"
+            echo "++++++++++++++++++++++"
+            php artisan migrate --force
+            echo "++++++++++++++++++++++++"
+            echo "+++++ Start Server +++++"
+            echo "++++++++++++++++++++++++"
+            php artisan up
