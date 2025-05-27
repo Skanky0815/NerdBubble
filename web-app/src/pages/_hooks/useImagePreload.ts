@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function useImagePreload(src: string) {
     const [loaded, setLoaded] = useState(false);
@@ -7,9 +7,9 @@ export default function useImagePreload(src: string) {
         const img = new Image();
         img.src = src;
         img.onload = () => {
-            setLoaded(true)
-        }
+            setLoaded(true);
+        };
     }, [src]);
 
-    return { loaded }
+    return { loaded };
 }

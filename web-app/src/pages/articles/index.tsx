@@ -9,7 +9,7 @@ import {
 import client from "@/_libs/client";
 import { ArticleResource } from "@/_libs/client/shema";
 import withAuth from "@/pages/_utils/withAuth";
-import { Replay as ReplayIcon} from "@mui/icons-material";
+import { Replay as ReplayIcon } from "@mui/icons-material";
 import ScrollTopButton from "@/pages/_components/ScrollTopButton";
 import Article from "@/pages/articles/_components/Article";
 import ArticleImgRight from "@/pages/articles/_components/ArticleImgRight";
@@ -61,11 +61,14 @@ const Articles = () => {
 
                 {articles?.data.map((article: ArticleResource) => (
                     <>
-                        {article.provider === 'xbox_dynasty' && (
-                            <ArticleImgRight key={article.id} article={article} />
+                        {article.provider === "xbox_dynasty" && (
+                            <ArticleImgRight
+                                key={article.id}
+                                article={article}
+                            />
                         )}
-                        {article.provider !== 'xbox_dynasty' && (
-                            <Article key={article.id} article={article}/>
+                        {article.provider !== "xbox_dynasty" && (
+                            <Article key={article.id} article={article} />
                         )}
                     </>
                 ))}

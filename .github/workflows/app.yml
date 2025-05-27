@@ -4,10 +4,10 @@ run-name: Pipeline for the App
 on:
   push:
     paths:
-      - app/**
+      - web-app/**
       - .github/workflows/app.yml
 env:
-  APP_DIR: ./app
+  APP_DIR: ./web-app
 
 jobs:
   build:

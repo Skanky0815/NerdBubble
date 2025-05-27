@@ -1,22 +1,28 @@
-import {ArticleResource} from "@/_libs/client/shema";
+import { ArticleResource } from "@/_libs/client/shema";
 import useImagePreload from "@/pages/_hooks/useImagePreload";
-import {Box, Card, CardActionArea, CardContent, CardMedia, Skeleton, Typography} from "@mui/material";
+import {
+    Box,
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
+    Skeleton,
+    Typography,
+} from "@mui/material";
 
 type Props = {
     article: ArticleResource;
-}
+};
 
 export default function ArticleImgRight({ article }: Props) {
-    const { loaded: imageLoaded } = useImagePreload(article.image)
+    const { loaded: imageLoaded } = useImagePreload(article.image);
 
     return (
         <Card sx={{ borderLeft: "solid 8px lime" }}>
             <CardActionArea href={article.link}>
-                <Box sx={{ display: "flex"}}>
+                <Box sx={{ display: "flex" }}>
                     <CardContent>
-                        <Typography variant="h6">
-                            {article.title}
-                        </Typography>
+                        <Typography variant="h5">{article.title}</Typography>
                     </CardContent>
 
                     {imageLoaded && (
