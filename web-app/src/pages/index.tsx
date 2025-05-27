@@ -8,13 +8,14 @@ import {
     Typography,
 } from "@mui/material";
 import Form from "next/form";
-import { FormEvent, useContext, useEffect } from "react";
-import { AuthContext, LoginData } from "@/pages/_contexts/AuthContext";
+import { FormEvent } from "react";
+import { LoginData } from "@/_contexts/AuthContext";
 import D12 from "@/pages/_components/D12";
 import withPublic from "@/pages/_utils/withPublic";
+import useAuth from "@/_hooks/useAuth";
 
 const Login = () => {
-    const { signIn, isLoading, isError } = useContext(AuthContext);
+    const { signIn, isLoading, isError } = useAuth();
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();

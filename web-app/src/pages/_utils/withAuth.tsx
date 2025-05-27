@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "@/pages/_contexts/AuthContext";
+import React, { useContext, useEffect } from "react";
+import { AuthContext } from "@/_contexts/AuthContext";
 import PrivateLayout from "@/pages/_layouts/PrivateLayout";
 import Loading from "@/pages/_components/Loading";
 import theme from "@/_libs/theme";
 
-export default function withAuth(WrappedComponent: any) {
-    return (props: any) => {
+/* eslint-disable react/display-name */
+export default function withAuth(WrappedComponent: React.FC) {
+    return (props: React.HTMLProps<HTMLDivElement>) => {
         const router = useRouter();
         const { user, isLoading } = useContext(AuthContext);
 

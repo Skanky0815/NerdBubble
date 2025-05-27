@@ -60,17 +60,14 @@ const Articles = () => {
                 )}
 
                 {articles?.data.map((article: ArticleResource) => (
-                    <>
+                    <div key={article.id}>
                         {article.provider === "xbox_dynasty" && (
-                            <ArticleImgRight
-                                key={article.id}
-                                article={article}
-                            />
+                            <ArticleImgRight article={article} />
                         )}
                         {article.provider !== "xbox_dynasty" && (
-                            <Article key={article.id} article={article} />
+                            <Article article={article} />
                         )}
-                    </>
+                    </div>
                 ))}
             </Stack>
 
