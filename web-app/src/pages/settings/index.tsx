@@ -5,13 +5,12 @@ import {
     Stack,
     Typography,
 } from "@mui/material";
-import { AuthContext } from "@/pages/_contexts/AuthContext";
-import { useContext } from "react";
 import withAuth from "@/pages/_utils/withAuth";
 import { ExitToApp as ExitToAppIcon } from "@mui/icons-material";
+import useAuth from "@/_hooks/useAuth";
 
 const Settings = () => {
-    const { user, signOut } = useContext(AuthContext);
+    const { user, signOut } = useAuth();
 
     return (
         <>

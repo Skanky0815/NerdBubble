@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { keyframes } from "@emotion/react";
-import { PaletteColor } from "@mui/material/styles/createPalette";
 
 const spin = keyframes`
   0% {
@@ -13,7 +12,7 @@ const spin = keyframes`
 `;
 
 type LoadingProps = {
-    color: PaletteColor;
+    color: string;
 };
 
 export default function Loading({ color }: LoadingProps) {

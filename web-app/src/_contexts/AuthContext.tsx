@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useEffect } from "react";
+import { createContext, PropsWithChildren } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
@@ -22,7 +22,7 @@ export const AuthContext = createContext<AuthContextType>({
     user: undefined,
     isLoading: false,
     isError: false,
-    signIn: (loginData: LoginData) => {},
+    signIn: () => {},
     signOut: () => {},
 });
 
@@ -43,7 +43,10 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
                 router.push("/articles");
             });
         },
-        onError: (error: any) => {
+        onError: (error: {
+            readonly message: string;
+            readonly errors: { readonly [key: string]: readonly string[] };
+        }) => {
             console.error(error.message);
             enqueueSnackbar(error.message, { variant: "error" });
         },
@@ -62,7 +65,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
     };
 
     const signOut = () => {
-        logoutMutation.mutate();
+        logoutMutation.mutate({});
     };
 
     const value: AuthContextType = {

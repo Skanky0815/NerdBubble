@@ -8,7 +8,7 @@ import {
     Typography,
 } from "@mui/material";
 import { ArticleResource } from "@/_libs/client/shema";
-import useImagePreload from "@/pages/_hooks/useImagePreload";
+import useImagePreload from "@/_hooks/useImagePreload";
 import { blue, deepPurple, orange, green, red } from "@mui/material/colors";
 
 type Props = {
@@ -26,16 +26,16 @@ const map: { [key: string]: string } = {
 };
 
 export default function Article({ article }: Props) {
-    const { loaded: imageLoaded } = useImagePreload(article.image);
+    const { loaded: imageLoaded } = useImagePreload(article?.image);
 
     return (
-        <Card sx={{ borderLeft: `solid 8px ${map[article.provider]}` }}>
-            <CardActionArea href={article.link}>
+        <Card sx={{ borderLeft: `solid 8px ${map[article?.provider]}` }}>
+            <CardActionArea href={article?.link}>
                 {imageLoaded && (
                     <CardMedia
                         component="img"
-                        image={article.image}
-                        alt={article.title}
+                        image={article?.image}
+                        alt={article?.title}
                     />
                 )}
                 {!imageLoaded && (
@@ -45,16 +45,16 @@ export default function Article({ article }: Props) {
                         height={160}
                     />
                 )}
-                <CardHeader title={article.title} subheader={article.date} />
-                {article.subTitle ||
-                    (article.description && (
+                <CardHeader title={article?.title} subheader={article?.date} />
+                {article?.subTitle ||
+                    (article?.description && (
                         <CardContent>
                             <Typography variant="subtitle1">
-                                {article.subTitle}
+                                {article?.subTitle}
                             </Typography>
-                            {article.description && (
+                            {article?.description && (
                                 <Typography variant="body1">
-                                    {article.description}
+                                    {article?.description}
                                 </Typography>
                             )}
                         </CardContent>
