@@ -1,8 +1,8 @@
 name: Server Pipe
-run-name: Pipeline for the Server
+run-name: QA-Pipeline for the Server
 
 on:
-  push:
+  pull_request:
     paths:
       - server/**
       - .github/workflows/server.yml
