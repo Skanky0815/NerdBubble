@@ -29,7 +29,7 @@ const Articles = () => {
                 alignContent={"baseline"}
                 justifyContent={"space-between"}
             >
-                <Typography variant="h5" component="h1">
+                <Typography variant="h4" component="h1">
                     News
                 </Typography>
 
@@ -38,7 +38,7 @@ const Articles = () => {
                 </IconButton>
             </Stack>
 
-            <Stack direction="column" spacing={2}>
+            <Stack direction="column" spacing={2} sx={{ mt: 2 }}>
                 {isLoading && (
                     <Card>
                         <Skeleton
