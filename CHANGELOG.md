@@ -1,3 +1,9 @@
+## [1.1.3](https://github.com/Skanky0815/NerdBubble/compare/v1.1.2...v1.1.3) (2025-05-28)
+
+### Bug Fixes
+
+* Enable manual workflow dispatch and update tag pattern ([8adbbb0](https://github.com/Skanky0815/NerdBubble/commit/8adbbb086f8289611c476164da6daadc612f922b))
+
 ## [1.1.2](https://github.com/Skanky0815/NerdBubble/compare/v1.1.1...v1.1.2) (2025-05-28)
 
 ### Bug Fixes
