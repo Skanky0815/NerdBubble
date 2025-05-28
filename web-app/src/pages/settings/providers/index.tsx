@@ -52,11 +52,17 @@ const Provides = () => {
                                     objectFit: "cover",
                                 }}
                             />
-                            <CardHeader title={provider.name} action={
-                                <IconButton href={provider.aggregateUrl} target="_blank">
-                                    <LinkIcon />
-                                </IconButton>
-                            } />
+                            <CardHeader
+                                title={provider.name}
+                                action={
+                                    <IconButton
+                                        href={provider.aggregateUrl}
+                                        target="_blank"
+                                    >
+                                        <LinkIcon />
+                                    </IconButton>
+                                }
+                            />
                         </CardActionArea>
                     </Card>
                 ))}
