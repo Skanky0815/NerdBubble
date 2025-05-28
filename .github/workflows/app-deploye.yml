@@ -4,7 +4,8 @@ run-name: Pipeline for NerdBubble FE/BE release ${{ github.ref_name || 'no-tag' 
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
+  workflow_dispatch:
 
 env:
   APP_DIR: ./web-app
