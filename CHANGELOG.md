@@ -1,3 +1,9 @@
+## [1.1.2](https://github.com/Skanky0815/NerdBubble/compare/v1.1.1...v1.1.2) (2025-05-28)
+
+### Bug Fixes
+
+* Add plugins to enhance version tagging workflow ([5b796a7](https://github.com/Skanky0815/NerdBubble/commit/5b796a76f659f45010839cd345727ac6d85624c3))
+
 ## [1.1.1](https://github.com/Skanky0815/NerdBubble/compare/v1.1.0...v1.1.1) (2025-05-28)
 
 ### Bug Fixes
