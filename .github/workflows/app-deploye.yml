@@ -3,7 +3,7 @@ run-name: Pipeline for NerdBubble FE/BE release ${{ github.event.release.tag_nam
 
 on:
   release:
-    types: [published]
+    types: [created, published]
 
 env:
   APP_DIR: ./web-app
