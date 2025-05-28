@@ -1,51 +1,22 @@
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    IconButton,
-    Stack,
-    Typography,
-} from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import withAuth from "@/pages/_utils/withAuth";
-import { ExitToApp as ExitToAppIcon } from "@mui/icons-material";
-import useAuth from "@/_hooks/useAuth";
+import UserCard from "@/pages/settings/_components/UserCard";
+import AppCard from "@/pages/settings/_components/AppCard";
+import NavigationCard from "@/pages/settings/_components/NavigationCard";
 
 const Settings = () => {
-    const { user, signOut } = useAuth();
-
     return (
-        <>
-            <Stack
-                direction="row"
-                alignContent={"baseline"}
-                justifyContent={"space-between"}
-            >
-                <Typography variant="h4" component="h1">
-                    Einstellungen
-                </Typography>
+        <Stack spacing={2}>
+            <Typography variant="h4" component="h1">
+                Einstellungen
+            </Typography>
 
-                <IconButton onClick={() => signOut()}>
-                    <ExitToAppIcon />
-                </IconButton>
-            </Stack>
+            <UserCard />
 
-            <Card sx={{ mt: 2 }}>
-                <CardHeader title="Profil" />
-                <CardContent>
-                    <Typography variant="body1">
-                        {user?.name} <br />
-                        {user?.email}
-                    </Typography>
-                </CardContent>
-            </Card>
+            <NavigationCard />
 
-            <Card sx={{ mt: 2 }}>
-                <CardHeader
-                    title="NerdBubble"
-                    subheader={`Version: ${process.env.NEXT_PUBLIC_VERSION}`}
-                />
-            </Card>
-        </>
+            <AppCard />
+        </Stack>
     );
 };
 
