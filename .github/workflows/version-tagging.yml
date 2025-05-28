@@ -34,7 +34,13 @@ jobs:
             @semantic-release/release-notes-generator
             @semantic-release/github
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+      - name: Debug Semantic Release Output
+        if: steps.semantic-release.outputs.new_release_published == 'true'
+        run: |
+          echo "New release version: ${{ steps.semantic-release.outputs.new_release_version }}"
+          echo "Release notes: ${{ steps.semantic-release.outputs.new_release_notes }}"
 
     outputs:
       new_release_version: ${{ steps.semantic-release.outputs.new_release_version }}
