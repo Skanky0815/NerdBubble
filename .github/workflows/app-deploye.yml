@@ -1,11 +1,9 @@
 name: Deploye NerdBubble
-run-name: Pipeline for NerdBubble FE/BE release ${{ github.ref_name || 'no-tag' }}
+run-name: Pipeline for NerdBubble FE/BE release ${{ github.event.release.tag_name || 'no-tag' }}
 
 on:
-  push:
-    tags:
-      - '*'
-  workflow_dispatch:
+  release:
+    types: [created]
 
 env:
   APP_DIR: ./web-app
@@ -26,7 +24,7 @@ jobs:
       - name: Build App
         env:
           NEXT_PUBLIC_BACKEND_API_URL: ${{ vars.NEXT_PUBLIC_BACKEND_API_URL }}
-          NEXT_PUBLIC_VERSION: ${{ github.ref_name }}
+          NEXT_PUBLIC_VERSION: ${{ github.event.release.tag_name }}
         run: npm run build
         working-directory: ${{ env.APP_DIR }}
 
@@ -58,7 +56,7 @@ jobs:
           echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
           echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-          echo VERSION=${{ github.ref_name }} >> .env
+          echo VERSION=${{ github.event.release.tag_name }} >> .env
           php artisan key:generate
         working-directory: ${{ env.SERVER_DIR }}
 

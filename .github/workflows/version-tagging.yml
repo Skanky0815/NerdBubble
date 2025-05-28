@@ -27,6 +27,7 @@ jobs:
       - name: Run Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         with:
+          branch: main
           extra_plugins: |
             conventional-changelog-conventionalcommits
             @semantic-release/commit-analyzer
@@ -34,3 +35,6 @@ jobs:
             @semantic-release/github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    outputs:
+      new_release_version: ${{ steps.semantic-release.outputs.new_release_version }}
