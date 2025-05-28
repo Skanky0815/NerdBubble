@@ -4,11 +4,12 @@ import {
     CardActionArea,
     CardHeader,
     CardMedia,
+    IconButton,
     Stack,
     Typography,
 } from "@mui/material";
 import client from "@/_libs/client";
-import { Add as AddIcon } from "@mui/icons-material";
+import { Add as AddIcon, Link as LinkIcon } from "@mui/icons-material";
 
 const Provides = () => {
     const { data: providers } = client.useQuery("get", "/providers");
@@ -19,7 +20,7 @@ const Provides = () => {
                 Anbieter
             </Typography>
 
-            <Stack direction="row" sx={{ mt: 2, gap: 2, flexWrap: "wrap" }}>
+            <Stack direction="column" sx={{ mt: 2, gap: 2, flexWrap: "wrap" }}>
                 <Card>
                     <CardActionArea href="/settings/providers/create">
                         <CardMedia
@@ -46,8 +47,16 @@ const Provides = () => {
                                 component="img"
                                 image={provider.logoImage}
                                 alt={provider.name}
+                                sx={{
+                                    height: 140,
+                                    objectFit: "cover",
+                                }}
                             />
-                            <CardHeader title={provider.name} />
+                            <CardHeader title={provider.name} action={
+                                <IconButton href={provider.aggregateUrl} target="_blank">
+                                    <LinkIcon />
+                                </IconButton>
+                            } />
                         </CardActionArea>
                     </Card>
                 ))}
