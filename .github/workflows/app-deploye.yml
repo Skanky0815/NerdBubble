@@ -1,17 +1,15 @@
 name: Deploye NerdBubble
-run-name: Pipeline for NerdBubble FE/BE release ${{ github.event.release.tag_name || 'no-tag' }}
+run-name: Pipeline for NerdBubble FE/BE release ${{ github.ref_name || 'no-tag' }}
 
 on:
-  workflow_run:
-    workflows: ["Semantic Versioning"]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*'
 
 env:
   APP_DIR: ./web-app
   SERVER_DIR: ./server
   PHP_VERSION: '8.2'
-
   TARGET_SERVER: 31.220.126.208
 
 jobs:
@@ -27,7 +25,7 @@ jobs:
       - name: Build App
         env:
           NEXT_PUBLIC_BACKEND_API_URL: ${{ vars.NEXT_PUBLIC_BACKEND_API_URL }}
-          NEXT_PUBLIC_VERSION: ${{ github.event.release.tag_name }}
+          NEXT_PUBLIC_VERSION: ${{ github.ref_name }}
         run: npm run build
         working-directory: ${{ env.APP_DIR }}
 
@@ -56,9 +54,10 @@ jobs:
       - name: Prepare Laravel Application
         run: |
           cp .env.prod .env
-          echo DB_DATABASE=${{secrets.DB_DATABASE}} >> .env
-          echo DB_USERNAME=${{secrets.DB_USERNAME}} >> .env
-          echo DB_PASSWORD=${{secrets.DB_PASSWORD}} >> .env
+          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
+          echo DB_USERNAME=${{ secrets.DB_USERNAME }} >> .env
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
+          echo VERSION=${{ github.ref_name }} >> .env
           php artisan key:generate
         working-directory: ${{ env.SERVER_DIR }}
 
