@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import client from "@/_libs/client";
 import { Add as AddIcon, Link as LinkIcon } from "@mui/icons-material";
+import { ProviderResource } from "@/_libs/client/shema";
 
 const Provides = () => {
     const { data: providers } = client.useQuery("get", "/providers");
@@ -38,7 +39,7 @@ const Provides = () => {
                     </CardActionArea>
                 </Card>
 
-                {providers?.data.map((provider) => (
+                {providers?.data.map((provider: ProviderResource) => (
                     <Card key={provider.id}>
                         <CardActionArea
                             href={`/settings/providers/${provider.id}`}

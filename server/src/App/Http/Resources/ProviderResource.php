@@ -27,7 +27,20 @@ class ProviderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [...parent::toArray($request), 'id' => (string) $this->id];
+        return [
+            'id' => (string) $this->id,
+            'name' => $this->name,
+            'color' => $this->color,
+            'logoImage' => $this->logoImage,
+            'aggregateUrl' => $this->aggregateUrl,
+            'hasProducts' => $this->hasProducts,
+            'layout' => $this->layout,
+            'isActive' => $this->isActive,
+            'articleSelector' => $this->articleSelector,
+            'articleHeadline' => $this->articleHeadline,
+            'articleImage' => $this->articleImage,
+            'articleLink' => $this->articleLink,
+        ];
     }
 
     public function toResponse($request): JsonResponse

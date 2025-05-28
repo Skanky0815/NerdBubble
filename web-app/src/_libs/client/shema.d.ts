@@ -272,8 +272,18 @@ export interface components {
         };
         /** ProviderResource */
         readonly ProviderResource: {
-            readonly ""?: string;
             readonly id: string;
+            readonly name: string;
+            readonly color: string;
+            readonly logoImage: string;
+            readonly aggregateUrl: string;
+            readonly hasProducts: string;
+            readonly layout: string;
+            readonly isActive: string;
+            readonly articleSelector: string;
+            readonly articleHeadline: string;
+            readonly articleImage: string;
+            readonly articleLink: string;
         };
         /** UserResource */
         readonly UserResource: {
