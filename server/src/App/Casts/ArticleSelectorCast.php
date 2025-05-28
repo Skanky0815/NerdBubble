@@ -27,7 +27,7 @@ class ArticleSelectorCast implements CastsAttributes
                 $attributes['articleSelectorDateFormat'],
                 $attributes['articleSelectorDateLocale'],
             ),
-            link: $attributes['articleSelectorLink'],
+            link: $attributes['articleSelectorLink'] ?? null,
             subHeadline: $attributes['articleSelectorSubHeadline'],
             description: $attributes['articleSelectorDescription'],
         );

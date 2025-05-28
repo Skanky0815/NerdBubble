@@ -27,7 +27,33 @@ class ProviderResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [...parent::toArray($request), 'id' => (string) $this->id];
+        return [
+            'id' => (string) $this->id,
+            'name' => $this->name,
+            'color' => $this->color,
+            'logoImage' => $this->logoImage,
+            'aggregateUrl' => $this->aggregateUrl,
+            'hasProducts' => $this->hasProducts,
+            'layout' => $this->layout,
+            'isActive' => $this->isActive,
+            'articleSelector' => [
+                'headline' => $this->articleSelector->headline,
+                'subHeadline' => $this->articleSelector->subHeadline,
+                'description' => $this->articleSelector->description,
+                'image' => $this->articleSelector->image,
+                'link' => $this->articleSelector->link,
+                'wrapper' => $this->articleSelector->wrapper,
+                'dateSelector' => [
+                    'date' => $this->articleSelector->dateSelector->date,
+                    'format' => $this->articleSelector->dateSelector->format,
+                    'locale' => $this->articleSelector->dateSelector->locale,
+                    'attribute' => $this->articleSelector->dateSelector->attribute,
+                ],
+            ],
+            'articleHeadline' => $this->articleHeadline,
+            'articleImage' => $this->articleImage,
+            'articleLink' => $this->articleLink,
+        ];
     }
 
     public function toResponse($request): JsonResponse
