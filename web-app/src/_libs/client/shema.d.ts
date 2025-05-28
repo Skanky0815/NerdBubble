@@ -280,7 +280,20 @@ export interface components {
             readonly hasProducts: string;
             readonly layout: string;
             readonly isActive: string;
-            readonly articleSelector: string;
+            readonly articleSelector: {
+                readonly headline: string;
+                readonly subHeadline: string;
+                readonly description: string;
+                readonly image: string;
+                readonly link: string;
+                readonly wrapper: string;
+                readonly dateSelector: {
+                    readonly date: string;
+                    readonly format: string;
+                    readonly locale: string;
+                    readonly attribute: string;
+                };
+            };
             readonly articleHeadline: string;
             readonly articleImage: string;
             readonly articleLink: string;
