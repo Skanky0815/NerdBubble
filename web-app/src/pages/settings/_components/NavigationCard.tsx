@@ -6,6 +6,7 @@ import {
     ListItemButton,
     ListItemText,
 } from "@mui/material";
+import Link from "next/link";
 
 export default function NavigationCard() {
     return (
@@ -14,7 +15,7 @@ export default function NavigationCard() {
 
             <List>
                 <ListItem>
-                    <ListItemButton href="/settings/providers">
+                    <ListItemButton href="/settings/providers" component={Link}>
                         <ListItemText primary="Anbieter" />
                     </ListItemButton>
                 </ListItem>

@@ -11,6 +11,7 @@ import {
 import client from "@/_libs/client";
 import { Add as AddIcon, Link as LinkIcon } from "@mui/icons-material";
 import { ProviderResource } from "@/_libs/client/shema";
+import Link from "next/link";
 
 const Provides = () => {
     const { data: providers } = client.useQuery("get", "/providers");
@@ -23,7 +24,10 @@ const Provides = () => {
 
             <Stack direction="column" sx={{ mt: 2, gap: 2, flexWrap: "wrap" }}>
                 <Card>
-                    <CardActionArea href="/settings/providers/create">
+                    <CardActionArea
+                        href="/settings/providers/create"
+                        component={Link}
+                    >
                         <CardMedia
                             sx={{
                                 backgroundColor: "primary.main",
@@ -43,6 +47,7 @@ const Provides = () => {
                     <Card key={provider.id}>
                         <CardActionArea
                             href={`/settings/providers/${provider.id}`}
+                            component={Link}
                         >
                             <CardMedia
                                 component="img"
