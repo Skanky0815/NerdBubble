@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/Skanky0815/NerdBubble/compare/v1.1.0...v1.1.1) (2025-05-28)
+
+### Bug Fixes
+
+* Update deployment workflow to trigger on tag pushes ([d990e36](https://github.com/Skanky0815/NerdBubble/commit/d990e362de69bba774ee22e4a38dbc568826f147))
+
 ## [1.1.0](https://github.com/Skanky0815/NerdBubble/compare/v1.0.0...v1.1.0) (2025-05-27)
 
 ### Features
