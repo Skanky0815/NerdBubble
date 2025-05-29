@@ -62,9 +62,7 @@ const Provides = () => {
                         <CardHeader
                             title={provider.name}
                             action={
-                                <IconButton
-                                    href={provider.aggregateUrl}
-                                >
+                                <IconButton href={provider.aggregateUrl}>
                                     <LinkIcon />
                                 </IconButton>
                             }

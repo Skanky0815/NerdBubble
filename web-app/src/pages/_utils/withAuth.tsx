@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PrivateLayout from "@/pages/_layouts/PrivateLayout";
 import Loading from "@/pages/_components/Loading";
 import theme from "@/_libs/theme";
@@ -13,7 +13,7 @@ export default function withAuth(WrappedComponent: React.FC) {
 
         useEffect(() => {
             if (!isLoading && !user) {
-                router.push("/")
+                router.push("/");
             }
         }, [isLoading, user]);
 
