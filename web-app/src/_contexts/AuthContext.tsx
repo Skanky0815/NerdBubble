@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useEffect } from "react";
+import { createContext, PropsWithChildren } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
@@ -35,7 +35,6 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
         data: user,
         isPending,
         refetch: refetchUser,
-        isError,
     } = client.useQuery(
         "get",
         "/me",
