@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren } from "react";
+import {createContext, PropsWithChildren, useEffect} from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import client from "@/_libs/client";
 import { useRouter } from "next/router";
@@ -27,11 +27,11 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, } = useSnackbar();
     const queryClient = useQueryClient();
     const router = useRouter();
 
-    const { data: user, isPending } = client.useQuery(
+    const { data: user, isPending, refetch: refetchUser, isError } = client.useQuery(
         "get",
         "/me",
         {
@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     const loginMutation = client.useMutation("post", "/login", {
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["me"] }).then(() => {
+            refetchUser().then(() => {
                 router.push("/articles");
             });
         },
@@ -60,9 +60,10 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
 
     const logoutMutation = client.useMutation("post", "/logout", {
         onSuccess: () => {
-            queryClient.clear();
-            router.push("/");
-            console.debug("Logout successfull");
+            router.push("/").then(() => {
+                queryClient.removeQueries();
+                console.debug("Logout successful");
+            });
         },
     });
 

@@ -1,21 +1,21 @@
-import { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
-import { AuthContext } from "@/_contexts/AuthContext";
+import React, {useEffect} from "react";
 import PrivateLayout from "@/pages/_layouts/PrivateLayout";
 import Loading from "@/pages/_components/Loading";
 import theme from "@/_libs/theme";
+import useAuth from "@/_hooks/useAuth";
+import { useRouter } from "next/router";
 
 /* eslint-disable react/display-name */
 export default function withAuth(WrappedComponent: React.FC) {
     return (props: React.HTMLProps<HTMLDivElement>) => {
         const router = useRouter();
-        const { user, isLoading } = useContext(AuthContext);
+        const { isLoading, user } = useAuth();
 
         useEffect(() => {
-            if (!user && !isLoading) {
-                router.push("/login");
+            if (!isLoading && !user) {
+                router.push("/")
             }
-        }, [user, isLoading]);
+        }, [isLoading, user]);
 
         if (isLoading) {
             return <Loading color={theme.palette.primary.main} />;
