@@ -9,7 +9,7 @@ import {
     Typography,
 } from "@mui/material";
 import client from "@/_libs/client";
-import { Add as AddIcon, Link as LinkIcon } from "@mui/icons-material";
+import { Add as AddIcon, ArrowBack as ArrowBackIcon, Link as LinkIcon } from "@mui/icons-material";
 import { ProviderResource } from "@/_libs/client/shema";
 import Link from "next/link";
 
@@ -18,9 +18,18 @@ const Provides = () => {
 
     return (
         <>
-            <Typography variant="h4" component="h1">
-                Anbieter
-            </Typography>
+            <Stack
+                direction="row"
+                alignContent={"baseline"}
+                justifyContent={"space-between"}
+            >
+                <Typography variant="h4" component="h1">
+                    Anbieter
+                </Typography>
+                <IconButton href="/settings" component={Link}>
+                    <ArrowBackIcon />
+                </IconButton>
+            </Stack>
 
             <Stack direction="column" sx={{ mt: 2, gap: 2, flexWrap: "wrap" }}>
                 <Card>
