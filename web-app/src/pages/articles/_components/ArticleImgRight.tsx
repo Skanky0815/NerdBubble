@@ -23,6 +23,7 @@ export default function ArticleImgRight({ article }: Props) {
                 <Box sx={{ display: "flex" }}>
                     <CardContent>
                         <Typography variant="h5">{article?.title}</Typography>
+                        <Typography variant="subtitle1">{article?.date}</Typography>
                     </CardContent>
 
                     {imageLoaded && (
@@ -30,6 +31,7 @@ export default function ArticleImgRight({ article }: Props) {
                             component="img"
                             image={article?.image}
                             alt={article?.title}
+                            sx={{ maxWidth: 250 }}
                         />
                     )}
                     {!imageLoaded && (

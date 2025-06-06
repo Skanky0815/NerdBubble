@@ -36,13 +36,14 @@ export default function Article({ article }: Props) {
                         component="img"
                         image={article?.image}
                         alt={article?.title}
+                        sx={{ maxHeight: 300 }}
                     />
                 )}
                 {!imageLoaded && (
                     <Skeleton
                         variant="rectangular"
                         width={"100%"}
-                        height={160}
+                        sx={{ minHeight: 160, width: 1 }}
                     />
                 )}
                 <CardHeader title={article?.title} subheader={article?.date} />

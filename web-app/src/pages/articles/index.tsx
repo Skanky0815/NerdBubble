@@ -1,4 +1,5 @@
 import {
+    Box,
     Card,
     CardContent,
     IconButton,
@@ -38,7 +39,7 @@ const Articles = () => {
                 </IconButton>
             </Stack>
 
-            <Stack direction="column" spacing={2} sx={{ mt: 2 }}>
+            <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ mt: 2, flexWrap: 'wrap', gap: 2 }}>
                 {isLoading && (
                     <Card>
                         <Skeleton
@@ -60,14 +61,14 @@ const Articles = () => {
                 )}
 
                 {articles?.data.map((article: ArticleResource) => (
-                    <div key={article.id}>
+                    <Box key={article.id} sx={{ width: { xs: "100%", sm: "49%" } }}>
                         {article.provider === "xbox_dynasty" && (
                             <ArticleImgRight article={article} />
                         )}
                         {article.provider !== "xbox_dynasty" && (
                             <Article article={article} />
                         )}
-                    </div>
+                    </Box>
                 ))}
             </Stack>
 
