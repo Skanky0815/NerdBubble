@@ -57,6 +57,7 @@ const Provides = () => {
                         <CardActionArea
                             href={`/settings/providers/${provider.id}`}
                             component={Link}
+                            sx={{ bgcolor: "lightgrey", p: 1 }}
                         >
                             <CardMedia
                                 component="img"
@@ -64,15 +65,15 @@ const Provides = () => {
                                 alt={provider.name}
                                 sx={{
                                     height: 140,
-                                    objectFit: "cover",
+                                    objectFit: "contain",
                                 }}
                             />
                         </CardActionArea>
                         <CardHeader
                             title={provider.name}
                             action={
-                                <IconButton href={provider.aggregateUrl}>
-                                    <LinkIcon />
+                                <IconButton href={provider.aggregateUrl} sx={{ backgroundColor: provider.color}}>
+                                    <LinkIcon sx={{ color: 'white' }} />
                                 </IconButton>
                             }
                         />
