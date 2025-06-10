@@ -88,6 +88,7 @@ class Provider extends Model
         'hasProducts' => 'boolean',
         'isActive' => 'boolean',
         'articleSelector' => ArticleSelectorCast::class,
+        'layout' => ArticleLayout::class,
     ];
 
     protected $fillable = [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domains\Article\Aggregates;
 
+use App\Models\ArticleLayout;
 use Domains\Article\ValueObjects\ArticleSelector;
 use Domains\Article\ValueObjects\Id;
 
@@ -15,7 +16,7 @@ readonly class Provider
         public string $logoImage,
         public string $aggregateUrl,
         public bool $hasProducts,
-        public string $layout,
+        public ArticleLayout $layout,
         public bool $isActive,
         public ArticleSelector $articleSelector,
         public ?string $articleHeadline,

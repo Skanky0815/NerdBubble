@@ -6,6 +6,7 @@ namespace App\Mapper;
 
 use App\Models\Article as ArticleEloquentModel;
 use Domains\Article\Aggregates\Article;
+use Domains\Article\Aggregates\Provider;
 use Domains\Article\ValueObjects\Products;
 
 class ArticleMapper
@@ -15,7 +16,7 @@ class ArticleMapper
         $products = $articleEloquent->products->map(ProductMapper::fromEloquent(...))->toArray();
 
         return new Article(
-            provider: $articleEloquent->provider,
+            provider: ProviderMapper::fromEloquent($articleEloquent->brovider),
             headline: $articleEloquent->title,
             publishDate: $articleEloquent->date,
             image: $articleEloquent->image,

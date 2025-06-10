@@ -12,14 +12,13 @@ use Domains\Article\ValueObjects\Id;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\Products;
-use Domains\Article\ValueObjects\ProviderType;
 use Domains\Article\ValueObjects\PublishDate;
 use Domains\Article\ValueObjects\SubHeadline;
 
 readonly class Article
 {
     public function __construct(
-        public ProviderType $provider,
+        public Provider $provider,
         public Headline $headline,
         public PublishDate $publishDate,
         public ImageUrl $image,

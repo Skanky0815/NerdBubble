@@ -59,7 +59,7 @@ class ProviderCrawler implements Crawler
             }
 
             $article = $this->articleFactory->setArticleData(
-                provider: ProviderType::DEFAULT,
+                provider: $provider,
                 headline: $provider->articleHeadline ?: $htmlNode->text($articleSelector->headline),
                 publishDate: $htmlNode->date($articleSelector->dateSelector),
                 image: $image,

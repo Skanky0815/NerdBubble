@@ -6,18 +6,18 @@ namespace Domains\Article\Factories;
 
 use Carbon\CarbonImmutable;
 use Domains\Article\Aggregates\Article;
+use Domains\Article\Aggregates\Provider;
 use Domains\Article\ValueObjects\Description;
 use Domains\Article\ValueObjects\Headline;
 use Domains\Article\ValueObjects\ImageUrl;
 use Domains\Article\ValueObjects\Link;
 use Domains\Article\ValueObjects\Products;
-use Domains\Article\ValueObjects\ProviderType;
 use Domains\Article\ValueObjects\PublishDate;
 use Domains\Article\ValueObjects\SubHeadline;
 
 class ArticleFactory
 {
-    private ProviderType $provider;
+    private Provider $provider;
     private Headline $headline;
     private PublishDate $publishDate;
     private ImageUrl $image;
@@ -27,7 +27,7 @@ class ArticleFactory
     private ?Description $description = null;
 
     public function setArticleData(
-        ProviderType $provider,
+        Provider $provider,
         string $headline,
         CarbonImmutable $publishDate,
         string $image,

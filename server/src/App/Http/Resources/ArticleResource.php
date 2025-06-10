@@ -27,9 +27,11 @@ class ArticleResource extends JsonResource
             'link' => (string) $this->link,
             'image' => (string) $this->image,
             'date' => (string) $this->publishDate,
-            'provider' => $this->provider,
             'description' => (string) $this->description,
             'products' => ProductResource::collection($this->products->getArrayCopy()),
+            'color' => $this->provider->color,
+            'name' => $this->provider->name,
+            'layout' => $this->provider->layout,
         ];
     }
 }

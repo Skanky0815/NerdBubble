@@ -9,27 +9,16 @@ import {
 } from "@mui/material";
 import { ArticleResource } from "@/_libs/client/shema";
 import useImagePreload from "@/_hooks/useImagePreload";
-import { blue, deepPurple, orange, green, red } from "@mui/material/colors";
 
 type Props = {
     article: ArticleResource;
-};
-
-const map: { [key: string]: string } = {
-    asmodee: deepPurple[700],
-    tsw: orange[500],
-    rail_sim: red[900],
-    f_shop: green[600],
-    blue_brixx: blue[500],
-    fantasy_flight_games: blue[600],
-    ulisses_spiele: green[600],
 };
 
 export default function Article({ article }: Props) {
     const { loaded: imageLoaded } = useImagePreload(article?.image);
 
     return (
-        <Card sx={{ borderLeft: `solid 8px ${map[article?.provider]}` }}>
+        <Card sx={{ borderLeft: `solid 8px ${article?.color}` }}>
             <CardActionArea href={article?.link}>
                 {imageLoaded && (
                     <CardMedia
