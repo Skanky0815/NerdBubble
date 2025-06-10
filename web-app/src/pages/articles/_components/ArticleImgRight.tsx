@@ -18,12 +18,14 @@ export default function ArticleImgRight({ article }: Props) {
     const { loaded: imageLoaded } = useImagePreload(article?.image);
 
     return (
-        <Card sx={{ borderLeft: "solid 8px lime" }}>
+        <Card sx={{ borderLeft: `solid 8px ${article?.color}` }}>
             <CardActionArea href={article?.link}>
                 <Box sx={{ display: "flex" }}>
                     <CardContent>
                         <Typography variant="h5">{article?.title}</Typography>
-                        <Typography variant="subtitle1">{article?.date}</Typography>
+                        <Typography variant="subtitle1">
+                            {article?.date}
+                        </Typography>
                     </CardContent>
 
                     {imageLoaded && (

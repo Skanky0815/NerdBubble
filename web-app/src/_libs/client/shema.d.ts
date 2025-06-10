@@ -254,9 +254,11 @@ export interface components {
             readonly link: string;
             readonly image: string;
             readonly date: string;
-            readonly provider: string;
             readonly description: string;
             readonly products: readonly components["schemas"]["ProductResource"][];
+            readonly color: string;
+            readonly name: string;
+            readonly layout: string;
         };
         /** KeywordResource */
         readonly KeywordResource: {

@@ -9,7 +9,11 @@ import {
     Typography,
 } from "@mui/material";
 import client from "@/_libs/client";
-import { Add as AddIcon, ArrowBack as ArrowBackIcon, Link as LinkIcon } from "@mui/icons-material";
+import {
+    Add as AddIcon,
+    ArrowBack as ArrowBackIcon,
+    Link as LinkIcon,
+} from "@mui/icons-material";
 import { ProviderResource } from "@/_libs/client/shema";
 import Link from "next/link";
 
@@ -72,8 +76,11 @@ const Provides = () => {
                         <CardHeader
                             title={provider.name}
                             action={
-                                <IconButton href={provider.aggregateUrl} sx={{ backgroundColor: provider.color}}>
-                                    <LinkIcon sx={{ color: 'white' }} />
+                                <IconButton
+                                    href={provider.aggregateUrl}
+                                    sx={{ backgroundColor: provider.color }}
+                                >
+                                    <LinkIcon sx={{ color: "white" }} />
                                 </IconButton>
                             }
                         />
