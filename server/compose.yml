@@ -1,7 +1,7 @@
 services:
     app:
       build:
-        context: ./../app
+        context: ./../web-app
       depends_on:
         backend:
           condition: service_started
